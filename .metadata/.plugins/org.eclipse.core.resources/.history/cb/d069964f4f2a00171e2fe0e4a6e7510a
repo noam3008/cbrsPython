@@ -1,0 +1,69 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import logging
+
+from testing.Step import Step
+from model.Engine import MyEngine
+
+
+class TestEngine(object):
+    '''
+    classdocs
+    '''
+################ after that it will include test def
+    def __init__(self, testDefinition):
+        '''
+        Will recieve the test structure (the list of the json file and the step defintions). 
+        Will read all the json files and save it as some structure.
+        '''
+        self.testDefinition = testDefinition
+        global numberOfReq 
+        numberOfReq = 0
+    
+    def setup(self):       
+        self.engine = MyEngine() 
+        
+    
+    def test_successful_request(self):
+        logging.info("test successful request")
+        #valid_json = self.engine.assertion.parseJsonToDic( self.testDefinition.jsonName)
+        return self.engine.process_request(self.testDefinition.jsonNamesOfSteps[numberOfReq])
+        # Assert that the response is the expected response 
+        
+    def  test_unsuccessful_request(self):
+        logging.info("test unsuccessful request")
+        invalid_json = "";
+        response = self.engine.process_request(invalid_json)
+        # Assert that an exception was thrown
+        
+    ################################## this will be an json that sent as a req later
+   
+    
+class TestDefinition(object):
+    
+    def __init__(self,steps):
+        self.defenitionsOfSteps = []
+        self.jsonNamesOfSteps = []
+        for step in steps:    
+            self.defenitionsOfSteps.append(step.defOfStep)
+            self.jsonNamesOfSteps.append(step.jsonOfStep)
+            
+
+logging.basicConfig(filename='example2.log',level=logging.DEBUG)
+steps = []
+########### user first step ########
+steps.append(Step("bstep","spectrumInquery.json"))
+steps.append(Step("bstep","grant.json"))
+steps.append(Step("bstep","registeration.json"))
+testDefinition = TestDefinition(steps)
+testEngine = TestEngine(testDefinition)
+testEngine.setup()
+
+for Step in steps:
+    print testEngine.test_successful_request()
+    numberOfReq+=1
+    
+ 

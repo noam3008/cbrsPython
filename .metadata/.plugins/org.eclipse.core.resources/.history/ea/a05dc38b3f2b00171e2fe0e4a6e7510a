@@ -1,0 +1,37 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+import logging
+
+from Step import Step
+from controllers.ENodeBController import ENodeBController
+from controllers.MController import Mcontroller
+from controllers.TestDefinition import TestDefinition
+from model import flaskServer
+from threading import Thread
+import time
+from time import sleep
+from Queue import Queue
+
+class MyClass(object):
+    '''
+    classdocs
+        '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+        
+#logging.basicConfig(filename='example.log',level=logging.DEBUG)  
+mController = Mcontroller("C:\Users\iagmon\Desktop\exampleTest.csv")
+threading.Thread(target=mController.run, kwargs={'q':q}).start()
+flaskServer.enodeBController = ENodeBController(mController.engine)
+flaskServer.runFlaskServer()
+     
+
+
+

@@ -1,0 +1,27 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def compareJsonReq(self,jsonReq,jsonName):  
+        print jsonReq['fccId']
+    
+    def getJson(self,jsonFileName):
+        myfile = open('C:\Users\iagmon\Desktop\jsonFolder]' + jsonFileName)
+        jsonAfterParse = json.load(myfile)
+        return jsonAfterParse 
+        
+        
+        
+        

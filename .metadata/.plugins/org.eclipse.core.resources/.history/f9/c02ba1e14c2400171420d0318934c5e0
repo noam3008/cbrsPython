@@ -1,0 +1,5 @@
+import xml.etree.ElementTree as ET
+tree = ET.parse("confOfResp.xml")
+doc = tree.getroot()
+print doc[0]
+

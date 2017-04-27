@@ -1,0 +1,79 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+import logging
+
+from TestDefinition import TestDefinition
+from model.Engine import MyEngine
+from testing.Step import Step
+from CsvFileParser import CsvFileParser
+
+
+class Mcontroller(object):
+    '''
+    classdocs
+    '''
+    def __init__(self,csvFilePath):
+        '''
+        Constructor
+        '''
+        self.testDefinition = TestDefinition(CsvFileParser(csvFilePath).initializeTestDefinition())
+        self.engine = MyEngine(self.testDefinition) 
+        self.engine.add_event_listener( 
+            self.MyEvent.RESPOND, self.on_answer_event )
+        
+    def on_answer_event(self, event):
+        """
+        Event handler for the RESPOND event type
+        """
+        print "<<< Thank you instance {0}".format( event.data )
+    
+    ''' the method get the step list and sent to the engine the correct json file name to wait for '''
+
+class Event( object ):
+    """
+    Generic event to use with EventDispatcher.
+    """
+    
+    def __init__(self, event_type, data=None):
+        """
+        The constructor accepts an event type as string and a custom data
+        """
+        self._type = event_type
+        self._data = data
+        
+    @property 
+    def type(self):
+        """
+        Returns the event type
+        """
+        return self._type
+        
+    @property
+    def data(self):
+        """
+        Returns the data associated to the event
+        """
+        return self._data
+    
+class MyEvent( Event ):
+    """
+    When subclassing Event class the only thing you must do is to define
+    a list of class level constants which defines the event types and the 
+    string associated to them
+    """
+    
+    ASK     = "askMyEvent"
+    RESPOND = "respondMyEvent"
+    
+
+        
+mController = Mcontroller("C:\Users\iagmon\Desktop\exampleTest.csv")
+        
+    
+              
+    
+        
+        

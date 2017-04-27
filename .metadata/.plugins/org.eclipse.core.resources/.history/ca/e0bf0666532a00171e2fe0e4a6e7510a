@@ -1,0 +1,22 @@
+'''
+Created on Apr 26, 2017
+
+@author: iagmon
+'''
+import os
+class CMDUtils(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        
+    def ShowQuestionsAndGetAnswersFromClient(self,questionsAndAnswers):
+        questions = []
+        answers = []
+        
+        

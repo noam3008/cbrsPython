@@ -1,0 +1,37 @@
+# conftest.py
+import pytest
+import xml.etree.ElementTree as ET
+import json
+from xml.dom import minidom
+from webserve import app as serverApp
+from flask.helpers import url_for
+
+def add(this,that):
+    result = this + that
+    return result
+
+
+def test_add():
+    assert add(10,15) == 25
+    
+def getJson():
+    #assigned the xml file
+    doc = minidom.parse("confOfResp.xml")
+    #get the exact file i want the json from
+    name = doc.getElementsByTagName("jsonRepo")[0]
+    myfile = open(name.firstChild.data+ 'data.txt')
+
+def test_myview(self):
+    assert self.client.get(url_for('first_func')).status_code == 200
+
+import requests
+def test_request_response():
+    # Send a request to the API server and store the response.
+    response = requests.get('http://jsonplaceholder.typicode.com/todos')
+
+    # Confirm that the request-response cycle completed successfully.
+    assert_true(response.ok)
+
+
+test_myview()
+

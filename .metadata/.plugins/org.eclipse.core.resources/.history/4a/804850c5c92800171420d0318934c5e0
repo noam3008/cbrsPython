@@ -1,0 +1,18 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+
+class Mcontroller(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        
+        

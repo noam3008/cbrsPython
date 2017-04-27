@@ -1,0 +1,61 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import json
+import pytest
+import unittest
+import logging
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def compareJsonReq(self,jsonReq,jsonName):
+        logging.info("compare two jsons")
+        jsonRequest = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFromClient/",jsonReq)
+        jsonExpectedObj = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFolder/",jsonName)
+        jsonActual = self.myprint(jsonRequest)
+        jsonExpected = self.myprint(jsonExpectedObj)
+        self.assertEqualsJsons(jsonActual,jsonExpected)
+        
+        ################## the compare of the actual and expected request
+                
+    def compare_json(x,y):
+        for x_key in x:
+            if x_key in y and x[x_key] == y[x_key]:
+                print 'Match'
+            else:
+                print 'Not a match'
+    if any(k not in x for k in y):
+        print 'Not a match'
+                 
+    
+    def parseJsonToDic(self,filePathOfJsons,jsonFileName):
+        filePath = filePathOfJsons
+        myfile = open(filePath+str(jsonFileName))
+        jsonAfterParse = json.load(myfile)
+        return jsonAfterParse 
+   
+   
+    def myprint(self,actualJson):
+        for k, v in actualJson.items():
+            if isinstance(v, dict):
+                self.myprint(v)
+            else:
+                print("{0} : {1}".format(k, v))
+        return k,v
+
+   
+
+        
+        
+        
+        
+        

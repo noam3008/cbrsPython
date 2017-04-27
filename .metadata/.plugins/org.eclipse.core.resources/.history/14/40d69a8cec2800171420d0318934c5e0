@@ -1,0 +1,19 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+from flask import Flask
+class FlaskServer(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        
+    def runFlask(self,ip,clietnPort):
+        app.run(host=ip,port=clietnPort,threaded=True)

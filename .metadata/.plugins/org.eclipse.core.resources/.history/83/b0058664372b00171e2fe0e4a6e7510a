@@ -1,0 +1,21 @@
+from flask import Flask,request,jsonify,g
+from controllers.ENodeBController import ENodeBController
+from controllers.MController import Mcontroller
+import time
+import threading
+app = Flask(__name__)
+
+enodeBController = ENodeBController(None)
+@app.route('/cbsd/<typeOfCalling>',methods=['POST'])
+def sentFlaskReqToServer(typeOfCalling):
+    processThread = t = threading.Thread(target=ENodeBController.run, kwargs={'jsonReq': request.get_json()})
+    processThread.start()
+    #return jsonify(enodeBController.linksBetweenFlaskReqToEngineResponse(request.get_json()))
+    time.sleep(5)
+
+def runFlaskServer():
+    app.run()
+    
+
+
+

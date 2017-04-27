@@ -1,0 +1,33 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+from Assert import Assertion
+class MyEngine(object):
+
+
+    def __init__(self, test):
+        '''
+        Will recieve the test structure (the list of the json file and the step defintions). 
+        Will read all the json files and save it as some structure.
+        '''
+        self.test = test
+        self.assertion= Assertion()
+    
+    
+    def process_request(self, request):
+        '''
+        This will received the request that 
+        arrived from the eNodeB,
+         will assert the request according to the json file and in case the assert was successful,
+          will return the response from the json file
+        '''
+        self.assertion.compareJsonReq(request,self.test.jsonName)
+               
+        pass
+    
+#engine = Engine("noam")
+    
+    
+    

@@ -1,0 +1,11 @@
+# conftest.py
+import pytest
+
+from flaskSocket import main
+
+
+@pytest.fixture
+def app():
+    app = main()
+    app.debug = True
+    return app

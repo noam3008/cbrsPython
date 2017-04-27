@@ -1,0 +1,38 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+from model.Engine import MyEngine
+from TestDefinition import TestDefinition
+from testing.Step import Step
+class Mcontroller(object):
+    '''
+    classdocs
+    '''
+    def __init__(self, TestDefinition):
+        '''
+        Constructor
+        '''
+        self.testSteps = TestDefinition
+        self.engine = MyEngine() 
+        global numberOfReq 
+        numberOfReq = 0
+    
+    ''' the method get the step list and sent to the engine the correct json file name to wait for '''
+    def sentToEngineJsonByStep(self):
+        logging.info("mController sent json file name " + self.testSteps.jsonNamesOfSteps[numberOfReq] + " to the engine")
+        self.engine.jsonFileName = self.testSteps.jsonNamesOfSteps[numberOfReq]
+        
+#steps = []
+########### user first step ########
+#steps.append(Step("bstep","spectrumInquery.json"))
+#steps.append(Step("bstep","grant.json"))
+#steps.append(Step("bstep","registeration.json"))
+#testDefinition = TestDefinition(steps)
+#mController = Mcontroller(testDefinition)
+#mController.sentToEngineJsonByStep()
+              
+    
+        
+        

@@ -1,0 +1,47 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+import logging
+
+from TestDefinition import TestDefinition
+from model.Engine import MyEngine
+from testing.Step import Step
+from CsvFileParser import CsvFileParser
+from model.Engine import MyEvent
+
+
+class Mcontroller(object):
+    '''
+    classdocs
+    '''
+    def __init__(self,csvFilePath):
+        '''
+        Constructor
+        '''
+        self.testDefinition = TestDefinition(CsvFileParser(csvFilePath).initializeTestDefinition())
+        self.engine = MyEngine(self.testDefinition) 
+        self.engine.add_event_listener( 
+            MyEvent.RESPOND, self.on_answer_event )
+        
+    def on_answer_event(self, event):
+        """
+        Event handler for the RESPOND event type
+        """
+        print "<<< Thank you instance {0}".format( event.data )
+    
+    ''' the method get the step list and sent to the engine the correct json file name to wait for '''
+
+
+
+        
+mController = Mcontroller("C:\Users\iagmon\Desktop\exampleTest.csv")
+mController.engine.checksss()
+print mController.engine.has_listener("respondMyEvent", mController)
+        
+    
+              
+    
+        
+        

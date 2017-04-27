@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;cbrsPython/pythonClasses/new 6.txt&apos; to &apos;newJson.txt&apos;" description="Rename resource &apos;new 6.txt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="pythonClasses/new 6.txt" name="newJson.txt" stamp="1492505374445" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;cbrsPython/pythonClasses/appToTest&apos; to &apos;appToTest.py&apos;" description="Rename resource &apos;appToTest&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="pythonClasses/appToTest" name="appToTest.py" stamp="1492608082222" updateReferences="true"/>
+</session>

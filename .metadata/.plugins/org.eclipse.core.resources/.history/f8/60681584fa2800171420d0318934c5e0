@@ -1,0 +1,18 @@
+from flask.views import View,request
+from flask import Flask
+
+class MyRequest(View):
+    methods = ['POST']
+    app = Flask(__name__)
+  
+    def dispatch_request(self):
+        # request.method == 'POST'
+        name = request.form.get('name', 'Damyan')
+        return 'Hello, %s!' % name
+
+MyRequest.app.add_url_rule(
+    '/say-hi', view_func=MyRequest.as_view('my_request')
+)
+if __name__ == '__main__':
+    app.run(host="10.3.35.58",threaded=True)
+

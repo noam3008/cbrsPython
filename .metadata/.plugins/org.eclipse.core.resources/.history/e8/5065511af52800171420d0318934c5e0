@@ -1,0 +1,31 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+from flask import Flask
+class MyClass(object):
+    '''
+    classdocs
+    '''
+    app = Flask(__name__)
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+        
+    @app.route('/helloesp')
+    def helloHandler(self):
+        return 'Hello ESP8266, from Flask'
+
+    @app.route('/do_duck_stuff', endpoint='do_duck_stuff')
+    def api_root(self):
+        return 'Welcome'
+    
+    def runFlask(self):
+            self.app.run(host="10.3.35.58",threaded=True)
+            
+myClass = MyClass()
+myClass.runFlask()

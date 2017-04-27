@@ -1,0 +1,66 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import json
+import pytest
+import unittest
+import logging
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+        
+    def compareJsonReq(self,jsonReq,jsonName):
+        logging.info("compare two jsons")
+        jsonRequest = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFromClient/",jsonReq)
+        jsonExpectedObj = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFolder/",jsonName)
+        jsonActual = self.myprint(jsonRequest)
+        jsonExpected = self.myprint(jsonExpectedObj)
+        self.compare_json(jsonActual,jsonExpected)
+        
+        ################## the compare of the actual and expected request
+                
+    def compare_json(self,x,y):
+        for i in range(len(x)):
+            print x[i]
+                 
+    
+    def parseJsonToDic(self,filePathOfJsons,jsonFileName):
+        filePath = filePathOfJsons
+        myfile = open(filePath+str(jsonFileName))
+        jsonAfterParse = json.load(myfile)
+        return jsonAfterParse 
+   
+   
+    def myprint(self,actualJson):
+        self.del_none(actualJson)
+        arr_2d = [[]]
+        for k, v in actualJson.items():
+            if isinstance(v, dict):
+                self.myprint(v)
+            else:
+                #print("{0} : {1}".format(k, v))
+                if(k,v!=None):
+                    arr_2d.append([k,v])
+        return arr_2d
+   
+    def del_none(self,json):
+        for key, value in json.items():
+            if value is None:
+                del json[key]
+            elif isinstance(value, dict):
+                self.del_none(value)
+        return json  # For convenience
+        
+        
+        
+        
+        

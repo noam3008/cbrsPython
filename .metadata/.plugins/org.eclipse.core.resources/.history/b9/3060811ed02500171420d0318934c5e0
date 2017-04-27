@@ -1,0 +1,48 @@
+'''
+Created on Apr 20, 2017
+
+'''
+
+import pytest
+
+class TestSomething():
+
+    def pytest_generate_tests(self,metafunc):
+        """ This allows us to load tests from external files by
+        parametrizing tests with each test case found in a data_X
+        file """
+        for fixture in metafunc.fixturenames:
+            if fixture.startswith('data_'):
+                # Load associated test data
+                tests = load_tests(fixture)
+                metafunc.parametrize(fixture, tests)
+
+    def setup(self):
+        self.test = Test("some test");
+    
+    def test_heartbeat_121(self):
+        steps = [Step("somejson"),Step("Another json"),Step("DifferentJson")]
+        self.test.add_steps(steps)
+        self.test.execute();
+        
+
+
+
+class Step(object):
+    def __init__(self,json):
+        self.json = json
+
+class Test(object):
+    
+    def __init__(self,name):
+        self.name = name;
+        self.steps = [];
+    
+    def add_step(self, step):
+        self.steps.append(step)
+    
+    def add_steps(self,steps):
+        self.steps = steps;
+    
+    def execute(self):
+        pass

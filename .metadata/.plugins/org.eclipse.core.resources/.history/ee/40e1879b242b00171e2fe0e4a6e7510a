@@ -1,0 +1,16 @@
+from flask import Flask,request,jsonify,g
+from controllers.ENodeBController import ENodeBController
+from controllers.MController import Mcontroller
+app = Flask(__name__)
+
+enodeBController = ENodeBController(None)
+@app.route('/cbsd/<typeOfCalling>',methods=['POST'])
+def sentFlaskReqToServer(typeOfCalling):
+    return jsonify(enodeBController.checkIfSucceed(request.get_json()))
+
+def runFlaskServer():
+    app.run()
+    
+
+
+

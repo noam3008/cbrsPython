@@ -1,0 +1,21 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+
+class TestDefinition(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, steps):
+        '''
+        Constructor
+        '''
+        self.defenitionsOfSteps = []
+        self.jsonNamesOfSteps = []
+        for step in steps:    
+            self.defenitionsOfSteps.append(step.defOfStep)
+            self.jsonNamesOfSteps.append(step.jsonOfStep)

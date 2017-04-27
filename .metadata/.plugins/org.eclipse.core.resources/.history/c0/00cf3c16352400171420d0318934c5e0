@@ -1,0 +1,8 @@
+
+import jsonInterpeter
+import pytest
+@pytest.fixture
+def app():
+    app = jsonInterpeter()
+    return app
+app()

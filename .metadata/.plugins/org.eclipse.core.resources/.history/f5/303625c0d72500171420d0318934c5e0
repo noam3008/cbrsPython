@@ -1,0 +1,25 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import Engine
+
+class TestEngine(object):
+    '''
+    classdocs
+    '''
+
+    def setup(self):
+        
+        self.engine = Engine(TestDefinition)
+        
+        
+        
+        
+    
+    
+class TestDefinition(object):
+    
+    def __init__(self):
+        pass 

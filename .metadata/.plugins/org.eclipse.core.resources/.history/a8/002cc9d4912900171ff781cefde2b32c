@@ -1,0 +1,23 @@
+'''
+Created on Apr 25, 2017
+
+@author: iagmon
+'''
+from flask import Flask
+class flaskExample(object):
+    '''
+    classdocs
+    '''
+    app = Flask(__name__)
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        self.app = Flask(__name__)
+        app.run()
+    
+    @app.route('/') 
+    def helloWorld(self):
+        return "Hello World!"
+        

@@ -1,0 +1,21 @@
+'''
+Created on Apr 20, 2017
+
+'''
+
+
+import pytest
+
+def test_heartbeat_121():
+    test.add(Step(""))
+
+
+
+class Test(object):
+    
+    def __init__(self):
+        self.steps = [];
+    
+    def add(self, step):
+        self.steps.append(step)
+        

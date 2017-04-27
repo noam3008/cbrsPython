@@ -1,0 +1,7 @@
+import xml.etree.ElementTree
+from _elementtree import XMLParser
+tree = XMLParser.("test.xml")
+doc = tree.getroot()
+thingy = doc.find('timeSeries')
+
+print thingy.attrib

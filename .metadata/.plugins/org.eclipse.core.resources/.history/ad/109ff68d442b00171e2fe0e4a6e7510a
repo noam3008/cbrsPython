@@ -1,0 +1,44 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+
+from TestDefinition import TestDefinition
+from model.Engine import MyEngine
+from CsvFileParser import CsvFileParser
+from model.QuestionHandler import QuestionHandler
+from threading import Thread
+import time
+
+class Mcontroller(Thread):
+    '''
+    classdocs
+    '''
+    def __init__(self,csvFilePath):
+        '''
+        Constructor
+        '''
+        Thread.__init__(self)
+        self.testDefinition = TestDefinition(CsvFileParser(csvFilePath).initializeTestDefinition())
+        self.engine = MyEngine(self.testDefinition) 
+        self.questHandler = QuestionHandler()
+        self.start()
+    
+    ''' the method get the step list and sent to the engine the correct json file name to wait for '''
+        
+    def getResponseFromEngine(self, jsonAfterParse,questAnswerPartOfJson):
+        self.questHandler.ShowQuestionsAndGetAnswersFromClient(questAnswerPartOfJson)
+    
+    def run(self):
+        while(not self.engine.flag):
+            time.sleep(1)
+        print "The final result of the test is : " + str(self.questHandler.ShowQuestionsAndGetAnswersFromClient(self.engine.getQuestionAnswerPart()))
+        
+    
+              
+mController = Mcontroller("C:\Users\iagmon\Desktop\exampleTest.csv")
+flaskServer.enodeBController = ENodeBController(mController.engine)
+flaskServer.runFlaskServer()
+        
+        

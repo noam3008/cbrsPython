@@ -1,0 +1,37 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+import logging
+
+from model.Engine import MyEngine
+from controllers.Observer import Observer
+from threading import Thread
+
+
+
+class ENodeBController(Thread):
+    '''
+    classdocs
+    '''
+
+    def __init__(self,engine):
+        '''
+        Constructor
+        '''
+        self.start()
+        self.engine = engine
+        
+        
+    def linksBetweenFlaskReqToEngineResponse(self,jsonReq):######### while flask change it to the request of flask
+        self.engine.register(self)
+        logging.info("the enode B controller sent the request he gets from the client to the engine")
+        return self.engine.process_request(jsonReq)
+    
+    def getResponseFromEngine(self, jsonAfterParse,questAnswerPartOfJson):
+        return jsonAfterParse
+
+    
+        
+        

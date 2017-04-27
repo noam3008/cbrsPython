@@ -1,0 +1,27 @@
+from flask import Flask,request,jsonify,g
+from controllers.ENodeBController import ENodeBController
+from controllers.MController import Mcontroller
+app = Flask(__name__)
+
+enodeBController = ENodeBController(None)
+'''@app.route('/cbsd/<typeOfCalling>',methods=['POST'])
+def sentFlaskReqToServer(typeOfCalling):
+    return jsonify(enodeBController.linksBetweenFlaskReqToEngineResponse(request.get_json()))
+'''
+from flask import Response
+
+@app.route('/cbsd/<typeOfCalling>',methods=['POST'])
+def generate_large_image(typeOfCalling):
+    def generate():
+        while True:
+            if typeOfCalling == "registration"
+                yield ""
+            else:
+                yield get_image()
+    return Response(generate(), mimetype='image/jpeg')
+
+def runFlaskServer():
+    app.run()
+
+
+

@@ -1,0 +1,18 @@
+from employee import Employee
+from flask import Flask
+import names
+app = Flask(__name__)
+
+@app.route("/getEmployeeList")
+def getEmployeeList():
+    # Initialize a employee list
+    employeeList = []
+
+    # create a instances for filling up employee list
+    for i in range(0,5):
+        employee = Employee(names.get_first_name(),names.get_last_name())
+        employeeList.append(employee)
+
+if __name__ == "__main__":
+    app.run()
+    

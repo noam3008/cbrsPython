@@ -1,0 +1,51 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+from Engine import MyEngine
+from xml.dom import minidom
+import json
+class TestEngine(object):
+    '''
+    classdocs
+    '''
+################ after that it will include test def
+    def __init__(self, testDefinition):
+        '''
+        Will recieve the test structure (the list of the json file and the step defintions). 
+        Will read all the json files and save it as some structure.
+        '''
+        self.testDefinition = testDefinition
+    
+    def setup(self):       
+        self.engine = MyEngine(self.testDefinition) 
+        
+    
+    def test_successful_request(self):
+        valid_json = self.getJson("oldRegistrationReq.json")
+        response = self.engine.process_request(valid_json)
+        # Assert that the response is the expected response 
+        
+    def  test_unsuccessful_request(self):
+        invalid_json = "";
+        response = self.engine.process_request(invalid_json)
+        # Assert that an exception was thrown
+        
+    def getJson(self,jsonFileName):
+        myfile = open('C:\Users\iagmon\Desktop\jsonFolder\oldRegistrationReq.json')
+        jsonAfterParse = json.load(myfile)
+        return jsonAfterParse 
+    
+class TestDefinition(object):
+    
+    def __init__(self,nameOfDef,jsonName):
+        self.nameOfDef=nameOfDef
+        self.jsonName = jsonName
+
+testDefinition = TestDefinition("bstep","Spectrum_Inquiry_10_3_4_2_5_3")
+testEngine = TestEngine(testDefinition)
+testEngine.setup()
+testEngine.test_successful_request()
+    
+ 

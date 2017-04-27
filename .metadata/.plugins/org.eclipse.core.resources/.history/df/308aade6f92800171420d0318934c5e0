@@ -1,0 +1,40 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+from flask import Flask,request
+from flask.views import View
+
+class MyClass(View):
+    '''
+    classdocs
+    '''
+    app = Flask(__name__)
+    methods=['POST']
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+     def dispatch_request(self):
+        # request.method == 'POST'
+        name = request.form.get('name', 'Damyan')
+        return 'Hello, %s!' % name
+       
+    @app.route('/helloesp')
+    def helloHandler(self):
+        return 'Hello ESP8266, from Flask'
+
+    @FlaskView.build_rule("/")
+    def api_root(self):
+        return 'Welcome'
+    
+    def runFlask(self):
+            self.app.run(host="10.3.35.58",threaded=True)
+            
+myClass = MyClass()
+myClass.runFlask()
+app.add_url_rule(
+    '/say-hi', view_func=MyRequest.as_view('my_request')

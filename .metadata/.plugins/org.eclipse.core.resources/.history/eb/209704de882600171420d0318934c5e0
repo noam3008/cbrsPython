@@ -1,0 +1,40 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import Engine
+from xml.dom import minidom
+class TestEngine(object):
+    '''
+    classdocs
+    '''
+
+    def setup(self):        
+        self.engine = Engine(TestDefinition)
+        self.xmlFile = minidom.parse('confOfResp.xml')
+        
+    
+    def test_successful_request(self):
+        valid_json = getJson("oldRegistrationReq.json")
+        response = self.engine.process_request(valid_json)
+        # Assert that the response is the expected response 
+        
+    def  test_unsuccessful_request(self):
+        invalid_json = "";
+        response = self.engine.process_request(invalid_json)
+        # Assert that an exception was thrown
+        
+    def getJson(self,jsonFileName):
+    name = self.xmlFile.getElementsByTagName("jsonRepo")[0]
+    myfile = open(name.firstChild.data+ jsonFileName)
+    d = json.load(myfile)
+    return d
+
+    
+    
+    
+class TestDefinition(object):
+    
+    def __init__(self):
+        pass 

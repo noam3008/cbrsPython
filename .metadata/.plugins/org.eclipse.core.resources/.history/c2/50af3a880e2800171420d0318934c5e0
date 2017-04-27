@@ -1,0 +1,54 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import json
+import pytest
+import unittest
+import logging
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def compareJsonReq(self,jsonReq,jsonName):
+        logging.info("compare two jsons")
+        jsonRequest = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFromClient/",jsonReq)
+        self.dict_generator(jsonRequest)
+        print jsonRequest
+        jsonExpectedObj = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFolder/",jsonName)
+        
+        self.assertEqual(jsonRequest, jsonExpectedObj)
+        
+        ################## the compare of the actual and expected request
+                
+    def assertEqual(self,actual,expected):
+        logging.info("assert equal between two jsons")
+        assert actual==expected
+    
+    def parseJsonToDic(self,filePathOfJsons,jsonFileName):
+        filePath = filePathOfJsons
+        myfile = open(filePath+str(jsonFileName))
+        jsonAfterParse = json.load(myfile)
+        return jsonAfterParse 
+    
+    def id_generator(self,dict):
+      for k, v in dict.items():
+            if k == "id":
+                 yield v
+            elif isinstance(v, dict):
+                 for id_val in id_generator(v):
+                       yield id_val
+    
+
+        
+        
+        
+        
+        

@@ -1,0 +1,21 @@
+'''
+Created on Apr 25, 2017
+
+@author: iagmon
+'''
+import csv
+class csvFileParser(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self,csvFileName):
+        '''
+        Constructor
+        '''
+        self.csvFileName = csvFileName
+        
+    def initializeTestDefinition(self):
+        steps = []
+        

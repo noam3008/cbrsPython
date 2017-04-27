@@ -1,0 +1,17 @@
+'''
+Created on Apr 26, 2017
+
+@author: iagmon
+'''
+
+class CMDUtils(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        

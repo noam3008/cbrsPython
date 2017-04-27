@@ -1,0 +1,46 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+import logging
+
+from TestDefinition import TestDefinition
+from model.Engine import MyEngine
+from testing.Step import Step
+from CsvFileParser import CsvFileParser
+from controllers.Observer import Observer
+from model.QuestionHandler import QuestionHandler
+from model.Utils import JsonComparisonUtils as jsonComparer
+from threading import Thread
+import time
+
+class Mcontroller(Thread):
+    '''
+    classdocs
+    '''
+    def __init__(self,csvFilePath):
+        '''
+        Constructor
+        '''
+        Thread.__init__(self)
+        self.testDefinition = TestDefinition(CsvFileParser(csvFilePath).initializeTestDefinition())
+        self.engine = MyEngine(self.testDefinition) 
+        self.questHandler = QuestionHandler()
+        self.start()
+    
+    ''' the method get the step list and sent to the engine the correct json file name to wait for '''
+        
+    def getResponseFromEngine(self, jsonAfterParse,questAnswerPartOfJson):
+        self.questHandler.ShowQuestionsAndGetAnswersFromClient(questAnswerPartOfJson)
+    
+    def run(self):
+        while(not self.engine.flag):
+            time.sleep(1)
+        QuestionHandler.ShowQuestionsAndGetAnswersFromClient(self.engine.getQuestionAnswerPart())
+        
+    
+              
+    
+        
+        

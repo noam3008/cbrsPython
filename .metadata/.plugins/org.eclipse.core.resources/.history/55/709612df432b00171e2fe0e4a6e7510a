@@ -1,0 +1,362 @@
+INFO:root:init the test definition by the test steps sent from the user
+INFO:root:init the test definition by the test steps sent from the user
+INFO:root:init the test definition by the test steps sent from the user
+INFO:root:init the test definition by the test steps sent from the user
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 15:05:41] "GET /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 15:22:27] "GET /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 15:23:35] "GET /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 15:24:37] "GET /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 15:25:03] "GET /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 15:25:50] "GET /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 15:26:59] "GET /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 15:31:37] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 15:32:04] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 16:45:24] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 16:47:02] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 16:48:37] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 16:50:52] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 16:51:04] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 16:52:27] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 16:53:22] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 16:54:47] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 16:57:04] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:00:31] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:01:12] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:01:58] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:03:37] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:05:23] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:06:23] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:07:10] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:12:18] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:14:40] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:16:11] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:16:57] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:17:20] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:26:27] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:27:51] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:28:50] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:29:16] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:30:49] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:36:13] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:37:33] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 17:38:29] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 18:24:02] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 18:24:14] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 18:25:13] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 18:26:57] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 18:28:40] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [25/Apr/2017 18:31:09] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 10:40:05] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 10:40:45] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 10:43:14] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 10:44:29] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 11:00:42] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 11:19:41] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 13:38:44] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:root:init the test definition by the test steps sent from the user
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 14:04:04] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 14:04:21] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 14:04:54] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 14:07:35] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 15:00:14] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 15:01:54] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 15:02:28] "POST /cbsd/registration HTTP/1.1" 500 -
+ERROR:werkzeug:Error on request:
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\werkzeug\serving.py", line 209, in run_wsgi
+    execute(self.server.app)
+  File "C:\Python27\lib\site-packages\werkzeug\serving.py", line 197, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Python27\lib\site-packages\flask\app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Python27\lib\site-packages\flask\app.py", line 1989, in wsgi_app
+    return response(environ, start_response)
+TypeError: 'NoneType' object is not callable
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 15:04:19] "POST /cbsd/registration HTTP/1.1" 500 -
+ERROR:werkzeug:Error on request:
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\werkzeug\serving.py", line 209, in run_wsgi
+    execute(self.server.app)
+  File "C:\Python27\lib\site-packages\werkzeug\serving.py", line 197, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Python27\lib\site-packages\flask\app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Python27\lib\site-packages\flask\app.py", line 1989, in wsgi_app
+    return response(environ, start_response)
+TypeError: 'NoneType' object is not callable
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 15:05:50] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 15:09:55] "POST /cbsd/registration HTTP/1.1" 500 -
+ERROR:werkzeug:Error on request:
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\werkzeug\serving.py", line 209, in run_wsgi
+    execute(self.server.app)
+  File "C:\Python27\lib\site-packages\werkzeug\serving.py", line 197, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Python27\lib\site-packages\flask\app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Python27\lib\site-packages\flask\app.py", line 1989, in wsgi_app
+    return response(environ, start_response)
+TypeError: 'NoneType' object is not callable
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 15:10:50] "POST /cbsd/registration HTTP/1.1" 500 -
+ERROR:werkzeug:Error on request:
+Traceback (most recent call last):
+  File "C:\Python27\lib\site-packages\werkzeug\serving.py", line 209, in run_wsgi
+    execute(self.server.app)
+  File "C:\Python27\lib\site-packages\werkzeug\serving.py", line 197, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Python27\lib\site-packages\flask\app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Python27\lib\site-packages\flask\app.py", line 1989, in wsgi_app
+    return response(environ, start_response)
+TypeError: 'NoneType' object is not callable
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 15:11:24] "POST /cbsd/registration HTTP/1.1" 200 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 15:29:16] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 15:30:10] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 15:30:29] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 15:31:43] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:the enode B controller sent the request he gets from the client to the engine
+INFO:root:compare two jsons
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 15:32:29] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 16:37:55] "POST /cbsd/registration HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [26/Apr/2017 16:37:58] "POST /cbsd/registration HTTP/1.1" 500 -

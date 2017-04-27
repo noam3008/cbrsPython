@@ -1,0 +1,81 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import json
+import pytest
+import unittest
+import logging
+from _ast import TryExcept
+import jsonComparisonUtils
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+        
+    def compareJsonReq(self,jsonReq):
+        logging.info("compare two jsons")
+        ''' the method will get the request json file name from the client request and will get from the two repo
+        off the client and the server the json expected and the real json sent from the client '''
+        
+        jsonRequest = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFromClient/",jsonReq)
+        jsonExpectedObj = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFolder/",jsonReq)       
+        print jsonComparisonUtils.are_same(jsonRequest,jsonExpectedObj)
+        
+        ################## the compare of the actual and expected request
+                
+    def compare_json(self,x,y):
+        for i in range(len(x)):
+            self.assertEqual(x[i],y[i])
+            
+    def assertEqual(self,actual,expected):
+        assert actual==expected
+                 
+    
+    def parseJsonToDic(self,filePathOfJsons,jsonFileName):
+        filePath = filePathOfJsons
+        myfile = open(filePath+str(jsonFileName))
+        jsonAfterParse = json.load(myfile)
+        return jsonAfterParse
+    
+    def getPartOfJsonByNode(self,somejson, key):
+        def val(node):
+        # Searches for the next Element Node containing Value
+            e = node.nextSibling
+            while e and e.nodeType != e.ELEMENT_NODE:
+                e = e.nextSibling
+            return (e.getElementsByTagName('string')[0].firstChild.nodeValue if e 
+                else None)
+    # parse the JSON as XML
+            foo_dom = parseString(xmlrpclib.dumps((json.loads(somejson),)))
+    # and then search all the name tags which are P1's
+    # and use the val user function to get the value
+            return [val(node) for node in foo_dom.getElementsByTagName('name') 
+                    if node.firstChild.nodeValue in key]
+   
+   
+    #def RecursiveOrderedJson(self,actualJson):
+    #    arr_2d = [[]]
+    #    for k, v in actualJson.items():
+    #        if isinstance(v, dict):
+    #            self.RecursiveOrderedJson(v)
+    #        else:
+                #print("{0} : {1}".format(k, v))
+    #            if(k,v!=None):
+    #                arr_2d.append([k,v])
+    #    return arr_2d
+    
+
+    
+        
+        
+        
+        
+        

@@ -1,0 +1,17 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+
+class ENodeBController(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        

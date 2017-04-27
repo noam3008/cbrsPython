@@ -1,0 +1,27 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+
+class Engine(object):
+
+
+    def __init__(self, test):
+        '''
+        Constructor
+        '''
+        self.test = test
+    
+    
+    def process_request(self, request):
+        '''
+        This will received the request that 
+        arrived from the eNodeB,
+         will assert the request according to the json file and in case the assert was successful,
+          will return the response from the json file
+        '''
+        pass
+    
+    
+    

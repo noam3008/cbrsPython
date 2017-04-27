@@ -1,0 +1,3 @@
+@py.test.setup()
+def sayHello():
+    print("Ddd")

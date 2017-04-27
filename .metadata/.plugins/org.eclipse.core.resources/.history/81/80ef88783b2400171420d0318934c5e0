@@ -1,0 +1,8 @@
+import pytest
+import pytest_flask
+from flask.helpers import url_for
+from pythonClasses import jsonInterpeter
+
+def test_app(client):
+    assert client.get(url_for('myview')).status_code == 200
+test_app(jsonInterpeter)

@@ -1,0 +1,17 @@
+'''
+Created on Apr 23, 2017
+
+@author: iagmon
+'''
+
+class jsonComparisonUtils(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        

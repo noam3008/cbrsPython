@@ -1,0 +1,35 @@
+'''
+Created on Apr 20, 2017
+
+'''
+
+
+import pytest
+
+class TestSomething():
+
+
+
+    def setup(self):
+        self.test = Test();
+    
+    def test_heartbeat_121(self):
+        self.test.add(Step("somejson"))
+        
+
+
+
+class Step(object):
+    def __init__(self,json):
+        self.json = json
+
+class Test(object):
+    
+    def __init__(self):
+        self.steps = [];
+    
+    def add_step(self, step):
+        self.steps.append(step)
+    
+    def add_steps(self,steps):
+        

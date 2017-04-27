@@ -1,0 +1,20 @@
+from flask import Flask,request,jsonify,g
+from controllers.ENodeBController import ENodeBController
+from controllers.MController import Mcontroller
+app = Flask(__name__)
+
+number = 1
+enodeBController = ENodeBController(None)
+@app.route('/cbsd/<typeOfCalling>',methods=['POST'])
+def sentFlaskReqToServer(typeOfCalling):
+    print number
+    number = number + 1
+    print number
+    return jsonify(enodeBController.linksBetweenFlaskReqToEngineResponse(request.get_json()))
+
+def runFlaskServer():
+    app.run()
+    
+
+
+

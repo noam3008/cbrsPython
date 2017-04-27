@@ -1,0 +1,43 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import json
+from tests.TestEngine import TestEngine
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def compareJsonReq(self,jsonReq,jsonName):  
+        jsonExpectedObj = self.parseJsonToDic(jsonName)
+        jsonActualObj = self.parseJsonToDic(jsonReq)
+        
+        
+        
+   
+   
+    def parseJsonToDic(self,jsonFileName):
+        myfile = open('C:\Users\iagmon\Desktop\jsonFolder]' + jsonFileName)
+        jsonAfterParse = json.load(myfile)
+        return jsonAfterParse 
+    
+    def ordered(self):
+        if isinstance(obj, dict):
+            return sorted((k, ordered(v)) for k, v in obj.items())
+        if isinstance(obj, list):
+            return sorted(ordered(x) for x in obj)
+        else:
+            return obj
+
+        
+        
+        
+        
+        

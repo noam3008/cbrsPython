@@ -1,0 +1,67 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import json
+import pytest
+import unittest
+import logging
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def compareJsonReq(self,jsonReq,jsonName):
+        logging.info("compare two jsons")
+        jsonRequest = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFromClient/",jsonReq)
+        jsonExpectedObj = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFolder/",jsonName)
+        jsonActual = self.myprint(jsonRequest)
+        jsonExpected = self.myprint(jsonExpectedObj)
+        self.compareParsedJson(jsonActual,jsonExpected)
+        
+        ################## the compare of the actual and expected request
+                
+    def compareParsedJson(self,example_json, target_json):   
+        for x in example_json:
+            if type(example_json[x]) is not dict:
+                if not x in target_json or not example_json[x] == target_json[x]:
+                    return False
+            else:
+                if x not in target_json or not self.compareParsedJson(example_json[x], target_json[x]):
+                    return False
+                 
+    
+    def parseJsonToDic(self,filePathOfJsons,jsonFileName):
+        filePath = filePathOfJsons
+        myfile = open(filePath+str(jsonFileName))
+        jsonAfterParse = json.load(myfile)
+        return jsonAfterParse 
+    
+    '''def myprint(self,actualJson,expectedJson):
+        for k, v in actualJson.items():
+            if isinstance(v, dict):
+                self.myprint(v)
+            else:
+                print("{0} : {1}".format(k, v))'''
+   
+   
+    def myprint(self,actualJson):
+        for k, v in actualJson.items():
+            if isinstance(v, dict):
+                self.myprint(v)
+            else:
+                print("{0} : {1}".format(k, v))
+        return k,v
+   
+
+        
+        
+        
+        
+        

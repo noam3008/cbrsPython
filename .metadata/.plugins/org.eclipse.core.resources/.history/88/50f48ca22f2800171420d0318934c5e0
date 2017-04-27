@@ -1,0 +1,75 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import json
+import pytest
+import unittest
+import logging
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+        
+    def compareJsonReq(self,jsonReq,jsonName):
+        logging.info("compare two jsons")
+        jsonRequest = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFromClient/",jsonReq)
+        #print jsonReq
+        jsonExpectedObj = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFolder/",jsonName)
+        #print jsonRequest
+        jsonActual = self.RecursiveOrderedJson(jsonRequest)
+        jsonExpected = self.RecursiveOrderedJson(jsonExpectedObj)
+        self.compare_json(jsonActual,jsonExpected)
+        self.ordered(jsonReq)
+        
+        ################## the compare of the actual and expected request
+                
+    def compare_json(self,x,y):
+        for i in range(len(x)):
+            self.assertEqual(x[i],y[i])
+            
+    def assertEqual(self,actual,expected):
+        assert actual==expected
+                 
+    
+    def parseJsonToDic(self,filePathOfJsons,jsonFileName):
+        filePath = filePathOfJsons
+        myfile = open(filePath+str(jsonFileName))
+        jsonAfterParse = json.load(myfile)
+        return jsonAfterParse 
+   
+   
+    def RecursiveOrderedJson(self,actualJson):
+        arr_2d = [[]]
+        for k, v in actualJson.items():
+            if isinstance(v, dict):
+                self.RecursiveOrderedJson(v)
+            else:
+                #print("{0} : {1}".format(k, v))
+                if(k,v!=None):
+                    arr_2d.append([k,v])
+        return arr_2d
+    
+    def compare_trees_r(self,node1, node2, depth, result):
+        if nodes_different(node1, node2):
+            result.append(depth)
+        for (pairs of children c1 and c2):
+            compare_trees_r(c1, c2, depth + 1, result)
+
+    def compare_trees(t1, t2):
+        result = []
+        compare_trees_r(t1.graph, t2.graph, 0, result)
+        return result
+    
+        
+        
+        
+        
+        

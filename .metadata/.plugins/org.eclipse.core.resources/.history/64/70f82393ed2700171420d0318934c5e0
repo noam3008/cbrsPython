@@ -1,0 +1,21 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def compareJsonReq(self,jsonReq,testDefinition):  
+        print jsonReq['fccId']
+        print testDefinition.jsonName
+        
+        

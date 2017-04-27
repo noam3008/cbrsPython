@@ -1,0 +1,61 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import json
+import pytest
+import unittest
+import logging
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def compareJsonReq(self,jsonReq,jsonName):
+        logging.info("compare two jsons")
+        jsonRequest = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFromClient/",jsonReq)
+        print jsonRequest
+        jsonExpectedObj = self.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFolder/",jsonName)
+        
+        self.assertEqual(jsonRequest, jsonExpectedObj)
+        
+        ################## the compare of the actual and expected request
+                
+    def assertEqual(self,actual,expected):
+        logging.info("assert equal between two jsons")
+        assert actual==expected
+    
+    def parseJsonToDic(self,filePathOfJsons,jsonFileName):
+        filePath = filePathOfJsons
+        myfile = open(filePath+str(jsonFileName))
+        jsonAfterParse = json.load(myfile)
+        return jsonAfterParse 
+    
+    def dict_generator(self,indict, pre=None):
+        pre = pre[:] if pre else []
+        if isinstance(indict, dict):
+            for key, value in indict.items():
+                if isinstance(value, dict):
+                    for d in dict_generator(self,value, [key] + pre):
+                        yield d
+                elif isinstance(value, list) or isinstance(value, tuple):
+                    for v in value:
+                        for d in dict_generator(delf,v, [key] + pre):
+                            yield d
+                else:
+                    yield pre + [key, value]
+        else:
+            yield indict
+    
+
+        
+        
+        
+        
+        

@@ -1,0 +1,22 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+
+class TestEngine(object):
+    '''
+    classdocs
+    '''
+
+    def setup(self):
+        
+        self.engine = Engine()
+        
+        
+    
+    
+class TestDefinition(object):
+    
+    def __init__(self):
+        pass 

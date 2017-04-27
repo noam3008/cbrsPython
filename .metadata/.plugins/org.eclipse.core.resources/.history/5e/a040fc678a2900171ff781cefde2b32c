@@ -1,0 +1,46 @@
+from flask import Flask
+from flask_restplus import Resource,Api
+ 
+app = Flask(__name__)
+api = Api(app)
+ 
+@app.route('/helloesp')
+def helloHandler():
+    return 'Hello ESP8266, from Flask'
+
+@app.route('/')
+def api_root():
+    return 'Welcome'
+    
+from flask import Response,jsonify,json
+######################################################### return json as a result ##########################################
+
+@app.route('/hello', methods = ['GET'])
+def api_hello():
+    print("api helloo")
+    data = {
+        'name' : 'sas'
+    }
+    js = json.dumps(data)
+
+    resp = jsonify(data)
+    resp.headers['Link'] = 'http://luisrei.com'
+    return resp
+
+from flask import request
+######################################################### get json post and use the variables ########################################## 
+@api.route('/noam')
+class Todo1(Resource):
+    def get(self):
+        # Default to 200 OK
+        return {'task': 'Hello world'}
+
+def post():
+    print("postttt")
+    # Get the parsed contents of the form data
+    json = request.json
+    # Render template
+    return jsonify(json)
+
+def run():
+        app.run(host="10.3.35.58",threaded=True)

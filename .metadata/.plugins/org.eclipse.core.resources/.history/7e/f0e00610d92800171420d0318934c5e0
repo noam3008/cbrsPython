@@ -1,0 +1,26 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+impo
+class MyClass(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        
+        
+steps = []
+########### user first step ########
+steps.append(Step("bstep","spectrumInquery.json"))
+steps.append(Step("bstep","grant.json"))
+steps.append(Step("bstep","registeration.json"))
+testDefinition = TestDefinition(steps)
+mController = Mcontroller(testDefinition)
+mController.sentToEngineJsonByStep()

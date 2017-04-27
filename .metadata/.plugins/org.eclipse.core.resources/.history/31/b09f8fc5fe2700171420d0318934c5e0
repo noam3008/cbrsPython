@@ -1,0 +1,47 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import json
+import unittest
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def compareJsonReq(self,jsonReq,jsonName):
+        print jsonName
+        jsonReq = self.parseJsonToDic(jsonFileName)
+        jsonExpectedObj = self.parseJsonToDic(jsonName)
+        print jsonExpectedObj
+        
+        ################## the compare of the actual and expected request
+                
+    def assertEqual(self,actual,expected):
+        unittest.TestCase.assertEqual(self, actual, expected, "The first value : " + actual + " and the second value " + expected )
+        
+    def assertNotEqual(self,actual,expected):
+        unittest.TestCase.assertNotEqual(self, actual, expected, "The first value : " + actual + " and the second value " + expected )
+        
+    def assertInRange(self,smallerPartOfRange,biggerPartOfRange,expected):
+        unittest.TestCase.assertTrue(self, smallerPartOfRange<= expected <=biggerPartOfRange, "the value " + expected + " is between " 
+                                     + smallerPartOfRange + " and " + biggerPartOfRange )
+           
+    def parseJsonToDic(self,filePathOfJsons,jsonFileName):
+        filePath = filePathOfJsons
+        myfile = open(filePath+str(jsonFileName))
+        jsonAfterParse = json.load(myfile)
+        return jsonAfterParse 
+    
+
+        
+        
+        
+        
+        

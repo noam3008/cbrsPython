@@ -1,0 +1,7 @@
+
+from jsonInterpeter import api_hello
+
+@pytest.fixture
+def app():
+    app = create_app()
+    return app

@@ -1,0 +1,17 @@
+'''
+Created on Apr 25, 2017
+
+@author: iagmon
+'''
+
+class csvFileParser(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self,csvFileName):
+        '''
+        Constructor
+        '''
+        self.csvFileName = csvFileName

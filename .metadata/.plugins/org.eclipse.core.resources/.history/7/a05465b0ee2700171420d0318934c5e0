@@ -1,0 +1,25 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import json
+from tests.TestEngine import TestEngine
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+    def compareJsonReq(self,jsonReq,jsonName):  
+        print jsonReq['fccId']
+        TestEngine.getJson(self, jsonName)
+        
+        
+        
+        
+        

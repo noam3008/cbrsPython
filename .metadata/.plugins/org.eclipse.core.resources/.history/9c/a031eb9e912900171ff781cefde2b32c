@@ -1,0 +1,19 @@
+'''
+Created on Apr 25, 2017
+
+@author: iagmon
+'''
+from flask import Flask
+class flaskExample(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        
+    def helloWorld(self):
+        

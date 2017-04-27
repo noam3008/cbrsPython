@@ -1,0 +1,39 @@
+'''
+Created on Apr 26, 2017
+
+@author: iagmon
+'''
+import os
+import sys
+class CMDUtils(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+        
+    def ShowQuestionsAndGetAnswersFromClient(self,questionsAndAnswers):
+        questions = []
+        answers = []
+        os.system("start cmd")
+        os.system('cls')
+        for questAnsAnswer in questionsAndAnswers:
+            sys.stderr.write("This is an important message,")
+        
+        
+    '''                 {
+                            "question" : "Please check eNodeB something",
+                            "answers" : ["x happened", "y happened"]                   
+                        },
+                        {
+                            "question" : "Please check eNodeB something - secondQuest",
+                            "answers" : ["x happened", "y happened"] 
+                        
+                        }
+    '''
+        
+        

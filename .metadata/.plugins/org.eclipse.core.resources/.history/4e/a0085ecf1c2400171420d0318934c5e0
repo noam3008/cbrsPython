@@ -1,0 +1,87 @@
+from flask import Flask, url_for
+app = Flask(__name__)
+
+@app.route('/')
+def api_root():
+    return 'Welcome'
+
+@app.route('/articles')
+def api_articles():
+    return 'List of ' + url_for('api_articles')
+
+@app.route('/articles/<articleid>')
+def api_article(articleid):
+    return 'You are reading ' + articleid
+
+from flask import request
+@app.route('/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+def api_echo():
+    if request.method == 'GET':
+        return "ECHO: GET\n"
+
+    elif request.method == 'POST':
+        return "ECHO: POST\n"
+
+    elif request.method == 'PATCH':
+        return "ECHO: PACTH\n"
+
+    elif request.method == 'PUT':
+        return "ECHO: PUT\n"
+
+    elif request.method == 'DELETE':
+        return "ECHO: DELETE"
+    
+from flask import json
+
+@app.route('/messages', methods = ['POST'])
+def api_message():
+
+    if request.headers['Content-Type'] == 'text/plain':
+        return "Text Message: " + request.data
+
+    elif request.headers['Content-Type'] == 'application/json':
+        return "JSON Message: " + json.dumps(request.json)
+
+    elif request.headers['Content-Type'] == 'application/octet-stream':
+        f = open('./binary', 'wb')
+        f.write(request.data)
+        f.close()
+        return "Binary message written!"
+
+    else:
+        return "415 Unsupported Media Type ;)"
+    
+import json
+from pprint import pprint
+
+with open('newJson.txt') as data_file:    
+    data = json.load(data_file)
+
+pprint(data)
+    
+from flask import Response,jsonify,json
+
+@app.route('/hello', methods = ['GET'])
+def api_hello():
+    data = {
+        
+        'hello'  : 'world',
+        'number' : 3,
+        'name' : 'sas'
+    }
+    js = json.dumps(data)
+
+    resp = jsonify(data)
+    resp.headers['Link'] = 'http://luisrei.com'
+    
+    with open('newJson.txt') as data_file:    
+        data2 = json.load(data_file)
+    resp = jsonify(data2)
+    pprint (resp)
+    resp.headers['Link'] = 'http://luisrei.com'
+
+    return resp
+
+
+if __name__ == '__main__':
+    app.run(host='90.0.0.8',port=80)
