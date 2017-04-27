@@ -26,5 +26,7 @@ class QuestionHandler(object):
             if not inputAnswer == questAnswer["expectedAnswer"]:
                 correctAnsweres = False
             
+        print " Additional comments for test execution: "
+            
         return correctAnsweres
             

@@ -47,8 +47,8 @@ class MyEngine(object):
         jsonAfterParse = jsonComparer.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFolder/", self.getExpectedJsonFileName(),"response")
         if(self.testDefinietion.defenitionsOfSteps[self.numberOfStep] == "nstep"):
             self.questAnswerPartOfJson = jsonComparer.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFolder/", self.getExpectedJsonFileName(),"questions")
-            
-        self.flag = True
+            self.flag = True
+        
         self.numberOfStep+=1
         return jsonAfterParse
     

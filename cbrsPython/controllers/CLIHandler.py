@@ -37,8 +37,10 @@ class Mcontroller(Thread):
         print "The final result of the test is : " + str(self.questHandler.ShowQuestionsAndGetAnswersFromClient(self.engine.getQuestionAnswerPart()))
         
     
-              
-mController = Mcontroller("C:\Users\iagmon\Desktop\exampleTest.csv")
+      
+print ("Please enter a csv file path that include the test you request to run")   
+inputAnswer = raw_input()     
+mController = Mcontroller(inputAnswer)#"C:\Users\iagmon\Desktop\exampleTest.csv")
 flaskServer.enodeBController = ENodeBController(mController.engine)
 flaskServer.runFlaskServer()
         
