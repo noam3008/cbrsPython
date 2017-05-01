@@ -3,13 +3,12 @@ INFO:root:init the test definition by the test steps sent from the user
 INFO:werkzeug: * Running on http://70.14.0.72:5000/ (Press CTRL+C to quit)
 INFO:root:sent flask request to engine
 INFO:root:ENodeB sent request to engine from server
-INFO:werkzeug:70.14.0.218 - - [01/May/2017 11:01:32] "POST /cbsd/spectrumInquiry/ HTTP/1.1" 400 -
+INFO:root:compare between  requested json to expected json
+INFO:werkzeug:70.14.0.72 - - [01/May/2017 11:57:25] "POST /cbsd/registration/ HTTP/1.1" 200 -
 INFO:root:sent flask request to engine
 INFO:root:ENodeB sent request to engine from server
-INFO:werkzeug:70.14.0.218 - - [01/May/2017 11:02:32] "POST /cbsd/spectrumInquiry/ HTTP/1.1" 400 -
+INFO:root:compare between  requested json to expected json
+INFO:werkzeug:70.14.0.72 - - [01/May/2017 11:57:29] "POST /cbsd/spectrumInquiry/ HTTP/1.1" 200 -
 INFO:root:sent flask request to engine
-INFO:root:ENodeB sent request to engine from server
-INFO:werkzeug:70.14.0.218 - - [01/May/2017 11:03:32] "POST /cbsd/spectrumInquiry/ HTTP/1.1" 400 -
-INFO:root:sent flask request to engine
-INFO:root:ENodeB sent request to engine from server
-INFO:werkzeug:70.14.0.218 - - [01/May/2017 11:04:32] "POST /cbsd/spectrumInquiry/ HTTP/1.1" 400 -
+INFO:werkzeug:70.14.0.72 - - [01/May/2017 11:57:31] "POST /cbsd/spectrumInquiry/ HTTP/1.1" 302 -
+INFO:werkzeug:70.14.0.72 - - [01/May/2017 11:57:31] "GET /shutdown?validationMessage=+all+the+steps+of+the+test+had+been+finished+see+final+results+at+the+console HTTP/1.1" 200 -

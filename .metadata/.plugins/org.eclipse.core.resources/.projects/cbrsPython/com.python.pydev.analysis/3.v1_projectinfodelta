@@ -1,9 +1,7 @@
-INSTUPmodel.flaskServer
-C:\Users\iagmon\cbrsPython\cbrsPython\model\flaskServer.py
-INFOS:&&3|1|2|0&&3|3|2|0&&2|4|2|0&&2|5|2|0&&2|6|2|0
-app=1
-sentFlaskReqToServer=4
-model.flaskServer=2
-runFlaskServer=6
-enodeBController=3
-shutdown=5
+INSTUPmodel.Utils.Assert
+C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Assert.py
+INFOS:&&1|1|2|0&&2|3|2|1&&2|4|2|1
+Assertion=1
+model.Utils.Assert=2
+compare_Json_Req=4
+__init__=3

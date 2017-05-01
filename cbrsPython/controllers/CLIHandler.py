@@ -32,22 +32,22 @@ class CLIHandler(Thread):
     
     ''' the method get the step list and sent to the engine the correct json file name to wait for '''
         
-    def stopThreadBecauseOfException(self):
+    def stop_Thread_Due_To_Exception(self):
         logging.info(consts.CLOSE_USER_SESSION)
         self._stop.set() 
     
-    '''def run(self):   
+    def run(self):   
         while(not self.engine.isNstep and not self._stop.isSet()):
             time.sleep(1)
             if(self.engine.validationErrorAccuredInEngine):
-                self.stopThreadBecauseOfException()
+                self.stop_Thread_Due_To_Exception()
         if not self._stop.is_set():
-            finalResults = self.questHandler.ShowQuestionsAndGetAnswersFromClient(self.engine.getQuestionAnswerPart())
+            finalResults = self.questHandler.ShowQuestionsAndGetAnswersFromClient(self.engine.get_Question_Answer_Part())
             print consts.RESULTS_OF_TEST_MESSAGE + str(finalResults)
             logging.info(consts.RESULTS_OF_TEST_MESSAGE + str(finalResults))
         else:
             print consts.ERROR_VALIDATION_MESSAGE
-            logging.info(consts.ERROR_VALIDATION_MESSAGE)'''
+            logging.info(consts.ERROR_VALIDATION_MESSAGE)
             
 print (consts.SET_CSV_FILE_MESSAGE)  
 

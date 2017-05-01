@@ -174,10 +174,9 @@ def contains(expected_original, actual_original, ignore_list_order_recursively=F
 def json_are_same(a, b, ignore_list_order_recursively=False, ignore_value_of_keys=[]):
     return are_same(json.loads(a), json.loads(b), ignore_list_order_recursively, ignore_value_of_keys)
 
-def parseJsonToDic(filePathOfJsons,jsonFileName,nodeOfJsonRequest):
+def parse_Json_To_Dic(filePathOfJsons,jsonFileName,nodeOfJsonRequest):
     filePath = filePathOfJsons
     myfile = open(filePath+str(jsonFileName))
     jsonAfterParse = json.load(myfile)
-    print "json after parse in parse json to dic func : " + str(jsonAfterParse[nodeOfJsonRequest])
     return jsonAfterParse[nodeOfJsonRequest]
 

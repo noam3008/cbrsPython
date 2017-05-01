@@ -21,16 +21,12 @@ class Assertion(object):
         Constructor
         '''
         
-    def compareJsonReq(self,httpRequest,jsonExpected,suffix):
+    def compare_Json_Req(self,httpRequest,jsonExpected,suffix):
         
         ''' the method will get the request json file name from the client request and will get from the two repo
         off the client and the server the json expected and the real json sent from the client '''
-        print "json expected : "  + jsonExpected
-        jsonExpectedObj = JsonComparisonUtils.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFolder/",jsonExpected,suffix)
-        print " json expected obj : " + str(jsonExpectedObj)
+        jsonExpectedObj = JsonComparisonUtils.parse_Json_To_Dic("C:/Users/iagmon/Desktop/jsonFolder/",jsonExpected,suffix)
         logging.info(consts.COMPARING_JSONS_MESSAGE)              
-        #print httpRequest["registerationRequest"]
-        print httpRequest
         x = JsonComparisonUtils.are_same(httpRequest[suffix],jsonExpectedObj)
         if(False in x):
             print x
