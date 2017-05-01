@@ -1,0 +1,72 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+
+from model.Utils.Assert import Assertion 
+import model.Utils.JsonComparisonUtils as jsonComparer
+from controllers.CLIUtils.QuestionHandler import QuestionHandler
+
+class MyEngine(object):
+
+    def __init__(self,testDefinition):
+        '''
+        Will recieve the test structure (the list of the json file and the step defintions). 
+        Will read all the json files and save it as some structure.
+        '''
+        self.numberOfStep = 0
+        self.testDefinietion = testDefinition
+        self.assertion= Assertion()
+        self.questionHandler = QuestionHandler()
+        self.flag = False
+        
+    def process_request(self,httpRequest,typeOfCalling):
+        '''
+        This will received the request that 
+        arrived from the eNodeB,
+         will assert the request according to the json file and in case the assert was successful,
+          will return the response from the json file        '''
+        print typeOfCalling
+        if typeOfCalling == "heartBeat":
+            self.compareJsonReq(httpRequest, "heartBeat.json")
+            return self.process_response(True)
+                 
+        self.compareJsonReq(httpRequest,self.getExpectedJsonFileName())
+        return self.process_response(False)
+
+    def compareJsonReq(self,httpRequest,expectedJsonFileName):
+        self.assertion.compareJsonReq(httpRequest,self.getExpectedJsonFileName())
+        
+        
+    def process_response(self,heartBeatRequest):
+        '''
+        This will received the request that 
+        arrived from the eNodeB,
+         will assert the request according to the json file and in case the assert was successful,
+          will return the response from the json file
+        '''
+            
+        jsonAfterParse = jsonComparer.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFolder/", self.getExpectedJsonFileName(),"response")
+        if(heartBeatRequest):
+            print "a"
+            return jsonAfterParse
+        
+        
+        if(self.testDefinietion.defenitionsOfSteps[self.numberOfStep] == "nstep"):
+            print "b"
+            self.questAnswerPartOfJson = jsonComparer.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFolder/", self.getExpectedJsonFileName(),"questions")
+            self.flag = True
+        
+        self.numberOfStep+=1
+        print self.numberOfStep
+        return jsonAfterParse
+    
+    def getExpectedJsonFileName(self):
+        return self.testDefinietion.jsonNamesOfSteps[self.numberOfStep]
+    
+    def getQuestionAnswerPart(self):
+        return self.questAnswerPartOfJson
+    
+    
+    

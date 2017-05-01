@@ -1,0 +1,15 @@
+INFO:root:Start of the test
+INFO:root:init the test definition by the test steps sent from the user
+INFO:werkzeug: * Running on http://70.14.0.72:5000/ (Press CTRL+C to quit)
+INFO:root:sent flask request to engine
+INFO:root:ENodeB sent request to engine from server
+INFO:werkzeug:70.14.0.218 - - [01/May/2017 11:01:32] "POST /cbsd/spectrumInquiry/ HTTP/1.1" 400 -
+INFO:root:sent flask request to engine
+INFO:root:ENodeB sent request to engine from server
+INFO:werkzeug:70.14.0.218 - - [01/May/2017 11:02:32] "POST /cbsd/spectrumInquiry/ HTTP/1.1" 400 -
+INFO:root:sent flask request to engine
+INFO:root:ENodeB sent request to engine from server
+INFO:werkzeug:70.14.0.218 - - [01/May/2017 11:03:32] "POST /cbsd/spectrumInquiry/ HTTP/1.1" 400 -
+INFO:root:sent flask request to engine
+INFO:root:ENodeB sent request to engine from server
+INFO:werkzeug:70.14.0.218 - - [01/May/2017 11:04:32] "POST /cbsd/spectrumInquiry/ HTTP/1.1" 400 -

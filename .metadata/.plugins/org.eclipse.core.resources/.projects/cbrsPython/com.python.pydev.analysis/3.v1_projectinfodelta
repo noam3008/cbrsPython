@@ -1,7 +1,9 @@
-INSTUPtesting.testNewStructure
-C:\Users\iagmon\cbrsPython\cbrsPython\testing\testNewStructure.py
-INFOS:&&1|1|2|0&&2|3|2|1&&3|4|2|0
-MyClass=1
-mController=4
-__init__=3
-testing.testNewStructure=2
+INSTUPmodel.flaskServer
+C:\Users\iagmon\cbrsPython\cbrsPython\model\flaskServer.py
+INFOS:&&3|1|2|0&&3|3|2|0&&2|4|2|0&&2|5|2|0&&2|6|2|0
+app=1
+sentFlaskReqToServer=4
+model.flaskServer=2
+runFlaskServer=6
+enodeBController=3
+shutdown=5

@@ -1,10 +1,10 @@
 import logging
-
+import model.Utils.Consts as consts
 
 class TestDefinition(object):
     
     def __init__(self,steps):
-        logging.info("init the test definition by the test steps sent from the user")
+        logging.info(consts.INIT_TEST_DEFINITION)
         self.defenitionsOfSteps = []
         self.jsonNamesOfSteps = []
         for step in steps:    

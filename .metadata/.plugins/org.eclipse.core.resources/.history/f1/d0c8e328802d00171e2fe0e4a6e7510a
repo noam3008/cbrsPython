@@ -1,0 +1,66 @@
+'''
+Created on Apr 24, 2017
+
+@author: iagmon
+'''
+import threading
+from threading import Thread
+from CLIUtils.CsvFileParser import CsvFileParser
+from CLIUtils.QuestionHandler import QuestionHandler
+from CLIUtils.TestDefinition import TestDefinition
+from model.Engine import MyEngine
+from model import flaskServer
+from ENodeBController import ENodeBController
+import time
+import sys
+
+class CLIHandler(Thread):
+    '''
+    classdocs
+    '''
+    def __init__(self,csvFilePath):
+        '''
+        Constructor
+        '''
+        Thread.__init__(self)
+        self.testDefinition = TestDefinition(CsvFileParser(csvFilePath).initializeTestDefinition())
+        self.engine = MyEngine(self.testDefinition) 
+        self.questHandler = QuestionHandler()
+        self._stop = threading.Event()
+        self.start()
+    
+    ''' the method get the step list and sent to the engine the correct json file name to wait for '''
+        
+    def getResponseFromEngine(self, jsonAfterParse,questAnswerPartOfJson):
+        self.questHandler.ShowQuestionsAndGetAnswersFromClient(questAnswerPartOfJson)
+        
+    def interrupt_thread(self):
+        print("try to interrupt")
+        threading.thread.interrupt_main(self)
+        
+    def stopThreadBecauseOfException(self):
+        print ("Stopped")
+        self._stop.set() 
+    
+    def run(self):   
+        while(not self.engine.flag and not self._stop.isSet()):
+            time.sleep(1)
+            if(self.engine.errorComparisonHadAccuredInEngine):
+                self.stopThreadBecauseOfException()
+        if not self._stop.is_set():
+            print "The final result of the test is : " + str(self.questHandler.ShowQuestionsAndGetAnswersFromClient(self.engine.getQuestionAnswerPart()))
+        else:
+            print "goodBye"
+            
+print ("Please enter a csv file path that include the test you request to run")  
+
+
+inputAnswer=raw_input()     
+cliHandler = CLIHandler(inputAnswer)#"C:\Users\iagmon\Desktop\exampleTest.csv"))
+flaskServer.enodeBController = ENodeBController(cliHandler.engine)
+while cliHandler._stop.set():
+    flaskServer.runFlaskServer()
+
+    
+       
+        

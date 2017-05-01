@@ -1,0 +1,39 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import sys
+import logging
+
+from model.Utils import JsonComparisonUtils
+from model.Utils import Consts as consts
+import logging
+
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        noam = 1
+        '''
+        Constructor
+        '''
+        
+    def compareJsonReq(self,httpRequest,jsonExpected):
+        
+        ''' the method will get the request json file name from the client request and will get from the two repo
+        off the client and the server the json expected and the real json sent from the client '''
+        jsonExpectedObj = JsonComparisonUtils.parseJsonToDic("C:/Users/iagmon/Desktop/jsonFolder/",jsonExpected,consts.REQUEST_NODE_NAME)              
+        assert True in JsonComparisonUtils.are_same(httpRequest[consts.REQUEST_NODE_NAME],jsonExpectedObj)
+                 
+    
+
+    
+        
+        
+        
+        
+        

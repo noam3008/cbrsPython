@@ -1,0 +1,4 @@
+ERROR_VALIDATION_MESSAGE = "An Error occurred while comparing between actual and expected request"
+RESULTS_OF_TEST_MESSAGE = "The final result of the test is : "
+SET_CSV_FILE_MESSAGE = "Please enter a csv file path that include the test you request to run"
+START_TEST_MESSAGE = "Start of the test"

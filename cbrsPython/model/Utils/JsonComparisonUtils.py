@@ -178,4 +178,6 @@ def parseJsonToDic(filePathOfJsons,jsonFileName,nodeOfJsonRequest):
     filePath = filePathOfJsons
     myfile = open(filePath+str(jsonFileName))
     jsonAfterParse = json.load(myfile)
+    print "json after parse in parse json to dic func : " + str(jsonAfterParse[nodeOfJsonRequest])
     return jsonAfterParse[nodeOfJsonRequest]
+

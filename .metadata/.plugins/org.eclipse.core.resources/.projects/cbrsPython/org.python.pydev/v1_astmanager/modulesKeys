@@ -6,9 +6,11 @@ controllers.CLIUtils.Step|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIU
 controllers.CLIUtils.TestDefinition|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\TestDefinition.py
 controllers.CLIUtils.__init__|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\__init__.py
 controllers.ENodeBController|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\ENodeBController.py
+controllers.Observer|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\Observer.py
 controllers.__init__|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\__init__.py
 model.Engine|C:\Users\iagmon\cbrsPython\cbrsPython\model\Engine.py
 model.Utils.Assert|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Assert.py
+model.Utils.Consts|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Consts.py
 model.Utils.JsonComparisonUtils|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\JsonComparisonUtils.py
 model.Utils.__init__|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\__init__.py
 model.__init__|C:\Users\iagmon\cbrsPython\cbrsPython\model\__init__.py

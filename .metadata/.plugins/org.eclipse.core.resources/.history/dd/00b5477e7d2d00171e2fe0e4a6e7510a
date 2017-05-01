@@ -1,0 +1,21 @@
+from flask import Flask,request,jsonify,g
+import sys
+from controllers.ENodeBController import ENodeBController
+app = Flask(__name__)
+
+enodeBController = ENodeBController(None)
+@app.route('/cbsd/<typeOfCalling>',methods=['POST'])
+def sentFlaskReqToServer(typeOfCalling):  
+    try:
+        return jsonify(enodeBController.linkerBetweenFlaskToEngine(request.get_json(),typeOfCalling))
+    except:
+        
+        return "an error accured"
+        
+
+def runFlaskServer():
+    app.run()
+    
+
+
+

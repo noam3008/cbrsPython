@@ -1,0 +1,31 @@
+from flask import Flask,request,jsonify,g
+import sys
+from controllers.ENodeBController import ENodeBController
+app = Flask(__name__)
+
+enodeBController = ENodeBController(None)
+@app.route('/cbsd/<typeOfCalling>',methods=['POST'])
+def sentFlaskReqToServer(typeOfCalling):  
+    responseAndValidationSuccess = jsonify(enodeBController.linkerBetweenFlaskToEngine(request.get_json(),typeOfCalling))
+    if(responseAndValidationSuccess==False):
+        app.get("/shutdown")
+    print responseAndValidationSuccess
+    return responseAndValidationSuccess[0]
+        
+@app.route('/shutdown', methods=['POST'])
+def shutdown():
+    """Shutdown the Werkzeug dev server, if we're using it.
+    From http://flask.pocoo.org/snippets/67/"""
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:  # pragma: no cover
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
+    return 'Server shutting down...'
+
+
+def runFlaskServer():
+    app.run()
+    
+
+
+
