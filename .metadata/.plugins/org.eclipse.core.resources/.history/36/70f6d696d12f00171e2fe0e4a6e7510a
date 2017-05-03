@@ -1,0 +1,36 @@
+'''
+Created on Apr 26, 2017
+
+@author: iagmon
+'''
+import model.Utils.Consts as consts
+class QuestionHandler(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+        
+    def ShowQuestionsAndGetAnswersFromClient(self,questionsAndAnswers):
+        answers = []
+        correctAnsweres = True
+        for questAnswer in questionsAndAnswers:          
+            print "hey the question is : " + questAnswer["question"] + " please choose one of the answers : " 
+            for answer in questAnswer["answers"]:
+                print answer 
+            
+            inputAnswer = raw_input()
+            if not inputAnswer == questAnswer["expectedAnswer"]:
+                correctAnsweres = False
+            
+        print consts.ADDITIONAL_COMMENTS_MESSAGE
+        inputAnswer = raw_input()
+            
+        answers.append(correctAnsweres)
+        answers.append(inputAnswer) 
+        return answers
+            

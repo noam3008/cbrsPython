@@ -1,0 +1,40 @@
+{
+    "name":"Grant_1_2_3_4",  
+    "message":{
+	},
+    "request":
+    	{
+		"grantRequest":
+        	[
+            	{
+				  "cbsdId": "sas1/cbsd1",
+				  "operationParam": {
+					"maxEirp": 30,
+					"operationFrequencyRange": { "lowFrequency": 3600000000, "highFrequency": 3610000000 }
+				  }
+				}
+			]
+    	},
+	"response":
+	{
+        "grantResponse" : 
+            [
+                {
+				  "cbsdId": "sas1/cbsd1",
+				  "grantId": "sas1/grant1",
+				  "grantExpireTime": "2016-01-01T01:01:01Z",
+				  "hearbeatDuration": 60,
+				  "measReportConfig": {},
+				  "operationParam": {
+					"maxEirp": 30,
+					"operationFrequencyRange": { "lowFrequency": 3600000000, "highFrequency": 3610000000 }
+				  },
+				  "response": { "responseCode": 0 }
+				}
+			]
+	}
+
+	
+   
+       
+}

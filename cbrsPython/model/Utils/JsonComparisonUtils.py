@@ -7,6 +7,7 @@ Created on Apr 23, 2017
 
 import json
 from pprint import pprint
+from xml.dom import minidom
 
 
 class Stack:
@@ -174,8 +175,9 @@ def contains(expected_original, actual_original, ignore_list_order_recursively=F
 def json_are_same(a, b, ignore_list_order_recursively=False, ignore_value_of_keys=[]):
     return are_same(json.loads(a), json.loads(b), ignore_list_order_recursively, ignore_value_of_keys)
 
-def parse_Json_To_Dic(filePathOfJsons,jsonFileName,nodeOfJsonRequest):
-    filePath = filePathOfJsons
+def parse_Json_To_Dic(jsonFileName,nodeOfJsonRequest):
+    confFile = minidom.parse("conf.xml")
+    filePath = confFile.getElementsByTagName("jsonsRepoPath")[0].firstChild.data
     myfile = open(filePath+str(jsonFileName))
     jsonAfterParse = json.load(myfile)
     return jsonAfterParse[nodeOfJsonRequest]

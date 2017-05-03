@@ -9,6 +9,8 @@ import model.Utils.JsonComparisonUtils as jsonComparer
 from controllers.CLIUtils.QuestionHandler import QuestionHandler
 import logging
 import model.Utils.Consts as consts
+from xml.dom import minidom
+
 
 class MyEngine(object):
 
@@ -23,6 +25,7 @@ class MyEngine(object):
         self.questionHandler = QuestionHandler()
         self.validationErrorAccuredInEngine = False
         self.isNstep = False
+
         
     def process_request(self,httpRequest,typeOfCalling):
         '''
@@ -46,10 +49,7 @@ class MyEngine(object):
 
     def compare_Json_Req(self,httpRequest,expectedJsonFileName,typeOfCalling):
         print "type of calling " + typeOfCalling
-        if(typeOfCalling=="registration"):
-            self.assertion.compare_Json_Req(httpRequest,expectedJsonFileName,"registrationRequest")
-        if(typeOfCalling=="spectrumInquiry"):
-            self.assertion.compare_Json_Req(httpRequest,expectedJsonFileName,"spectrumInquiryRequest")
+        self.assertion.compare_Json_Req(httpRequest,expectedJsonFileName,typeOfCalling+"Request")
         
         
     def process_response(self,heartBeatRequest=False):
@@ -64,8 +64,6 @@ class MyEngine(object):
             return self.parse_Json_To_Dic_By_File_Name(consts.HEART_BEAT_SUFFIX_HTTP + consts.SUFFIX_OF_JSON_FILE, consts.RESPONSE_NODE_NAME)
         
         jsonAfterParse = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.RESPONSE_NODE_NAME)
-        print "after parse to response node " + str(jsonAfterParse)
-        print "expected file name  " + str(self.get_Expected_Json_File_Name())
         if(self.testDefinietion.defenitionsOfSteps[self.numberOfStep] == "nstep"):
             logging.info(consts.NSTEP_SESSION_WITH_TECHNITIAN)
             self.questAnswerPartOfJson = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.QUESTION_NODE_NAME)
@@ -74,8 +72,8 @@ class MyEngine(object):
         self.numberOfStep+=1
         return jsonAfterParse
     
-    def parse_Json_To_Dic_By_File_Name(self,jsonFileName,nodeName,jsonRepoPath="C:/Users/iagmon/Desktop/jsonFolder/"):
-        return jsonComparer.parse_Json_To_Dic(jsonRepoPath, jsonFileName,nodeName)
+    def parse_Json_To_Dic_By_File_Name(self,jsonFileName,nodeName):
+        return jsonComparer.parse_Json_To_Dic(jsonFileName,nodeName)
     
     def get_Expected_Json_File_Name(self):
         return self.testDefinietion.jsonNamesOfSteps[self.numberOfStep]

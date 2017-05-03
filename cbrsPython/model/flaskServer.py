@@ -3,7 +3,7 @@ import sys
 from controllers.ENodeBController import ENodeBController
 import logging
 import Utils.Consts as consts
-from flask.templating import render_template
+import os
 app = Flask(__name__)
 
 enodeBController = ENodeBController(None)
@@ -15,17 +15,23 @@ def sent_Flask_Req_To_Server(typeOfCalling):
         response = enodeBController.linker_Between_Flask_To_Engine(request.get_json(),typeOfCalling)
         print "response in flask " + str(response)
         if(consts.ERROR_VALIDATION_MESSAGE in str(response)):     
-            return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=validationErrorMessage))
+            return redirectShutDownDueToAnValidationError()
         return jsonify(response)
-    return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=consts.TEST_HAD_BEEN_FINISHED_FLASK))
+    return redirectShutDownDueToFinishOfTest()
         
 @app.route('/shutdown', methods=['GET', 'POST'])
 def shutdown():
     func = request.environ.get(consts.NAME_OF_SERVER_WERKZUG)
     func()
     if(consts.ERROR_VALIDATION_MESSAGE in str(request.args['validationMessage'])):
-        abort(400, consts.ERROR_VALIDATION_MESSAGE)   
+        abort(400, consts.ERROR_VALIDATION_MESSAGE)
     return consts.SERVER_SHUT_DOWN_MESSAGE + consts.TEST_HAD_BEEN_FINISHED_FLASK
+
+def redirectShutDownDueToFinishOfTest():
+        return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=consts.TEST_HAD_BEEN_FINISHED_FLASK))
+    
+def redirectShutDownDueToAnValidationError():
+    return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=consts.ERROR_VALIDATION_MESSAGE))
 
 
 def runFlaskServer():

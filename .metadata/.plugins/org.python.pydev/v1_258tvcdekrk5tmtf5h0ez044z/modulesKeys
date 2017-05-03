@@ -638,6 +638,9 @@ flask.testing|C:\Python27\lib\site-packages\flask\testing.py
 flask.views|C:\Python27\lib\site-packages\flask\views.py
 flask.wrappers|C:\Python27\lib\site-packages\flask\wrappers.py
 flask_classy|C:\Python27\lib\site-packages\flask_classy.py
+flask_testing.__init__|C:\Python27\lib\site-packages\flask_testing\__init__.py
+flask_testing.twill|C:\Python27\lib\site-packages\flask_testing\twill.py
+flask_testing.utils|C:\Python27\lib\site-packages\flask_testing\utils.py
 fnmatch|C:\Python27\lib\fnmatch.py
 formatter|C:\Python27\lib\formatter.py
 fpformat|C:\Python27\lib\fpformat.py
@@ -1656,6 +1659,7 @@ setuptools.unicode_utils|C:\Python27\lib\site-packages\setuptools\unicode_utils.
 setuptools.version|C:\Python27\lib\site-packages\setuptools\version.py
 setuptools.windows_support|C:\Python27\lib\site-packages\setuptools\windows_support.py
 sgmllib|C:\Python27\lib\sgmllib.py
+sh|C:\Python27\lib\site-packages\sh.py
 sha|C:\Python27\lib\sha.py
 shelve|C:\Python27\lib\shelve.py
 shlex|C:\Python27\lib\shlex.py
