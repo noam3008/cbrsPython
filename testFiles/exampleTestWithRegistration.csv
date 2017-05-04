@@ -1,0 +1,6 @@
+stepType,jsonFileName
+bstep,registration.json
+bstep,spectrumInquiry.json
+bstep,grant.json
+bstep,heartbeat.json
+nstep,relinquishment.json

@@ -10,4 +10,5 @@ class TestDefinition(object):
         for step in steps:    
             self.defenitionsOfSteps.append(step.defOfStep)
             self.jsonNamesOfSteps.append(step.jsonOfStep)
+        
             

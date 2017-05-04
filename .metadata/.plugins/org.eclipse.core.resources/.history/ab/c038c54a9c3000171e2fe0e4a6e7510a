@@ -1,0 +1,44 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+import sys
+import logging
+
+from model.Utils import JsonComparisonUtils
+from model.Utils import Consts as consts
+from xml.dom import minidom
+class Assertion(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self):
+        '''
+        Constructor
+        '''
+        self.confFile = minidom.parse("conf.xml")
+        
+    def compare_Json_Req(self,httpRequest,jsonExpected,suffix):
+        
+        ''' the method will get the request json file name from the client request and will get from the two repo
+        off the client and the server the json expected and the real json sent from the client '''
+        #jsonExpectedObj = JsonComparisonUtils.parse_Json_To_Dic(jsonExpected,suffix)
+        #logging.info(consts.COMPARING_JSONS_MESSAGE) 
+        #print "http request : " + str(httpRequest)        
+        #x = JsonComparisonUtils.are_same(httpRequest[suffix],jsonExpectedObj)
+        #if(False in x):
+        #    print x
+        #assert True in x
+        JsonComparisonUtils.json_are_same(a, httpRequest, ignore_list_order_recursively, ignore_value_of_keys)
+                 
+    
+
+    
+        
+        
+        
+        
+        

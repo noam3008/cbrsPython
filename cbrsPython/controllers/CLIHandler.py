@@ -24,7 +24,7 @@ class CLIHandler(Thread):
         Constructor
         '''
         Thread.__init__(self)
-        self.confFile = minidom.parse("conf.xml")
+        self.confFile =         minidom.parse("conf.xml")
         self.testDefinition =   TestDefinition(CsvFileParser(self.confFile.getElementsByTagName("testRepoPath")[0].firstChild.data+csvFilePath).initializeTestDefinition())
         self.engine =           MyEngine(self.testDefinition) 
         self.questHandler =     QuestionHandler()
@@ -39,7 +39,7 @@ class CLIHandler(Thread):
     
     def run(self):   
         while(not self.engine.isNstep and not self._stop.isSet()):
-            time.sleep(1)
+            time.sleep(2)
             if(self.engine.validationErrorAccuredInEngine):
                 self.stop_Thread_Due_To_Exception()
         if not self._stop.is_set():
@@ -55,23 +55,19 @@ print (consts.SET_CSV_FILE_MESSAGE)
 
 import logging
 
-
-
-with open('example.log', 'w'):
-    pass
-
-logging.basicConfig(filename='example.log',level=logging.DEBUG)
+confFile = minidom.parse("conf.xml")
 logging.info(consts.START_TEST_MESSAGE)
 
 inputAnswer=raw_input()     
-cliHandler = CLIHandler(inputAnswer)#"exampleTest.csv"))
+cliHandler = CLIHandler(inputAnswer) 
 flaskServer.enodeBController = ENodeBController(cliHandler.engine)
-flaskServer.runFlaskServer()
+flaskServer.runFlaskServer(confFile.getElementsByTagName("hostIp")[0].firstChild.data)
 if(cliHandler.engine.validationErrorAccuredInEngine):
     cliHandler.stop_Thread_Due_To_Exception()
 
     
-
+''' exampleTest.csv'''
+'''exampleTestWithRegistration.csv'''
 
     
        

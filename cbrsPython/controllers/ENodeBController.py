@@ -17,8 +17,7 @@ class ENodeBController(Thread):
     def __init__(self,engine):
         '''
         Constructor
-        '''
-        Thread.__init__(self)      
+        '''     
         self.engine = engine
         
         

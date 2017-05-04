@@ -1,2 +1,4 @@
 stepType,jsonFileName
-nstep,registeration.json
+bstep,spectrumInquiry.json
+bstep,grant.json
+bstep,heartbeat.json

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;cbrsPython/controllers/Observer.py&apos;" deleteContents="false" description="Delete resource &apos;cbrsPython/controllers/Observer.py&apos;" element1="/cbrsPython/controllers/Observer.py" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1493808318639"/>
+</session>

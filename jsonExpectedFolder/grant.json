@@ -2,39 +2,34 @@
     "name":"Grant_1_2_3_4",  
     "message":{
 	},
-    "request":
-    	{
 		"grantRequest":
-        	[
-            	{
-				  "cbsdId": "sas1/cbsd1",
-				  "operationParam": {
-					"maxEirp": 30,
-					"operationFrequencyRange": { "lowFrequency": 3600000000, "highFrequency": 3610000000 }
-				  }
-				}
-			]
-    	},
+		[ 
+			{ 
+				"cbsdId": "1234567890123456789cbsdSerialNumber123",
+				"sensingCapability": [ "type" ],
+				"operationParam": 
+				{ 
+					"peakPower": 2986.9897000433602, 
+					"operationFrequencyRange": 
+						{ "lowFrequency": 3560000000
+						, "highFrequency": 3580000000 
+						}
+				} 
+			} 
+		], 
 	"response":
-	{
-        "grantResponse" : 
-            [
-                {
-				  "cbsdId": "sas1/cbsd1",
-				  "grantId": "sas1/grant1",
-				  "grantExpireTime": "2016-01-01T01:01:01Z",
-				  "hearbeatDuration": 60,
-				  "measReportConfig": {},
-				  "operationParam": {
-					"maxEirp": 30,
-					"operationFrequencyRange": { "lowFrequency": 3600000000, "highFrequency": 3610000000 }
-				  },
-				  "response": { "responseCode": 0 }
-				}
-			]
-	}
+        { 
+		   "grantResponse":[ 
+					  { 
+						 "cbsdId":"1234567890123456789cbsdSerialNumber123",
+						 "error":{ 
+							"errorCode":0
+						 },
+						 "grantId":"8385094448610395450",
+						 "grantExpireTime":"2017-05-28T23:20:08Z",
+						 "heartbeatDuration":60.0
+					  }
+							]
+        }
 
-	
-   
-       
-}
+	}

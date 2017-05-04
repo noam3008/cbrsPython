@@ -1,37 +1,29 @@
 {
     "name":"HeartBeat_1_2_3_4",  
-    "request":
-    	{
-			"heartBeatRequest":
-				[
-					{
-					  "cbsdId": "sas1/cbsd1",
-					  "grantId": "sas1/grant1",
-					  "grantRenew": true,
-					  "operationState": "Authorized",
-					  "measReport": {
-					  }
-					}
-				]
-    	},
+		"heartbeatRequest": 
+			[ 
+				{ 
+					"cbsdId": "1234567890123456789cbsdSerialNumber123",
+					"grantId": "8385094448610395450",
+					"grantRenew": false,
+					"operationState": "Granted" 
+					} 
+			],
 	"response":
-	{
-        "heartBeatResponse" : 
-            {
-			  "cbsdId": "sas1/cbsd1",
-			  "grantId": "sas1/grant1",
-			  "grantRenew": true,
-			  "operationStatusReq": true,
-			  "transmitExpireTime": "2016-02-02T01:01:01Z",
-			  "grantExpireTime": "2016-02-02T01:01:01Z",
-			  "heartbeatDuration": 300,
-			  "measReportConfig": {
-			  },
-			  "operationParam": {
-				"maxEirp": 30,
-				"operationFrequencyRange": { "lowFrequency": 3550000000, "highFrequency": 3560000000 }
-			  },
-			  "response": { "responseCode": 0 }
-			}
-	}     
+        { 
+		   "heartbeatResponse":[ 
+			  { 
+				 "cbsdId":"1234567890123456789cbsdSerialNumber123",
+				 "error":{ 
+					"errorCode":0
+				 },
+				 "grantId":"8385094448610395450",
+				 "operationStatusReq":true,
+				 "transmitExpireTime":"2017-05-28T23:20:08Z",
+				 "heartbeatDuration":60.0
+			  }
+		   ]
+	}
+
+	     
 }
