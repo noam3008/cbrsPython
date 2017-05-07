@@ -37,19 +37,27 @@ class MyEngine(object):
           will return the response from the json file        '''
         if (typeOfCalling == consts.HEART_BEAT_SUFFIX_HTTP) and self.numberOfHearbeatRequests<30:
             try:
-                self.compare_Json_Req(httpRequest,consts.HEART_BEAT_SUFFIX_HTTP+consts.SUFFIX_OF_JSON_FILE,typeOfCalling)
+                if(self.firstHeartbeatStep):
+                    print "heart beat first"
+                    self.compare_Json_Req(httpRequest,consts.HEART_BEAT_SUFFIX_HTTP+consts.SUFFIX_OF_JSON_FILE,typeOfCalling)
+                else:
+                    print "heart beat second"
+                    self.compare_Json_Req(httpRequest,consts.HEART_BEAT_SUFFIX_HTTP+consts.HEART_BEAT_REPEATS_SUFFIX+consts.SUFFIX_OF_JSON_FILE,typeOfCalling)
+                self.numberOfHearbeatRequests+=1
             except Exception:
                 self.validationErrorAccuredInEngine = True  
                 return consts.ERROR_VALIDATION_MESSAGE
                  
-        try:
-            self.compare_Json_Req(httpRequest,self.get_Expected_Json_File_Name(),typeOfCalling)
-        except Exception:
-            self.validationErrorAccuredInEngine = True  
-            return consts.ERROR_VALIDATION_MESSAGE
+        else:
+            try:
+                self.compare_Json_Req(httpRequest,self.get_Expected_Json_File_Name(),typeOfCalling)
+            except Exception:
+                self.validationErrorAccuredInEngine = True  
+                consts.ERROR_VALIDATION_MESSAGE
         return self.process_response(typeOfCalling)
 
     def compare_Json_Req(self,httpRequest,expectedJsonFileName,typeOfCalling):
+        print "expected json file name : " + str(expectedJsonFileName)
         self.assertion.compare_Json_Req(httpRequest,expectedJsonFileName,typeOfCalling+consts.REQUEST_NODE_NAME)
         
         
@@ -62,7 +70,6 @@ class MyEngine(object):
         '''      
         if(typeOfCalling == "heartbeat"):
             logging.info(consts.HEARTBEAT_FROM_ENGINE_TO_ENODEB_MESSAGE)
-            print "get to heartbeat area response"
             if(self.firstHeartbeatStep):
                 self.numberOfStep+=1
                 self.firstHeartbeatStep = False

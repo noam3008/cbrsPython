@@ -1,0 +1,38 @@
+{
+    "name":"HeartBeat_REPEATS_1_2_3_4",  
+		"heartbeatRequest": 
+			[ 
+				{ 
+					"cbsdId": "1234567890123456789cbsdSerialNumber123",
+					"grantId": "8385094448610395450",
+					"grantRenew": false,
+					"operationState": "Transmission",
+					"sensingCapability": [ "type" ], 
+					"operationParam": 
+						{ 
+						"peakPower": 2986.9897000433602, 
+						"operationFrequencyRange": 
+							{ "lowFrequency": 3560000000, 
+							"highFrequency": 3580000000 
+							} 
+						}
+					} 
+			],
+	"response":
+        { 
+		   "heartbeatResponse":[ 
+			  { 
+				 "cbsdId":"1234567890123456789cbsdSerialNumber123",
+				 "error":{ 
+					"errorCode":0
+				 },
+				 "grantId":"8385094448610395450",
+				 "operationStatusReq":true,
+				 "transmitExpireTime":"2017-05-28T23:20:08Z",
+				 "heartbeatDuration":60.0
+			  }
+		   ]
+	}
+
+	     
+}
