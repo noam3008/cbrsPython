@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<cbrsParams>
+	<jsonsRepoPath>\jsonExpectedFolder\</jsonsRepoPath>
+	<testRepoPath>\testFiles\</testRepoPath>
+	<hostIp>127.0.0.1</hostIp>
+</cbrsParams>

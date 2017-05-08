@@ -176,9 +176,8 @@ def json_are_same(a, b, ignore_list_order_recursively=False, ignore_value_of_key
     return are_same(json.loads(a), json.loads(b), ignore_list_order_recursively, ignore_value_of_keys)
 
 from collections import OrderedDict
-def parse_Json_To_Dic(jsonFileName,nodeOfJsonRequest):
-    confFile = minidom.parse("conf.xml")
-    filePath = confFile.getElementsByTagName("jsonsRepoPath")[0].firstChild.data
+def parse_Json_To_Dic(jsonFileName,nodeOfJsonRequest,confFile,dirPath):
+    filePath = str(dirPath)+confFile.getElementsByTagName("jsonsRepoPath")[0].firstChild.data
     myfile = open(filePath+str(jsonFileName)) 
     jsonAfterParse = json.load(myfile,object_pairs_hook=OrderedDict)
     return jsonAfterParse[nodeOfJsonRequest]

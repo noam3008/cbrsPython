@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<cbrsParams>
+	<jsonsRepoPath>cbrsPython/jsonExpectedFolder/</jsonsRepoPath>
+	<testRepoPath>cbrsPython/testFiles/</testRepoPath>
+	<hostIp>70.14.0.72</hostIp>
+</cbrsParams>

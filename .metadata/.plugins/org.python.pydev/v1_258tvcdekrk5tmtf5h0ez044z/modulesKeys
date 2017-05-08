@@ -624,7 +624,6 @@ flask.cli|C:\Python27\lib\site-packages\flask\cli.py
 flask.config|C:\Python27\lib\site-packages\flask\config.py
 flask.ctx|C:\Python27\lib\site-packages\flask\ctx.py
 flask.debughelpers|C:\Python27\lib\site-packages\flask\debughelpers.py
-flask.ext
 flask.ext.__init__|C:\Python27\lib\site-packages\flask\ext\__init__.py
 flask.exthook|C:\Python27\lib\site-packages\flask\exthook.py
 flask.globals|C:\Python27\lib\site-packages\flask\globals.py
@@ -1153,6 +1152,7 @@ pandokia.runners.unit2|C:\Python27\lib\site-packages\pandokia\runners\unit2.py
 pandokia.text_table|C:\Python27\lib\site-packages\pandokia\text_table.py
 pandokia.webserver|C:\Python27\lib\site-packages\pandokia\webserver.py
 parser
+pathlib|C:\Python27\lib\site-packages\pathlib.py
 pdb|C:\Python27\lib\pdb.py
 pickle|C:\Python27\lib\pickle.py
 pickletools|C:\Python27\lib\pickletools.py
@@ -2282,6 +2282,7 @@ websocket._url|C:\Python27\lib\site-packages\websocket\_url.py
 websocket._utils|C:\Python27\lib\site-packages\websocket\_utils.py
 websocket.tests.__init__|C:\Python27\lib\site-packages\websocket\tests\__init__.py
 websocket.tests.test_websocket|C:\Python27\lib\site-packages\websocket\tests\test_websocket.py
+werkzeug
 werkzeug.__init__|C:\Python27\lib\site-packages\werkzeug\__init__.py
 werkzeug._compat|C:\Python27\lib\site-packages\werkzeug\_compat.py
 werkzeug._internal|C:\Python27\lib\site-packages\werkzeug\_internal.py

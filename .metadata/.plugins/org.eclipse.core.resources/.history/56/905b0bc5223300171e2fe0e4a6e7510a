@@ -1,0 +1,26 @@
+import logging
+import sys
+import os.path
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+import model.Utils.Consts as consts
+from xml.dom import minidom
+from controllers.CLIHandler import CLIHandler
+from controllers.ENodeBController import ENodeBController
+from model import flaskServer
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+global confFile 
+confFile= minidom.parse(dir_path +"\\conf.xml")
+print (consts.SET_CSV_FILE_MESSAGE)  
+logging.info(consts.START_TEST_MESSAGE)
+
+inputAnswer=raw_input()     
+cliHandler = CLIHandler(inputAnswer) 
+flaskServer.enodeBController = ENodeBController(cliHandler.engine)
+flaskServer.runFlaskServer(confFile.getElementsByTagName("hostIp")[0].firstChild.data)
+if(cliHandler.engine.validationErrorAccuredInEngine):
+    cliHandler.stop_Thread_Due_To_Exception()
+
+    
+''' exampleTest.csv'''
+'''exampleTestWithRegistration.csv'''

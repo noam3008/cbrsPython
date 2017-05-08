@@ -4,6 +4,7 @@ Created on Apr 26, 2017
 @author: iagmon
 '''
 import model.Utils.Consts as consts
+import logging
 class QuestionHandler(object):
     '''
     classdocs
@@ -19,15 +20,16 @@ class QuestionHandler(object):
         answers = []
         correctAnsweres = True
         for questAnswer in questionsAndAnswers:          
-            print "hey the question is : " + questAnswer[consts.QUESTION_NODE] + consts.CHOOSE_ONE_OF_THE_ANSWERS_MESSAGE
+            print ("the question is : " + questAnswer[consts.QUESTION_NODE] + consts.CHOOSE_ONE_OF_THE_ANSWERS_MESSAGE)
             for answer in questAnswer[consts.ANSWERS_NODE]:
-                print answer 
+                print (answer) 
             
             inputAnswer = raw_input()
+            logging.info("for the question : " + questAnswer[consts.QUESTION_NODE] + " the user choose " + str(inputAnswer))
             if not inputAnswer == questAnswer[consts.EXPECT_ANSWER_NODE]:
                 correctAnsweres = False
             
-        print consts.ADDITIONAL_COMMENTS_MESSAGE
+        print (consts.ADDITIONAL_COMMENTS_MESSAGE)
         inputAnswer = raw_input()
             
         answers.append(correctAnsweres)

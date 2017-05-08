@@ -3,14 +3,14 @@
 	 "questions":
 				[
                         {
-                            "question" : "Please check eNodeB something",
-                            "answers" : ["x happened", "y happened"], 
-							"expectedAnswer" : "x happened"
+                            "question" : "Did csbd UUT stop transmission immidietly after relinquishment response",
+                            "answers" : ["yes", "no"], 
+							"expectedAnswer" : "yes"
                         },
 						{
-							"question" : "Please check eNodeB something - secondQuest",
-                            "answers" : ["x happened", "y happened"], 
-							"expectedAnswer" : "y happened"
+							"question" : "Is cbsd UUT in idle state after relinquishment response",
+                            "answers" : ["yes", "no"], 
+							"expectedAnswer" : "yes"
 						}
 				],
 			"relinquishmentRequest": 

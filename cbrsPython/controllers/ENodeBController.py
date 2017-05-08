@@ -22,7 +22,6 @@ class ENodeBController(Thread):
         
         
     def linker_Between_Flask_To_Engine(self,jsonReq,typeOfCalling):
-        logging.info(consts.E_NODE_B_SENT_TO_ENGINE_REQUEST)
         return self.engine.process_request(jsonReq,typeOfCalling)
     
 

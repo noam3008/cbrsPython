@@ -1,0 +1,22 @@
+05/08/2017 02:11:55 PM Start of the test
+05/08/2017 02:12:06 PM the selected test from the user is : exampleTestWithRegistration.csv
+05/08/2017 02:12:06 PM init the test definition by the test steps sent from the user
+05/08/2017 02:12:06 PM  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+05/08/2017 02:12:09 PM sent flask request to engine
+05/08/2017 02:12:09 PM ENodeB sent request to engine from server
+05/08/2017 02:12:09 PM compare between  requested json to expected json
+05/08/2017 02:12:09 PM arrived to nstep starting question answer session with the technician
+05/08/2017 02:12:09 PM response in flask OrderedDict([(u'registrationResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)]))])])])
+05/08/2017 02:12:09 PM 127.0.0.1 - - [08/May/2017 14:12:09] "POST /cbsd/registration/ HTTP/1.1" 200 -
+05/08/2017 02:12:10 PM hey the question is : Please check eNodeB something please choose one of the answers :
+05/08/2017 02:12:10 PM x happened
+05/08/2017 02:12:10 PM y happened
+05/08/2017 02:12:12 PM hey the question is : Please check eNodeB something - secondQuest please choose one of the answers :
+05/08/2017 02:12:12 PM x happened
+05/08/2017 02:12:12 PM y happened
+05/08/2017 02:12:13 PM the additional comments for the current test are : 
+05/08/2017 02:12:14 PM selected answer from the user is : v
+05/08/2017 02:12:14 PM The final result of the test is : False
+05/08/2017 02:12:14 PM the additional comments for the current test are : v
+05/08/2017 02:12:14 PM The final result of the test is : [False, 'v']
+05/08/2017 02:12:25 PM the selected test from the user is : exampleTestWithRegistration.csv

@@ -1,0 +1,211 @@
+05/08/2017 04:04:48 PM Start of the test
+05/08/2017 04:04:54 PM the selected test from the user is : exampleTest.csv
+05/08/2017 04:04:54 PM init the test definition by the test steps sent from the user
+05/08/2017 04:04:54 PM  * Running on http://70.14.0.72:5000/ (Press CTRL+C to quit)
+05/08/2017 04:05:18 PM sent flask request to engine
+05/08/2017 04:05:18 PM request from eNodeB : OrderedDict([(u'spectrumInquiryRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'palCredential', [u'type']), (u'inquiredSpectrum', [OrderedDict([(u'lowFrequency', 3550000000L), (u'highFrequency', 3600000000L)])])])])])
+05/08/2017 04:05:18 PM ENodeB sent request to engine from server
+05/08/2017 04:05:18 PM compare between  requested json to expected json
+05/08/2017 04:05:18 PM response in flask OrderedDict([(u'spectrumInquiryResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'availableChannel', [OrderedDict([(u'frequencyRange', OrderedDict([(u'lowFrequency', 3550000000L), (u'highFrequency', 3600000000L)])), (u'channelType', u'PAL'), (u'ruleApplied', u'FCC Part 96')])])])])])
+05/08/2017 04:05:18 PM 70.14.0.218 - - [08/May/2017 16:05:18] "POST /cbsd/spectrumInquiry/ HTTP/1.1" 200 -
+05/08/2017 04:05:18 PM sent flask request to engine
+05/08/2017 04:05:18 PM request from eNodeB : OrderedDict([(u'grantRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:05:18 PM ENodeB sent request to engine from server
+05/08/2017 04:05:18 PM compare between  requested json to expected json
+05/08/2017 04:05:18 PM response in flask OrderedDict([(u'grantResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'grantExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:05:18 PM 70.14.0.218 - - [08/May/2017 16:05:18] "POST /cbsd/grant/ HTTP/1.1" 200 -
+05/08/2017 04:05:18 PM sent flask request to engine
+05/08/2017 04:05:18 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Granted')])])])
+05/08/2017 04:05:18 PM ENodeB sent request to engine from server
+05/08/2017 04:05:18 PM compare between  requested json to expected json
+05/08/2017 04:05:18 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:05:18 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:05:18 PM 70.14.0.218 - - [08/May/2017 16:05:18] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:06:18 PM sent flask request to engine
+05/08/2017 04:06:18 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:06:18 PM ENodeB sent request to engine from server
+05/08/2017 04:06:18 PM compare between  requested json to expected json
+05/08/2017 04:06:18 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:06:18 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:06:18 PM 70.14.0.218 - - [08/May/2017 16:06:18] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:07:18 PM sent flask request to engine
+05/08/2017 04:07:18 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:07:18 PM ENodeB sent request to engine from server
+05/08/2017 04:07:18 PM compare between  requested json to expected json
+05/08/2017 04:07:18 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:07:18 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:07:18 PM 70.14.0.218 - - [08/May/2017 16:07:18] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:08:19 PM sent flask request to engine
+05/08/2017 04:08:19 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:08:19 PM ENodeB sent request to engine from server
+05/08/2017 04:08:19 PM compare between  requested json to expected json
+05/08/2017 04:08:19 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:08:19 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:08:19 PM 70.14.0.218 - - [08/May/2017 16:08:19] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:09:20 PM sent flask request to engine
+05/08/2017 04:09:20 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:09:20 PM ENodeB sent request to engine from server
+05/08/2017 04:09:20 PM compare between  requested json to expected json
+05/08/2017 04:09:20 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:09:20 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:09:20 PM 70.14.0.218 - - [08/May/2017 16:09:20] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:10:21 PM sent flask request to engine
+05/08/2017 04:10:21 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:10:21 PM ENodeB sent request to engine from server
+05/08/2017 04:10:21 PM compare between  requested json to expected json
+05/08/2017 04:10:21 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:10:21 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:10:21 PM 70.14.0.218 - - [08/May/2017 16:10:21] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:11:21 PM sent flask request to engine
+05/08/2017 04:11:21 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:11:21 PM ENodeB sent request to engine from server
+05/08/2017 04:11:21 PM compare between  requested json to expected json
+05/08/2017 04:11:21 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:11:21 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:11:21 PM 70.14.0.218 - - [08/May/2017 16:11:21] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:12:22 PM sent flask request to engine
+05/08/2017 04:12:22 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:12:22 PM ENodeB sent request to engine from server
+05/08/2017 04:12:22 PM compare between  requested json to expected json
+05/08/2017 04:12:22 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:12:22 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:12:22 PM 70.14.0.218 - - [08/May/2017 16:12:22] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:13:22 PM sent flask request to engine
+05/08/2017 04:13:22 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:13:22 PM ENodeB sent request to engine from server
+05/08/2017 04:13:22 PM compare between  requested json to expected json
+05/08/2017 04:13:22 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:13:22 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:13:22 PM 70.14.0.218 - - [08/May/2017 16:13:22] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:14:22 PM sent flask request to engine
+05/08/2017 04:14:22 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:14:22 PM ENodeB sent request to engine from server
+05/08/2017 04:14:22 PM compare between  requested json to expected json
+05/08/2017 04:14:22 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:14:22 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:14:22 PM 70.14.0.218 - - [08/May/2017 16:14:22] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:15:22 PM sent flask request to engine
+05/08/2017 04:15:22 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:15:22 PM ENodeB sent request to engine from server
+05/08/2017 04:15:22 PM compare between  requested json to expected json
+05/08/2017 04:15:22 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:15:22 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:15:22 PM 70.14.0.218 - - [08/May/2017 16:15:22] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:16:23 PM sent flask request to engine
+05/08/2017 04:16:23 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:16:23 PM ENodeB sent request to engine from server
+05/08/2017 04:16:23 PM compare between  requested json to expected json
+05/08/2017 04:16:23 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:16:23 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:16:23 PM 70.14.0.218 - - [08/May/2017 16:16:23] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:17:23 PM sent flask request to engine
+05/08/2017 04:17:23 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:17:23 PM ENodeB sent request to engine from server
+05/08/2017 04:17:23 PM compare between  requested json to expected json
+05/08/2017 04:17:23 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:17:23 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:17:23 PM 70.14.0.218 - - [08/May/2017 16:17:23] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:17:53 PM sent flask request to engine
+05/08/2017 04:17:53 PM request from eNodeB : OrderedDict([(u'relinquishmentRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450')])])])
+05/08/2017 04:17:53 PM ENodeB sent request to engine from server
+05/08/2017 04:17:53 PM response in flask An Error occurred while comparing between actual and expected request
+05/08/2017 04:17:53 PM 70.14.0.218 - - [08/May/2017 16:17:53] "POST /cbsd/relinquishment/ HTTP/1.1" 302 -
+05/08/2017 04:17:53 PM 70.14.0.218 - - [08/May/2017 16:17:53] "POST /shutdown?validationMessage=An+Error+occurred+while+comparing+between+actual+and+expected+request HTTP/1.0" 400 -
+05/08/2017 04:17:54 PM Session user will now close
+05/08/2017 04:17:54 PM Session user will now close
+05/08/2017 04:17:54 PM An Error occurred while comparing between actual and expected request
+05/08/2017 04:20:45 PM the selected test from the user is : exampleTest.csv
+05/08/2017 04:20:45 PM init the test definition by the test steps sent from the user
+05/08/2017 04:20:45 PM  * Running on http://70.14.0.72:5000/ (Press CTRL+C to quit)
+05/08/2017 04:21:29 PM sent flask request to engine
+05/08/2017 04:21:29 PM request from eNodeB : OrderedDict([(u'spectrumInquiryRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'palCredential', [u'type']), (u'inquiredSpectrum', [OrderedDict([(u'lowFrequency', 3550000000L), (u'highFrequency', 3600000000L)])])])])])
+05/08/2017 04:21:29 PM ENodeB sent request to engine from server
+05/08/2017 04:21:29 PM compare between  requested json to expected json
+05/08/2017 04:21:29 PM response in flask OrderedDict([(u'spectrumInquiryResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'availableChannel', [OrderedDict([(u'frequencyRange', OrderedDict([(u'lowFrequency', 3550000000L), (u'highFrequency', 3600000000L)])), (u'channelType', u'PAL'), (u'ruleApplied', u'FCC Part 96')])])])])])
+05/08/2017 04:21:29 PM 70.14.0.218 - - [08/May/2017 16:21:29] "POST /cbsd/spectrumInquiry/ HTTP/1.1" 200 -
+05/08/2017 04:21:29 PM sent flask request to engine
+05/08/2017 04:21:29 PM request from eNodeB : OrderedDict([(u'grantRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:21:29 PM ENodeB sent request to engine from server
+05/08/2017 04:21:29 PM compare between  requested json to expected json
+05/08/2017 04:21:29 PM response in flask OrderedDict([(u'grantResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'grantExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:21:29 PM 70.14.0.218 - - [08/May/2017 16:21:29] "POST /cbsd/grant/ HTTP/1.1" 200 -
+05/08/2017 04:21:29 PM sent flask request to engine
+05/08/2017 04:21:29 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Granted')])])])
+05/08/2017 04:21:29 PM ENodeB sent request to engine from server
+05/08/2017 04:21:29 PM compare between  requested json to expected json
+05/08/2017 04:21:29 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:21:29 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:21:29 PM 70.14.0.218 - - [08/May/2017 16:21:29] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:22:30 PM sent flask request to engine
+05/08/2017 04:22:30 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:22:30 PM ENodeB sent request to engine from server
+05/08/2017 04:22:30 PM compare between  requested json to expected json
+05/08/2017 04:22:30 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:22:30 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:22:30 PM 70.14.0.218 - - [08/May/2017 16:22:30] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:23:05 PM sent flask request to engine
+05/08/2017 04:23:05 PM request from eNodeB : OrderedDict([(u'relinquishmentRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450')])])])
+05/08/2017 04:23:05 PM ENodeB sent request to engine from server
+05/08/2017 04:23:05 PM compare between  requested json to expected json
+05/08/2017 04:23:05 PM arrived to nstep starting question answer session with the technician
+05/08/2017 04:23:05 PM response in flask OrderedDict([(u'relinquishmentResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450')])])])
+05/08/2017 04:23:05 PM 70.14.0.218 - - [08/May/2017 16:23:05] "POST /cbsd/relinquishment/ HTTP/1.1" 200 -
+05/08/2017 04:23:07 PM hey the question is : Did csbd UUT stop transmission immidietly after relinquishment response please choose one of the answers :
+05/08/2017 04:23:07 PM yes
+05/08/2017 04:23:07 PM no
+05/08/2017 04:23:15 PM hey the question is : Is cbsd UUT in idle state after relinquishment response please choose one of the answers :
+05/08/2017 04:23:15 PM yes
+05/08/2017 04:23:15 PM no
+05/08/2017 04:23:16 PM the additional comments for the current test are : 
+05/08/2017 04:23:18 PM selected answer from the user is : djdjd
+05/08/2017 04:23:18 PM The final result of the test is : True
+05/08/2017 04:23:18 PM the additional comments for the current test are : djdjd
+05/08/2017 04:23:18 PM The final result of the test is : [True, 'djdjd']
+05/08/2017 04:23:27 PM the selected test from the user is : exampleTest.csv
+05/08/2017 04:23:27 PM init the test definition by the test steps sent from the user
+05/08/2017 04:23:27 PM  * Running on http://70.14.0.72:5000/ (Press CTRL+C to quit)
+05/08/2017 04:23:49 PM sent flask request to engine
+05/08/2017 04:23:49 PM request from eNodeB : OrderedDict([(u'spectrumInquiryRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'palCredential', [u'type']), (u'inquiredSpectrum', [OrderedDict([(u'lowFrequency', 3550000000L), (u'highFrequency', 3600000000L)])])])])])
+05/08/2017 04:23:49 PM ENodeB sent request to engine from server
+05/08/2017 04:23:49 PM compare between  requested json to expected json
+05/08/2017 04:23:49 PM response in flask OrderedDict([(u'spectrumInquiryResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'availableChannel', [OrderedDict([(u'frequencyRange', OrderedDict([(u'lowFrequency', 3550000000L), (u'highFrequency', 3600000000L)])), (u'channelType', u'PAL'), (u'ruleApplied', u'FCC Part 96')])])])])])
+05/08/2017 04:23:49 PM 70.14.0.218 - - [08/May/2017 16:23:49] "POST /cbsd/spectrumInquiry/ HTTP/1.1" 200 -
+05/08/2017 04:23:49 PM sent flask request to engine
+05/08/2017 04:23:49 PM request from eNodeB : OrderedDict([(u'grantRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:23:49 PM ENodeB sent request to engine from server
+05/08/2017 04:23:49 PM compare between  requested json to expected json
+05/08/2017 04:23:49 PM response in flask OrderedDict([(u'grantResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'grantExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:23:49 PM 70.14.0.218 - - [08/May/2017 16:23:49] "POST /cbsd/grant/ HTTP/1.1" 200 -
+05/08/2017 04:23:49 PM sent flask request to engine
+05/08/2017 04:23:49 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Granted')])])])
+05/08/2017 04:23:49 PM ENodeB sent request to engine from server
+05/08/2017 04:23:49 PM compare between  requested json to expected json
+05/08/2017 04:23:49 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:23:49 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:23:49 PM 70.14.0.218 - - [08/May/2017 16:23:49] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:24:49 PM sent flask request to engine
+05/08/2017 04:24:49 PM request from eNodeB : OrderedDict([(u'heartbeatRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450'), (u'grantRenew', False), (u'operationState', u'Transmission'), (u'sensingCapability', [u'type']), (u'operationParam', OrderedDict([(u'peakPower', 2986.9897000433602), (u'operationFrequencyRange', OrderedDict([(u'lowFrequency', 3560000000L), (u'highFrequency', 3580000000L)]))]))])])])
+05/08/2017 04:24:49 PM ENodeB sent request to engine from server
+05/08/2017 04:24:49 PM compare between  requested json to expected json
+05/08/2017 04:24:49 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 04:24:49 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 04:24:49 PM 70.14.0.218 - - [08/May/2017 16:24:49] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 04:25:10 PM sent flask request to engine
+05/08/2017 04:25:10 PM request from eNodeB : OrderedDict([(u'relinquishmentRequest', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'grantId', u'8385094448610395450')])])])
+05/08/2017 04:25:10 PM ENodeB sent request to engine from server
+05/08/2017 04:25:10 PM compare between  requested json to expected json
+05/08/2017 04:25:10 PM arrived to nstep starting question answer session with the technician
+05/08/2017 04:25:10 PM response in flask OrderedDict([(u'relinquishmentResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450')])])])
+05/08/2017 04:25:10 PM 70.14.0.218 - - [08/May/2017 16:25:10] "POST /cbsd/relinquishment/ HTTP/1.1" 200 -
+05/08/2017 04:25:11 PM hey the question is : Did csbd UUT stop transmission immidietly after relinquishment response please choose one of the answers :
+05/08/2017 04:25:11 PM yes
+05/08/2017 04:25:11 PM no
+05/08/2017 04:25:33 PM hey the question is : Is cbsd UUT in idle state after relinquishment response please choose one of the answers :
+05/08/2017 04:25:33 PM yes
+05/08/2017 04:25:33 PM no
+05/08/2017 04:25:34 PM the additional comments for the current test are : 
+05/08/2017 04:25:35 PM selected answer from the user is : ss
+05/08/2017 04:25:35 PM The final result of the test is : False
+05/08/2017 04:25:35 PM the additional comments for the current test are : ss
+05/08/2017 04:25:35 PM The final result of the test is : [False, 'ss']
+05/08/2017 04:25:38 PM the selected test from the user is : quit

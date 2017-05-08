@@ -1,0 +1,24 @@
+05/08/2017 12:58:21 PM Start of the test
+05/08/2017 12:58:23 PM the selecte test from the user is : exampleTestWithRegistration.csv
+05/08/2017 12:58:23 PM init the test definition by the test steps sent from the user
+05/08/2017 12:58:23 PM  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+05/08/2017 12:58:30 PM sent flask request to engine
+05/08/2017 12:58:30 PM ENodeB sent request to engine from server
+05/08/2017 12:58:30 PM compare between  requested json to expected json
+05/08/2017 12:58:30 PM response in flask OrderedDict([(u'registrationResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)]))])])])
+05/08/2017 12:58:30 PM 127.0.0.1 - - [08/May/2017 12:58:30] "POST /cbsd/registration/ HTTP/1.1" 200 -
+05/08/2017 12:58:34 PM sent flask request to engine
+05/08/2017 12:58:34 PM ENodeB sent request to engine from server
+05/08/2017 12:58:34 PM compare between  requested json to expected json
+05/08/2017 12:58:34 PM return heart beat part of json from engine to the eNodeB
+05/08/2017 12:58:34 PM response in flask OrderedDict([(u'heartbeatResponse', [OrderedDict([(u'cbsdId', u'1234567890123456789cbsdSerialNumber123'), (u'error', OrderedDict([(u'errorCode', 0)])), (u'grantId', u'8385094448610395450'), (u'operationStatusReq', True), (u'transmitExpireTime', u'2017-05-28T23:20:08Z'), (u'heartbeatDuration', 60.0)])])])
+05/08/2017 12:58:34 PM 127.0.0.1 - - [08/May/2017 12:58:34] "POST /cbsd/heartbeat/ HTTP/1.1" 200 -
+05/08/2017 12:58:44 PM sent flask request to engine
+05/08/2017 12:58:44 PM ENodeB sent request to engine from server
+05/08/2017 12:58:44 PM compare between  requested json to expected json
+05/08/2017 12:58:44 PM response in flask An Error occurred while comparing between actual and expected request
+05/08/2017 12:58:44 PM 127.0.0.1 - - [08/May/2017 12:58:44] "POST /cbsd/heartbeat/ HTTP/1.1" 302 -
+05/08/2017 12:58:44 PM 127.0.0.1 - - [08/May/2017 12:58:44] "GET /shutdown?validationMessage=An+Error+occurred+while+comparing+between+actual+and+expected+request HTTP/1.1" 400 -
+05/08/2017 12:58:44 PM Session user will now close
+05/08/2017 12:58:45 PM Session user will now close
+05/08/2017 12:58:45 PM An Error occurred while comparing between actual and expected request
