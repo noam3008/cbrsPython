@@ -11,21 +11,22 @@ class QuestionHandler(object):
     '''
 
 
-    def __init__(self):
+    def __init__(self,loggerHandler):
         '''
         Constructor
         '''
+        self.loggerHandler = loggerHandler
         
     def ShowQuestionsAndGetAnswersFromClient(self,questionsAndAnswers):
         answers = []
         correctAnsweres = True
-        for questAnswer in questionsAndAnswers:          
-            print ("the question is : " + questAnswer[consts.QUESTION_NODE] + consts.CHOOSE_ONE_OF_THE_ANSWERS_MESSAGE)
+        for questAnswer in questionsAndAnswers:   
+            self.loggerHandler.print_And_Log_To_File(self.loggerHandler.currentLoggerName,"the question is : " + questAnswer[consts.QUESTION_NODE] + consts.CHOOSE_ONE_OF_THE_ANSWERS_MESSAGE)
             for answer in questAnswer[consts.ANSWERS_NODE]:
                 print (answer) 
             
             inputAnswer = raw_input()
-            logging.info("for the question : " + questAnswer[consts.QUESTION_NODE] + " the user choose " + str(inputAnswer))
+            self.loggerHandler.print_And_Log_To_File(self.loggerHandler.currentLoggerName,"for the question : " + questAnswer[consts.QUESTION_NODE] + " the user choose " + str(inputAnswer))
             if not inputAnswer == questAnswer[consts.EXPECT_ANSWER_NODE]:
                 correctAnsweres = False
             

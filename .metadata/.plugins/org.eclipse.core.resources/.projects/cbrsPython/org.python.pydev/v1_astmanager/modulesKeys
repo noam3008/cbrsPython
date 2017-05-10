@@ -1,6 +1,7 @@
 MODULES_MANAGER_V2
 controllers.CLIHandler|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIHandler.py
 controllers.CLIUtils.CsvFileParser|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\CsvFileParser.py
+controllers.CLIUtils.LoggerHandler|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\LoggerHandler.py
 controllers.CLIUtils.QuestionHandler|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\QuestionHandler.py
 controllers.CLIUtils.Step|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\Step.py
 controllers.CLIUtils.TestDefinition|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\TestDefinition.py

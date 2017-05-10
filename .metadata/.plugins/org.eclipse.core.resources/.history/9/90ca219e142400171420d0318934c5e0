@@ -1,4 +1,0 @@
-class Employee:
-    def __init__(self,firstName,lastName):
-        self.firstName = "noam"
-        self.lastName = "wil"

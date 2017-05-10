@@ -3,8 +3,8 @@ import model.Utils.Consts as consts
 
 class TestDefinition(object):
     
-    def __init__(self,steps):
-        logging.info(consts.INIT_TEST_DEFINITION)
+    def __init__(self,steps,loggerHandler):
+        loggerHandler.print_And_Log_To_File(loggerHandler.currentLoggerName,consts.INIT_TEST_DEFINITION)
         self.defenitionsOfSteps = []
         self.jsonNamesOfSteps = []
         for step in steps:    

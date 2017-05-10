@@ -15,12 +15,13 @@ class Assertion(object):
     '''
 
 
-    def __init__(self,confFile,dirPath):
+    def __init__(self,confFile,dirPath,loggerHandler):
         '''
         Constructor
         '''
         self.confFile = confFile
         self.dirPath  = dirPath
+        self.loggerHandler = loggerHandler
         
     def compare_Json_Req(self,httpRequest,jsonExpected,suffix):
         
@@ -35,8 +36,7 @@ class Assertion(object):
         else:
             x = JsonComparisonUtils.are_same(httpRequest[suffix],jsonExpectedObj)
         if(False in x):
-            print (x)
-            logging.info(x)
+            self.loggerHandler.print_And_Log_To_File(self.loggerHandler.currentLoggerName,x)
         assert True in x
                  
     

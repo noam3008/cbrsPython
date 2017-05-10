@@ -1,8 +1,0 @@
-
-import jsonInterpeter
-import pytest
-@pytest.fixture
-def app():
-    app = api_root()
-    return app
-app()

@@ -13,7 +13,7 @@ import model.Utils.Consts as consts
 
 class MyEngine(object):
 
-    def __init__(self,testDefinition,confFile,dirPath):
+    def __init__(self,testDefinition,confFile,dirPath,currentLogger):
         '''
         Will recieve the test structure (the list of the json file and the step defintions). 
         Will read all the json files and save it as some structure.
@@ -21,14 +21,14 @@ class MyEngine(object):
         self.numberOfStep                       = 0
         self.numberOfHearbeatRequests           = 0
         self.testDefinietion                    = testDefinition
-        self.assertion                          = Assertion(confFile,dirPath)
-        self.questionHandler                    = QuestionHandler()
         self.validationErrorAccuredInEngine     = False
         self.isNstep                            = False
         self.firstHeartbeatStep                 = True
         self.confFile                           = confFile
         self.dirPath                            = dirPath
         self.heartBeatLimitCounter              = confFile.getElementsByTagName("heartbeatLimit")[0].firstChild.data
+        self.currentLogger                      = currentLogger
+        self.assertion                          = Assertion(confFile,dirPath,currentLogger)
 
         
     def process_request(self,httpRequest,typeOfCalling):
@@ -42,6 +42,7 @@ class MyEngine(object):
             try:
                 if(self.firstHeartbeatStep):
                     self.compare_Json_Req(httpRequest,consts.HEART_BEAT_SUFFIX_HTTP+consts.SUFFIX_OF_JSON_FILE,typeOfCalling)
+                    self.numberOfStep+=1
                 else:
                     self.compare_Json_Req(httpRequest,consts.HEART_BEAT_SUFFIX_HTTP+consts.HEART_BEAT_REPEATS_SUFFIX+consts.SUFFIX_OF_JSON_FILE,typeOfCalling)
                 self.numberOfHearbeatRequests+=1
@@ -53,7 +54,6 @@ class MyEngine(object):
             return consts.HEART_BEAT_TIMEOUT_MESSAGE
         else:
             try:
-                print (typeOfCalling)
                 self.compare_Json_Req(httpRequest,self.get_Expected_Json_File_Name(),typeOfCalling)
             except Exception:
                 self.validationErrorAccuredInEngine = True  
@@ -72,19 +72,18 @@ class MyEngine(object):
           will return the response from the json file
         '''      
         if(typeOfCalling == "heartbeat"):
-            logging.info(consts.HEARTBEAT_FROM_ENGINE_TO_ENODEB_MESSAGE)
+            self.currentLogger.print_And_Log_To_File(self.currentLogger.currentLoggerName,consts.HEARTBEAT_FROM_ENGINE_TO_ENODEB_MESSAGE)
             if(self.firstHeartbeatStep):
                 self.firstHeartbeatStep = False
             return self.parse_Json_To_Dic_By_File_Name(consts.HEART_BEAT_SUFFIX_HTTP + consts.SUFFIX_OF_JSON_FILE, consts.RESPONSE_NODE_NAME,self.confFile)
         
         jsonAfterParse = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.RESPONSE_NODE_NAME,self.confFile)
         if(self.testDefinietion.defenitionsOfSteps[self.numberOfStep] == consts.LAST_STEP_TYPE):
-            logging.info(consts.NSTEP_SESSION_WITH_TECHNITIAN)
+            self.currentLogger.print_And_Log_To_File(self.currentLogger.currentLoggerName,consts.NSTEP_SESSION_WITH_TECHNITIAN)
             self.questAnswerPartOfJson = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.QUESTION_NODE_NAME,self.confFile)
             self.isNstep = True
         
         self.numberOfStep+=1
-        print "add number of step"
         return jsonAfterParse
     
     def parse_Json_To_Dic_By_File_Name(self,jsonFileName,nodeName,confFile):

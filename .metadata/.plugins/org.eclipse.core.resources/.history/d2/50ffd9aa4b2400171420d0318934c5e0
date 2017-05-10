@@ -1,7 +1,0 @@
-from elementtree import ElementTree
-
-tree = ET.parse("test.xml")
-doc = tree.getroot()
-thingy = doc.find('timeSeries')
-
-print thingy.attrib

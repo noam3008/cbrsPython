@@ -1,6 +1,0 @@
-import xml.etree.ElementTree as ET
-tree = ET.parse("confOfResp.xml")
-doc = tree.getroot()
-thingy = doc.find('timeSeries')
-
-print thingy.attrib

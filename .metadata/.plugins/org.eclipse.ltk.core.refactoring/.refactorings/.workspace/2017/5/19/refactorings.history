@@ -1,4 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;cbrsPython/model/Utils/__init__.py&apos;" deleteContents="false" description="Delete resource &apos;cbrsPython/model/Utils/__init__.py&apos;" element1="/cbrsPython/model/Utils/__init__.py" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1494162550925"/>
+<session version="1.0">&#x0A;<refactoring comment="Delete resource &apos;cbrsPython/model/Utils/__init__.py&apos;" deleteContents="false" description="Delete resource &apos;cbrsPython/model/Utils/__init__.py&apos;" element1="/cbrsPython/model/Utils/__init__.py" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1494162550925"/>&#x0A;<refactoring comment="Delete resource &apos;cbrsPython/controllers/CLIUtils/LoggerHandler.py&apos;" deleteContents="false" description="Delete resource &apos;cbrsPython/controllers/CLIUtils/LoggerHandler.py&apos;" element1="/cbrsPython/controllers/CLIUtils/LoggerHandler.py" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1494331448460"/>
 </session>

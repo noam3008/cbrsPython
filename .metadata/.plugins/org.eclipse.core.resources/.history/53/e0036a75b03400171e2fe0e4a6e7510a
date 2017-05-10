@@ -1,0 +1,12 @@
+'''
+Created on May 9, 2017
+
+@author: iagmon
+'''
+import logging
+class LoggerHandler(object):
+
+    def __init__(self):
+    
+    def blala(self):
+        print "s"

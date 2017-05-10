@@ -1,3 +1,0 @@
-@pytest.setup()
-def sayHello():
-    print("Ddd")

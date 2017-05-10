@@ -1,8 +1,0 @@
-import urllib2
-internet_on()
-def internet_on():
-    try:
-        urllib2.urlopen('http://10.3.35.58', timeout=1)
-        print True
-    except urllib2.URLError as err: 
-        print "false"

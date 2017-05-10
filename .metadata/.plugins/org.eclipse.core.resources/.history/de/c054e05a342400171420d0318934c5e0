@@ -1,3 +1,0 @@
-import pytest
-def f():
-    print ("Ddd")

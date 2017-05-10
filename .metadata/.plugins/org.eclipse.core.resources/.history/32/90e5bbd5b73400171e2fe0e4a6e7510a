@@ -1,0 +1,36 @@
+import logging
+import sys
+import os.path
+from datetime import datetime
+from fileinput import filename
+from controllers.CLIUtils.LoggerHandler import LoggerHandler
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+import model.Utils.Consts as consts
+from xml.dom import minidom
+from controllers.CLIHandler import CLIHandler
+from controllers.ENodeBController import ENodeBController
+from model import flaskServer
+from pathlib import Path
+
+current_path = os.path.dirname(os.path.realpath(__file__))
+dir_path = Path(__file__).parents[2]
+loggerHandler = LoggerHandler(dir_path)
+loggerHandler.setup_logger(1)
+'''loggerHandler.setup_logger(1, str(dir_path) +'\logs\session_' + str(datetime.now().strftime("%Y_%m_%d_%H_%M_%S")) +'.log')'''
+currentLogger = loggerHandler.get_Logger_By_Test_Number(1)
+confFile= minidom.parse(current_path +"\conf.xml")
+loggerHandler.print_And_Log_To_File(currentLogger.name, consts.SET_CSV_FILE_MESSAGE)
+loggerHandler.print_And_Log_To_File(currentLogger.name, consts.START_TEST_MESSAGE)
+inputAnswer=raw_input()  
+if(inputAnswer!="quit"):
+    loggerHandler.print_And_Log_To_File("the selected test from the user is : " + inputAnswer)
+    cliHandler = CLIHandler(inputAnswer,confFile,dir_path) 
+    flaskServer.enodeBController = ENodeBController(cliHandler.engine)
+    flaskServer.runFlaskServer(confFile.getElementsByTagName("hostIp")[0].firstChild.data)
+    if(cliHandler.engine.validationErrorAccuredInEngine):
+        cliHandler.stop_Thread_Due_To_Exception()
+
+
+    
+''' exampleTest.csv'''
+'''exampleTestWithRegistration.csv'''
