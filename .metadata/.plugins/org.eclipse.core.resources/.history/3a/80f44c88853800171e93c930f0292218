@@ -1,0 +1,42 @@
+'''
+Created on Apr 26, 2017
+
+@author: iagmon
+'''
+import model.Utils.Consts as consts
+import logging
+class QuestionHandler(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self,loggerHandler):
+        '''
+        Constructor
+        '''
+        self.loggerHandler = loggerHandler
+        
+    def ShowQuestionsAndGetAnswersFromClient(self,questionsAndAnswers):
+        answers = []
+        correctAnsweres = True
+        for questAnswer in questionsAndAnswers:   
+            self.loggerHandler.print_And_Log_To_File("the question is : " + questAnswer[consts.QUESTION_NODE] + consts.CHOOSE_ONE_OF_THE_ANSWERS_MESSAGE,True)
+            for answer in questAnswer[consts.ANSWERS_NODE]:
+                print (answer) 
+            
+            inputAnswer = raw_input()
+            self.loggerHandler.print_And_Log_To_File("for the question : " + questAnswer[consts.QUESTION_NODE] + " , the user choose " + str(inputAnswer),True)
+            if not inputAnswer == questAnswer[consts.EXPECT_ANSWER_NODE]:
+                correctAnsweres = False
+            
+        print (consts.ADDITIONAL_COMMENTS_MESSAGE)
+        inputAnswer = raw_input()
+        
+        if(correctAnsweres):
+            answers.append("PASS")
+        else:
+            answers.append("FAIL")
+        answers.append(inputAnswer) 
+        return answers
+            

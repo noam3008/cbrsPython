@@ -12,14 +12,14 @@ enodeBController = ENodeBController(None)
 def sent_Flask_Req_To_Server(typeOfCalling):
     logger = enodeBController.engine.currentLogger
     json_dict = json.loads(request.data,object_pairs_hook=OrderedDict)
-    logger.print_And_Log_To_File(logger.currentLoggerName, "request from eNodeB : " + str(json_dict))
+    logger.print_And_Log_To_File(json.dumps(json_dict, indent=4, sort_keys=True),False)
+    logger.print_To_Terminal("CBSD sent " + str(typeOfCalling) +" " + consts.REQUEST_NODE_NAME)
     while (len(enodeBController.engine.testDefinietion.jsonNamesOfSteps)> enodeBController.engine.numberOfStep):
         response = enodeBController.linker_Between_Flask_To_Engine(json_dict,typeOfCalling)
-        logger.print_And_Log_To_File(logger.currentLoggerName,"response from engine to eNodeB " + str(response))
-        if(consts.ERROR_VALIDATION_MESSAGE in str(response)):     
-            return redirectShutDownDueToAnValidationError()
-        if(consts.HEART_BEAT_TIMEOUT_MESSAGE in str(response)):
-            return redirectShutDownDueToHeartbeatsTimeOut()
+        logger.print_And_Log_To_File("response from engine to CBSD " + json.dumps(response, indent=4, sort_keys=True),False)
+        if("ERROR" in str(response)):
+            return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=str(response)))           
+        logger.print_To_Terminal("engine sent " + str(typeOfCalling) + " " +consts.RESPONSE_NODE_NAME)
         return jsonify(response)
     return redirectShutDownDueToFinishOfTest()
         
@@ -29,23 +29,13 @@ def shutdown():
     app.app_context()
     func = request.environ.get(consts.NAME_OF_SERVER_WERKZUG)
     func()
-    if(consts.ERROR_VALIDATION_MESSAGE in str(request.args['validationMessage'])):
-        abort(400, consts.ERROR_VALIDATION_MESSAGE)
-        logger.print_And_Log_To_File(logger.currentLoggerName,"the server shot down due to " + consts.ERROR_VALIDATION_MESSAGE)
-    if(consts.HEART_BEAT_TIMEOUT_MESSAGE in str(request.args['validationMessage'])):
-        abort(400, consts.HEART_BEAT_TIMEOUT_MESSAGE)
-        logger.print_And_Log_To_File(logger.currentLoggerName,"the server shot down due to " + consts.HEART_BEAT_TIMEOUT_MESSAGE)      
+    if("ERROR" in str(request.args['validationMessage'])):
+        abort(400, str(request.args['validationMessage']))
+        logger.print_And_Log_To_File("the server shot down due to " + str(request.args['validationMessage']))   
     return consts.SERVER_SHUT_DOWN_MESSAGE + consts.TEST_HAD_BEEN_FINISHED_FLASK
 
 def redirectShutDownDueToFinishOfTest():
         return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=consts.TEST_HAD_BEEN_FINISHED_FLASK))
-    
-    
-def redirectShutDownDueToAnValidationError():
-    return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=consts.ERROR_VALIDATION_MESSAGE))
-
-def redirectShutDownDueToHeartbeatsTimeOut():
-    return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=consts.HEART_BEAT_TIMEOUT_MESSAGE))
 
 
 def runFlaskServer(host):

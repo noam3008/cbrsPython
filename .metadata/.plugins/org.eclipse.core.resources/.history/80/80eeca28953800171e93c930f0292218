@@ -1,0 +1,120 @@
+'''
+Created on Apr 20, 2017
+
+@author: iagmon
+'''
+
+from model.Utils.Assert import Assertion 
+import model.Utils.JsonComparisonUtils as jsonComparer
+from controllers.CLIUtils.QuestionHandler import QuestionHandler
+import logging
+import model.Utils.Consts as consts
+from timeit import default_timer
+import datetime as DT
+
+
+class MyEngine(object):
+
+    def __init__(self,testDefinition,confFile,dirPath,currentLogger):
+        '''
+        Will recieve the test structure (the list of the json file and the step defintions). 
+        Will read all the json files and save it as some structure.
+        '''
+        self.numberOfStep                       = 0
+        self.numberOfHearbeatRequests           = 0
+        self.testDefinietion                    = testDefinition
+        self.validationErrorAccuredInEngine     = False
+        self.isLastStepInCSV                    = False
+        self.confFile                           = confFile
+        self.dirPath                            = dirPath
+        self.heartBeatLimitCounter              = confFile.getElementsByTagName("heartbeatLimit")[0].firstChild.data
+        self.currentLogger                      = currentLogger
+        self.assertion                          = Assertion(confFile,dirPath,currentLogger)
+        self.repeatesAloowed                    = False
+        self.repeatsType                        = None
+        self.oldHttpReq                         = None
+        self.currentHeartBeatDuration           = 0
+        self.lastHeartBeatTime                  = None
+
+    def process_request(self,httpRequest,typeOfCalling):
+                    
+        if(self.repeatsType == typeOfCalling and self.repeatesAloowed == True and self.oldHttpReq == httpRequest):
+            if(typeOfCalling == consts.HEART_BEAT_SUFFIX_HTTP):
+                if(int(self.numberOfHearbeatRequests)<int(self.heartBeatLimitCounter)):
+                    self.numberOfHearbeatRequests+=1
+                    if(not self.is_Valid_Heart_Beat_Time()):
+                        return consts.HEART_BEAT_TIMEOUT_MESSAGE                      
+                else:
+                    return consts.HEART_BEAT_TIMEOUT_MESSAGE
+            self.numberOfStep-=1       
+        
+        elif(self.Is_Repeats_Available(self.get_Expected_Json_File_Name())):                  
+            if(typeOfCalling == consts.SPECTRUM_INQUIERY_SUFFIX_HTTP): 
+                if(self.Is_Repeats_Available(self.get_Expected_Json_File_Name())):
+                    self.Initialize_Repeats_Type_Allowed(consts.SPECTRUM_INQUIERY_SUFFIX_HTTP,httpRequest, typeOfCalling)
+            elif(typeOfCalling == consts.HEART_BEAT_SUFFIX_HTTP):#need to verify that the request before was grant#
+                if(self.assertion.is_Json_Contains_Key(self.get_Expected_Json_File_Name(self.numberOfStep-1), "grantResponse")):  
+                    durationTime = self.assertion.get_Attribute_Value_From_Json(self.get_Expected_Json_File_Name(self.numberOfStep-1),["grantResponse"]["heartbeatDuration"])  
+                    print durationTime                   
+                    if(self.Is_Repeats_Available(self.get_Expected_Json_File_Name())):
+                        self.Initialize_Repeats_Type_Allowed(consts.HEART_BEAT_SUFFIX_HTTP,httpRequest, typeOfCalling)
+                        self.numberOfHearbeatRequests+=1 
+                        self.lastHeartBeatTime = DT.datetime.now()        
+        else:
+            self.repeatesAloowed = False
+            self.repeatsType = None              
+        try:
+            self.compare_Json_Req(httpRequest,self.get_Expected_Json_File_Name(),typeOfCalling)  
+            self.numberOfHearbeatRequests=0        
+        except Exception:
+            self.validationErrorAccuredInEngine = True  
+            return consts.ERROR_VALIDATION_MESSAGE
+        self.oldHttpReq = httpRequest
+        return self.process_response(typeOfCalling)
+     
+    def process_response(self,typeOfCalling):            
+        
+        jsonAfterParse = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.RESPONSE_NODE_NAME,self.confFile)
+        if(len(self.testDefinietion.jsonNamesOfSteps) == self.numberOfStep+1):
+            self.currentLogger.print_And_Log_To_File(consts.NSTEP_SESSION_WITH_TECHNITIAN,True)
+            self.questAnswerPartOfJson = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.QUESTION_NODE_NAME,self.confFile)
+            self.isLastStepInCSV = True
+    
+        self.numberOfStep+=1
+        return jsonAfterParse
+    
+    def Is_Repeats_Available(self,expectedJsonName):
+        return self.assertion.is__Request_Includes_Repeates(expectedJsonName)
+
+    def compare_Json_Req(self,httpRequest,expectedJsonFileName,typeOfCalling):
+        self.assertion.compare_Json_Req(httpRequest,expectedJsonFileName,typeOfCalling+consts.REQUEST_NODE_NAME)
+    
+    def parse_Json_To_Dic_By_File_Name(self,jsonFileName,nodeName,confFile):
+        return jsonComparer.parse_Json_To_Dic(jsonFileName,nodeName,confFile,self.dirPath)
+    
+    def get_Expected_Json_File_Name(self,numberOfStep = None):
+        if(numberOfStep == None):
+            numberOfStep = self.numberOfStep
+        print numberOfStep
+        return self.testDefinietion.jsonNamesOfSteps[numberOfStep]
+    
+    def get_Question_Answer_Part(self):
+        return self.questAnswerPartOfJson
+    
+    def Initialize_Repeats_Type_Allowed(self,repeatType, httpRequest, typeOfCalling):
+        self.repeatsType = repeatType
+        self.repeatesAloowed = True
+        
+    def is_Valid_Heart_Beat_Time(self):
+        jsonToCheckHeartBeatTime = self.get_Expected_Json_File_Name(self.numberOfStep-1)
+        print str(jsonToCheckHeartBeatTime)
+        currentTime = DT.datetime.now()
+        timeBetween = (currentTime-self.lastHeartBeatTime).total_seconds()
+        if(timeBetween>float(self.validDurationTime)):
+            return False           
+        return True
+    
+
+    
+    
+    

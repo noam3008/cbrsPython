@@ -21,19 +21,22 @@ class QuestionHandler(object):
         answers = []
         correctAnsweres = True
         for questAnswer in questionsAndAnswers:   
-            self.loggerHandler.print_And_Log_To_File(self.loggerHandler.currentLoggerName,"the question is : " + questAnswer[consts.QUESTION_NODE] + consts.CHOOSE_ONE_OF_THE_ANSWERS_MESSAGE)
-            for answer in questAnswer[consts.ANSWERS_NODE]:
-                print (answer) 
+            self.loggerHandler.print_And_Log_To_File("the question is : " + questAnswer[consts.QUESTION_NODE] + consts.CHOOSE_ONE_OF_THE_ANSWERS_MESSAGE,True)
+            for answer in questAnswer[consts.ANSWERS_NODE]:            
+                self.loggerHandler.print_To_Terminal(answer) 
             
             inputAnswer = raw_input()
-            self.loggerHandler.print_And_Log_To_File(self.loggerHandler.currentLoggerName,"for the question : " + questAnswer[consts.QUESTION_NODE] + " the user choose " + str(inputAnswer))
+            self.loggerHandler.print_And_Log_To_File("for the question : " + questAnswer[consts.QUESTION_NODE] + " , the user choose " + str(inputAnswer),True)
             if not inputAnswer == questAnswer[consts.EXPECT_ANSWER_NODE]:
                 correctAnsweres = False
             
-        print (consts.ADDITIONAL_COMMENTS_MESSAGE)
+        self.loggerHandler.print_To_Terminal(consts.ADDITIONAL_COMMENTS_MESSAGE)
         inputAnswer = raw_input()
-            
-        answers.append(correctAnsweres)
+        
+        if(correctAnsweres):
+            answers.append(consts.PASS_MESSAGE)
+        else:
+            answers.append(consts.FAIL_MESSAGE)
         answers.append(inputAnswer) 
         return answers
             

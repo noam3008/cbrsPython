@@ -1,6 +1,7 @@
 {
     "name":"Spectrum_Inquiry_10_3_4_2_5_3",  
     "questions": {},
+	"repeatsAllowed":"True",
     "spectrumInquiryRequest": 
 				[
 				{ 

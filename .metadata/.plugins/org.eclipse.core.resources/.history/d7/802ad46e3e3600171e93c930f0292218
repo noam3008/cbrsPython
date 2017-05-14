@@ -1,0 +1,50 @@
+'''
+Created on May 9, 2017
+
+@author: iagmon
+'''
+import logging
+from datetime import datetime
+import os
+class LoggerHandler(object):
+
+    def __init__(self,dirPath):
+        self.dirPath = dirPath
+        self.currentLoggerName = None
+        
+        
+    def create_New_Logger(self,logger_name, folder_name= None):
+        if(logger_name == "entireCMDSessionLog"):
+            log_file =  '\Logs\CMDSessions\cmdSession_' + str(datetime.now().strftime("%Y_%m_%d_%H_%M_%S")) +'.log'
+        elif (folder_name!=None):
+            self.create_new_dir_and_log(folder_name)
+            newpath = str(self.dirPath)+ str(r'\\Logs\\' + folder_name)
+            if not os.path.exists(newpath):
+                os.makedirs(newpath)
+                log_file =  '\Logs\LogsPerTest\_'+logger_name+"_" + str(datetime.now().strftime("%Y_%m_%d_%H_%M_%S")) +'.log'            
+        else:
+            log_file =  '\Logs\LogsPerTest\_'+logger_name+"_" + str(datetime.now().strftime("%Y_%m_%d_%H_%M_%S")) +'.log'        
+        log_setup = logging.getLogger(logger_name)
+        formatter = logging.Formatter('%(levelname)s: %(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
+        fileHandler = logging.FileHandler(str(self.dirPath)+log_file, mode='a')
+        fileHandler.setFormatter(formatter)
+        log_setup.addHandler(fileHandler) 
+        log_setup.setLevel(logging.INFO)
+        self.currentLoggerName = log_setup.name
+
+    def print_And_Log_To_File(self,msg,printToTerminal, level="info"):       
+        log = logging.getLogger(self.currentLoggerName)
+        if level == 'info'    : log.info(msg) 
+        if level == 'warning' : log.warning(msg)
+        if level == 'error'   : log.error(msg)
+        if(printToTerminal):
+            self.print_To_Terminal(msg)
+    
+    def print_To_Terminal(self,msg):
+        log = logging.getLogger("entireCMDSessionLog")
+        log.info(msg)
+        print msg          
+        
+    def get_Logger_By_Test_Name(self,nameOfLogger):
+        log = logging.getLogger(nameOfLogger)
+        return log

@@ -1,6 +1,7 @@
-stepType,jsonFileName
-bstep,registration.json
-bstep,spectrumInquiry.json
-bstep,grantValidationFail.json
-bstep,heartbeat.json
-nstep,relinquishment.json
+jsonFileName
+registration.json
+spectrumInquiry.json
+grantValidationFail.json
+heartbeat.json
+heartbeatRepeats.json
+relinquishment.json

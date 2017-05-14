@@ -1,12 +1,13 @@
 {
     "name":"HeartBeat_1_2_3_4",  
+	"repeatsAllowed":"False",
 		"heartbeatRequest": 
 			[ 
 				{ 
 					"cbsdId": "1234567890123456789cbsdSerialNumber123",
 					"grantId": "8385094448610395450",
 					"grantRenew": false,
-					"operationState": "TEWRE" 
+					"operationState": "Granted" 
 					} 
 			],
 	"response":
