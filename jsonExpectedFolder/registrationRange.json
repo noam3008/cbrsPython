@@ -1,0 +1,36 @@
+{
+    "name":"Registration_1_2_3_4",  
+    "questions":
+				[
+                        {
+                            "question" : "Please check eNodeB something",
+                            "answers" : ["x happened", "y happened"], 
+							"expectedAnswer" : "x happened"
+                        },
+						{
+							"question" : "Please check eNodeB something - secondQuest",
+                            "answers" : ["x happened", "y happened"], 
+							"expectedAnswer" : "y happened"
+						}
+				],
+			"registrationRequest":
+        	[
+            	{
+				  "name" : "noam",
+				  "latitude": "${range:7000-8000}"
+				}
+			],
+			"response":{
+			"registrationResponse" : 
+				[
+					{
+					  "cbsdId": "1234567890123456789cbsdSerialNumber123",
+					  "error": {
+						 "errorCode": 0
+					  }
+					}
+				]  
+				}
+					
+  	
+}

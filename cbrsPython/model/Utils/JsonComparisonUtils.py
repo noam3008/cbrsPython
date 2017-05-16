@@ -73,6 +73,8 @@ def _is_dict_same(expected, actual, ignore_value_of_keys):
         if not key in ignore_value_of_keys:
             # have to change order
             #are_same_flag, stack = _are_same(actual[key], expected[key], ignore_value_of_keys)
+            
+            ### key part noam ###
             are_same_flag, stack = _are_same(expected[key], actual[key],ignore_value_of_keys)
             if not are_same_flag:
                 return False, \
@@ -120,6 +122,16 @@ def _are_same(expected, actual, ignore_value_of_keys, ignore_missing_keys=False)
 
     # Compare primitive types immediately
     if type(expected) in (int, str, bool, long, float, unicode):
+        if "$" in expected:
+            inRange = validate_Json_Value_Range_Regex_Property(expected,actual)
+            if(inRange == False):
+                 return False, \
+               Stack().append(
+                   StackItem('Not in range: the value : {0} , is not in the range expected : {1}'
+                                .format(actual, str(expected)[str(expected).find(":")+1: len(str(expected))-1]),
+                             expected,
+                             actual))           
+            return inRange,Stack()
         return expected == actual, Stack()
 
     # Ensure collections have the same length (if applicable)
@@ -176,9 +188,27 @@ def contains(expected_original, actual_original, ignore_list_order_recursively=F
 def json_are_same(a, b, ignore_list_order_recursively=False, ignore_value_of_keys=[]):
     return are_same(json.loads(a), json.loads(b), ignore_list_order_recursively, ignore_value_of_keys)
 
+
+def validate_Json_Value_Range_Regex_Property(expected,actual):
+    strExpected = str(expected)
+    strAcutal = str(actual)
+    if("range" in str(expected)):
+        indexOfPunctuation = strExpected.find(":")
+        indexOfMinusSign = strExpected.find("-")
+        lowestVal = strExpected[indexOfPunctuation+1:indexOfMinusSign]
+        heighestVal =  strExpected[indexOfMinusSign+1:len(strExpected)-1]
+        if int(lowestVal) <= int(strAcutal) and (int(heighestVal) >= int(strAcutal)):
+            return True   
+        return False
+            
+
 from collections import OrderedDict
 
 def Get_Json_After_Parse_To_Dic(jsonFileName, confFile, dirPath):
+    '''
+    the method get the jsonFileName the config file and the path leading to that file
+    perform a loading of the json in an order way to an dictionary    
+    '''
     filePath = str(dirPath) + confFile.getElementsByTagName("jsonsRepoPath")[0].firstChild.data
     myfile = open(filePath + str(jsonFileName))
     jsonAfterParse = json.load(myfile, object_pairs_hook=OrderedDict)
@@ -186,10 +216,14 @@ def Get_Json_After_Parse_To_Dic(jsonFileName, confFile, dirPath):
 
 def get_Node_Of_Json_Parsed(jsonFileName,nodeOfJsonRequest,confFile,dirPath):
     jsonAfterParse = Get_Json_After_Parse_To_Dic(jsonFileName, confFile, dirPath)
-    return jsonAfterParse[nodeOfJsonRequest]
+    if(Is_Json_contains_key(jsonFileName, nodeOfJsonRequest, confFile, dirPath,jsonAfterParse)):
+        return jsonAfterParse[nodeOfJsonRequest]
+    else:
+         raise IOError("ERROR - the node : " + str(nodeOfJsonRequest) +" not exists in the expected json file :" + str(jsonFileName))
         
-def Is_Json_contains_key(jsonFileName,nodeOfJsonRequest,confFile,dirPath):
-    jsonAfterParse = Get_Json_After_Parse_To_Dic(jsonFileName, confFile, dirPath)
+def Is_Json_contains_key(jsonFileName,nodeOfJsonRequest,confFile,dirPath,jsonAfterParse=None):
+    if(jsonAfterParse==None):
+        jsonAfterParse = Get_Json_After_Parse_To_Dic(jsonFileName, confFile, dirPath)
     if(nodeOfJsonRequest in jsonAfterParse):
         return True
     return False

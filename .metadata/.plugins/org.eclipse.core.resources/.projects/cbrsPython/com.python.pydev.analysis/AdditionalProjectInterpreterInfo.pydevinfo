@@ -4,20 +4,20 @@ C:\Users\iagmon\cbrsPython\.metadata\.plugins\org.eclipse.core.resources\.projec
 controllers.ENodeBController|1494250358496420000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\ENodeBController.py
 controllers.CLIUtils.LoggerHandler|1494753397843231000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\LoggerHandler.py
 controllers.CLIUtils.CsvFileParser|1494770067632413000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\CsvFileParser.py
-controllers.CLIUtils.QuestionHandler|1494766193483103000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\QuestionHandler.py
+controllers.CLIUtils.QuestionHandler|1494772531033311000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\QuestionHandler.py
 model.Utils.__init__|1494162572678941000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\__init__.py
-model.Utils.Consts|1494772102647809000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Consts.py
-controllers.CLIHandler|1494772113653439000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIHandler.py
+model.Utils.Consts|1494920031207619000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Consts.py
+controllers.CLIHandler|1494934952105046000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIHandler.py
 model.__init__|1493106828900703000|C:\Users\iagmon\cbrsPython\cbrsPython\model\__init__.py
-model.Utils.Assert|1494769279912358000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Assert.py
 controllers.CLIUtils.TestDefinition|1494769715515273000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\TestDefinition.py
-model.Engine|1494769279970361000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Engine.py
-model.Utils.JsonComparisonUtils|1494769279822353000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\JsonComparisonUtils.py
-controllers.StartOfProject|1494772121468886000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\StartOfProject.py
+model.Utils.Assert|1494918595156482000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Assert.py
+model.Engine|1494918419990463000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Engine.py
+controllers.StartOfProject|1494934810378940000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\StartOfProject.py
+model.Utils.JsonComparisonUtils|1494938047271079000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\JsonComparisonUtils.py
 controllers.__init__|1493106828437676000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\__init__.py
 controllers.CLIUtils.Step|1494433379772162000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\Step.py
 controllers.CLIUtils.__init__|1493295896041672000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\__init__.py
-model.flaskServer|1494766321532427000|C:\Users\iagmon\cbrsPython\cbrsPython\model\flaskServer.py
+model.flaskServer|1494925371229051000|C:\Users\iagmon\cbrsPython\cbrsPython\model\flaskServer.py
 -- END DISKCACHE
 -- START DICTIONARY
 39
@@ -40,12 +40,12 @@ model.flaskServer|1494766321532427000|C:\Users\iagmon\cbrsPython\cbrsPython\mode
 3=model.flaskServer
 35=Step.__init__
 38=MyEngine.Initialize_Repeats_Type_Allowed
-14=QuestionHandler
+15=QuestionHandler
 8=controllers.ENodeBController
 9=controllers.CLIUtils.LoggerHandler
 7=controllers.CLIUtils.CsvFileParser
 5=controllers.CLIHandler
-15=TestDefinition
+14=TestDefinition
 39=Stack.__init__
 30=LoggerHandler.__init__
 23=MyEngine
@@ -62,7 +62,7 @@ model.flaskServer|1494766321532427000|C:\Users\iagmon\cbrsPython\cbrsPython\mode
 28=Assertion.__init__
 -- END DICTIONARY
 -- START TREE 1
-111
+115
 __s|0|
 _ar|1|_are_same!10@
 _bo|1|_bottom_up_sort!10@
@@ -87,8 +87,9 @@ clo|1|CLOSE_USER_SESSION!19@
 cmd|0|
 col|0|
 com|1|COMPARING_JSONS_MESSAGE!19@
-con|2|contains!10@confFile!51@
+con|2|confFile!51@contains!10@
 csv|1|CsvFileParser!57@
+ctx|0|
 cur|1|current_path!51@
 dir|1|dir_path!51@
 dis|0|
@@ -102,6 +103,7 @@ eur|0|
 eve|0|
 exp|1|EXPECT_ANSWER_NODE!19@
 fac|0|
+fai|1|FAIL_MESSAGE!19@
 fil|0|
 for|0|
 gen|0|
@@ -138,12 +140,13 @@ out|0|
 p|0|
 p1|0|
 par|0|
+pas|1|PASS_MESSAGE!19@
 per|0|
 pri|0|
 pro|0|
 q|0|
 que|3|QUESTION_NODE!19@QuestionHandler!89@QUESTION_NODE_NAME!19@
-red|3|redirectShutDownDueToAnValidationError!26@redirectShutDownDueToFinishOfTest!26@redirectShutDownDueToHeartbeatsTimeOut!26@
+red|1|redirectShutDownDueToFinishOfTest!26@
 req|1|REQUEST_NODE_NAME!19@
 res|2|RESULTS_OF_TEST_MESSAGE!19@RESPONSE_NODE_NAME!19@
 ret|0|
@@ -156,13 +159,13 @@ sel|3|SELECT_TO_ADD_TEST_MESSAGE!19@SELECT_TO_ADD_FOLDER_MESSAGE!19@SELECTED_TES
 sen|2|SENT_FLASK_REQUEST!19@sent_Flask_Req_To_Server!26@
 ser|1|SERVER_SHUT_DOWN_MESSAGE!19@
 set|1|SET_CSV_FILE_MESSAGE!19@
-shu|2|shutdown!26@SHUTDOWN_FUNCTION_NAME!19@
+shu|2|SHUTDOWN_FUNCTION_NAME!19@shutdown!26@
 sid|0|
 sig|0|
 spe|1|SPECTRUM_INQUIERY_SUFFIX_HTTP!19@
 sta|3|START_TEST_MESSAGE!19@Stack!9@StackItem!9@
 ste|1|Step!97@
-suf|1|SUFFIX_OF_JSON_FILE!19@
+suf|2|SUFFIX_NOT_EXISTS_IN_EXPECTED_JSON_FILE!19@SUFFIX_OF_JSON_FILE!19@
 sup|0|
 t|0|
 t1|0|
@@ -173,12 +176,13 @@ thr|0|
 tre|0|
 url|0|
 use|0|
+val|1|validate_Json_Value_Range_Regex_Property!10@
 who|0|
 -- END TREE
 -- START TREE 2
 85
 __d|0|
-__i|11|__init__!14&90@__init__!15&106@__init__!16&10@__init__!17&10@__init__!18&74@__init__!19&34@__init__!20&42@__init__!21&66@__init__!22&98@__init__!23&82@__init__!24&58@
+__i|11|__init__!14&106@__init__!15&90@__init__!16&10@__init__!17&10@__init__!18&74@__init__!19&34@__init__!20&42@__init__!21&66@__init__!22&98@__init__!23&82@__init__!24&58@
 __m|0|
 __r|2|__repr__!16&10@__repr__!17&10@
 __s|2|__str__!16&10@__str__!17&10@
@@ -215,7 +219,7 @@ fin|0|
 fir|0|
 fla|0|
 for|0|
-get|5|get_Duration_Time_From_Grant_Json!19&34@get_Attribute_Value_From_Json!19&34@get_Expected_Json_File_Name!23&82@get_Question_Answer_Part!23&82@get_Logger_By_Test_Name!18&74@
+get|6|get_Element_From_Config_File!20&42@get_Duration_Time_From_Grant_Json!19&34@get_Attribute_Value_From_Json!19&34@get_Expected_Json_File_Name!23&82@get_Question_Answer_Part!23&82@get_Logger_By_Test_Name!18&74@
 gra|2|grantBeforeHeartBeat!27&83@grantBeforeHeartBeat!33&83@
 has|0|
 hea|1|heartBeatLimitCounter!27&83@
@@ -250,12 +254,12 @@ sel|0|
 sen|0|
 ser|1|server!25&43@
 set|0|
-sho|1|ShowQuestionsAndGetAnswersFromClient!14&90@
+sho|1|ShowQuestionsAndGetAnswersFromClient!15&90@
 sta|2|stack_items!39&11@start_another_test!20&42@
 sto|1|stop_Thread_Due_To_Exception!20&42@
 t1|0|
 tar|0|
-tes|2|testDefinition!25&43@testDefinietion!27&83@
+tes|3|testDefinition!25&43@testDefinietion!27&83@testName!25&43@
 thr|0|
 tim|0|
 typ|0|

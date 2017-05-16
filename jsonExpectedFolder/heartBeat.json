@@ -1,6 +1,6 @@
 {
     "name":"HeartBeat_1_2_3_4",  
-	"repeatsAllowed":"False",
+	"repeatsAllowed":"True",
 		"heartbeatRequest": 
 			[ 
 				{ 

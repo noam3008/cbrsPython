@@ -1,9 +1,0 @@
-INSTUPcontrollers.CLIUtils.QuestionHandler
-C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\QuestionHandler.py
-INFOS:&&1|1|2|0&&2|3|2|1&&3|4|2|5&&2|6|2|1
-controllers.CLIUtils.QuestionHandler=2
-ShowQuestionsAndGetAnswersFromClient=6
-__init__=3
-loggerHandler=4
-QuestionHandler=1
-QuestionHandler.__init__=5

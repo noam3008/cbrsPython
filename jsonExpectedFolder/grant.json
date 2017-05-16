@@ -1,5 +1,6 @@
 {
-    "name":"Grant_1_2_3_4",  
+    "name":"Grant_1_2_3_4",
+	"repeatsAllowed":"True",	
     "message":{
 	},
 		"grantRequest":
