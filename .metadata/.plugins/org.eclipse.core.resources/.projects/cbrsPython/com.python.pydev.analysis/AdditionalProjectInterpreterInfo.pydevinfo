@@ -1,26 +1,26 @@
 -- VERSION_4
 -- START DISKCACHE_2
 C:\Users\iagmon\cbrsPython\.metadata\.plugins\org.eclipse.core.resources\.projects\cbrsPython\com.python.pydev.analysis\v2_indexcache
-controllers.ENodeBController|1494250358496420000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\ENodeBController.py
 controllers.CLIUtils.LoggerHandler|1494753397843231000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\LoggerHandler.py
+controllers.ENodeBController|1495026407272091000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\ENodeBController.py
 controllers.CLIUtils.CsvFileParser|1494770067632413000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\CsvFileParser.py
 controllers.CLIUtils.QuestionHandler|1494772531033311000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\QuestionHandler.py
 model.Utils.__init__|1494162572678941000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\__init__.py
 model.Utils.Consts|1494920031207619000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Consts.py
-controllers.CLIHandler|1494934952105046000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIHandler.py
+controllers.CLIHandler|1495032670992566000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIHandler.py
 model.__init__|1493106828900703000|C:\Users\iagmon\cbrsPython\cbrsPython\model\__init__.py
 controllers.CLIUtils.TestDefinition|1494769715515273000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\TestDefinition.py
-model.Utils.Assert|1494918595156482000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Assert.py
-model.Engine|1494918419990463000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Engine.py
-controllers.StartOfProject|1494934810378940000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\StartOfProject.py
-model.Utils.JsonComparisonUtils|1494938047271079000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\JsonComparisonUtils.py
+model.Utils.Assert|1495026420734861000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Assert.py
+model.Engine|1495105281737947000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Engine.py
+model.Utils.JsonComparisonUtils|1495363250571635000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\JsonComparisonUtils.py
+controllers.StartOfProject|1495365200032005000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\StartOfProject.py
 controllers.__init__|1493106828437676000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\__init__.py
 controllers.CLIUtils.Step|1494433379772162000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\Step.py
 controllers.CLIUtils.__init__|1493295896041672000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\__init__.py
-model.flaskServer|1494925371229051000|C:\Users\iagmon\cbrsPython\cbrsPython\model\flaskServer.py
+model.flaskServer|1495364187880145000|C:\Users\iagmon\cbrsPython\cbrsPython\model\flaskServer.py
 -- END DISKCACHE
 -- START DICTIONARY
-39
+40
 25=CLIHandler.__init__
 11=controllers.CLIUtils.QuestionHandler
 2=model.Utils.Consts
@@ -28,25 +28,25 @@ model.flaskServer|1494925371229051000|C:\Users\iagmon\cbrsPython\cbrsPython\mode
 34=MyEngine.process_response
 4=model.Utils.Assert
 13=controllers.CLIUtils.TestDefinition
-22=Step
+21=Step
 24=CsvFileParser
 33=MyEngine.process_request
-37=QuestionHandler.__init__
+38=QuestionHandler.__init__
 10=model.Engine
 27=MyEngine.__init__
 31=LoggerHandler.remove_Test_File_Logger
-21=ENodeBController
+22=ENodeBController
 32=ENodeBController.__init__
 3=model.flaskServer
 35=Step.__init__
-38=MyEngine.Initialize_Repeats_Type_Allowed
-15=QuestionHandler
+39=MyEngine.Initialize_Repeats_Type_Allowed
+14=QuestionHandler
 8=controllers.ENodeBController
 9=controllers.CLIUtils.LoggerHandler
 7=controllers.CLIUtils.CsvFileParser
 5=controllers.CLIHandler
-14=TestDefinition
-39=Stack.__init__
+15=TestDefinition
+40=Stack.__init__
 30=LoggerHandler.__init__
 23=MyEngine
 19=Assertion
@@ -58,11 +58,12 @@ model.flaskServer|1494925371229051000|C:\Users\iagmon\cbrsPython\cbrsPython\mode
 1=model.Utils.JsonComparisonUtils
 6=controllers.StartOfProject
 12=controllers.CLIUtils.Step
+37=MyEngine.is_Valid_Heart_Beat_Time
 18=LoggerHandler
 28=Assertion.__init__
 -- END DICTIONARY
 -- START TREE 1
-115
+119
 __s|0|
 _ar|1|_are_same!10@
 _bo|1|_bottom_up_sort!10@
@@ -87,10 +88,11 @@ clo|1|CLOSE_USER_SESSION!19@
 cmd|0|
 col|0|
 com|1|COMPARING_JSONS_MESSAGE!19@
-con|2|confFile!51@contains!10@
+con|2|contains!10@confFile!51@
 csv|1|CsvFileParser!57@
 ctx|0|
 cur|1|current_path!51@
+dic|0|
 dir|1|dir_path!51@
 dis|0|
 doc|0|
@@ -136,14 +138,17 @@ noa|0|
 nst|1|NSTEP_SESSION_WITH_TECHNITIAN!19@
 num|0|
 obs|0|
+ord|1|ordered_dict_prepend!10@
 out|0|
 p|0|
 p1|0|
 par|0|
 pas|1|PASS_MESSAGE!19@
 per|0|
+pop|0|
 pri|0|
 pro|0|
+pus|0|
 q|0|
 que|3|QUESTION_NODE!19@QuestionHandler!89@QUESTION_NODE_NAME!19@
 red|1|redirectShutDownDueToFinishOfTest!26@
@@ -176,13 +181,13 @@ thr|0|
 tre|0|
 url|0|
 use|0|
-val|1|validate_Json_Value_Range_Regex_Property!10@
+val|1|validate_Json_Value_Special_Sign!10@
 who|0|
 -- END TREE
 -- START TREE 2
-85
+86
 __d|0|
-__i|11|__init__!14&106@__init__!15&90@__init__!16&10@__init__!17&10@__init__!18&74@__init__!19&34@__init__!20&42@__init__!21&66@__init__!22&98@__init__!23&82@__init__!24&58@
+__i|11|__init__!14&90@__init__!15&106@__init__!16&10@__init__!17&10@__init__!18&74@__init__!19&34@__init__!20&42@__init__!21&98@__init__!22&66@__init__!23&82@__init__!24&58@
 __m|0|
 __r|2|__repr__!16&10@__repr__!17&10@
 __s|2|__str__!16&10@__str__!17&10@
@@ -191,7 +196,7 @@ _ev|0|
 _st|1|_stop!25&43@
 _ty|0|
 act|1|actual!26&11@
-add|1|addLoggerFile!18&74@
+add|2|add_Json_Optional_Parameters!19&34@addLoggerFile!18&74@
 app|1|append!16&10@
 ask|0|
 ass|1|assertion!27&83@
@@ -230,14 +235,15 @@ is_|3|Is_Repeats_Available!23&82@is_Valid_Heart_Beat_Time!23&82@is_Json_Contains
 isl|2|isLastStepInCSV!27&83@isLastStepInCSV!34&83@
 isn|0|
 jso|2|jsonOfStep!35&99@jsonNamesOfSteps!36&107@
-las|2|lastHeartBeatTime!27&83@lastHeartBeatTime!33&83@
-lin|1|linker_Between_Flask_To_Engine!21&66@
-log|3|loggerHandler!37&91@loggerHandler!28&35@loggerHandler!25&43@
+las|3|lastHeartBeatTime!27&83@lastHeartBeatTime!33&83@lastHeartBeatTime!37&83@
+lin|1|linker_Between_Flask_To_Engine!22&66@
+log|3|loggerHandler!38&91@loggerHandler!25&43@loggerHandler!28&35@
 nam|0|
 num|4|numberOfHearbeatRequests!27&83@numberOfHearbeatRequests!33&83@numberOfLogger!25&43@numberOfStep!27&83@
 obs|0|
 old|2|oldHttpReq!27&83@oldHttpReq!33&83@
 on_|0|
+ord|0|
 p|0|
 par|1|parse_Json_To_Dic_By_File_Name!23&82@
 pri|2|print_And_Log_To_File!18&74@print_To_Terminal!18&74@
@@ -247,15 +253,15 @@ rai|0|
 rea|1|reason!26&11@
 reg|0|
 rem|1|remove_Test_File_Logger!18&74@
-rep|6|repeatesAllowed!27&83@repeatesAllowed!33&83@repeatesAllowed!38&83@repeatsType!27&83@repeatsType!33&83@repeatsType!38&83@
+rep|6|repeatesAllowed!27&83@repeatesAllowed!33&83@repeatesAllowed!39&83@repeatsType!27&83@repeatsType!33&83@repeatsType!39&83@
 res|0|
 run|1|run!20&42@
 sel|0|
 sen|0|
 ser|1|server!25&43@
 set|0|
-sho|1|ShowQuestionsAndGetAnswersFromClient!15&90@
-sta|2|stack_items!39&11@start_another_test!20&42@
+sho|1|ShowQuestionsAndGetAnswersFromClient!14&90@
+sta|2|stack_items!40&11@start_another_test!20&42@
 sto|1|stop_Thread_Due_To_Exception!20&42@
 t1|0|
 tar|0|

@@ -3,8 +3,6 @@ Created on Apr 24, 2017
 
 @author: iagmon
 '''
-import logging
-import model.Utils.Consts as consts
 from threading import Thread
 
 

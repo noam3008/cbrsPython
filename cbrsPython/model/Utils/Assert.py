@@ -3,13 +3,8 @@ Created on Apr 20, 2017
 
 @author: iagmon
 '''
-import sys
-import logging
-
 from model.Utils import JsonComparisonUtils
 from model.Utils import Consts as consts
-from xml.dom import minidom
-import json
 class Assertion(object):
     '''
     classdocs
@@ -32,6 +27,7 @@ class Assertion(object):
         '''
         try:
             jsonExpectedObj = JsonComparisonUtils.get_Node_Of_Json_Parsed(jsonExpected,suffix,self.confFile,self.dirPath)
+            jsonExpectedObj = self.add_Json_Optional_Parameters(jsonExpectedObj,httpRequest,suffix)
         except Exception as e:
             raise IOError(e.message)
         x = JsonComparisonUtils.are_same(jsonExpectedObj,httpRequest[suffix])
@@ -63,10 +59,23 @@ class Assertion(object):
                 return consts.SUFFIX_NOT_EXISTS_IN_EXPECTED_JSON_FILE
         return responsePart[consts.GRANT_SUFFIX_HTTP+consts.RESPONSE_NODE_NAME.title()][0]['heartbeatDuration']
     
-
-    
-        
-        
+    def add_Json_Optional_Parameters(self,expected,httpRequest,suffix):
+        '''
+        the method get the optional parameter of the suffix type json and check if it requested from the CBSD if it is it add them to the expected json 
+        '''
+        httpRequest = httpRequest[suffix][0]
+        if(consts.REQUEST_NODE_NAME in str(suffix)):
+            suffix = str(suffix).replace(consts.REQUEST_NODE_NAME, "")
+        try:
+            optional = JsonComparisonUtils.get_Node_Of_Json_Parsed(suffix+"Optional"+consts.SUFFIX_OF_JSON_FILE,suffix+"OptionalParams",self.confFile,self.dirPath)[0]
+        except :
+            raise IOError(suffix + " do not have optional params json")   
+        ### check if the key is optional means its not in the expected json but it is in the requests and its allowed in the protocol      
+        for key, value in optional.iteritems() :
+            if key not in expected[0]:
+                if key in httpRequest:
+                    JsonComparisonUtils.ordered_dict_prepend(expected[0], key, value)                    
+        return expected
         
         
         

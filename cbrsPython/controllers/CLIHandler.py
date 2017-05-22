@@ -9,7 +9,6 @@ from CLIUtils.CsvFileParser import CsvFileParser
 from CLIUtils.QuestionHandler import QuestionHandler
 from CLIUtils.TestDefinition import TestDefinition
 from model.Engine import MyEngine
-import logging
 import time
 import model.Utils.Consts as consts
 from model import flaskServer
@@ -89,9 +88,11 @@ class CLIHandler(Thread):
             cliHandler = CLIHandler(inputAnsweres,self.confFile,self.dirPath,self.loggerHandler,testDefenition) 
             flaskServer.enodeBController = ENodeBController(cliHandler.engine)
             ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
+            ctx.verify_mode = ssl.CERT_REQUIRED
+            ctx.load_verify_locations(str(self.dir_path) + cliHandler.get_Element_From_Config_File("caCerts"))
             ctx.load_cert_chain(str(self.dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(self.dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))
             flaskServer.runFlaskServer(self.get_Element_From_Config_File("hostIp"),self.get_Element_From_Config_File("port"),ctx) 
-               
+            
         if(cliHandler.engine.validationErrorAccuredInEngine):
             cliHandler.stop_Thread_Due_To_Exception()
 

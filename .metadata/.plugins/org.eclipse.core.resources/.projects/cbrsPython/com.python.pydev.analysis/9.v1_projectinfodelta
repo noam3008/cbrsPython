@@ -1,0 +1,8 @@
+INSTUPcontrollers.CLIUtils.TestDefinition
+C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\TestDefinition.py
+INFOS:&&1|1|2|0&&2|3|2|1&&3|4|2|5
+TestDefinition=1
+jsonNamesOfSteps=4
+controllers.CLIUtils.TestDefinition=2
+TestDefinition.__init__=5
+__init__=3

@@ -16,8 +16,7 @@
 			"registrationRequest":
         	[
             	{
-				  "name" : "noam",
-				  "latitude": "${range:7000-8000}"
+				  "name" : "noam"
 				}
 			],
 			"response":{

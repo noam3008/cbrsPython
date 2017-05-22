@@ -1,10 +1,8 @@
 from flask import Flask,request,jsonify,g,redirect,url_for,abort
 from controllers.ENodeBController import ENodeBController
-import logging
 import Utils.Consts as consts
 from collections import OrderedDict
 import json
-import ssl
 from __builtin__ import True
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
@@ -23,7 +21,6 @@ def sent_Flask_Req_To_Server(typeOfCalling):
     logger.print_To_Terminal("CBSD sent " + str(typeOfCalling) +" " + consts.REQUEST_NODE_NAME)
     while (len(enodeBController.engine.testDefinietion.jsonNamesOfSteps)> enodeBController.engine.numberOfStep):
         response = enodeBController.linker_Between_Flask_To_Engine(json_dict,typeOfCalling)
-        logger.print_And_Log_To_File("response from engine to CBSD " + json.dumps(response, indent=4, sort_keys=True),False)
         if("ERROR" in str(response)): ### if engine get an error while validate the request the flask will sent a shutdown call for the flask server
             return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=str(response)))           
         logger.print_To_Terminal("engine sent " + str(typeOfCalling) + " " +consts.RESPONSE_NODE_NAME.title())
@@ -43,12 +40,11 @@ def shutdown():
     if("ERROR" in str(request.args['validationMessage'])):
         logger.print_And_Log_To_File("the server shot down due to " + str(request.args['validationMessage']),True)
         return abort(400, str(request.args['validationMessage']))
-    print "lala"
     return consts.SERVER_SHUT_DOWN_MESSAGE + consts.TEST_HAD_BEEN_FINISHED_FLASK
 
 def redirectShutDownDueToFinishOfTest():
         return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=consts.TEST_HAD_BEEN_FINISHED_FLASK))
-
+import ssl
 def runFlaskServer(host,port,ctx):
     app.run(host,port,threaded=True,ssl_context=ctx)
         

@@ -1,6 +1,7 @@
 jsonFileName
-registration.json
+registrationRange.json
 spectrumInquiry.json
 grant.json
 heartbeat.json
+heartbeatRepeats.json
 relinquishment.json

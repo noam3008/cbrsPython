@@ -41,12 +41,13 @@ def run_New_Test(dir_path, confFile, loggerHandler):
         cliHandler = CLIHandler(inputAnswer, confFile, dir_path, loggerHandler,testDefinition) ### initialize cli session handler
         flaskServer.enodeBController = ENodeBController(cliHandler.engine) 
         ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
+        ctx.verify_mode = ssl.CERT_REQUIRED
+        ctx.load_verify_locations(str(dir_path) + cliHandler.get_Element_From_Config_File("caCerts"))
         ctx.load_cert_chain(str(dir_path) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(dir_path) + cliHandler.get_Element_From_Config_File("keyFilePath"))## get the certificates for https from config file
         flaskServer.runFlaskServer(cliHandler.get_Element_From_Config_File("hostIp"),cliHandler.get_Element_From_Config_File("port"),ctx) ### run flask server using the host name and port  from conf file
         if (cliHandler.engine.validationErrorAccuredInEngine):
             cliHandler.stop_Thread_Due_To_Exception()
     cliHandler.stop_Thread_Due_To_Exception()
-
 
 current_path = os.path.dirname(os.path.realpath(__file__))
 dir_path = Path(__file__).parents[2]
