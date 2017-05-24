@@ -1,0 +1,28 @@
+'''
+Created on May 22, 2017
+
+@author: iagmon
+'''
+
+class MyClass(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, steps):
+        self.repeatesAllowed                    = False
+        self.repeatsType                        = None
+        self.oldHttpReq                         = None
+        self.validDurationTime                  = 0
+        self.lastHeartBeatTime                  = None
+        self.grantBeforeHeartBeat               = False
+        self.validationErrorAccuredInEngine     = False
+        self.isLastStepInCSV                    = False
+        self.numberOfStep                       = 0
+        self.numberOfHearbeatRequests           = 0
+    
+    
+    def set_Current_Json_Steps(self,testDefinition):
+        for step in testDefinition.
+        

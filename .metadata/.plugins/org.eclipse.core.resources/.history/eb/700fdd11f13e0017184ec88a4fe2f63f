@@ -1,0 +1,19 @@
+import logging
+import model.Utils.Consts as consts
+
+class TestDefinition(object):
+    
+    def __init__(self,steps):
+        '''self.jsonNamesOfSteps = []
+        for step in steps:    
+            self.jsonNamesOfSteps.append(step.jsonOfStep)
+            print step.jsonOfStep
+            print step.index'''
+        
+        listy = [[] for i in range(3)]
+        for step in steps:
+            self.listy[step.index].append(step.jsonOfStep)
+        print self.listy[1]
+            
+        
+            

@@ -10,9 +10,10 @@ class Step(object):
     '''
 
 
-    def __init__(self,jsonFileName):
+    def __init__(self,jsonFileName,index):
         '''
         Constructor
         '''
         self.jsonOfStep = jsonFileName
+        self.index = index
         

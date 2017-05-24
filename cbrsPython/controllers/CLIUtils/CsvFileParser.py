@@ -24,9 +24,20 @@ class CsvFileParser(object):
         try:
             with open(self.csvFileName+".csv") as csvfile:
                 reader = csv.DictReader(csvfile)
-                for row in reader:         
-                    steps.append(Step(row['jsonFileName']))
+                for row in reader: 
+                    index =0
+                    for col in row:   
+                        steps.append(Step(row[col],index))
+                        index+=1
             return steps
+        except:
+            raise IOError("the file " + self.csvFileName + " not found")
+        
+    def find_Number_Of_Cols(self):
+        try:
+            with open(self.csvFileName+".csv") as csvfile:
+                reader = csv.DictReader(csvfile)
+                return len(reader.next())
         except:
             raise IOError("the file " + self.csvFileName + " not found")
         

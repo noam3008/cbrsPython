@@ -1,0 +1,17 @@
+'''
+Created on May 22, 2017
+
+@author: iagmon
+'''
+
+class MyClass(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, steps):
+        '''
+        Constructor
+        '''
+        

@@ -45,9 +45,9 @@ class CLIHandler(Thread):
         while validate inside the engine
         if the test had been finished successfully it show the question answer session from the last expected json
         '''  
-        while(not self.engine.isLastStepInCSV and not self._stop.isSet()):
+        while(not self.engine.check_Last_Step_In_All_CBRS() and not self._stop.isSet()):
             time.sleep(1)
-            if(self.engine.validationErrorAccuredInEngine):
+            if(self.engine.check_Validation_Error()):
                 self.stop_Thread_Due_To_Exception()
         if not self._stop.is_set():
             finalResults = self.questHandler.ShowQuestionsAndGetAnswersFromClient(self.engine.get_Question_Answer_Part())
@@ -69,7 +69,8 @@ class CLIHandler(Thread):
         self.loggerHandler.print_To_Terminal(consts.SET_CSV_FILE_MESSAGE)
         inputAnsweres=raw_input() 
         try:
-            testDefenition = TestDefinition(CsvFileParser(str(self.dirPath) + self.get_Element_From_Config_File("testRepoPath") + inputAnsweres).initializeTestDefinition())
+            csvFileParser = CsvFileParser(str(self.dirPath) + self.confFile.getElementsByTagName("testRepoPath")[0].firstChild.data + inputAnsweres)
+            self.testDefinition = TestDefinition(csvFileParser.initializeTestDefinition(),csvFileParser.find_Number_Of_Cols())
         except IOError as e:
             self.loggerHandler.print_To_Terminal(e.message)
             self.start_another_test(cliHandler)
@@ -85,7 +86,7 @@ class CLIHandler(Thread):
             else:
                 self.loggerHandler.create_New_Logger(inputAnsweres)
                 self.loggerHandler.print_And_Log_To_File(consts.SELECTED_TEST_FROM_USER_MESSAGE + inputAnsweres,True)
-            cliHandler = CLIHandler(inputAnsweres,self.confFile,self.dirPath,self.loggerHandler,testDefenition) 
+            cliHandler = CLIHandler(inputAnsweres,self.confFile,self.dirPath,self.loggerHandler,self.testDefinition) 
             flaskServer.enodeBController = ENodeBController(cliHandler.engine)
             ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
             ctx.verify_mode = ssl.CERT_REQUIRED

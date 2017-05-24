@@ -1,0 +1,36 @@
+{
+    "name":"Grant_1_2_3_4",
+	"repeatsAllowed":"True",	
+    "message":{
+	},
+		"grantRequest":
+		[ 
+			{ 
+				"cbsdId": "123cbsdSerialNumber123",
+				"sensingCapability": [ "type" ],
+				"operationParam": 
+				{ 
+					"peakPower": 2986.9897000433602, 
+					"operationFrequencyRange": 
+						{ "lowFrequency": 3560000000
+						, "highFrequency": 3580000000 
+						}
+				} 
+			} 
+		], 
+	"response":
+        { 
+		   "grantResponse":[ 
+					  { 
+						 "cbsdId":"123cbsdSerialNumber123",
+						 "error":{ 
+							"errorCode":0
+						 },
+						 "grantId":"8385094448610395450",
+						 "grantExpireTime":"2017-05-28T23:20:08Z",
+						 "heartbeatDuration":60.0
+					  }
+							]
+        }
+
+	}

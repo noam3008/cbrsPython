@@ -75,14 +75,17 @@ def _is_dict_same(expected, actual, ignore_value_of_keys):
             ### key part noam ###
             are_same_flag, stack = _are_same(expected[key], actual[key],ignore_value_of_keys)
             if not are_same_flag:
-                return False, stack
+                return False, \
+                       stack.append(StackItem('Different values', expected[key], actual[key]))
     return True, Stack()
 
 def _is_list_same(expected, actual, ignore_value_of_keys):
     for i in xrange(len(expected)):
         are_same_flag, stack = _are_same(expected[i], actual[i], ignore_value_of_keys)
         if not are_same_flag:
-            return False, stack
+            return False, \
+                   stack.append(
+                       StackItem('Different values (Check order)', expected[i], actual[i]))
     return True, Stack()
 
 def _bottom_up_sort(unsorted_json):
