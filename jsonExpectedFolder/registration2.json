@@ -17,8 +17,8 @@
         	[
             	{
 				  "userId": "user123",
-				  "fccId": "123",
-				  "cbsdSerialNumber":"76B1E617472C",
+				  "fccId": "1234567890123456789",
+				  "cbsdSerialNumber":"D1DF06CD05A4",
 				  "cbsdManufacturer": "cbsdManufacturer123",
 				  "cbsdCategory":"a",
 				  "callSign":"callSign123",
@@ -33,7 +33,7 @@
 			"registrationResponse" : 
 				[
 					{
-					  "cbsdId": "123cbsdSerialNumber123",
+					  "cbsdId": "1234567890123456789cbsdSerialNumberD1DF06CD05A4",
 					  "error": {
 						 "errorCode": 0
 					  }

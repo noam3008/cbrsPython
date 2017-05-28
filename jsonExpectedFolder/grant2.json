@@ -6,7 +6,7 @@
 		"grantRequest":
 		[ 
 			{ 
-				"cbsdId": "123cbsdSerialNumber123",
+				"cbsdId": "1234567890123456789cbsdSerialNumberD1DF06CD05A4",
 				"sensingCapability": [ "type" ],
 				"operationParam": 
 				{ 
@@ -22,7 +22,7 @@
         { 
 		   "grantResponse":[ 
 					  { 
-						 "cbsdId":"123cbsdSerialNumber123",
+						 "cbsdId":"1234567890123456789cbsdSerialNumberD1DF06CD05A4",
 						 "error":{ 
 							"errorCode":0
 						 },

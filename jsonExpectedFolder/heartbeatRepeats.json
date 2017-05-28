@@ -17,7 +17,7 @@
 		"heartbeatRequest": 
 			[ 
 				{ 
-					"cbsdId": "1234567890123456789cbsdSerialNumber123",
+					"cbsdId": "1234567890123456789cbsdSerialNumber76B1E617472C",
 					"grantId": "8385094448610395450",
 					"grantRenew": false,
 					"operationState": "Transmission",
@@ -36,7 +36,7 @@
         { 
 		   "heartbeatResponse":[ 
 			  { 
-				 "cbsdId":"1234567890123456789cbsdSerialNumber123",
+				 "cbsdId":"1234567890123456789cbsdSerialNumber76B1E617472C",
 				 "error":{ 
 					"errorCode":0
 				 },

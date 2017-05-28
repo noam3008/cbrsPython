@@ -33,58 +33,58 @@ class MyEngine(object):
             
             if(typeOfCalling=="registration"):
                 try:
-                    self.add_Cbrs_Obj(httpReq["fccId"])
+                    self.add_Cbrs_Obj(httpReq["cbsdSerialNumber"])
                 except:
                     self.validationErrorAccuredInEngine = True
                     return consts.JSON_REQUEST_NOT_INCLUDE_KEY + " fccId " 
                 try:
                     if(i==0):
-                        response = self.handle_Http_Req(httpReq["fccId"],httpReq,typeOfCalling)
+                        response = self.handle_Http_Req(httpReq["cbsdSerialNumber"],httpReq,typeOfCalling)
                         self.raise_In_Case_Of_An_Error(response)
                     elif (i>0):
-                        tempResp = self.handle_Http_Req(httpReq["fccId"],httpReq,typeOfCalling)
+                        tempResp = self.handle_Http_Req(httpReq["cbsdSerialNumber"],httpReq,typeOfCalling)
                         self.raise_In_Case_Of_An_Error(response)
                         response[nodeResponse].append(tempResp[nodeResponse][0])
                 except Exception as E:
                     self.validationErrorAccuredInEngine = True
-                    return "for the CBRS with the fccId :" + str(httpReq["fccId"]) + E.message
+                    return "for the CBRS with the cbsdSerialNumber :" + str(httpReq["cbsdSerialNumber"]) + E.message
                     
                     
             else:
                 try:
-                    reqIndex = str(httpReq["cbsdId"]).index("cbsd")
+                    cbsdSerialNumberIndex = str(httpReq["cbsdId"]).index("cbsdSerialNumber")
                 except : 
                     self.validationErrorAccuredInEngine = True
                     return consts.JSON_REQUEST_NOT_INCLUDE_KEY + " cbsdId " 
                 try:
                     if(i==0):
-                        response = self.handle_Http_Req(httpReq["cbsdId"][:reqIndex],httpReq, typeOfCalling)
+                        response = self.handle_Http_Req(httpReq["cbsdId"][cbsdSerialNumberIndex+len("cbsdSerialNumber"):],httpReq, typeOfCalling)
                         self.raise_In_Case_Of_An_Error(response)
                     elif (i>0):
-                        tempResp = self.handle_Http_Req(httpReq["cbsdId"][:reqIndex],httpReq,typeOfCalling)
+                        tempResp = self.handle_Http_Req(httpReq["cbsdId"][cbsdSerialNumberIndex+len("cbsdSerialNumber")+1:],httpReq,typeOfCalling)
                         self.raise_In_Case_Of_An_Error(response)
                         response[nodeResponse].append(tempResp[nodeResponse][0])               
                 except Exception as E:
                     self.validationErrorAccuredInEngine = True
-                    return "for the CBRS with the fccId :" + str(httpReq["cbsdId"])[:reqIndex] + E.message
+                    return "for the CBRS with the fccId :" + str(httpReq["cbsdId"])[:cbsdSerialNumberIndex+len("cbsdSerialNumber")+1:] + E.message
             i+=1
         if(len(self.cbrsObjArray) == len(self.testDefinition.jsonNamesOfSteps)):
             self.allTheCBRSRegistered = True
         return response
                     
     
-    def add_Cbrs_Obj(self,fccIdAttr):
-        tempCbrsObj = cbrsObj(fccIdAttr, self.testDefinition, self.confFile, self.dirPath,self.currentLogger)
+    def add_Cbrs_Obj(self,cbsdSerialNumber):
+        tempCbrsObj = cbrsObj(cbsdSerialNumber, self.testDefinition, self.confFile, self.dirPath,self.currentLogger)
         if tempCbrsObj not in self.cbrsObjArray:
             self.cbrsObjArray.append(tempCbrsObj)
         del tempCbrsObj
     
-    def handle_Http_Req(self,fccIdAttr,httpReq,typeOfCalling):
+    def handle_Http_Req(self,cbsdSerialNumber,httpReq,typeOfCalling):
         for cbrsObj in self.cbrsObjArray: 
-            if cbrsObj.fccId == fccIdAttr:
+            if cbrsObj.cbsdSerialNumber == cbsdSerialNumber:
                 return cbrsObj.handle_Http_Req(httpReq,typeOfCalling)
         self.validationErrorAccuredInEngine = True
-        raise IOError("ERROR - there is no cbrs obj registered with the fccId :  " + str(fccIdAttr) )
+        raise IOError("ERROR - there is no cbrs obj registered with the cbsdSerialNumber :  " + str(cbsdSerialNumber) )
     
     def check_Validation_Error(self):
         if self.validationErrorAccuredInEngine == True:

@@ -14,8 +14,8 @@ class CBRSRequestHandler(object):
     '''
 
 
-    def __init__(self, fccId,testDefinition,confFile,dirPath,currentLogger):
-        self.fccId                              = fccId
+    def __init__(self, cbsdSerialNumber,testDefinition,confFile,dirPath,currentLogger):
+        self.cbsdSerialNumber                   = cbsdSerialNumber
         self.repeatesAllowed                    = False
         self.repeatsType                        = None
         self.oldHttpReq                         = None
@@ -37,8 +37,9 @@ class CBRSRequestHandler(object):
     
     def set_Current_Json_Steps(self,testDefinition,confFile,dirPath):
         for jsonCol in testDefinition.jsonNamesOfSteps:
-            if jsonComparer.get_Node_Of_Json_Parsed(jsonCol[0],"registrationRequest",confFile,dirPath)[0]["fccId"]== self.fccId:
+            if jsonComparer.get_Node_Of_Json_Parsed(jsonCol[0],"registrationRequest",confFile,dirPath)[0]["cbsdSerialNumber"]== self.cbsdSerialNumber:
                 self.jsonSteps = jsonCol
+                print self.jsonSteps[0]
                 
     def handle_Http_Req(self,httpRequest,typeOfCalling):
         if(self.repeatsType == typeOfCalling and self.repeatesAllowed == True and self.oldHttpReq == httpRequest):
