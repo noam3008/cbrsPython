@@ -58,7 +58,7 @@ class MyEngine(object):
                     return consts.JSON_REQUEST_NOT_INCLUDE_KEY + " cbsdId " 
                 try:
                     if(i==0):
-                        response = self.handle_Http_Req(str(httpReq["cbsdId"])[:reqIndex], httpReq, typeOfCalling)
+                        response = self.handle_Http_Req(httpReq["cbsdId"][:reqIndex],httpReq, typeOfCalling)
                         self.raise_In_Case_Of_An_Error(response)
                     elif (i>0):
                         tempResp = self.handle_Http_Req(httpReq["cbsdId"][:reqIndex],httpReq,typeOfCalling)

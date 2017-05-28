@@ -1,0 +1,39 @@
+{
+    "name":"Spectrum_Inquiry_10_3_4_2_5_3",  
+    "questions": {},
+	"repeatsAllowed":"True",
+    "spectrumInquiryRequest": 
+				[
+				{ 
+					"cbsdId": "123cbsdSerialNumber123",
+					"palCredential": [ "type" ],
+					"inquiredSpectrum": 
+						[ 
+							{ "lowFrequency": 3550000000,
+							"highFrequency": 3600000000 
+							} 
+						] 
+				} 
+				],
+   "response":
+   {
+	"spectrumInquiryResponse":[ 
+      { 
+         "cbsdId":"1234567890123456789cbsdSerialNumber123",
+         "error":{ 
+            "errorCode":0
+         },
+         "availableChannel":[ 
+            { 
+               "frequencyRange":{ 
+                  "lowFrequency":3550000000,
+                  "highFrequency":3600000000
+               },
+               "channelType":"PAL",
+               "ruleApplied":"FCC Part 96"
+            }
+         ]
+      }	
+      ]
+    }
+}

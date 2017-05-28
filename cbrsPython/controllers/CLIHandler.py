@@ -77,7 +77,6 @@ class CLIHandler(Thread):
             self.start_another_test(cliHandler)
         if (inputAnsweres !="quit"):
             self.loggerHandler.remove_Test_File_Logger()
-            self.loggerHandler.print_To_Terminal(consts.ADD_TEST_TO_SPECIFIC_FOLDER_MESSAGE)
             insertToFolderAnswer = self.add_Test_To_Specific_Folder()
             if (insertToFolderAnswer == "yes"):
                 self.loggerHandler.print_To_Terminal("typeNameOfFolder")
@@ -89,11 +88,11 @@ class CLIHandler(Thread):
                 self.loggerHandler.print_And_Log_To_File(consts.SELECTED_TEST_FROM_USER_MESSAGE + inputAnsweres,True)
             cliHandler = CLIHandler(inputAnsweres,self.confFile,self.dirPath,self.loggerHandler,self.testDefinition) 
             flaskServer.enodeBController = ENodeBController(cliHandler.engine)
-            ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
-            ctx.verify_mode = ssl.CERT_REQUIRED
-            ctx.load_verify_locations(str(self.dir_path) + cliHandler.get_Element_From_Config_File("caCerts"))
-            ctx.load_cert_chain(str(self.dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(self.dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))
-            flaskServer.runFlaskServer(self.get_Element_From_Config_File("hostIp"),self.get_Element_From_Config_File("port"),ctx) 
+            #ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
+            #ctx.verify_mode = ssl.CERT_REQUIRED
+            #ctx.load_verify_locations(str(self.dirPath) + cliHandler.get_Element_From_Config_File("caCerts"))
+            #ctx.load_cert_chain(str(self.dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(self.dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))
+            flaskServer.runFlaskServer(self.get_Element_From_Config_File("hostIp"),self.get_Element_From_Config_File("port"))#,ctx) 
             
         if(cliHandler.engine.validationErrorAccuredInEngine):
             cliHandler.stop_Thread_Due_To_Exception()
