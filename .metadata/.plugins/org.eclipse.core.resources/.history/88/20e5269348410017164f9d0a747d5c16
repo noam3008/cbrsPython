@@ -1,0 +1,20 @@
+'''
+Created on May 25, 2017
+
+@author: iagmon
+'''
+from Tkinter import *
+from model.Utils import Consts as consts
+    
+mw = Tk()
+
+mw.option_add("*Button.Background", "black")
+mw.option_add("*Button.Foreground", "red")
+
+mw.title('The game')
+mw.geometry("500x500")
+mw.resizable(0, 0)
+
+
+
+mw.mainloop()       

@@ -3,12 +3,12 @@
     "questions":
 				[
                         {
-                            "question" : "Please check eNodeB something2",
+                            "question" : "Please check eNodeB something",
                             "answers" : ["x happened", "y happened"], 
 							"expectedAnswer" : "x happened"
                         },
 						{
-							"question" : "Please check eNodeB something - secondQuest2",
+							"question" : "Please check eNodeB something - secondQuest",
                             "answers" : ["x happened", "y happened"], 
 							"expectedAnswer" : "y happened"
 						}

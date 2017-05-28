@@ -1,0 +1,12 @@
+'''
+Created on May 25, 2017
+
+@author: iagmon
+'''
+from Tkinter import *
+from model.Utils import Consts as consts
+
+root = Tk()
+typeCsvFileLabel = Label(root,consts.SET_CSV_FILE_MESSAGE)
+
+        

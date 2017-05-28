@@ -50,6 +50,7 @@ class CLIHandler(Thread):
             if(self.engine.check_Validation_Error()):
                 self.stop_Thread_Due_To_Exception()
         if not self._stop.is_set():
+            self.loggerHandler.print_And_Log_To_File(consts.NSTEP_SESSION_WITH_TECHNITIAN,True)
             finalResults = self.questHandler.ShowQuestionsAndGetAnswersFromClient(self.engine.get_Question_Answer_Part())
             self.loggerHandler.print_And_Log_To_File(consts.RESULTS_OF_TEST_MESSAGE + self.testName + " is : " +  str(finalResults[0]),True)
             if(finalResults[1]!=""):
@@ -67,7 +68,7 @@ class CLIHandler(Thread):
         and running a new instance of the flask server  
         '''     
         self.loggerHandler.print_To_Terminal(consts.SET_CSV_FILE_MESSAGE)
-        inputAnsweres=raw_input() 
+        inputAnsweres=self.get_input() 
         try:
             csvFileParser = CsvFileParser(str(self.dirPath) + self.confFile.getElementsByTagName("testRepoPath")[0].firstChild.data + inputAnsweres)
             self.testDefinition = TestDefinition(csvFileParser.initializeTestDefinition(),csvFileParser.find_Number_Of_Cols())
@@ -77,7 +78,7 @@ class CLIHandler(Thread):
         if (inputAnsweres !="quit"):
             self.loggerHandler.remove_Test_File_Logger()
             self.loggerHandler.print_To_Terminal(consts.ADD_TEST_TO_SPECIFIC_FOLDER_MESSAGE)
-            insertToFolderAnswer = raw_input()
+            insertToFolderAnswer = self.add_Test_To_Specific_Folder()
             if (insertToFolderAnswer == "yes"):
                 self.loggerHandler.print_To_Terminal("typeNameOfFolder")
                 insertToFolderAnswer = raw_input()
@@ -99,6 +100,22 @@ class CLIHandler(Thread):
 
     def get_Element_From_Config_File(self,elementName):
         return self.confFile.getElementsByTagName(elementName)[0].firstChild.data
+    
+    def add_Test_To_Specific_Folder(self):
+        self.loggerHandler.print_To_Terminal(consts.ADD_TEST_TO_SPECIFIC_FOLDER_MESSAGE)
+        insertToFolderAnswer = raw_input()
+        while(insertToFolderAnswer.lower()!="yes" and insertToFolderAnswer.lower()!="no"):
+            self.loggerHandler.print_To_Terminal("you must enter yes or no for continue the test")
+            self.loggerHandler.print_To_Terminal(consts.ADD_TEST_TO_SPECIFIC_FOLDER_MESSAGE)
+            insertToFolderAnswer = raw_input()
+        return insertToFolderAnswer
+            
+    def get_input(self):
+        answer = raw_input()
+        while not answer.strip():
+            self.loggerHandler.print_To_Terminal("cannot enter empty line for csv file try again")
+            answer = raw_input()
+        return answer
         
         
             

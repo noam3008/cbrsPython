@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//allure/common.py=utf-8
+encoding//allure/rules.py=utf-8
+encoding//demo/test_environment.py=utf-8
+encoding//tests/test_environment.py=utf-8

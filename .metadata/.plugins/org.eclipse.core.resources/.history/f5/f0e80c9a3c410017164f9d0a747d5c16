@@ -1,0 +1,11 @@
+'''
+Created on May 25, 2017
+
+@author: iagmon
+'''
+from Tkinter import *
+
+root = Tk()
+root.title("simple GUI")
+root.geometry("200*100")
+        

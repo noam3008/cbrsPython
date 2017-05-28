@@ -1,0 +1,18 @@
+'''
+Created on May 25, 2017
+
+@author: iagmon
+'''
+from Tkinter import *
+from model.Utils import Consts as consts
+
+root = Tk()
+def print_Name():
+    print "hello world"
+
+b = Button(root,text="button1",command = print_Name())
+
+
+root.mainloop()
+
+        

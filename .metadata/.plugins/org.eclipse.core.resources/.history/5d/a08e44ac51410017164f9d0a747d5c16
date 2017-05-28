@@ -1,0 +1,28 @@
+import Tkinter as tk
+from PIL import ImageTk, Image
+from model.Utils import Consts as consts
+
+#This creates the main window of an application
+window = tk.Tk()
+window.title("Join")
+window.geometry("300x300")
+window.configure(background='grey')
+
+path = "C:/Users/iagmon/Downloads/airspan-logo.jpg"
+
+#Creates a Tkinter-compatible photo image, which can be used everywhere Tkinter expects an image object.
+img = ImageTk.PhotoImage(Image.open(path))
+
+#The Label widget is a standard Tkinter widget used to display a text or image on the screen.
+panel = tk.Label(window, image = img)
+
+#The Pack geometry manager packs widgets in rows or columns.
+panel.pack()
+
+label = Label(root,text=consts.SET_CSV_FILE_MESSAGE)
+
+
+
+
+#Start the GUI
+window.mainloop()

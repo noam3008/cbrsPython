@@ -1,0 +1,31 @@
+'''
+Created on May 25, 2017
+
+@author: iagmon
+'''
+from Tkinter import *
+from model.Utils import Consts as consts
+    
+root = Tk()
+frame = Frame(root)
+frame.pack(fill=X)
+
+root.option_add("*Button.Background", "black")
+root.option_add("*Button.Foreground", "red")
+
+bottomframe = Frame(root)
+bottomframe.pack( side = BOTTOM )
+
+redbutton = Button(frame, text="Red", fg="red")
+redbutton.pack(frame,side = LEFT,fill=X)
+
+greenbutton = Button(frame, text="Brown", fg="brown")
+greenbutton.pack(frame, side = LEFT ,fill=X)
+
+bluebutton = Button(frame, text="Blue", fg="blue")
+bluebutton.pack(frame, side = LEFT ,fill=X)
+
+blackbutton = Button(bottomframe, text="Black", fg="black")
+blackbutton.pack(frame, side = BOTTOM)
+
+root.mainloop()

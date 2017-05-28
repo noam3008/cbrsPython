@@ -1,0 +1,22 @@
+'''
+Created on May 25, 2017
+
+@author: iagmon
+'''
+from Tkinter import *
+from model.Utils import Consts as consts
+
+root = Tk()
+
+def get_Selection():
+    print "lkalal"
+    
+variable = StringVar(root)
+variable.set("one") # default value
+option = OptionMenu(root,variable,"one","two","three")
+option.pack()
+       
+
+root.mainloop()
+
+        

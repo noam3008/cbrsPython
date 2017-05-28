@@ -8,35 +8,24 @@ from model.Utils.Assert import Assertion
 import model.Utils.JsonComparisonUtils as jsonComparer
 import model.Utils.Consts as consts
 import datetime as DT
-from model.CBRSObject import CBRSObject as cbrsObj
+from model.CBRSRequestHandler import CBRSRequestHandler as cbrsObj
 from Tkconstants import FIRST
 
 
 class MyEngine(object):
 
     def __init__(self,testDefinition,confFile,dirPath,currentLogger):
-        self.numberOfStep                       = 0
-        self.numberOfHearbeatRequests           = 0
         self.testDefinition                    = testDefinition
         self.validationErrorAccuredInEngine     = False
-        self.isLastStepInCSV                    = False
         self.confFile                           = confFile
         self.dirPath                            = dirPath
-        self.heartBeatLimitCounter              = confFile.getElementsByTagName("heartbeatLimit")[0].firstChild.data
         self.currentLogger                      = currentLogger
-        self.assertion                          = Assertion(confFile,dirPath,currentLogger)
-        self.repeatesAllowed                    = False
-        self.repeatsType                        = None
-        self.oldHttpReq                         = None
-        self.validDurationTime                  = 0
-        self.lastHeartBeatTime                  = None
-        self.grantBeforeHeartBeat               = False
         self.cbrsObjArray                       = []
         self.allTheCBRSRegistered               = False
 
     def process_request(self,httpRequest,typeOfCalling):
         '''
-        the method perform validation to the current httpRequest json 
+        the method get the httpRequest and for each request sent it to the correct cbsd request handler
         '''
         nodeResponse = typeOfCalling+consts.RESPONSE_NODE_NAME.title()
         i = 0
@@ -77,9 +66,9 @@ class MyEngine(object):
                         response[nodeResponse].append(tempResp[nodeResponse][0])               
                 except Exception as E:
                     self.validationErrorAccuredInEngine = True
-                    return "for the CBRS with the fccId :" + str(httpReq["fccId"]) + E.message
+                    return "for the CBRS with the fccId :" + str(httpReq["cbsdId"])[:reqIndex] + E.message
             i+=1
-        if(typeOfCalling==consts.REGISTRATION_SUFFIX_HTTP):
+        if(len(self.cbrsObjArray) == len(self.testDefinition.jsonNamesOfSteps)):
             self.allTheCBRSRegistered = True
         return response
                     
@@ -110,18 +99,22 @@ class MyEngine(object):
             raise IOError(response)
         
     def check_Last_Step_In_All_CBRS(self):
+        '''
+        the method check the last step of all the column of json from the csv , each column should fit to diffrent cbsd
+        '''
         if(self.allTheCBRSRegistered == True):
             for cbrsObj in self.cbrsObjArray:
-                print cbrsObj.fccId 
                 if(cbrsObj.isLastStepInCSV == False):
                     return False
             if(len(self.cbrsObjArray)==0):
                 return False
-            self.currentLogger.print_And_Log_To_File(consts.NSTEP_SESSION_WITH_TECHNITIAN,True)
             return True
         return False
     
     def get_Question_Answer_Part(self):
+        '''
+        the method collect the question answer part from all the cbrs object 
+        '''
         i=0
         for cbrsObj in self.cbrsObjArray:
             if(i==0):
@@ -130,7 +123,9 @@ class MyEngine(object):
                 return tempQuestAnswerPart
             elif(i>0):
                 tempResp = cbrsObj.get_Question_Answer_Part()
-                tempQuestAnswerPart["questions"].append(tempResp["questions"][0])       
+                for questAnswer in tempResp:
+                    tempQuestAnswerPart.append(questAnswer)
+            i+=1       
         return tempQuestAnswerPart        
         
         

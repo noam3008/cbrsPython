@@ -1,0 +1,40 @@
+'''
+Created on May 25, 2017
+
+@author: iagmon
+'''
+from Tkinter import *
+from model.Utils import Consts as consts
+
+root = Tk()
+
+def get_Selection():
+    print "lkalal"
+    
+mw = tk.Tk()
+
+#If you have a large number of widgets, like it looks like you will for your
+#game you can specify the attributes for all widgets simply like this.
+mw.option_add("*Button.Background", "black")
+mw.option_add("*Button.Foreground", "red")
+
+mw.title('The game')
+#You can set the geometry attribute to change the root windows size
+mw.geometry("500x500") #You want the size of the app to be 500x500
+mw.resizable(0, 0) #Don't allow resizing in the x or y direction
+    
+variable = StringVar(root)
+variable.set("one") # default value
+option = OptionMenu(root,variable,"one","two","three")
+option.pack()
+
+def ok():
+    print "value is", variable.get()
+    root.quit()
+
+button = Button(root, text="OK", command=ok)
+button.pack()
+
+root.mainloop()
+
+        

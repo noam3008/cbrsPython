@@ -1,0 +1,26 @@
+'''
+Created on May 25, 2017
+
+@author: iagmon
+'''
+from Tkinter import *
+from model.Utils import Consts as consts
+    
+mainFrame = Tk()
+
+mainFrame.option_add("*Button.Background", "black")
+mainFrame.option_add("*Button.Foreground", "red")
+
+mainFrame.title('The game')
+mainFrame.geometry("500x500")
+mainFrame.resizable(0, 0)
+
+openFrame = Frame(mainFrame,size=LEFT)
+openCsvLabel = Label(openFrame,text= consts.SET_CSV_FILE_MESSAGE)
+openFrame.pack()
+openCsvLabel.pack()
+
+
+
+
+mainFrame.mainloop()       

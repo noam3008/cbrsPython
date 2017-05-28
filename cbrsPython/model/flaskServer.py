@@ -19,7 +19,7 @@ def sent_Flask_Req_To_Server(typeOfCalling):
     json_dict = json.loads(request.data,object_pairs_hook=OrderedDict)
     logger.print_And_Log_To_File(json.dumps(json_dict, indent=4, sort_keys=True),False)
     logger.print_To_Terminal("CBSD sent " + str(typeOfCalling) +" " + consts.REQUEST_NODE_NAME)
-    while (len(enodeBController.engine.testDefinition.jsonNamesOfSteps)> enodeBController.engine.numberOfStep):
+    while (not enodeBController.engine.check_Last_Step_In_All_CBRS()):
         response = enodeBController.linker_Between_Flask_To_Engine(json_dict,typeOfCalling)
         if("ERROR" in str(response)): ### if engine get an error while validate the request the flask will sent a shutdown call for the flask server
             return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=str(response)))           

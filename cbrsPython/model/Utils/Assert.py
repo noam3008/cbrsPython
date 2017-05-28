@@ -63,7 +63,6 @@ class Assertion(object):
         '''
         the method get the optional parameter of the suffix type json and check if it requested from the CBSD if it is it add them to the expected json 
         '''
-        print httpRequest
         ###httpRequest = httpRequest[suffix][0]
         if(consts.REQUEST_NODE_NAME in str(suffix)):
             suffix = str(suffix).replace(consts.REQUEST_NODE_NAME, "")

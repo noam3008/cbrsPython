@@ -9,7 +9,7 @@ controllers.CLIUtils.__init__|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\
 controllers.ENodeBController|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\ENodeBController.py
 controllers.StartOfProject|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\StartOfProject.py
 controllers.__init__|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\__init__.py
-model.CBRSObject|C:\Users\iagmon\cbrsPython\cbrsPython\model\CBRSObject.py
+model.CBRSRequestHandler|C:\Users\iagmon\cbrsPython\cbrsPython\model\CBRSRequestHandler.py
 model.Engine|C:\Users\iagmon\cbrsPython\cbrsPython\model\Engine.py
 model.Utils.Assert|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Assert.py
 model.Utils.Consts|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Consts.py

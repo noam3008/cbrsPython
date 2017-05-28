@@ -1,0 +1,22 @@
+'''
+Created on May 25, 2017
+
+@author: iagmon
+'''
+from Tkinter import *
+from model.Utils import Consts as consts
+from textwrap import fill
+
+root = Tk()
+typeCsvFileLabel = Label(root,text="name",bg="red",fg="white")
+typeCsvFileLabel2 = Label(root,text="password",bg="red",fg="white")
+
+entry1 = Entry(root)
+entry2 = Entry(root)
+typeCsvFileLabel.grid(row=0)
+typeCsvFileLabel2.grid(row=1)
+
+
+root.mainloop()
+
+        
