@@ -1,0 +1,17 @@
+'''
+Created on Jun 1, 2017
+
+@author: iagmon
+'''
+
+class loggerObserver(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        

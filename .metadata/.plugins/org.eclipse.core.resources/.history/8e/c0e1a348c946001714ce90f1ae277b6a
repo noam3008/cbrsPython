@@ -1,0 +1,15 @@
+from Loggers.LoggerHandler import LoggerHandler as logger, LoggerHandler
+from controllers.CLIUtils.enums import TestStatus
+from Loggers.LoggerObserver import loggerObserver
+from Loggers.cmdLogger import cmdLogger
+from Loggers.xmlLogger import xmlLogger
+
+observable = loggerObserver()
+ 
+american_observer = cmdLogger()
+observable.register(american_observer)
+
+european_observer = xmlLogger()
+observable.register(european_observer)
+
+observable.finish_Step("noam", "n")

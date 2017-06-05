@@ -1,0 +1,35 @@
+import datetime as DT
+import xml.etree.cElementTree as ET
+class xmlCreation(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, testName,dirPath):
+        '''
+        Constructor
+        '''
+        self.startTime = DT.datetime.now()
+        self.testName = testName
+        self.dirPath = dirPath
+    
+    
+
+    def buildXml(self):
+        root = ET.Element('background')
+        starttime = ET.SubElement(root, 'starttime')
+        hour = ET.SubElement(starttime, 'hour')
+        hour.text = '00'
+        minute = ET.SubElement(starttime, 'minute')
+        minute.text = '00'
+        second = ET.SubElement(starttime, 'second')
+        second.text = '01'
+         
+        print ET.tostring(root)
+        # write to file:
+        tree = ET.ElementTree(root)
+        tree.write(self.dirPath + "\output.xml")
+
+xml = xmlCreation("noam")
+xml.buildXml()

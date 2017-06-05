@@ -1,0 +1,25 @@
+from Loggers.LogObserver import Observer
+ 
+ 
+class cmdLogger(Observer):
+    
+    def __init__(self,log_Name,folder_Name=None):
+        self.log_Name = log_Name
+        self.folder_Name = folder_Name
+        
+    
+    
+    def startTest(self):
+        print "start Test cmd"
+    
+    def startStep(self):
+        print "startStep cmd"
+        
+        
+    def finishStep(self):
+        print "finishStep cmd"
+        
+        
+    def finishTest(self):
+        print "finish test cmd"
+ 

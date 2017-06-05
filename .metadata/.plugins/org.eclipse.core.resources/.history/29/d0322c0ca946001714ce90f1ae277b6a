@@ -1,0 +1,13 @@
+import datetime as DT
+class xmlCreation(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, testName):
+        '''
+        Constructor
+        '''
+        self.startTime = DT.time.now()
+        self.testName = testName

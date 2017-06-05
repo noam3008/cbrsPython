@@ -1,0 +1,119 @@
+from Loggers.LogObserver import Observer
+import os
+import datetime as DT
+import xml.etree.cElementTree as ET
+from model.Utils import Consts as consts
+from controllers.CLIUtils.enums import TestStatus
+import time
+import calendar
+ 
+class XmlLogger(Observer):
+    
+    def __init__(self):
+        self.log_Name = None
+        self.startTime = DT.datetime.now()
+        self.root = None
+        self.testCases = None
+        self.testCase = None
+        self.steps = None
+        self.dir_Path = None
+        self.folder_Name = None
+        self.currentStep = None
+ 
+    def startTest(self,dir_Path,log_Name,folder_Name=None):
+        if(folder_Name==None or log_Name == consts.CLI_SESSION):
+            return      
+        elif(folder_Name!=None):
+            self.folder_Name = folder_Name
+            self.dir_Path = dir_Path       
+            self.log_Name = log_Name
+            newpath = str(dir_Path)+ str(r'\\Logs\\SpecificFolderOfTests\\' + folder_Name)
+        if not os.path.exists(newpath):
+            os.makedirs(newpath)
+            self.build_folder_xml(dir_Path,folder_Name)
+        else:
+            self.initialize_From_Existing_Xml(dir_Path,folder_Name)
+ 
+    def startStep(self,json_dict,typeOfCalling):
+        if(self.folder_Name==None or self.log_Name == consts.CLI_SESSION):
+            return
+        if(self.testCase == None):
+            self.build_Test_Case_XML()
+        self.currentStep = ET.SubElement(self.steps,"step")
+        self.currentStep.set("start",str(int(time.mktime(DT.datetime.utcnow().timetuple()))))
+        
+    def finishStep(self,response,typeOfCalling,stepStatus):  
+        if(self.folder_Name==None or self.log_Name == consts.CLI_SESSION):
+            return  
+        self.currentStep.set("status",stepStatus.value)
+        self.currentStep.set("stop",str(int(time.mktime(DT.datetime.timetuple(DT.datetime.now())))))
+        ET.SubElement(self.currentStep,"name").text = typeOfCalling
+        ET.SubElement(self.currentStep,"title").text = typeOfCalling
+        ET.SubElement(self.currentStep,"steps")        
+        
+    def finishTest(self,msg,isCmdOutput,testStatus):
+        if(self.folder_Name==None or self.log_Name == consts.CLI_SESSION):
+            return
+        self.testCase.set("status",testStatus.value)
+        self.testCase.set("stop",str(int(time.mktime(DT.datetime.timetuple(DT.datetime.now())))))
+        self.set_end_time()
+        
+        try:
+            print ET.tostring(self.root)
+            # write to file:
+            tree = ET.ElementTree(self.root)
+            tree.write(str(self.dir_Path) + "\\Logs\\SpecificFolderOfTests\\" +self.folder_Name +"\\" + self.folder_Name+ "-testsuite" ".xml")
+        except Exception as e:
+            print e.message
+        
+    def print_to_Logs_Files(self,message,isCmdOutput):
+        pass
+    
+    def print_To_Terminal(self,message):
+        pass
+        
+    def build_folder_xml(self,dir_Path,folder_Name):
+        root = ET.Element('ns0:test-suite')
+        root.set("xmlns:ns0","urn:model.allure.qatools.yandex.ru")
+        root.set("start",str(int(time.mktime(DT.datetime.timetuple(DT.datetime.now())))))
+        ET.SubElement(root,"name").text = folder_Name
+        ET.SubElement(root,"labels")
+        self.testCases = ET.SubElement(root,"test-cases")
+        self.root = root
+        
+    def build_Test_Case_XML(self):
+        self.testCase = ET.SubElement(self.testCases,"test-case")
+        self.testCase.set("start",str(int(time.mktime(DT.datetime.timetuple(DT.datetime.now())))))
+        ET.SubElement(self.testCase,"name").text = self.log_Name
+        attachments = ET.SubElement(self.testCase,"attachments")
+        attachments.set("source","59f0fe72-7489-48f3-a826-7588a4642fc8-attachment.txt")
+        attachments.set("title","Captured stdout call")
+        attachments.set("type","text/plain")
+        label =  ET.SubElement(self.testCase,"labels")
+        labelname = ET.SubElement(label,"label")
+        labelname.set("name","severity")
+        self.steps = ET.SubElement(self.testCase,"steps")
+        
+    def set_end_time(self):
+        self.root.set("stop",str(int(time.mktime(DT.datetime.timetuple(DT.datetime.now())))))
+        
+    def initialize_From_Existing_Xml(self,dir_Path,folder_Name):
+        tree = ET.parse(str(dir_Path) + "\\Logs\\SpecificFolderOfTests\\" +folder_Name +"\\" + folder_Name+"-testsuite" ".xml")
+        self.root = tree.getroot()
+        self.testCases = tree.find("test-cases")
+        self.buildXml(dir_Path, folder_Name)
+        
+        
+    from __future__ import division
+    from datetime import datetime, timedelta
+
+    def totimestamp(dt, epoch=datetime(1970,1,1)):
+        td = dt - epoch
+        # return td.total_seconds()
+        return (td.microseconds + (td.seconds + td.days * 86400) * 10**6) / 10**6 
+    
+    now = datetime.utcnow()
+    print now
+    print totimestamp(now)
+
+        

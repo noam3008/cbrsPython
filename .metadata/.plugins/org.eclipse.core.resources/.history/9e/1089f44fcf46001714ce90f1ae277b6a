@@ -1,0 +1,13 @@
+from Loggers.LogObserver import Observer
+
+class DebugLogger(Observer):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        

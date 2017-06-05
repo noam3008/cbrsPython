@@ -1,0 +1,12 @@
+from Loggersr import logObserver
+ 
+ 
+class cmdLogger(Observer):
+    def update(self, *args, **kwargs):
+        print("American stock market received: {0}\n{1}".format(args, kwargs))
+ 
+ 
+class EuropeanStockMarket(Observer):
+    def update(self, *args, **kwargs):
+        print("European stock market received: {0}\n{1}".format(args, kwargs))
+ 

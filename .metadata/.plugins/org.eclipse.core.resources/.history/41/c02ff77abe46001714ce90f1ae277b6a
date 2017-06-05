@@ -1,0 +1,74 @@
+import datetime as DT
+import xml.etree.cElementTree as ET
+class xmlCreation(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self,folderName, testName,dirPath,isFolderExists):
+        '''
+        Constructor
+        '''
+        self.startTime = DT.datetime.now()
+        self.testName = testName
+        self.dirPath = dirPath
+        self.folderName = folderName
+        if(isFolderExists == False):
+            self.build_folder_xml()
+        self.root = None
+        self.testCases = None
+            
+    def build_folder_xml(self):
+        root = ET.Element('ns0:test-suite')
+        root.set("xmlns:ns0","urn:model.allure.qatools.yandex.ru")
+        root.set("start",DT.datetime.now())
+        root.set()
+        ET.SubElement(root,"name").text = self.folderName
+        ET.SubElement(root,"labels")
+        self.testCases = ET.SubElement(root,"test-cases")
+        self.root = root
+        
+    def set_end_time(self):
+        self.root.set("stop",DT.datetime.now())
+            
+    def buildXml(self):
+        testCase = ET.SubElement(self.testCases,"test-case")
+        testCase.set("start","1496066956106")
+        testCase.set("status","passed")
+        testCase.set("stop","1496066956106")
+        ET.SubElement(testCase,"name").text = "registration_test"
+        attachments = ET.SubElement(testCase,"attachments")
+        attachments.set("source","59f0fe72-7489-48f3-a826-7588a4642fc8-attachment.txt")
+        attachments.set("title","Captured stdout call")
+        attachments.set("type","text/plain")
+        label =  ET.SubElement(testCase,"labels")
+        labelname = ET.SubElement(label,"label")
+        labelname.set("name","severity")
+        ET.SubElement(testCase,"steps")
+ 
+        print ET.tostring(root)
+        # write to file:
+        tree = ET.ElementTree(root)
+        tree.write(self.dirPath + "\\" +self.testName + ".xml")
+        
+        
+'''<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1496045320533" stop="1496045320540">
+  <name>gui</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1496045320533" status="passed" stop="1496045320540">
+      <name>registration_test</name>
+      <attachments>
+        <attachment source="59f0fe72-7489-48f3-a826-7588a4642fc8-attachment.txt" title="Captured stdout call" type="text/plain"/>
+      </attachments>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="1464-MainThread"/>
+        <label name="host" value="ASIL-IT17"/>
+      </labels>
+      <steps/>
+      </test-case>
+  </test-cases>
+</ns0:test-suite>'''
+

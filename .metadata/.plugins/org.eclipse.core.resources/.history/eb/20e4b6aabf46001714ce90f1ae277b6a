@@ -1,0 +1,4 @@
+from Loggers.LoggerHandler import LoggerHandler as logger, LoggerHandler
+
+loggerNew = LoggerHandler("C:\Users\iagmon\cbrsPython")
+loggerNew.create_new_dir_and_log("noamLog", "oren2")

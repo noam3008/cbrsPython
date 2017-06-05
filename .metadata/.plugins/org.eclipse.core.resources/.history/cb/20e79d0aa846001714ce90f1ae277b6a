@@ -1,0 +1,17 @@
+'''
+Created on Jun 1, 2017
+
+@author: iagmon
+'''
+
+class xmlCreation(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        date startTime = time.now()

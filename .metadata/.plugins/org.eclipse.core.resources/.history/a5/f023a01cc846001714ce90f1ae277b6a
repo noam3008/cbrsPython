@@ -1,0 +1,7 @@
+from Loggers.logObserver import Observer
+ 
+ 
+class cmdLogger(Observer):
+    def update(self, *args, **kwargs):
+        print("American stock market received: {0}\n{1}".format(args, kwargs))
+ 

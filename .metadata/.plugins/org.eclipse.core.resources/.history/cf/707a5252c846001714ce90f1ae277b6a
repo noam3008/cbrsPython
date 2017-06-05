@@ -1,0 +1,7 @@
+from abc import abstractmethod
+ 
+class Observer(object):
+ 
+    @abstractmethod
+    def update(self, *args, **kwargs):
+        pass

@@ -32,7 +32,7 @@ class Assertion(object):
             raise IOError(e.message)
         x = JsonComparisonUtils.are_same(jsonExpectedObj[0],httpRequest)
         if(False in x):
-            self.loggerHandler.print_And_Log_To_File(x,True)
+            self.loggerHandler.print_to_Logs_Files(x,True)
         try:
             assert True in x
         except:

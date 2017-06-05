@@ -1,0 +1,22 @@
+from abc import abstractmethod
+ 
+class Observer(object):
+    @abstractmethod
+    def startTest(self,dir_Path,log_Name,folder_Name=None):
+        pass
+    
+    @abstractmethod
+    def startStep(self):
+        pass
+        
+    @abstractmethod    
+    def finishStep(self):
+        pass
+        
+    @abstractmethod   
+    def finishTest(self):
+        pass
+    
+    @abstractmethod
+    def print_To_Terminal(self):
+        

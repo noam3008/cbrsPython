@@ -1,0 +1,17 @@
+from Loggers.LogObserver import Observer
+ 
+class XmlLogger(Observer):
+    
+    def startTest(self,log_Name,folder_Name=None):
+        print "startTest xml"
+ 
+    def startStep(self):
+        print "startStep xml"
+        
+        
+    def finishStep(self):
+        print "finishStep xml"
+        
+        
+    def finishTest(self):
+        print "finish test xml"

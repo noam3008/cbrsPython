@@ -1,0 +1,128 @@
+{
+  "uid" : "2c05f79703670c13",
+  "name" : "exampleTest",
+  "title" : "Example test",
+  "time" : {
+    "start" : 1496602467471,
+    "stop" : 1496602489473,
+    "duration" : 22002
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 6
+  },
+  "failure" : null,
+  "description" : null,
+  "severity" : "NORMAL",
+  "status" : "PASSED",
+  "suite" : {
+    "uid" : "80bc51ad851d58b",
+    "name" : "registrationTests",
+    "title" : "Registration tests"
+  },
+  "steps" : [ {
+    "name" : "registration",
+    "title" : "registration",
+    "time" : {
+      "start" : 1496602467471,
+      "stop" : 1496602467475,
+      "duration" : 4
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "spectrumInquiry",
+    "title" : "spectrumInquiry",
+    "time" : {
+      "start" : 1496602469709,
+      "stop" : 1496602469712,
+      "duration" : 3
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "grant",
+    "title" : "grant",
+    "time" : {
+      "start" : 1496602471795,
+      "stop" : 1496602471798,
+      "duration" : 3
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "heartbeat",
+    "title" : "heartbeat",
+    "time" : {
+      "start" : 1496602474096,
+      "stop" : 1496602474098,
+      "duration" : 2
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "heartbeat",
+    "title" : "heartbeat",
+    "time" : {
+      "start" : 1496602476595,
+      "stop" : 1496602476598,
+      "duration" : 3
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  }, {
+    "name" : "relinquishment",
+    "title" : "relinquishment",
+    "time" : {
+      "start" : 1496602478474,
+      "stop" : 1496602478476,
+      "duration" : 2
+    },
+    "summary" : {
+      "attachments" : 0,
+      "steps" : 0
+    },
+    "status" : "PASSED",
+    "attachments" : [ ],
+    "steps" : [ ]
+  } ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "severity",
+    "value" : null
+  }, {
+    "name" : "suite-title",
+    "value" : null
+  }, {
+    "name" : "suite-name",
+    "value" : "registrationTests"
+  } ],
+  "parameters" : [ ]
+}

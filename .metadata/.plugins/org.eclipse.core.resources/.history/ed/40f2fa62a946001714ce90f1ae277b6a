@@ -1,0 +1,5 @@
+from Loggers.LoggerHandler import LoggerHandler as logger, LoggerHandler
+
+logger = LoggerHandler()
+logger.create_new_dir_and_log( "noamLog", "noam")
+

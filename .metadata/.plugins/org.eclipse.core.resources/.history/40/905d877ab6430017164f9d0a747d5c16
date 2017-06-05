@@ -1,0 +1,35 @@
+from Tkinter import Tk, Text, TOP, BOTH, X, N, LEFT
+from ttk import Frame, Label, Entry
+from model.Utils import Consts as consts
+from PIL import ImageTk, Image
+
+
+class Example(Frame):
+  
+    def __init__(self, parent):
+        Frame.__init__(self, parent)   
+         
+        self.parent = parent
+        self.startUpPage()
+
+        
+    def startUpPage(self):
+      
+        self.parent.title("CBRS Project")
+        self.pack()
+        
+        frame1 = Frame(self)
+        frame1.pack(fill=X)
+        
+        img = ImageTk.PhotoImage(Image.open("C:/Users/iagmon/Downloads/airspan-logo.jpg"))
+        panel = Label(frame1, image = img)
+        panel.pack(side = "top", fill = "both", expand = "yes")
+        
+        lbl1 = Label(frame1, text=consts.SET_CSV_FILE_MESSAGE)
+        lbl1.pack(side=LEFT)           
+    
+root = Tk()
+root.geometry("300x300")
+app = Example(root)
+root.mainloop()  
+

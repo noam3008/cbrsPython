@@ -1,0 +1,15 @@
+from Loggers.LogObserver import Observer
+
+class DebugLogger(Observer):
+
+    def startTest(self,dir_Path,log_Name,folder_Name=None):
+        pass
+    
+    def startStep(self):
+        pass
+           
+    def finishStep(self):
+        pass
+        
+    def finishTest(self):
+        pass

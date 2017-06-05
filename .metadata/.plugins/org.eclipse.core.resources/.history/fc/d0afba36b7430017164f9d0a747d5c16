@@ -1,0 +1,21 @@
+from Tkinter import Tk, Text, TOP, BOTH, X, N, LEFT, tkinter
+from ttk import Frame, Label, Entry
+from model.Utils import Consts as consts
+from PIL import ImageTk, Image
+
+
+root = Tk()
+
+def pixel(image, pos, color):
+    """Place pixel at pos=(x,y) on image, with color=(r,g,b)."""
+    r,g,b = color
+    x,y = pos
+    image.put("#%02x%02x%02x" % (r,g,b), (y, x))
+
+    photo = root.PhotoImage(width=32, height=32)
+
+    pixel(photo, (16,16), (255,0,0))  # One lone pixel in the middle...
+
+    label = tkinter.Label(root, image=photo)
+    label.grid()
+    root.mainloop()

@@ -1,0 +1,27 @@
+import Tkinter as tk 
+import tkFont as tkfont          
+from PIL import ImageTk, Image
+
+
+class StartPage():
+
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.controller = controller
+        label = tk.Label(self, text="CBRS Project", font=controller.title_font)
+        label.pack(side="top", fill="x", pady=10)
+        
+        img = ImageTk.PhotoImage(Image.open("C:/Users/iagmon/Downloads/airspan-logo.jpg"))
+        panel = tk.Label(self, image = img)
+        panel.pack(side = "bottom", fill = "both", expand = "yes")
+
+        button1 = tk.Button(self, text="Go to Page One",
+                            command=lambda: controller.show_frame("PageOne"))
+        button2 = tk.Button(self, text="Go to Page Two",
+                            command=lambda: controller.show_frame("PageTwo"))
+        button1.pack()
+        button2.pack()
+
+if __name__ == "__main__":
+    app = SampleApp()
+    app.mainloop()

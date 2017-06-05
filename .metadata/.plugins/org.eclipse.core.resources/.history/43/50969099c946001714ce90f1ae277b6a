@@ -1,0 +1,18 @@
+from Loggers.logObserver import Observer
+ 
+ 
+class cmdLogger(Observer):
+    def startTest(self, *args, **kwargs):
+        print("American stock market received: {0}\n{1}".format(args, kwargs))
+    
+    def startStep(self):
+        print "startStep cmd"
+        
+        
+    def finishStep(self):
+        print "finishStep cmd"
+        
+        
+    def finishTest(self):
+        print "finish test cmd"
+ 

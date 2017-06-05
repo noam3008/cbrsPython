@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<cbrsParams>
-	<jsonsRepoPath>\jsonExpectedFolder\</jsonsRepoPath>
-	<testRepoPath>\testFiles\</testRepoPath>
-	<hostIp>70.14.0.72</hostIp>
-	<heartbeatLimit>30</heartbeatLimit>
-</cbrsParams>

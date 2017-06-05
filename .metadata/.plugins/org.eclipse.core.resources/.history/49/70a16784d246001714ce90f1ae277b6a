@@ -1,0 +1,36 @@
+from Loggers.LogObserver import Observer
+import os
+ 
+class XmlLogger(Observer):
+    def __init__(self):
+        self.dir_Path = None
+    
+    
+    def startTest(self,dir_Path,log_Name,folder_Name=None):
+        self.dir_Path = dir_Path
+        if(folder_Name!=None):
+            newpath = str(self.dirPath)+ str(r'\\Logs\\SpecificFolderOfTests\\' + folder_Name)
+        if not os.path.exists(newpath):
+            self.build_folder_xml()
+            
+        print "startTest xml"
+ 
+    def startStep(self):
+        print "startStep xml"
+        
+        
+    def finishStep(self):
+        print "finishStep xml"
+        
+        
+    def finishTest(self):
+        print "finish test xml"
+        
+    def build_folder_xml(self):
+        root = ET.Element('ns0:test-suite')
+        root.set("xmlns:ns0","urn:model.allure.qatools.yandex.ru")
+        root.set("start",str(DT.datetime.now().strftime("%Y%m%d%H%M%S")))
+        ET.SubElement(root,"name").text = self.folderName
+        ET.SubElement(root,"labels")
+        self.testCases = ET.SubElement(root,"test-cases")
+        self.root = root

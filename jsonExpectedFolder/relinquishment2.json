@@ -16,7 +16,7 @@
 			"relinquishmentRequest": 
 				[ 
 					{ 
-						"cbsdId": "1234567890123456789cbsdSerialNumberD1DF06CD05A4",
+						"cbsdId": "1234567890123456789cbsdD1DF06CD05A4",
 						"grantId": "8385094448610395450" 
 					} 
 				],
@@ -24,7 +24,7 @@
         { 
 		   "relinquishmentResponse":[ 
 			  { 
-				 "cbsdId":"1234567890123456789cbsdSerialNumberD1DF06CD05A4",
+				 "cbsdId":"1234567890123456789cbsdD1DF06CD05A4",
 				 "error":{ 
 					"errorCode":0
 				 },

@@ -1,0 +1,29 @@
+{
+  "defectsList" : [ {
+    "title" : "Product defects",
+    "status" : "FAILED",
+    "defects" : [ {
+      "uid" : "ae5dec202b7f8d8b",
+      "failure" : {
+        "message" : "the server shot down because :  ERROR - there is no cbrs obj registered with the cbsdSerialNumber :  76B1E617472C",
+        "stackTrace" : ""
+      },
+      "testCases" : [ {
+        "uid" : "ce6717e1570ac18",
+        "name" : "exampleTestWithRegistration",
+        "title" : "Example test with registration",
+        "time" : {
+          "start" : 1496602520747,
+          "stop" : 1496602526749,
+          "duration" : 6002
+        },
+        "severity" : "NORMAL",
+        "status" : "FAILED"
+      } ]
+    } ]
+  }, {
+    "title" : "Test defects",
+    "status" : "BROKEN",
+    "defects" : [ ]
+  } ]
+}

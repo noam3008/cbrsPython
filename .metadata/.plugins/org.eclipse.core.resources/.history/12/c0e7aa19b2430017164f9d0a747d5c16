@@ -1,0 +1,46 @@
+from PIL import Image, ImageTk
+from Tkinter import Tk, Label, BOTH
+from ttk import Frame, Style
+from setuptools.package_index import open_with_auth
+from model.Utils import Consts as consts
+
+class Example(Frame):
+  
+    def __init__(self, parent):
+        Frame.__init__(self, parent)   
+         
+        self.parent = parent
+        self.initUI()
+
+        
+    def initUI(self):
+      
+        self.parent.title("CBRS Project")
+        self.pack(fill=BOTH, expand=1)
+        
+        Style().configure("TFrame", background="#333")
+        
+        bard = Image.open("C:/Users/iagmon/Downloads/airspan-logo.jpg")
+        bardejov = ImageTk.PhotoImage(bard)
+        label1 = Label(self, image=bardejov)
+        label1.image = bardejov
+        label1.place(x=20, y=20)      
+              
+
+    def set_csv_file(self):
+        container = self.Frame(self)
+        container.pack(side="bottom", fill="both", expand=True)
+        set_csv_file = Label(self,text=consts.SET_CSV_FILE_MESSAGE)
+        
+        
+
+def open_Window():
+  
+    root = Tk()
+    root.geometry("600x600")
+    app = Example(root)
+    root.mainloop()  
+
+
+open_Window() 
+set_csv_file()

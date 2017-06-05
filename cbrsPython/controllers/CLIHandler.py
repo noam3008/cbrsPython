@@ -14,6 +14,7 @@ import model.Utils.Consts as consts
 from model import flaskServer
 from ENodeBController import ENodeBController
 import ssl
+from controllers.CLIUtils.enums import TestStatus
 
 class CLIHandler(Thread):
     '''
@@ -31,7 +32,6 @@ class CLIHandler(Thread):
         self.loggerHandler      = loggerHandler
         self.questHandler       = QuestionHandler(self.loggerHandler)
         self.testDefinition     = testDefinition
-        self.numberOfLogger     = self.loggerHandler.currentLoggerName
         self.engine             = MyEngine(self.testDefinition,confFile,dirPath,loggerHandler)
         self.server             = None 
         self.start()
@@ -39,6 +39,10 @@ class CLIHandler(Thread):
     def stop_Thread_Due_To_Exception(self):
         self._stop.set() 
     
+
+    def test_Finish_Message_For_Logs(self, testStatus):
+        return self.loggerHandler.finish_Test(consts.RESULTS_OF_TEST_MESSAGE + self.testName + " is - " + str(testStatus.value), True, testStatus)
+
     def run(self): 
         ''' 
         the thread checks all the time if its the last step from the csv file or an error validation had accured
@@ -50,14 +54,18 @@ class CLIHandler(Thread):
             if(self.engine.check_Validation_Error()):
                 self.stop_Thread_Due_To_Exception()
         if not self._stop.is_set():
-            self.loggerHandler.print_And_Log_To_File(consts.NSTEP_SESSION_WITH_TECHNITIAN,True)
+            time.sleep(1)## for initialize the xml report
+            self.loggerHandler.print_to_Logs_Files(consts.NSTEP_SESSION_WITH_TECHNITIAN,True)
             finalResults = self.questHandler.ShowQuestionsAndGetAnswersFromClient(self.engine.get_Question_Answer_Part())
-            self.loggerHandler.print_And_Log_To_File(consts.RESULTS_OF_TEST_MESSAGE + self.testName + " is : " +  str(finalResults[0]),True)
+            if(finalResults[0]==consts.PASS_MESSAGE):
+                self.test_Finish_Message_For_Logs(TestStatus.PASSED)
+            else:
+                self.test_Finish_Message_For_Logs(TestStatus.FAILED)
             if(finalResults[1]!=""):
-                self.loggerHandler.print_And_Log_To_File(consts.ADDITIONAL_COMMENTS_MESSAGE + str(finalResults[1]),True)
+                self.loggerHandler.print_to_Logs_Files(consts.ADDITIONAL_COMMENTS_MESSAGE + str(finalResults[1]),True)
             self.start_another_test(self)
         else:
-            self.loggerHandler.print_And_Log_To_File(consts.RESULTS_OF_TEST_MESSAGE +self.testName +  " is : " + consts.FAIL_MESSAGE,True)
+            self.loggerHandler.finish_Test(consts.RESULTS_OF_TEST_MESSAGE +self.testName +  " is - " + consts.FAIL_MESSAGE,True,TestStatus.FAILED)
             self.start_another_test(self)
         
     def start_another_test(self,cliHandler): 
@@ -67,32 +75,33 @@ class CLIHandler(Thread):
         stop the last reports of the test running before the new test
         and running a new instance of the flask server  
         '''     
+        time.sleep(1)
         self.loggerHandler.print_To_Terminal(consts.SET_CSV_FILE_MESSAGE)
-        inputAnsweres=self.get_input() 
-        try:
-            csvFileParser = CsvFileParser(str(self.dirPath) + self.confFile.getElementsByTagName("testRepoPath")[0].firstChild.data + inputAnsweres)
-            self.testDefinition = TestDefinition(csvFileParser.initializeTestDefinition(),csvFileParser.find_Number_Of_Cols())
-        except IOError as e:
-            self.loggerHandler.print_To_Terminal(e.message)
-            self.start_another_test(cliHandler)
+        inputAnsweres=self.get_input()
         if (inputAnsweres !="quit"):
-            self.loggerHandler.remove_Test_File_Logger()
+            try:
+                csvFileParser = CsvFileParser(str(self.dirPath) + self.confFile.getElementsByTagName("testRepoPath")[0].firstChild.data + inputAnsweres)
+                self.testDefinition = TestDefinition(csvFileParser.initializeTestDefinition(),csvFileParser.find_Number_Of_Cols())
+            except IOError as e:
+                self.loggerHandler.print_To_Terminal(e.message)
+                self.start_another_test(cliHandler)
+            #self.loggerHandler.remove_Test_File_Logger()
             insertToFolderAnswer = self.add_Test_To_Specific_Folder()
             if (insertToFolderAnswer == "yes"):
                 self.loggerHandler.print_To_Terminal("typeNameOfFolder")
                 insertToFolderAnswer = raw_input()
-                self.loggerHandler.create_New_Logger(inputAnsweres,insertToFolderAnswer)
-                self.loggerHandler.print_And_Log_To_File(consts.SELECT_TO_ADD_TEST_MESSAGE + inputAnsweres + consts.SELECT_TO_ADD_FOLDER_MESSAGE + insertToFolderAnswer,True)
+                self.loggerHandler.start_Test(inputAnsweres,insertToFolderAnswer)
+                self.loggerHandler.print_to_Logs_Files(consts.SELECT_TO_ADD_TEST_MESSAGE + inputAnsweres + consts.SELECT_TO_ADD_FOLDER_MESSAGE + insertToFolderAnswer,True)
             else:
-                self.loggerHandler.create_New_Logger(inputAnsweres)
-                self.loggerHandler.print_And_Log_To_File(consts.SELECTED_TEST_FROM_USER_MESSAGE + inputAnsweres,True)
+                self.loggerHandler.start_Test(inputAnsweres)
+                self.loggerHandler.print_to_Logs_Files(consts.SELECTED_TEST_FROM_USER_MESSAGE + inputAnsweres,True)
             cliHandler = CLIHandler(inputAnsweres,self.confFile,self.dirPath,self.loggerHandler,self.testDefinition) 
             flaskServer.enodeBController = ENodeBController(cliHandler.engine)
-            ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
-            ctx.verify_mode = ssl.CERT_REQUIRED
-            ctx.load_verify_locations(str(self.dirPath) + cliHandler.get_Element_From_Config_File("caCerts"))
-            ctx.load_cert_chain(str(self.dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(self.dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))
-            flaskServer.runFlaskServer(self.get_Element_From_Config_File("hostIp"),self.get_Element_From_Config_File("port"),ctx) 
+            #ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
+            #ctx.verify_mode = ssl.CERT_REQUIRED
+            #ctx.load_verify_locations(str(self.dirPath) + cliHandler.get_Element_From_Config_File("caCerts"))
+            #ctx.load_cert_chain(str(self.dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(self.dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))
+            flaskServer.runFlaskServer(self.get_Element_From_Config_File("hostIp"),self.get_Element_From_Config_File("port"))#,ctx) 
             
         if(cliHandler.engine.validationErrorAccuredInEngine):
             cliHandler.stop_Thread_Due_To_Exception()

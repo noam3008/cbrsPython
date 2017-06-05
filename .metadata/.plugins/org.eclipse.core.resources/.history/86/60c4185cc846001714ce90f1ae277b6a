@@ -1,0 +1,19 @@
+from abc import abstractmethod
+ 
+class Observer(object):
+ 
+    @abstractmethod
+    def update(self, *args, **kwargs):
+        pass
+    
+    @abstractmethod
+    def startStep(self):
+        pass
+        
+        
+    def finishStep(self):
+        print "finishStep cmd"
+        
+        
+    def finishTest(self):
+        print "finish test cmd"

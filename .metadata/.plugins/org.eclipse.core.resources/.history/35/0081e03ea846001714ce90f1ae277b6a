@@ -1,0 +1,12 @@
+from datetime import time
+class xmlCreation(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        date startTime = Date

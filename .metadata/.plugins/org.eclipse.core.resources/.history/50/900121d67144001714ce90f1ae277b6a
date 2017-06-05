@@ -1,0 +1,24 @@
+import pytest
+import allure
+
+
+def capital_case(x):
+    return x.capitalize()
+
+def test_capital_case():
+    assert capital_case('semaphore') == 'Semaphore'
+    
+@pytest.allure.step
+def make_test_data_foo():
+    name = "noam"
+    assert name=="noam"
+    
+@pytest,allure.feature('Feature1')
+def test_minor():
+    assert False
+    
+
+
+test_capital_case()
+make_test_data_foo()
+test_minor()

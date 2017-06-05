@@ -1,0 +1,12 @@
+import datetime as DT
+class xmlCreation(object):
+    '''
+    classdocs
+    '''
+
+
+    def __init__(self, params):
+        '''
+        Constructor
+        '''
+        self.startTime = DT.time.now()

@@ -21,12 +21,12 @@ class QuestionHandler(object):
         answers = []
         correctAnsweres = True
         for questAnswer in questionsAndAnswers:   
-            self.loggerHandler.print_And_Log_To_File("the question is : " + questAnswer[consts.QUESTION_NODE] + consts.CHOOSE_ONE_OF_THE_ANSWERS_MESSAGE,True)
+            self.loggerHandler.print_to_Logs_Files("the question is : " + questAnswer[consts.QUESTION_NODE] + consts.CHOOSE_ONE_OF_THE_ANSWERS_MESSAGE,True)
             for answer in questAnswer[consts.ANSWERS_NODE]:            
                 self.loggerHandler.print_To_Terminal(answer) 
             
             inputAnswer = raw_input()
-            self.loggerHandler.print_And_Log_To_File("for the question : " + questAnswer[consts.QUESTION_NODE] + " , the user choose " + str(inputAnswer),True)
+            self.loggerHandler.print_to_Logs_Files("for the question : " + questAnswer[consts.QUESTION_NODE] + " , the user choose " + str(inputAnswer),True)
             if not inputAnswer == questAnswer[consts.EXPECT_ANSWER_NODE]:
                 correctAnsweres = False
             

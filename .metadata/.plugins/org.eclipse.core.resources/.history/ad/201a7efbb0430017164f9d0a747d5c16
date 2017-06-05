@@ -1,0 +1,46 @@
+from PIL import Image, ImageTk
+from Tkinter import Tk, Label, BOTH
+from ttk import Frame, Style
+
+class Example(Frame):
+    
+    def center(toplevel):
+        toplevel.update_idletasks()
+        w = toplevel.winfo_screenwidth()
+        h = toplevel.winfo_screenheight()
+        size = tuple(int(_) for _ in toplevel.geometry().split('+')[0].split('x'))
+        x = w/2 - size[0]/2
+        y = h/2 - size[1]/2
+        toplevel.geometry("%dx%d+%d+%d" % (size + (x, y)))
+  
+    def __init__(self, parent):
+        Frame.__init__(self, parent)   
+         
+        self.parent = parent
+        self.initUI()
+
+        
+    def initUI(self):
+      
+        self.parent.title("CBRS Project")
+        self.pack(fill=BOTH, expand=1)
+        
+        Style().configure("TFrame", background="#333")
+        
+        bard = Image.open("C:/Users/iagmon/Downloads/airspan-logo.jpg")
+        bardejov = ImageTk.PhotoImage(bard)
+        label1 = Label(self, image=bardejov)
+        label1.image = bardejov
+        label1.place(x=20, y=20)      
+              
+
+def main():
+  
+    root = Tk()
+    root.geometry("300x280+300+300")
+    app = Example(root)
+    root.mainloop()  
+
+
+if __name__ == '__main__':
+    main()  

@@ -26,7 +26,7 @@ class CBRSRequestHandler(object):
         self.isLastStepInCSV                    = False
         self.numberOfStep                       = 0
         self.numberOfHearbeatRequests           = 0
-        self.currentLogger                      = currentLogger
+        self.loggerHandler                      = currentLogger
         self.assertion                          = Assertion(confFile,dirPath,currentLogger)
         self.heartBeatLimitCounter              = confFile.getElementsByTagName("heartbeatLimit")[0].firstChild.data
         self.jsonSteps = []
@@ -39,7 +39,6 @@ class CBRSRequestHandler(object):
         for jsonCol in testDefinition.jsonNamesOfSteps:
             if jsonComparer.get_Node_Of_Json_Parsed(jsonCol[0],"registrationRequest",confFile,dirPath)[0]["cbsdSerialNumber"]== self.cbsdSerialNumber:
                 self.jsonSteps = jsonCol
-                print self.jsonSteps[0]
                 
     def handle_Http_Req(self,httpRequest,typeOfCalling):
         if(self.repeatsType == typeOfCalling and self.repeatesAllowed == True and self.oldHttpReq == httpRequest):

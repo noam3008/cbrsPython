@@ -1,0 +1,41 @@
+{
+  "uid" : "da9b36e7ea94e829",
+  "name" : "gui",
+  "title" : "Gui",
+  "time" : {
+    "start" : 1496066956106,
+    "stop" : 1496066956106,
+    "duration" : 0
+  },
+  "summary" : {
+    "attachments" : 0,
+    "steps" : 0
+  },
+  "failure" : {
+    "message" : "failed",
+    "stackTrace" : "C:\\Users\\iagmon\\cbrsPython\\cbrsPython\\controllers\\gui.py:12: in <module>\n    test_capital_case()\nC:\\Users\\iagmon\\cbrsPython\\cbrsPython\\controllers\\gui.py:8: in test_capital_case\n    assert capital_case('noam') == 'Semaphore'\nE   AssertionError: assert 'Noam' == 'Semaphore'\nE    +  where 'Noam' = capital_case('noam')"
+  },
+  "description" : {
+    "value" : "This is the tests collection phase. Failures are modules that failed to collect.",
+    "type" : "TEXT"
+  },
+  "severity" : "NORMAL",
+  "status" : "BROKEN",
+  "suite" : {
+    "uid" : "74618fad059cd0eb",
+    "name" : "test_collection_phase",
+    "title" : "Collection phase"
+  },
+  "steps" : [ ],
+  "attachments" : [ ],
+  "issues" : [ ],
+  "testIds" : [ ],
+  "labels" : [ {
+    "name" : "suite-title",
+    "value" : "Collection phase"
+  }, {
+    "name" : "suite-name",
+    "value" : "test_collection_phase"
+  } ],
+  "parameters" : [ ]
+}
