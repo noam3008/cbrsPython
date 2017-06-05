@@ -16,8 +16,6 @@
 			"registrationRequest":
         	[
             	{
-				  "userId": "user123",
-				  "fccId": "1234567890123456789",
 				  "cbsdSerialNumber":"76B1E617472C",
 				  "cbsdManufacturer": "cbsdManufacturer123",
 				  "cbsdCategory":"a",
@@ -25,8 +23,7 @@
 				  "maximumGrants":2,
 				  "sensingCapability": [ "receivedInterferencePower" ],
 				  "airInterface": { "radioTechnology": "lte", "supportedSpec": "lte-rel10" },
-				  "installationParam": { "latitude": 38.878337000000002, "longitude": -77.100702999999996, "height": 1, "heightType": "agl", "horizontalAccuracy": 1, "verticalAccuracy": 1, "indoorDeployment": true, "antennaAzimuth": 0, "antennaDowntiltMech": 0, "antennaDowntiltElec": 0, "antennaGain": 0, "antennaBeamwidth": 0, "antennaModel": "antennaModel123" }
-				  
+				  "installationParam": { "latitude": 38.878337000000002, "longitude": "${range:-180.000000To180.000000}", "height": 1, "heightType": "agl", "horizontalAccuracy": 1, "verticalAccuracy": 1, "indoorDeployment": true, "antennaAzimuth": 0, "antennaDowntiltMech": 0, "antennaDowntiltElec": 0, "antennaGain": 0, "antennaBeamwidth": 0, "antennaModel": "antennaModel123" }
 				}
 			],
 			"response":{

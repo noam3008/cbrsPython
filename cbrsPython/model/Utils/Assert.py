@@ -11,13 +11,14 @@ class Assertion(object):
     '''
 
 
-    def __init__(self,confFile,dirPath,loggerHandler):
+    def __init__(self,enviormentConfFile,dirPath,loggerHandler,cbrsConfFile):
         '''
         Constructor
         '''
-        self.confFile = confFile
+        self.confFile = enviormentConfFile
         self.dirPath  = dirPath
         self.loggerHandler = loggerHandler
+        self.cbrsConfFile = cbrsConfFile
         
     def compare_Json_Req(self,httpRequest,jsonExpected,suffix):
         
@@ -29,7 +30,10 @@ class Assertion(object):
             jsonExpectedObj = JsonComparisonUtils.get_Node_Of_Json_Parsed(jsonExpected,suffix,self.confFile,self.dirPath)
             jsonExpectedObj = self.add_Json_Optional_Parameters(jsonExpectedObj,httpRequest,suffix)
         except Exception as e:
-            raise IOError(e.message)
+            raise IOError(e.message)  
+        if(consts.REGISTRATION_SUFFIX_HTTP in suffix):
+            JsonComparisonUtils.ordered_dict_prepend(jsonExpectedObj[0],"fccId" , self.cbrsConfFile.getElementsByTagName("fccId")[0].firstChild.data)
+            JsonComparisonUtils.ordered_dict_prepend(jsonExpectedObj[0],"userId" , self.cbrsConfFile.getElementsByTagName("userId")[0].firstChild.data)
         x = JsonComparisonUtils.are_same(jsonExpectedObj[0],httpRequest)
         if(False in x):
             self.loggerHandler.print_to_Logs_Files(x,True)

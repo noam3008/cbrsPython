@@ -7,6 +7,7 @@ import model.Utils.JsonComparisonUtils as jsonComparer
 import model.Utils.Consts as consts
 import datetime as DT
 from model.Utils.Assert import Assertion
+from xml.dom import minidom
 
 class CBRSRequestHandler(object):
     '''
@@ -14,7 +15,7 @@ class CBRSRequestHandler(object):
     '''
 
 
-    def __init__(self, cbsdSerialNumber,testDefinition,confFile,dirPath,currentLogger):
+    def __init__(self, cbsdSerialNumber,testDefinition,EnviormentConfFile,dirPath,currentLogger):
         self.cbsdSerialNumber                   = cbsdSerialNumber
         self.repeatesAllowed                    = False
         self.repeatsType                        = None
@@ -27,18 +28,21 @@ class CBRSRequestHandler(object):
         self.numberOfStep                       = 0
         self.numberOfHearbeatRequests           = 0
         self.loggerHandler                      = currentLogger
-        self.assertion                          = Assertion(confFile,dirPath,currentLogger)
-        self.heartBeatLimitCounter              = confFile.getElementsByTagName("heartbeatLimit")[0].firstChild.data
+        self.assertion                          = None
+        self.heartBeatLimitCounter              = EnviormentConfFile.getElementsByTagName("heartbeatLimit")[0].firstChild.data
         self.jsonSteps = []
-        self.confFile = confFile
+        self.enviormentConfFile = EnviormentConfFile
         self.dirPath = dirPath
-        self.set_Current_Json_Steps(testDefinition, confFile, dirPath)
-    
+        self.cbrsConfFile = None
+        self.set_Current_Json_Steps(testDefinition, EnviormentConfFile, dirPath)
+        
     
     def set_Current_Json_Steps(self,testDefinition,confFile,dirPath):
         for jsonCol in testDefinition.jsonNamesOfSteps:
             if jsonComparer.get_Node_Of_Json_Parsed(jsonCol[0],"registrationRequest",confFile,dirPath)[0]["cbsdSerialNumber"]== self.cbsdSerialNumber:
                 self.jsonSteps = jsonCol
+                self.cbrsConfFile = minidom.parse(str(self.dirPath) +"\\cbrsPython\\model\\CBRSConf\\"+ self.cbsdSerialNumber+".xml")
+                self.assertion = Assertion(self.enviormentConfFile,dirPath,self.loggerHandler,self.cbrsConfFile)
                 
     def handle_Http_Req(self,httpRequest,typeOfCalling):
         if(self.repeatsType == typeOfCalling and self.repeatesAllowed == True and self.oldHttpReq == httpRequest):
@@ -92,7 +96,7 @@ class CBRSRequestHandler(object):
         self.oldHttpReq = httpRequest
         ## relinquish is too fast and sent request before entering the loop of new test  
         if(self.validationErrorAccuredInEngine == False):     
-            return self.process_response()
+            return self.process_response(typeOfCalling)
         
         
     def Is_Repeats_Available(self,expectedJsonName,typeOfCalling):
@@ -141,10 +145,14 @@ class CBRSRequestHandler(object):
         return True
     
     
-    def process_response(self):       
-        jsonAfterParse = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.RESPONSE_NODE_NAME,self.confFile)
+    def process_response(self,typeOfCalling):  
+        jsonAfterParse = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.RESPONSE_NODE_NAME,self.enviormentConfFile)
+        if(typeOfCalling == consts.GRANT_SUFFIX_HTTP):
+            jsonComparer.ordered_dict_prepend(jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0], "grantExpireTime" , self.cbrsConfFile.getElementsByTagName("grantExpireTime")[0].firstChild.data)     
+        elif(typeOfCalling == consts.HEART_BEAT_SUFFIX_HTTP):
+            jsonComparer.ordered_dict_prepend(jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0], "transmitExpireTime" , self.cbrsConfFile.getElementsByTagName("grantExpireTime")[0].firstChild.data)
         if(len(self.jsonSteps) == self.numberOfStep+1):
-            self.questAnswerPartOfJson = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.QUESTION_NODE_NAME,self.confFile)
+            self.questAnswerPartOfJson = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.QUESTION_NODE_NAME,self.enviormentConfFile)
             self.isLastStepInCSV = True
     
         self.numberOfStep+=1
