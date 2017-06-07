@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="SearchIndexPage">
-		<item value="4" key="HISTORY_SIZE"/>
-		<section name="HISTORY2">
+		<item value="6" key="HISTORY_SIZE"/>
+		<section name="HISTORY4">
 			<item value="false" key="isCaseSensitive"/>
 			<item value="2" key="scope"/>
 			<item value="false" key="isWholeWord"/>
 			<item value="" key="scopeData"/>
-			<item value="json.dump" key="textPattern"/>
+			<item value="finishTest" key="textPattern"/>
 			<item value="*" key="filenamePattern"/>
 		</section>
-		<section name="HISTORY3">
+		<section name="HISTORY5">
+			<item value="false" key="isCaseSensitive"/>
+			<item value="2" key="scope"/>
+			<item value="false" key="isWholeWord"/>
+			<item value="" key="scopeData"/>
+			<item value="finish_Test" key="textPattern"/>
+			<item value="*" key="filenamePattern"/>
+		</section>
+		<section name="HISTORY2">
 			<item value="false" key="isCaseSensitive"/>
 			<item value="2" key="scope"/>
 			<item value="false" key="isWholeWord"/>
@@ -18,7 +26,7 @@
 			<item value="logging" key="textPattern"/>
 			<item value="*" key="filenamePattern"/>
 		</section>
-		<section name="HISTORY0">
+		<section name="HISTORY3">
 			<item value="false" key="isCaseSensitive"/>
 			<item value="2" key="scope"/>
 			<item value="false" key="isWholeWord"/>
@@ -26,12 +34,20 @@
 			<item value="print" key="textPattern"/>
 			<item value="*" key="filenamePattern"/>
 		</section>
-		<section name="HISTORY1">
+		<section name="HISTORY0">
 			<item value="false" key="isCaseSensitive"/>
 			<item value="2" key="scope"/>
 			<item value="false" key="isWholeWord"/>
 			<item value="" key="scopeData"/>
 			<item value="REQUEST_NODE_NAME" key="textPattern"/>
+			<item value="*" key="filenamePattern"/>
+		</section>
+		<section name="HISTORY1">
+			<item value="false" key="isCaseSensitive"/>
+			<item value="2" key="scope"/>
+			<item value="false" key="isWholeWord"/>
+			<item value="" key="scopeData"/>
+			<item value="json.dump" key="textPattern"/>
 			<item value="*" key="filenamePattern"/>
 		</section>
 	</section>

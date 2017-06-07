@@ -1,5 +1,6 @@
 import sys
 import os.path
+from controllers import gui
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from controllers.CLIUtils.TestDefinition import TestDefinition
 import model.Utils.Consts as consts
@@ -13,6 +14,7 @@ from Loggers.LoggerObserver import loggerObserver
 from Loggers.CmdLogger import CmdLogger
 from Loggers.DebugLogger import DebugLogger
 from Loggers.XmlLogger import XmlLogger
+from controllers.gui import GUIFramework
 import ssl
 
 
@@ -21,7 +23,7 @@ def add_Test_To_Specific_Folder(loggerHandler):
     the method insure that the question if the test should be added to the folder will be yes or no only
     '''
     loggerHandler.print_To_Terminal(consts.ADD_TEST_TO_SPECIFIC_FOLDER_MESSAGE)
-    insertToFolderAnswer = raw_input()
+    insertToFolderAnswer = raw_input().lower()
     while(insertToFolderAnswer.lower()!="yes" and insertToFolderAnswer.lower()!="no"):
         loggerHandler.print_To_Terminal("you must enter yes or no for continue the test")
         loggerHandler.print_To_Terminal(consts.ADD_TEST_TO_SPECIFIC_FOLDER_MESSAGE)
@@ -48,16 +50,17 @@ def run_New_Test(dirPath, confFile, loggerHandler):
     '''
     
     loggerHandler.start_Test(consts.CLI_SESSION)
-    
     loggerHandler.print_To_Terminal(consts.SET_CSV_FILE_MESSAGE)
     inputAnswer = get_input()
-    if (inputAnswer != "quit"):
+    
+    if(inputAnswer!="quit"):
         try: ### initialize the test definition from the csv file 
             csvFileParser = CsvFileParser(str(dirPath) + confFile.getElementsByTagName("testRepoPath")[0].firstChild.data + inputAnswer)
             testDefinition = TestDefinition(csvFileParser.initializeTestDefinition(),csvFileParser.find_Number_Of_Cols())
         except IOError as e:  ### in case there is file not found error try to enter new csv file name
             loggerHandler.print_To_Terminal(e.message)
             run_New_Test(dirPath, confFile, loggerHandler)
+        
         insertToFolderAnswer = add_Test_To_Specific_Folder(loggerHandler)
         if (insertToFolderAnswer == "yes"):
             loggerHandler.print_To_Terminal("typeNameOfFolder")
@@ -68,16 +71,15 @@ def run_New_Test(dirPath, confFile, loggerHandler):
         else:
             loggerHandler.start_Test(inputAnswer)
             loggerHandler.print_to_Logs_Files(consts.SELECTED_TEST_FROM_USER_MESSAGE + str(inputAnswer), True)
-        cliHandler = CLIHandler(inputAnswer, confFile, dirPath, loggerHandler,testDefinition) ### initialize cli session handler
-        flaskServer.enodeBController = ENodeBController(cliHandler.engine) 
-        ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
-        ctx.verify_mode = ssl.CERT_REQUIRED
-        ctx.load_verify_locations(str(dirPath) + cliHandler.get_Element_From_Config_File("caCerts"))
-        ctx.load_cert_chain(str(dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))## get the certificates for https from config file
-        flaskServer.runFlaskServer(cliHandler.get_Element_From_Config_File("hostIp"),cliHandler.get_Element_From_Config_File("port"),ctx) ### run flask server using the host name and port  from conf file
-        if (cliHandler.engine.check_Validation_Error()):
-            cliHandler.stop_Thread_Due_To_Exception()
-    cliHandler.stop_Thread_Due_To_Exception()
+    cliHandler = CLIHandler(inputAnswer, confFile, dirPath, loggerHandler,testDefinition) ### initialize cli session handler
+    flaskServer.enodeBController = ENodeBController(cliHandler.engine) 
+    #ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
+    #ctx.verify_mode = ssl.CERT_REQUIRED
+    #ctx.load_verify_locations(str(dirPath) + cliHandler.get_Element_From_Config_File("caCerts"))
+    #ctx.load_cert_chain(str(dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))## get the certificates for https from config file
+    flaskServer.runFlaskServer(cliHandler.get_Element_From_Config_File("hostIp"),cliHandler.get_Element_From_Config_File("port"))#,ctx) ### run flask server using the host name and port  from conf file
+    if (cliHandler.engine.check_Validation_Error()):
+        cliHandler.stop_Thread_Due_To_Exception()
 
 
 def initialize_Reports():

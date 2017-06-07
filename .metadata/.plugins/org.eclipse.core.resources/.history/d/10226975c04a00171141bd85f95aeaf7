@@ -1,0 +1,67 @@
+from Tkinter import *
+from PIL import ImageTk, Image
+from model.Utils import Consts as consts
+import tkMessageBox
+import random
+import os
+
+class GUIFramework(Frame):
+
+    def __init__(self,master=None):
+        Frame.__init__(self,master)
+        self.master.title("CBRS PROJECT")
+        self.grid(padx=10,pady=10)
+        self.Create_Open_Widget()
+        self.mainloop()
+
+    def Create_Open_Widget(self):
+        path = "C:/Users/iagmon/Downloads/airspan-logo.jpg"
+        pilImage = Image.open(path)
+        image200x100 = pilImage.resize((100, 100), Image.ANTIALIAS)
+        img = ImageTk.PhotoImage(image200x100)
+        panel = Label(self, image = img)
+        panel.image = img
+        panel.grid(row = 0 , column = 0,sticky=W,padx=10, pady=10)
+        
+        
+        ct = [random.randrange(256) for x in range(3)]
+        brightness = int(round(0.299*ct[0] + 0.587*ct[1] + 0.114*ct[2]))
+        ct_hex = "%02x%02x%02x" % tuple(ct)
+        bg_colour = '#' + "".join(ct_hex)
+        self.lbText = Label(self, text=consts.SET_CSV_FILE_MESSAGE,
+                            fg='White' if brightness < 120 else 'Black', 
+                            bg=bg_colour,borderwidth=2, relief="groove")
+        self.lbText.grid(row=1, column=0,padx=10, pady=10)     
+        self.tkvar = StringVar(self)
+ 
+        # Dictionary with options   
+        choices = []
+        for file in os.listdir("C://Users//iagmon//cbrsPython//testFiles"):
+            choices.append(file)
+        self.tkvar.set(choices[0]) # set the default option
+         
+        popupMenu = OptionMenu(self, self.tkvar, *choices)
+        popupMenu.grid(row = 2, column =0,sticky=W)
+         
+        # on change dropdown value
+        def change_dropdown(*args):
+            print( self.tkvar.get() )
+         
+        # link function to change dropdown
+        self.tkvar.trace('w', change_dropdown)
+        
+        self.btnDisplay = Button(self, text="send CSV File Name", command=self.Display)
+        self.btnDisplay.grid(row=2, column=1,sticky =E)
+
+    def Display(self):
+        tkMessageBox.showinfo("Text", "You typed: %s" % self.tkvar.get())
+
+    def add_Logo(self):
+        path = "C:/Users/iagmon/Downloads/airspan-logo.jpg"
+        img = ImageTk.PhotoImage(Image.open(path))
+        panel = Label(self, image = img)
+        panel.pack(side = "bottom", fill = "both", expand = "yes")
+
+if __name__ == "__main__":
+    guiFrame = GUIFramework()
+    guiFrame.mainloop()

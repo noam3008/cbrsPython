@@ -1,0 +1,63 @@
+from Tkinter import *
+from PIL import ImageTk, Image
+from model.Utils import Consts as consts
+import tkMessageBox
+
+class GUIFramework(Frame):
+
+    def __init__(self,master=None):
+        Frame.__init__(self,master)
+        self.master.title("CBRS PROJECT")
+        self.grid(padx=10,pady=10)
+        self.Create_Open_Widget()
+
+    def Create_Open_Widget(self):
+        path = "C:/Users/iagmon/Downloads/airspan-logo.jpg"
+        pilImage = Image.open(path)
+        pilImage.resize((102, 102), Image.ANTIALIAS)
+        img = ImageTk.PhotoImage(pilImage)
+        panel = Label(self, image = img)
+        panel.image = img
+        panel.grid(row = 0 , column = 0)
+        self.lbText = Label(self, text=consts.SET_CSV_FILE_MESSAGE)
+        self.lbText.grid(row=1, column=0)
+        
+        tkvar = StringVar(self)
+ 
+        # Dictionary with options
+        import os
+        choices = []
+        for file in os.listdir("C://Users//iagmon//cbrsPython//testFiles"):
+            choices.append(file)
+        tkvar.set(choices[0]) # set the default option
+         
+        popupMenu = OptionMenu(self, tkvar, *choices)
+        popupMenu.grid(row = 1, column =1)
+         
+        # on change dropdown value
+        def change_dropdown(*args):
+            print( tkvar.get() )
+         
+        # link function to change dropdown
+        tkvar.trace('w', change_dropdown)
+        
+        self.btnDisplay = Button(self, text="send CSV File Name", command=self.Display)
+        self.btnDisplay.grid(row=1, column=4)
+
+    def Display(self):
+        tkMessageBox.showinfo("Text", "You typed: %s" % self.enText.get())
+
+    def add_Logo(self):
+        path = "C:/Users/iagmon/Downloads/airspan-logo.jpg"
+        #Creates a Tkinter-compatible photo image, which can be used everywhere Tkinter expects an image object.
+        img = ImageTk.PhotoImage(Image.open(path))
+        
+        #The Label widget is a standard Tkinter widget used to display a text or image on the screen.
+        panel = Label(self, image = img)
+        
+        #The Pack geometry manager packs widgets in rows or columns.
+        panel.pack(side = "bottom", fill = "both", expand = "yes")
+
+if __name__ == "__main__":
+    guiFrame = GUIFramework()
+    guiFrame.mainloop()

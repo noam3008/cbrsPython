@@ -34,13 +34,18 @@ class Assertion(object):
         if(consts.REGISTRATION_SUFFIX_HTTP in suffix):
             JsonComparisonUtils.ordered_dict_prepend(jsonExpectedObj[0],"fccId" , self.cbrsConfFile.getElementsByTagName("fccId")[0].firstChild.data)
             JsonComparisonUtils.ordered_dict_prepend(jsonExpectedObj[0],"userId" , self.cbrsConfFile.getElementsByTagName("userId")[0].firstChild.data)
-        x = JsonComparisonUtils.are_same(jsonExpectedObj[0],httpRequest)
+        if(consts.HEART_BEAT_SUFFIX_HTTP in suffix):
+            ignoreKeys = []
+            ignoreKeys.append("operationState")
+            x = JsonComparisonUtils.are_same(jsonExpectedObj[0],httpRequest,False,ignoreKeys)
+        else:
+            x = JsonComparisonUtils.are_same(jsonExpectedObj[0],httpRequest)
         if(False in x):
             self.loggerHandler.print_to_Logs_Files(x,True)
         try:
             assert True in x
         except:
-            raise IOError(consts.ERROR_VALIDATION_MESSAGE)
+            raise IOError(consts.ERROR_VALIDATION_MESSAGE + "in the json : " + jsonExpected)
         return x
         
 

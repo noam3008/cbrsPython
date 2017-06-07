@@ -27,7 +27,9 @@ class DebugLogger(Observer):
         else:
             self.print_to_Logs_Files(response,False)
         
-    def finishTest(self,msg,isCmdOutput,testStatus):
+    def finishTest(self,msg,isCmdOutput,testStatus,additionalComments):
+        if(additionalComments!=None):
+                msg = msg + " and the additional comments for the test are : " + additionalComments
         self.print_to_Logs_Files(msg, isCmdOutput)
     
     def print_to_Logs_Files(self,message,isCmdOutput):   

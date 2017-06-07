@@ -1,0 +1,43 @@
+from Tkinter import *
+from model.Utils import Consts as consts
+import tkMessageBox
+
+class GUIFramework(Frame):
+
+    def __init__(self,master=None):
+        Frame.__init__(self,master)
+        self.master.title("CBRS PROJECT")
+        self.grid(padx=10,pady=10)
+        self.Create_Open_Widget()
+
+    def Create_Open_Widget(self):
+        self.lbText = Label(self, text=consts.SET_CSV_FILE_MESSAGE)
+        self.lbText.grid(row=0, column=0)
+        
+        tkvar = StringVar(self)
+ 
+        # Dictionary with options
+        import os
+            for file in os.listdir("/C:\Users\iagmon\cbrsPython\testFiles"):
+        choices = { 'Pizza','Lasagne','Fries','Fish','Potatoe'}
+        tkvar.set('Pizza') # set the default option
+         
+        popupMenu = OptionMenu(self, tkvar, *choices)
+        popupMenu.grid(row = 0, column =1)
+         
+        # on change dropdown value
+        def change_dropdown(*args):
+            print( tkvar.get() )
+         
+        # link function to change dropdown
+        tkvar.trace('w', change_dropdown)
+        
+        self.btnDisplay = Button(self, text="send CSV File Name", command=self.Display)
+        self.btnDisplay.grid(row=0, column=4)
+
+    def Display(self):
+        tkMessageBox.showinfo("Text", "You typed: %s" % self.enText.get())
+
+if __name__ == "__main__":
+    guiFrame = GUIFramework()
+    guiFrame.mainloop()

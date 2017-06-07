@@ -42,9 +42,9 @@ class loggerObserver(object):
         for observer in self.observers:
             observer.finishStep(response,typeOfCalling,stepStatus)
             
-    def finish_Test(self,msg,isCmdOutput,testStatus):
+    def finish_Test(self,msg,isCmdOutput,testStatus,additionalComments = None):
         for observer in self.observers:
-            observer.finishTest(msg,isCmdOutput,testStatus)
+            observer.finishTest(msg,isCmdOutput,testStatus,additionalComments)
             
     def print_to_Logs_Files(self,message,isCmdOutput):
         for observer in self.observers:

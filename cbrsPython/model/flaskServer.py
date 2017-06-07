@@ -5,6 +5,7 @@ from collections import OrderedDict
 import json
 from controllers.CLIUtils.enums import StepStatus
 from __builtin__ import True
+from controllers.gui import GUIFramework
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 
@@ -45,8 +46,8 @@ def shutdown():
 def redirectShutDownDueToFinishOfTest():
         return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=consts.TEST_HAD_BEEN_FINISHED_FLASK))
 import ssl
-def runFlaskServer(host,port,ctx):
-    app.run(host,port,threaded=True,ssl_context=ctx)
+def runFlaskServer(host,port):#,ctx):
+    app.run(host,port,threaded=True)#,ssl_context=ctx)
         
 
     

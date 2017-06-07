@@ -1,6 +1,6 @@
 ERROR_VALIDATION_MESSAGE =                  "ERROR - An Error occurred while comparing between actual and expected request"
 RESULTS_OF_TEST_MESSAGE =                   "The final result of the test : "
-SET_CSV_FILE_MESSAGE =                      "Please enter a csv file path that include the test you request to run or quit to finish "
+SET_CSV_FILE_MESSAGE =                      "Please enter a csv file path that include the test you request to run "
 START_TEST_MESSAGE =                        "Start of the test"
 CLOSE_USER_SESSION =                        "Session user will now close"
 SENT_FLASK_REQUEST =                        "sent flask request to engine"

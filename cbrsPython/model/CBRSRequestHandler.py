@@ -44,8 +44,18 @@ class CBRSRequestHandler(object):
                 self.cbrsConfFile = minidom.parse(str(self.dirPath) +"\\cbrsPython\\model\\CBRSConf\\"+ self.cbsdSerialNumber+".xml")
                 self.assertion = Assertion(self.enviormentConfFile,dirPath,self.loggerHandler,self.cbrsConfFile)
                 
+    def verify_Equal_Req_Except_Of_Operation_State(self,typeOfCalling,httpRequest):
+        if(typeOfCalling==consts.HEART_BEAT_SUFFIX_HTTP):
+            ignoreKeys = []
+            ignoreKeys.append("operationState")
+            x = jsonComparer.are_same(httpRequest,self.oldHttpReq,False,ignoreKeys)
+            if(True in x):
+                return True
+            return False
+        return True 
+            
     def handle_Http_Req(self,httpRequest,typeOfCalling):
-        if(self.repeatsType == typeOfCalling and self.repeatesAllowed == True and self.oldHttpReq == httpRequest):
+        if(self.repeatsType == typeOfCalling and self.repeatesAllowed == True and self.verify_Equal_Req_Except_Of_Operation_State(typeOfCalling,httpRequest)):
             ### in case its an heartbeat calling need to check if it is cross the limit 
             ###counter get from the config file or heartbeat call 
             ###passed the timeout that get from the last grant response         
@@ -67,7 +77,7 @@ class CBRSRequestHandler(object):
                 if(self.validDurationTime == None):
                     return consts.GRANT_BEFORE_HEARTBEAT_ERROR                  
                 self.Initialize_Repeats_Type_Allowed(consts.HEART_BEAT_SUFFIX_HTTP,httpRequest, typeOfCalling)
-                self.numberOfHearbeatRequests+=1 
+                self.numberOfHearbeatRequests=1 
                 self.lastHeartBeatTime = DT.datetime.now()        
         else:
             if(typeOfCalling==consts.GRANT_SUFFIX_HTTP):
@@ -84,8 +94,8 @@ class CBRSRequestHandler(object):
                     return consts.GRANT_BEFORE_HEARTBEAT_ERROR 
             self.repeatesAllowed = False
             self.repeatsType = None              
-        try: 
-            self.compare_Json_Req(httpRequest,self.get_Expected_Json_File_Name(),typeOfCalling)  
+        try:
+                self.compare_Json_Req(httpRequest,self.get_Expected_Json_File_Name(),typeOfCalling)  
                     
         except Exception as e:
             self.validationErrorAccuredInEngine = True  

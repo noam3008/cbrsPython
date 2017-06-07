@@ -1,4 +1,0 @@
-from Loggers.LoggerHandler import LoggerHandler as logger
-
-logger.addLoggerFile("noam", log_file)
-

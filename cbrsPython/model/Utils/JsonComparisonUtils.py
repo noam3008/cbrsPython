@@ -271,7 +271,8 @@ def ordered_dict_prepend(dct, key, value, dict_setitem=dict.__setitem__):
             root[1] = first[0] = link
         else:
             root[1] = first[0] = dct._OrderedDict__map[key] = [root, first, key]
-            dict_setitem(dct, key, value)
+            return dict_setitem(dct, key, value)
+        
 
 
     

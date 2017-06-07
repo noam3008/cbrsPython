@@ -24,8 +24,10 @@ class CmdLogger(Observer):
             self.print_To_Terminal(response)
         
         
-    def finishTest(self,msg,isCmdOutput,testStatus):
+    def finishTest(self,msg,isCmdOutput,testStatus,additionalComments):
         if(isCmdOutput):
+            if(additionalComments!=None):
+                msg = msg + " and the additional comments for the test are : " + additionalComments
             self.print_To_Terminal(msg)
         
     def print_To_Terminal(self,message):
