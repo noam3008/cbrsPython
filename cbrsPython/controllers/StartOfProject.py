@@ -15,7 +15,6 @@ from Loggers.LoggerObserver import loggerObserver
 from Loggers.CmdLogger import CmdLogger
 from Loggers.DebugLogger import DebugLogger
 from Loggers.XmlLogger import XmlLogger
-from controllers.gui import GUIFramework
 import ssl
 import datetime as DT
 
