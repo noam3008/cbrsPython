@@ -16,7 +16,6 @@ controllers.ENodeBController|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\E
 controllers.StartOfProject|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\StartOfProject.py
 controllers.__init__|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\__init__.py
 controllers.gui|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\gui.py
-controllers.gui2|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\gui2.py
 model.CBRSConf.__init__|C:\Users\iagmon\cbrsPython\cbrsPython\model\CBRSConf\__init__.py
 model.CBRSRequestHandler|C:\Users\iagmon\cbrsPython\cbrsPython\model\CBRSRequestHandler.py
 model.Engine|C:\Users\iagmon\cbrsPython\cbrsPython\model\Engine.py

@@ -158,15 +158,37 @@ class CBRSRequestHandler(object):
     def process_response(self,typeOfCalling):  
         jsonAfterParse = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.RESPONSE_NODE_NAME,self.enviormentConfFile)
         if(typeOfCalling == consts.GRANT_SUFFIX_HTTP):
-            jsonComparer.ordered_dict_prepend(jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0], "grantExpireTime" , self.cbrsConfFile.getElementsByTagName("grantExpireTime")[0].firstChild.data)     
+            result = self.get_Expire_Time()
+            jsonComparer.ordered_dict_prepend(jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0], "grantExpireTime" , result)     
         elif(typeOfCalling == consts.HEART_BEAT_SUFFIX_HTTP):
-            jsonComparer.ordered_dict_prepend(jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0], "transmitExpireTime" , self.cbrsConfFile.getElementsByTagName("grantExpireTime")[0].firstChild.data)
+            result = self.get_Expire_Time()
+            jsonComparer.ordered_dict_prepend(jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0], "transmitExpireTime" , result)
         if(len(self.jsonSteps) == self.numberOfStep+1):
             self.questAnswerPartOfJson = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.QUESTION_NODE_NAME,self.enviormentConfFile)
             self.isLastStepInCSV = True
     
         self.numberOfStep+=1
         return jsonAfterParse
-                
-                
+    
+    def get_Expire_Time(self):
+        secondsToAdd = int(self.cbrsConfFile.getElementsByTagName("secondsToAddForExpireTime")[0].firstChild.data)
+        currentDateTime = DT.datetime.now()
+        
+        if(int(secondsToAdd) <60):
+            currentDateTime = currentDateTime + DT.timedelta(seconds = 30)
+        elif(int(secondsToAdd)<3600):
+            currentDateTime = currentDateTime + DT.timedelta(seconds = secondsToAdd%60 , minutes = int(secondsToAdd/60))
+        elif(int(secondsToAdd)<86400):
+            currentDateTime = currentDateTime + DT.timedelta(seconds = secondsToAdd%60)
+            minutesToAdd = secondsToAdd/60
+            if(minutesToAdd<60):
+                currentDateTime = currentDateTime + DT.timedelta(minutes = minutesToAdd)
+            else:
+                currentDateTime = currentDateTime + DT.timedelta(minutes = minutesToAdd%60,hours = minutesToAdd/60)
+        
+            
+        currentDateTime = str(currentDateTime)[:-4]
+        currentDateTime = str(currentDateTime).replace(" ", "T")   
+        currentDateTime = str(currentDateTime).replace(currentDateTime, currentDateTime+"Z") 
+        return currentDateTime
         

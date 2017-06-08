@@ -1,6 +1,7 @@
 import sys
 import os.path
 from controllers import gui
+from xmlrpclib import DateTime
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from controllers.CLIUtils.TestDefinition import TestDefinition
 import model.Utils.Consts as consts
@@ -16,7 +17,7 @@ from Loggers.DebugLogger import DebugLogger
 from Loggers.XmlLogger import XmlLogger
 from controllers.gui import GUIFramework
 import ssl
-
+import datetime as DT
 
 def add_Test_To_Specific_Folder(loggerHandler):
     '''
@@ -73,11 +74,11 @@ def run_New_Test(dirPath, confFile, loggerHandler):
             loggerHandler.print_to_Logs_Files(consts.SELECTED_TEST_FROM_USER_MESSAGE + str(inputAnswer), True)
     cliHandler = CLIHandler(inputAnswer, confFile, dirPath, loggerHandler,testDefinition) ### initialize cli session handler
     flaskServer.enodeBController = ENodeBController(cliHandler.engine) 
-    #ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
-    #ctx.verify_mode = ssl.CERT_REQUIRED
-    #ctx.load_verify_locations(str(dirPath) + cliHandler.get_Element_From_Config_File("caCerts"))
-    #ctx.load_cert_chain(str(dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))## get the certificates for https from config file
-    flaskServer.runFlaskServer(cliHandler.get_Element_From_Config_File("hostIp"),cliHandler.get_Element_From_Config_File("port"))#,ctx) ### run flask server using the host name and port  from conf file
+    ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
+    ctx.verify_mode = ssl.CERT_REQUIRED
+    ctx.load_verify_locations(str(dirPath) + cliHandler.get_Element_From_Config_File("caCerts"))
+    ctx.load_cert_chain(str(dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))## get the certificates for https from config file
+    flaskServer.runFlaskServer(cliHandler.get_Element_From_Config_File("hostIp"),cliHandler.get_Element_From_Config_File("port"),ctx) ### run flask server using the host name and port  from conf file
     if (cliHandler.engine.check_Validation_Error()):
         cliHandler.stop_Thread_Due_To_Exception()
 def create_Log_Folder():
@@ -90,13 +91,11 @@ def create_Log_Folder():
 def initialize_Reports():
     cmdLogger = CmdLogger()
     loggerHandler.register(cmdLogger)
-    
     xmlLogger = XmlLogger()
     loggerHandler.register(xmlLogger)
     
     debugLogger = DebugLogger()
     loggerHandler.register(debugLogger)
-    
 
 current_path = os.path.dirname(os.path.realpath(__file__))
 dirPath = Path(__file__).parents[2]

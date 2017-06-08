@@ -46,8 +46,8 @@ def shutdown():
 def redirectShutDownDueToFinishOfTest():
         return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=consts.TEST_HAD_BEEN_FINISHED_FLASK))
 import ssl
-def runFlaskServer(host,port):#,ctx):
-    app.run(host,port,threaded=True)#,ssl_context=ctx)
+def runFlaskServer(host,port,ctx):
+    app.run(host,port,threaded=True,ssl_context=ctx)
         
 
     
