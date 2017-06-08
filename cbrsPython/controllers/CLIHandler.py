@@ -15,7 +15,6 @@ from model import flaskServer
 from ENodeBController import ENodeBController
 import ssl
 from controllers.CLIUtils.enums import TestStatus
-from controllers.gui import GUIFramework
 import os
 
 class CLIHandler(Thread):
