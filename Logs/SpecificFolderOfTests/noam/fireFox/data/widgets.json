@@ -1,0 +1,59 @@
+{
+  "hash" : "e7105c43ada45c9f6e0006854ef1a1d95249231d",
+  "plugins" : {
+    "total" : {
+      "statistic" : {
+        "total" : 1,
+        "passed" : 0,
+        "pending" : 0,
+        "canceled" : 0,
+        "failed" : 1,
+        "broken" : 0
+      },
+      "time" : {
+        "start" : 1496859367715,
+        "stop" : 1496859367944,
+        "duration" : 229
+      }
+    },
+    "defects" : {
+      "totalCount" : 1,
+      "items" : [ {
+        "count" : 1,
+        "uid" : "a83b9304e610073f",
+        "message" : "the server shot down because :  ERROR - there is no cbrs obj registered with the cbsdSerialNumber :  76B1E617472C",
+        "status" : "FAILED"
+      } ]
+    },
+    "xunit" : {
+      "totalCount" : 1,
+      "items" : [ {
+        "uid" : "36fa705112bd0eba",
+        "title" : "Noam",
+        "statistic" : {
+          "total" : 1,
+          "passed" : 0,
+          "pending" : 0,
+          "canceled" : 0,
+          "failed" : 1,
+          "broken" : 0
+        }
+      } ]
+    },
+    "behaviors" : {
+      "totalCount" : 1,
+      "items" : [ {
+        "title" : "Without feature",
+        "statistic" : {
+          "total" : 1,
+          "passed" : 0,
+          "pending" : 0,
+          "canceled" : 0,
+          "failed" : 1,
+          "broken" : 0
+        }
+      } ]
+    },
+    "environment" : [ ]
+  }
+}
