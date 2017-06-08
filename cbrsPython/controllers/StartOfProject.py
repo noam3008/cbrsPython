@@ -1,6 +1,5 @@
 import sys
 import os.path
-from controllers import gui
 from xmlrpclib import DateTime
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from controllers.CLIUtils.TestDefinition import TestDefinition
