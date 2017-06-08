@@ -1,5 +1,8 @@
 *.pyc
 *.log
-.metadata/
 Logs/
 .metadata
+
+.classpath
+.project
+.settings/
