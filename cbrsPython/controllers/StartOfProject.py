@@ -80,7 +80,12 @@ def run_New_Test(dirPath, confFile, loggerHandler):
     flaskServer.runFlaskServer(cliHandler.get_Element_From_Config_File("hostIp"),cliHandler.get_Element_From_Config_File("port"))#,ctx) ### run flask server using the host name and port  from conf file
     if (cliHandler.engine.check_Validation_Error()):
         cliHandler.stop_Thread_Due_To_Exception()
-
+def create_Log_Folder():
+    if not os.path.exists(str(dirPath)+"\\Logs"):
+            os.makedirs(str(dirPath)+"\\Logs")
+            os.makedirs(str(dirPath)+"\\Logs\\SpecificFolderOfTests")
+            os.makedirs(str(dirPath)+"\\Logs\\LogsPerTest")
+            os.makedirs(str(dirPath)+"\\Logs\\CMDSessions")
 
 def initialize_Reports():
     cmdLogger = CmdLogger()
@@ -95,6 +100,7 @@ def initialize_Reports():
 
 current_path = os.path.dirname(os.path.realpath(__file__))
 dirPath = Path(__file__).parents[2]
+create_Log_Folder()
 confFile= minidom.parse(current_path +"\conf.xml") ### initialize the conf file using 2 parents from the current running py file 
 loggerHandler = loggerObserver(dirPath)
 initialize_Reports()
