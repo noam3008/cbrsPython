@@ -29,8 +29,9 @@ class DebugLogger(Observer):
         
     def finishTest(self,msg,isCmdOutput,testStatus,additionalComments):
         if(additionalComments!=None):
-                msg = msg + " and the additional comments for the test are : " + additionalComments
+            msg = msg + " and :" + consts.ADDITIONAL_COMMENTS_MESSAGE  + additionalComments
         self.print_to_Logs_Files(msg, isCmdOutput)
+        self.removeLogger()
     
     def print_to_Logs_Files(self,message,isCmdOutput):   
         log = logging.getLogger(self.log_Name)
@@ -38,6 +39,8 @@ class DebugLogger(Observer):
                 
     def print_To_Terminal(self,message):
         pass
+    def removeLogger(self):
+        logging._removeHandlerRef(self.log_Name)
     
     def addLoggerFile(self,dir_Path, logger_name, log_file):
         log_setup = logging.getLogger(logger_name)

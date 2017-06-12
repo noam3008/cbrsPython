@@ -60,7 +60,7 @@ class GUIFramework(Frame):
         self.selectFolderYesOrNoLabel = Label(self, text=consts.ADD_TEST_TO_SPECIFIC_FOLDER_MESSAGE,
                             fg='White' if brightness < 120 else 'Black', 
                             bg=bg_colour,borderwidth=2, relief="groove")
-        self.selectFolderYesOrNoLabel.grid(row=3, column=0,padx=10, pady=10)
+        self.selectFolderYesOrNoLabel.grid(row=3, column=0,sticky=W,padx=10, pady=10)
         
         yesOrNoOption = []
         yesOrNoOption.append("yes")

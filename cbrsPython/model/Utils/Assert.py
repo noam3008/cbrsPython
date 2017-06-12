@@ -66,7 +66,7 @@ class Assertion(object):
         except Exception as e:
             if e.message == "node not exists":
                 return consts.SUFFIX_NOT_EXISTS_IN_EXPECTED_JSON_FILE
-        return responsePart[consts.GRANT_SUFFIX_HTTP+consts.RESPONSE_NODE_NAME.title()][0]['heartbeatDuration']
+        return responsePart[consts.GRANT_SUFFIX_HTTP+consts.RESPONSE_NODE_NAME.title()][0]['heartbeatInterval']
     
     def add_Json_Optional_Parameters(self,expected,httpRequest,suffix):
         '''

@@ -19,7 +19,7 @@ class CmdLogger(Observer):
     
     def finishStep(self,response,typeOfCalling,stepStatus):
         if stepStatus==StepStatus.PASSED:
-            self.print_To_Terminal("validation passed successfully, the engine sent " + str(typeOfCalling) + " " +consts.RESPONSE_NODE_NAME.title())
+            self.print_To_Terminal(consts.VALIDATION_PASSED_MESSAGE + str(typeOfCalling) + " " + consts.RESPONSE_NODE_NAME.title())
         else:
             self.print_To_Terminal(response)
         
@@ -27,7 +27,7 @@ class CmdLogger(Observer):
     def finishTest(self,msg,isCmdOutput,testStatus,additionalComments):
         if(isCmdOutput):
             if(additionalComments!=None):
-                msg = msg + " and the additional comments for the test are : " + additionalComments
+                msg = msg + consts.ADDITIONAL_COMMENTS_MESSAGE + additionalComments
             self.print_To_Terminal(msg)
         
     def print_To_Terminal(self,message):

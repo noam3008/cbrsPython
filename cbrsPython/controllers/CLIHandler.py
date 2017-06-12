@@ -16,6 +16,7 @@ from ENodeBController import ENodeBController
 import ssl
 from controllers.CLIUtils.enums import TestStatus
 import os
+from controllers.gui import GUIFramework
 
 class CLIHandler(Thread):
     '''
@@ -41,14 +42,18 @@ class CLIHandler(Thread):
         self._stop.set()
 
     def test_Finish_Message_For_Logs(self, finalResults):
+        '''
+        report finish test to all logs that inserted to logger observer
+        '''
         testStatus = None
         if(finalResults[0]==consts.PASS_MESSAGE):
             testStatus = TestStatus.PASSED
         else:
             testStatus = TestStatus.FAILED
-        if(finalResults[1]!=""):
+        if(not finalResults[1]):
+            return self.loggerHandler.finish_Test(consts.RESULTS_OF_TEST_MESSAGE + self.testName + " is - " + str(testStatus.value), True, testStatus)
+        else:
             return self.loggerHandler.finish_Test(consts.RESULTS_OF_TEST_MESSAGE + self.testName + " is - " + str(testStatus.value), True, testStatus,finalResults[1])
-        return self.loggerHandler.finish_Test(consts.RESULTS_OF_TEST_MESSAGE + self.testName + " is - " + str(testStatus.value), True, testStatus)
 
     def run(self): 
         ''' 
@@ -76,7 +81,8 @@ class CLIHandler(Thread):
         initialize new logger for each test and if requested to the specific folder
         stop the last reports of the test running before the new test
         and running a new instance of the flask server  
-        '''     
+        '''    
+        inputAnsweres = None
         time.sleep(1)        
         self.loggerHandler.print_To_Terminal(consts.SET_CSV_FILE_MESSAGE)
         inputAnsweres=self.get_input()
@@ -88,41 +94,47 @@ class CLIHandler(Thread):
                 self.loggerHandler.print_To_Terminal(e.message)
                 self.start_another_test(cliHandler)
             #self.loggerHandler.remove_Test_File_Logger()
-            insertToFolderAnswer = self.add_Test_To_Specific_Folder()
+            insertToFolderAnswer = self.add_Log_Of_Test_To_Specific_Folder()
             if (insertToFolderAnswer == "yes"):
-                self.loggerHandler.print_To_Terminal("typeNameOfFolder")
+                self.loggerHandler.print_To_Terminal(consts.TYPE_NAME_OF_FOLDER)
                 insertToFolderAnswer = raw_input()
                 self.loggerHandler.start_Test(inputAnsweres,insertToFolderAnswer)
                 self.loggerHandler.print_to_Logs_Files(consts.SELECT_TO_ADD_TEST_MESSAGE + inputAnsweres + consts.SELECT_TO_ADD_FOLDER_MESSAGE + insertToFolderAnswer,True)
             else:
                 self.loggerHandler.start_Test(inputAnsweres)
                 self.loggerHandler.print_to_Logs_Files(consts.SELECTED_TEST_FROM_USER_MESSAGE + inputAnsweres,True)
-        cliHandler = CLIHandler(inputAnsweres,self.confFile,self.dirPath,self.loggerHandler,self.testDefinition) 
-        flaskServer.enodeBController = ENodeBController(cliHandler.engine)
-        ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
-        ctx.verify_mode = ssl.CERT_REQUIRED
-        ctx.load_verify_locations(str(self.dirPath) + cliHandler.get_Element_From_Config_File("caCerts"))
-        ctx.load_cert_chain(str(self.dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(self.dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))
-        flaskServer.runFlaskServer(self.get_Element_From_Config_File("hostIp"),self.get_Element_From_Config_File("port"),ctx)     
+            cliHandler = CLIHandler(inputAnsweres,self.confFile,self.dirPath,self.loggerHandler,self.testDefinition) 
+            flaskServer.enodeBController = ENodeBController(cliHandler.engine)
+            #ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
+            #ctx.verify_mode = ssl.CERT_REQUIRED
+            #ctx.load_verify_locations(str(self.dirPath) + cliHandler.get_Element_From_Config_File("caCerts"))
+            #ctx.load_cert_chain(str(self.dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(self.dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))
+            flaskServer.runFlaskServer(self.get_Element_From_Config_File("hostIp"),self.get_Element_From_Config_File("port"))#,ctx)     
         if(cliHandler.engine.validationErrorAccuredInEngine):
             cliHandler.stop_Thread_Due_To_Exception()
+        if(inputAnsweres=="quit"):
+            self.loggerHandler.print_To_Terminal(consts.GOODBYE_MESSAGE)
+            del self.server
 
     def get_Element_From_Config_File(self,elementName):
         return self.confFile.getElementsByTagName(elementName)[0].firstChild.data
     
-    def add_Test_To_Specific_Folder(self):
+    def add_Log_Of_Test_To_Specific_Folder(self):
+        '''
+        the method add the log to the specific folder if requested
+        '''
         self.loggerHandler.print_To_Terminal(consts.ADD_TEST_TO_SPECIFIC_FOLDER_MESSAGE)
         insertToFolderAnswer = raw_input()
         while(insertToFolderAnswer.lower()!="yes" and insertToFolderAnswer.lower()!="no"):
-            self.loggerHandler.print_To_Terminal("you must enter yes or no for continue the test")
+            self.loggerHandler.print_To_Terminal(consts.ENTER_YES_OR_NO_MESSAGE)
             self.loggerHandler.print_To_Terminal(consts.ADD_TEST_TO_SPECIFIC_FOLDER_MESSAGE)
             insertToFolderAnswer = raw_input()
         return insertToFolderAnswer
             
     def get_input(self):
         answer = raw_input()
-        while not answer.strip():
-            self.loggerHandler.print_To_Terminal("cannot enter empty line for csv file try again")
+        while not answer:
+            self.loggerHandler.print_To_Terminal(consts.EMPTY_CSV_FILE_NAME_MESSAGE)
             answer = raw_input()
         return answer
         

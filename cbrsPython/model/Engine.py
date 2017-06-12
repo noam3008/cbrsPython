@@ -35,9 +35,9 @@ class MyEngine(object):
             if(typeOfCalling=="registration"):
                 try:
                     self.add_Cbrs_Obj(httpReq["cbsdSerialNumber"])
-                except:
+                except Exception as E:
                     self.validationErrorAccuredInEngine = True
-                    return consts.JSON_REQUEST_NOT_INCLUDE_KEY + " cbsdSerialNumber " 
+                    return E.message
                 try:
                     if(i==0):
                         response = self.handle_Http_Req(httpReq["cbsdSerialNumber"],httpReq,typeOfCalling)
@@ -53,16 +53,16 @@ class MyEngine(object):
                     
             else:
                 try:
-                    cbsdSerialNumberIndex = str(httpReq["cbsdId"]).index("cbsd")
+                    cbsdSerialNumberIndex = str(httpReq["cbsdId"]).index("cbsdSerialNumber")
                 except : 
                     self.validationErrorAccuredInEngine = True
                     return consts.JSON_REQUEST_NOT_INCLUDE_KEY + " cbsdId " 
                 try:
                     if(i==0):
-                        response = self.handle_Http_Req(httpReq["cbsdId"][cbsdSerialNumberIndex+len("cbsd"):],httpReq, typeOfCalling)
+                        response = self.handle_Http_Req(httpReq["cbsdId"][cbsdSerialNumberIndex+len("cbsdSerialNumber"):],httpReq, typeOfCalling)
                         self.raise_In_Case_Of_An_Error(response)
                     elif (i>0):
-                        tempResp = self.handle_Http_Req(httpReq["cbsdId"][cbsdSerialNumberIndex+len("cbsd")+1:],httpReq,typeOfCalling)
+                        tempResp = self.handle_Http_Req(httpReq["cbsdId"][cbsdSerialNumberIndex+len("cbsdSerialNumber")+1:],httpReq,typeOfCalling)
                         self.raise_In_Case_Of_An_Error(response)
                         response[nodeResponse].append(tempResp[nodeResponse][0])               
                 except Exception as E:

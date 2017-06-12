@@ -73,7 +73,7 @@ class XmlLogger(Observer):
             return
         
         if(additionalComments!=None):
-            msg = msg + " and the additional comments for the test are : " + additionalComments     
+            msg = msg + " and " + consts.ADDITIONAL_COMMENTS_MESSAGE + additionalComments     
             self.currentStep = ET.SubElement(self.steps,"step")
             self.currentStep.set("start",str(int(self.totimestamp())))
             ET.SubElement(self.currentStep,"name").text = "additional comment for the test are : " + additionalComments

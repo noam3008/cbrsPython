@@ -41,7 +41,10 @@ class CBRSRequestHandler(object):
         for jsonCol in testDefinition.jsonNamesOfSteps:
             if jsonComparer.get_Node_Of_Json_Parsed(jsonCol[0],"registrationRequest",confFile,dirPath)[0]["cbsdSerialNumber"]== self.cbsdSerialNumber:
                 self.jsonSteps = jsonCol
-                self.cbrsConfFile = minidom.parse(str(self.dirPath) +"\\cbrsPython\\model\\CBRSConf\\"+ self.cbsdSerialNumber+".xml")
+                try:
+                    self.cbrsConfFile = minidom.parse(str(self.dirPath) +"\\cbrsPython\\model\\CBRSConf\\"+ self.cbsdSerialNumber+".xml")
+                except:
+                    raise IOError("ERROR - missing cbrs conf file of the CBSD : " + self.cbsdSerialNumber)
                 self.assertion = Assertion(self.enviormentConfFile,dirPath,self.loggerHandler,self.cbrsConfFile)
                 
     def verify_Equal_Req_Except_Of_Operation_State(self,typeOfCalling,httpRequest):

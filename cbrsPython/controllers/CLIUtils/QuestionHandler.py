@@ -18,6 +18,9 @@ class QuestionHandler(object):
         self.loggerHandler = loggerHandler
         
     def ShowQuestionsAndGetAnswersFromClient(self,questionsAndAnswers):
+        '''
+        the methods open a session with the technician of the questions answer part 
+        '''
         answers = []
         correctAnsweres = True
         for questAnswer in questionsAndAnswers:   

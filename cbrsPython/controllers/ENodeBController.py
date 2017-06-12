@@ -1,13 +1,4 @@
-'''
-Created on Apr 24, 2017
-
-@author: iagmon
-'''
-from threading import Thread
-
-
-
-class ENodeBController(Thread):
+class ENodeBController():
     '''
     classdocs
     '''

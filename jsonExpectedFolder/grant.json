@@ -27,7 +27,7 @@
 							"errorCode":0
 						 },
 						 "grantId":"8385094448610395450",
-						 "heartbeatDuration":60.0
+						 "heartbeatInterval":60.0
 					  }
 							]
         }
