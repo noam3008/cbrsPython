@@ -46,4 +46,4 @@ ENTER_YES_OR_NO_MESSAGE =                   "valid input to the question is yes 
 TYPE_NAME_OF_FOLDER      =                  "enter log of test to the specific folder"
 VALIDATION_PASSED_MESSAGE =                 "validation passed successfully, the engine sent "
 GOODBYE_MESSAGE =                           "The last test had been finished and no other csv file had been entered,  goodbye"
-QUIT_PROGRAM_MESSAGE =                      "you decide to quit the program have a good day"
+QUIT_PROGRAM_MESSAGE =                      "you decided to quit the program have a good day"

@@ -16,7 +16,6 @@ from ENodeBController import ENodeBController
 import ssl
 from controllers.CLIUtils.enums import TestStatus
 import os
-from controllers.gui import GUIFramework
 
 class CLIHandler(Thread):
     '''
@@ -98,16 +97,21 @@ class CLIHandler(Thread):
             if (insertToFolderAnswer == "yes"):
                 self.loggerHandler.print_To_Terminal(consts.TYPE_NAME_OF_FOLDER)
                 insertToFolderAnswer = raw_input()
-                self.loggerHandler.start_Test(inputAnsweres,insertToFolderAnswer)
+                try:
+                    self.loggerHandler.start_Test(inputAnsweres,insertToFolderAnswer)
+                except Exception as E:
+                    self.loggerHandler.print_To_Terminal(E.message)
+                    self.start_another_test(cliHandler)
                 self.loggerHandler.print_to_Logs_Files(consts.SELECT_TO_ADD_TEST_MESSAGE + inputAnsweres + consts.SELECT_TO_ADD_FOLDER_MESSAGE + insertToFolderAnswer,True)
             else:
                 self.loggerHandler.start_Test(inputAnsweres)
                 self.loggerHandler.print_to_Logs_Files(consts.SELECTED_TEST_FROM_USER_MESSAGE + inputAnsweres,True)
+            del insertToFolderAnswer
             cliHandler = CLIHandler(inputAnsweres,self.confFile,self.dirPath,self.loggerHandler,self.testDefinition) 
             flaskServer.enodeBController = ENodeBController(cliHandler.engine)
-            ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
-            ctx.load_cert_chain(str(self.dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(self.dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))
-            flaskServer.runFlaskServer(self.get_Element_From_Config_File("hostIp"),self.get_Element_From_Config_File("port"),ctx)     
+            #ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
+            #ctx.load_cert_chain(str(self.dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(self.dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))
+            flaskServer.runFlaskServer(self.get_Element_From_Config_File("hostIp"),self.get_Element_From_Config_File("port"))#,ctx)     
         if(cliHandler.engine.validationErrorAccuredInEngine):
             cliHandler.stop_Thread_Due_To_Exception()
         if(inputAnsweres=="quit"):

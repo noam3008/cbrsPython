@@ -7,6 +7,7 @@ from controllers.CLIUtils.enums import *
 import time
 import calendar
 import commands
+import shutil
  
 class XmlLogger(Observer):
     
@@ -134,7 +135,19 @@ class XmlLogger(Observer):
         self.root.set("stop",str(int(self.totimestamp())))
         
     def initialize_From_Existing_Xml(self,dir_Path,folder_Name):
-        tree = ET.parse(str(dir_Path) + "\\Logs\\SpecificFolderOfTests\\" +folder_Name +"\\xml\\" + folder_Name+"-testsuite" ".xml")
+        try:
+            tree = ET.parse(str(dir_Path) + "\\Logs\\SpecificFolderOfTests\\" +folder_Name +"\\xml\\" + folder_Name+"-testsuite" ".xml")
+        except Exception:
+            print "the folder : " + folder_Name + " , does not contains xml file you wish to delete it (enter yes or no) " 
+            inputAnswer=raw_input()
+            if(inputAnswer == "yes"):
+                os.rmdir(str(dir_Path) + "\\Logs\\SpecificFolderOfTests\\" +folder_Name+"\\xml")
+                os.rmdir(str(dir_Path) + "\\Logs\\SpecificFolderOfTests\\" +folder_Name+"\\fireFox")
+                os.rmdir(str(dir_Path) + "\\Logs\\SpecificFolderOfTests\\" +folder_Name+"\\chrome")
+                time.sleep(0.5)
+                os.rmdir(str(dir_Path) + "\\Logs\\SpecificFolderOfTests\\" +folder_Name)
+            raise IOError("The folder not contain xml file please try again")
+            
         self.root = tree.getroot()
         self.testCases = tree.find("test-cases")
         self.build_Test_Case_XML()

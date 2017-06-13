@@ -4,12 +4,8 @@ Created on Apr 20, 2017
 @author: iagmon
 '''
 
-from model.Utils.Assert import Assertion 
-import model.Utils.JsonComparisonUtils as jsonComparer
 import model.Utils.Consts as consts
-import datetime as DT
 from model.CBRSRequestHandler import CBRSRequestHandler as cbrsObj
-from Tkconstants import FIRST
 
 
 class MyEngine(object):
@@ -27,7 +23,8 @@ class MyEngine(object):
         '''
         the method get the httpRequest and for each request sent it to the correct cbsd request handler
         '''
-        
+        if(self.validationErrorAccuredInEngine==True):
+            return "ERROR - error accoured in the last request from the CBRS"
         nodeResponse = typeOfCalling+consts.RESPONSE_NODE_NAME.title()
         i = 0
         for httpReq in httpRequest[typeOfCalling+consts.REQUEST_NODE_NAME]:
@@ -48,7 +45,7 @@ class MyEngine(object):
                         response[nodeResponse].append(tempResp[nodeResponse][0])
                 except Exception as E:
                     self.validationErrorAccuredInEngine = True
-                    return "for the CBRS with the cbsdSerialNumber :" + str(httpReq["cbsdSerialNumber"]) + E.message
+                    return "for the CBRS with the cbsdSerialNumber :" + str(httpReq["cbsdSerialNumber"]) + " " +  E.message
                     
                     
             else:

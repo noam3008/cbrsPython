@@ -47,7 +47,7 @@ class CBRSRequestHandler(object):
                     raise IOError("ERROR - missing cbrs conf file of the CBSD : " + self.cbsdSerialNumber)
                 self.assertion = Assertion(self.enviormentConfFile,dirPath,self.loggerHandler,self.cbrsConfFile)
                 
-    def verify_Equal_Req_Except_Of_Operation_State(self,typeOfCalling,httpRequest):
+    '''def verify_Equal_Req_Except_Of_Operation_State(self,typeOfCalling,httpRequest):
         if(typeOfCalling==consts.HEART_BEAT_SUFFIX_HTTP):
             ignoreKeys = []
             ignoreKeys.append("operationState")
@@ -55,10 +55,10 @@ class CBRSRequestHandler(object):
             if(True in x):
                 return True
             return False
-        return True 
+        return True '''
             
     def handle_Http_Req(self,httpRequest,typeOfCalling):
-        if(self.repeatsType == typeOfCalling and self.repeatesAllowed == True and self.verify_Equal_Req_Except_Of_Operation_State(typeOfCalling,httpRequest)):
+        if(self.repeatsType == typeOfCalling and self.repeatesAllowed == True and self.oldHttpReq == httpRequest):#self.verify_Equal_Req_Except_Of_Operation_State(typeOfCalling,httpRequest)):
             ### in case its an heartbeat calling need to check if it is cross the limit 
             ###counter get from the config file or heartbeat call 
             ###passed the timeout that get from the last grant response         

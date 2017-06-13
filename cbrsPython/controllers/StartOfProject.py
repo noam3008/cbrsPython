@@ -13,7 +13,6 @@ from Loggers.LoggerObserver import loggerObserver
 from Loggers.CmdLogger import CmdLogger
 from Loggers.DebugLogger import DebugLogger
 from Loggers.XmlLogger import XmlLogger
-from controllers.gui import GUIFramework
 import ssl
 
 def add_Log_Of_Test_To_Specific_Folder(loggerHandler):
@@ -46,7 +45,6 @@ def run_New_Test(dirPath, confFile, loggerHandler):
     that the technician will choose
     running the flask server using the port and ip taken from the config file   
     '''
-    
     loggerHandler.start_Test(consts.CLI_SESSION)
     loggerHandler.print_To_Terminal(consts.SET_CSV_FILE_MESSAGE)
     inputAnswer = get_input()
@@ -63,7 +61,11 @@ def run_New_Test(dirPath, confFile, loggerHandler):
         if (insertToFolderAnswer == "yes"):
             loggerHandler.print_To_Terminal(consts.TYPE_NAME_OF_FOLDER)
             insertToFolderAnswer = raw_input()
-            loggerHandler.start_Test(inputAnswer, insertToFolderAnswer) ### if decided to enter to folder create two logs one in the all test folder ### if decided to enter to folder create two logs one in the all test folder
+            try:
+                loggerHandler.start_Test(inputAnswer, insertToFolderAnswer) ### if decided to enter to folder create two logs one in the all test folder ### if decided to enter to folder create two logs one in the all test folder
+            except Exception as E:
+                loggerHandler.print_To_Terminal(E.message)
+                run_New_Test(dirPath, confFile, loggerHandler)
             loggerHandler.print_to_Logs_Files(consts.SELECT_TO_ADD_TEST_MESSAGE+ inputAnswer + consts.SELECT_TO_ADD_FOLDER_MESSAGE 
                                                 + insertToFolderAnswer, True)
         else:
@@ -71,12 +73,13 @@ def run_New_Test(dirPath, confFile, loggerHandler):
             loggerHandler.print_to_Logs_Files(consts.SELECTED_TEST_FROM_USER_MESSAGE + str(inputAnswer), True)
         cliHandler = CLIHandler(inputAnswer, confFile, dirPath, loggerHandler,testDefinition) ### initialize cli session handler
         flaskServer.enodeBController = ENodeBController(cliHandler.engine) 
-        ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
-        ctx.load_cert_chain(str(dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))## get the certificates for https from config file
-        cliHandler.server = flaskServer.runFlaskServer(cliHandler.get_Element_From_Config_File("hostIp"),cliHandler.get_Element_From_Config_File("port"),ctx) ### run flask server using the host name and port  from conf file
+        #ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
+        #ctx.load_cert_chain(str(dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))## get the certificates for https from config file
+        cliHandler.server = flaskServer.runFlaskServer(cliHandler.get_Element_From_Config_File("hostIp"),cliHandler.get_Element_From_Config_File("port"))#,ctx) ### run flask server using the host name and port  from conf file
         if (cliHandler.engine.check_Validation_Error()):
             cliHandler.stop_Thread_Due_To_Exception()
-    loggerHandler.print_To_Terminal(consts.QUIT_PROGRAM_MESSAGE)
+    if(inputAnswer=="quit"):
+        loggerHandler.print_To_Terminal(consts.QUIT_PROGRAM_MESSAGE)
 
 def create_Log_Folder():
     '''

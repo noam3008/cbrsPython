@@ -32,14 +32,15 @@ class Assertion(object):
         except Exception as e:
             raise IOError(e.message)  
         if(consts.REGISTRATION_SUFFIX_HTTP in suffix):
+            # example for insert to request defaults params from specific config file
             JsonComparisonUtils.ordered_dict_prepend(jsonExpectedObj[0],"fccId" , self.cbrsConfFile.getElementsByTagName("fccId")[0].firstChild.data)
             JsonComparisonUtils.ordered_dict_prepend(jsonExpectedObj[0],"userId" , self.cbrsConfFile.getElementsByTagName("userId")[0].firstChild.data)
-        if(consts.HEART_BEAT_SUFFIX_HTTP in suffix):
+        '''if(consts.HEART_BEAT_SUFFIX_HTTP in suffix):
             ignoreKeys = []
             ignoreKeys.append("operationState")
-            x = JsonComparisonUtils.are_same(jsonExpectedObj[0],httpRequest,False,ignoreKeys)
-        else:
-            x = JsonComparisonUtils.are_same(jsonExpectedObj[0],httpRequest)
+            x = JsonComparisonUtils.are_same(jsonExpectedObj[0],httpRequest,False,ignoreKeys)'''
+        '''else:'''
+        x = JsonComparisonUtils.are_same(jsonExpectedObj[0],httpRequest)
         if(False in x):
             self.loggerHandler.print_to_Logs_Files(x,True)
         try:
@@ -58,7 +59,7 @@ class Assertion(object):
         '''
         if(self.is_Json_Contains_Key(jsonExpected, keyToVerify)):
             return JsonComparisonUtils.get_Node_Of_Json_Parsed(jsonExpected,keyToVerify,self.confFile,self.dirPath)
-        return None
+        return False
     
     def get_Duration_Time_From_Grant_Json(self,jsonExpected):
         try:

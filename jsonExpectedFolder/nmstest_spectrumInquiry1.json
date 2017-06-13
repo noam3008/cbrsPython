@@ -17,7 +17,7 @@
 			[ 
 				{ 
 					"lowFrequency": 3550000000,
-					"highFrequency": 3700000000 
+					"highFrequency": 3600000000 
 				} 
 			] 
 		} 
