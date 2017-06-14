@@ -1,6 +1,0 @@
-from Loggers.LoggerHandler import LoggerHandler as logger, LoggerHandler
-from controllers.CLIHandler.enums import TestStatus
-
-loggerNew = LoggerHandler("C:\Users\iagmon\cbrsPython")
-loggerNew.create_new_dir_and_log("noamLog", "noam")
-loggerNew.finishStep("grant.json",StepStatus)

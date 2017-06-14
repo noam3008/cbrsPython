@@ -104,6 +104,7 @@ def initialize_Reports():
     debugLogger = DebugLogger()
     loggerHandler.register(debugLogger)
 
+
 current_path = os.path.dirname(os.path.realpath(__file__))
 dirPath = Path(__file__).parents[2]
 create_Log_Folder()

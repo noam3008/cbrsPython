@@ -6,24 +6,24 @@ controllers.gui|1497253562956803000|C:\Users\iagmon\cbrsPython\cbrsPython\contro
 model.Utils.Consts|1497277367708358000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Consts.py
 model.CBRSConf.__init__|1496656224315513000|C:\Users\iagmon\cbrsPython\cbrsPython\model\CBRSConf\__init__.py
 controllers.CLIUtils.TestDefinition|1495627702769732000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\TestDefinition.py
-model.Utils.Assert|1497266495028791000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Assert.py
 model.CBRSRequestHandler|1497266559877791000|C:\Users\iagmon\cbrsPython\cbrsPython\model\CBRSRequestHandler.py
-Loggers.XmlLogger|1497284156767774000|C:\Users\iagmon\cbrsPython\cbrsPython\Loggers\XmlLogger.py
+model.Utils.Assert|1497355100300250000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\Assert.py
+Loggers.XmlLogger|1497284837214774000|C:\Users\iagmon\cbrsPython\cbrsPython\Loggers\XmlLogger.py
 Loggers.LogObserver|1496574791548369000|C:\Users\iagmon\cbrsPython\cbrsPython\Loggers\LogObserver.py
-model.Engine|1497265987854791000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Engine.py
+model.Engine|1497352789062931000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Engine.py
 Loggers.__init__|1496306918846801000|C:\Users\iagmon\cbrsPython\cbrsPython\Loggers\__init__.py
 Loggers.DebugLogger|1497185840651340000|C:\Users\iagmon\cbrsPython\cbrsPython\Loggers\DebugLogger.py
 controllers.CLIUtils.__init__|1493295896041672000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\__init__.py
-model.flaskServer|1497265749909791000|C:\Users\iagmon\cbrsPython\cbrsPython\model\flaskServer.py
+model.flaskServer|1497356641452652000|C:\Users\iagmon\cbrsPython\cbrsPython\model\flaskServer.py
 Loggers.LoggerObserver|1496747202824617000|C:\Users\iagmon\cbrsPython\cbrsPython\Loggers\LoggerObserver.py
 controllers.ENodeBController|1497169378039354000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\ENodeBController.py
 controllers.CLIUtils.CsvFileParser|1495627681820732000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\CsvFileParser.py
 model.Utils.__init__|1494162572678941000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\__init__.py
-controllers.CLIHandler|1497283520571774000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIHandler.py
+controllers.CLIHandler|1497356627664652000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIHandler.py
 model.__init__|1493106828900703000|C:\Users\iagmon\cbrsPython\cbrsPython\model\__init__.py
 controllers.CLIUtils.enums|1496570055323587000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\enums.py
 model.Utils.JsonComparisonUtils|1496731841571630000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\JsonComparisonUtils.py
-controllers.StartOfProject|1497276136216781000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\StartOfProject.py
+controllers.StartOfProject|1497356128335652000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\StartOfProject.py
 controllers.__init__|1493106828437676000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\__init__.py
 controllers.CLIUtils.Step|1495457871919444000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\Step.py
 Loggers.CmdLogger|1497177392817345000|C:\Users\iagmon\cbrsPython\cbrsPython\Loggers\CmdLogger.py
@@ -52,7 +52,7 @@ Loggers.CmdLogger|1497177392817345000|C:\Users\iagmon\cbrsPython\cbrsPython\Logg
 9=controllers.CLIUtils.CsvFileParser
 7=controllers.CLIHandler
 35=MyEngine
-31=Assertion
+32=Assertion
 61=TestDefinition.__init__
 22=Stack
 43=GUIFramework.Create_Open_Widget
@@ -100,7 +100,7 @@ Loggers.CmdLogger|1497177392817345000|C:\Users\iagmon\cbrsPython\cbrsPython\Logg
 24=loggerObserver
 46=XmlLogger.startStep
 8=Loggers.CmdLogger
-32=CBRSRequestHandler
+31=CBRSRequestHandler
 29=CmdLogger
 -- END DICTIONARY
 -- START TREE 1
@@ -114,7 +114,7 @@ _ge|1|_generate_pprint_json!10@
 _in|1|_indent!10@
 _is|2|_is_list_same!10@_is_dict_same!10@
 aaa|0|
-add|3|ADDITIONAL_COMMENTS_MESSAGE!19@add_Log_Of_Test_To_Specific_Folder!26@ADD_TEST_TO_SPECIFIC_FOLDER_MESSAGE!19@
+add|3|ADDITIONAL_COMMENTS_MESSAGE!19@ADD_TEST_TO_SPECIFIC_FOLDER_MESSAGE!19@add_Log_Of_Test_To_Specific_Folder!26@
 aft|0|
 all|0|
 ame|0|
@@ -180,7 +180,7 @@ hel|0|
 her|0|
 img|0|
 inf|0|
-ini|2|initialize_Reports!26@INIT_TEST_DEFINITION!19@
+ini|2|INIT_TEST_DEFINITION!19@initialize_Reports!26@
 inp|0|
 ins|0|
 int|0|
@@ -248,7 +248,7 @@ sel|3|SELECT_TO_ADD_TEST_MESSAGE!19@SELECT_TO_ADD_FOLDER_MESSAGE!19@SELECTED_TES
 sen|2|SENT_FLASK_REQUEST!19@sent_Flask_Req_To_Server!34@
 ser|1|SERVER_SHUT_DOWN_MESSAGE!19@
 set|1|SET_CSV_FILE_MESSAGE!19@
-shu|2|shutdown!34@SHUTDOWN_FUNCTION_NAME!19@
+shu|2|SHUTDOWN_FUNCTION_NAME!19@shutdown!34@
 sid|0|
 sig|0|
 spe|1|SPECTRUM_INQUIERY_SUFFIX_HTTP!19@
@@ -279,7 +279,7 @@ xml|1|XmlLogger!161@
 -- START TREE 2
 130
 __d|0|
-__i|16|__init__!21&130@__init__!22&10@__init__!23&10@__init__!24&106@__init__!25&58@__init__!26&74@__init__!27&154@__init__!28&82@__init__!29&66@__init__!30&98@__init__!31&42@__init__!32&50@__init__!33&138@__init__!34&90@__init__!35&114@__init__!36&162@
+__i|16|__init__!21&130@__init__!22&10@__init__!23&10@__init__!24&106@__init__!25&58@__init__!26&74@__init__!27&154@__init__!28&82@__init__!29&66@__init__!30&98@__init__!31&50@__init__!32&42@__init__!33&138@__init__!34&90@__init__!35&114@__init__!36&162@
 __m|0|
 __r|2|__repr__!22&10@__repr__!23&10@
 __s|2|__str__!22&10@__str__!23&10@
@@ -288,7 +288,7 @@ _ev|0|
 _st|1|_stop!37&59@
 _ty|0|
 act|1|actual!38&11@
-add|6|add_Logo!30&98@add_Log_Of_Test_To_Specific_Folder!25&58@add_Json_Optional_Parameters!31&42@addLoggerFile!29&66@addLoggerFile!28&82@add_Cbrs_Obj!35&114@
+add|6|add_Logo!30&98@add_Log_Of_Test_To_Specific_Folder!25&58@add_Json_Optional_Parameters!32&42@addLoggerFile!29&66@addLoggerFile!28&82@add_Cbrs_Obj!35&114@
 all|2|allTheCBRSRegistered!39&115@allTheCBRSRegistered!40&115@
 ans|0|
 app|1|append!22&10@
@@ -298,14 +298,14 @@ bla|0|
 blu|0|
 btn|1|btnDisplay!43&99@
 bui|2|build_folder_xml!36&162@build_Test_Case_XML!36&162@
-cbr|4|cbrsObjArray!39&115@cbrsConfFile!44&43@cbrsConfFile!41&51@cbrsConfFile!42&51@
+cbr|4|cbrsConfFile!41&51@cbrsConfFile!42&51@cbrsObjArray!39&115@cbrsConfFile!44&43@
 cbs|3|cbsdSerial!45&163@cbsdSerial!46&163@cbsdSerialNumber!41&51@
 cen|0|
 che|2|check_Validation_Error!35&114@check_Last_Step_In_All_CBRS!35&114@
 cli|0|
 clo|0|
 cmd|0|
-com|2|compare_Json_Req!31&42@compare_Json_Req!32&50@
+com|2|compare_Json_Req!31&50@compare_Json_Req!32&42@
 con|3|confFile!39&115@confFile!37&59@confFile!44&43@
 cou|0|
 cre|2|create_Batch_File!36&162@Create_Open_Widget!30&98@
@@ -332,19 +332,19 @@ fla|0|
 fol|4|folder_Name!45&163@folder_Name!52&163@folder_Name!48&99@folder_Name!49&99@
 for|0|
 fra|0|
-get|8|get_Expected_Json_File_Name!32&50@get_Duration_Time_From_Grant_Json!31&42@get_input!25&58@get_Attribute_Value_From_Json!31&42@get_Question_Answer_Part!32&50@get_Expire_Time!32&50@get_Element_From_Config_File!25&58@get_Question_Answer_Part!35&114@
+get|8|get_Expected_Json_File_Name!31&50@get_Duration_Time_From_Grant_Json!32&42@get_input!25&58@get_Attribute_Value_From_Json!32&42@get_Question_Answer_Part!31&50@get_Expire_Time!31&50@get_Element_From_Config_File!25&58@get_Question_Answer_Part!35&114@
 gra|2|grantBeforeHeartBeat!41&51@grantBeforeHeartBeat!58&51@
 gre|0|
 gui|0|
 h|0|
-han|2|handle_Http_Req!35&114@handle_Http_Req!32&50@
+han|2|handle_Http_Req!31&50@handle_Http_Req!35&114@
 has|0|
 hea|1|heartBeatLimitCounter!41&51@
 hos|0|
 ind|1|index!59&139@
-ini|3|initialize_From_Existing_Xml!36&162@initializeTestDefinition!26&74@Initialize_Repeats_Type_Allowed!32&50@
+ini|3|initialize_From_Existing_Xml!36&162@initializeTestDefinition!26&74@Initialize_Repeats_Type_Allowed!31&50@
 int|0|
-is_|3|Is_Repeats_Available!32&50@is_Json_Contains_Key!31&42@is_Valid_Heart_Beat_Time!32&50@
+is_|3|Is_Repeats_Available!31&50@is_Valid_Heart_Beat_Time!31&50@is_Json_Contains_Key!32&42@
 isl|2|isLastStepInCSV!41&51@isLastStepInCSV!60&51@
 isn|0|
 jso|4|jsonSteps!41&51@jsonSteps!42&51@jsonNamesOfSteps!61&155@jsonOfStep!59&139@
@@ -362,10 +362,10 @@ old|2|oldHttpReq!41&51@oldHttpReq!58&51@
 on_|0|
 ord|0|
 p|0|
-par|1|parse_Json_To_Dic_By_File_Name!32&50@
+par|1|parse_Json_To_Dic_By_File_Name!31&50@
 pas|2|PASSED!55&147@PASSED!56&147@
 pri|10|print_To_Terminal!29&66@print_To_Terminal!57&122@print_to_Logs_Files!36&162@print_To_Terminal!36&162@print_to_Logs_Files!24&106@print_to_Logs_Files!57&122@print_To_Terminal!24&106@print_to_Logs_Files!29&66@print_To_Terminal!28&82@print_to_Logs_Files!28&82@
-pro|2|process_request!35&114@process_response!32&50@
+pro|2|process_response!31&50@process_request!35&114@
 que|2|questHandler!37&59@questAnswerPartOfJson!60&51@
 qui|1|quit!30&98@
 rai|1|raise_In_Case_Of_An_Error!35&114@
@@ -381,7 +381,7 @@ sel|1|selectFolderYesOrNoLabel!43&99@
 sen|0|
 sep|0|
 ser|1|server!37&59@
-set|3|set_Csv_File!30&98@set_Current_Json_Steps!32&50@set_end_time!36&162@
+set|3|set_Csv_File!30&98@set_Current_Json_Steps!31&50@set_end_time!36&162@
 sho|1|ShowQuestionsAndGetAnswersFromClient!21&130@
 siz|0|
 spe|1|specificFolderFrame!48&99@
@@ -400,7 +400,7 @@ tot|1|totimestamp!36&162@
 typ|0|
 unr|2|unregister!24&106@unregister_all!24&106@
 upd|1|update_observers!24&106@
-val|7|validationErrorAccuredInEngine!39&115@validationErrorAccuredInEngine!40&115@validationErrorAccuredInEngine!72&115@validDurationTime!41&51@validDurationTime!58&51@validationErrorAccuredInEngine!41&51@validationErrorAccuredInEngine!58&51@
+val|7|validDurationTime!41&51@validDurationTime!58&51@validationErrorAccuredInEngine!39&115@validationErrorAccuredInEngine!40&115@validationErrorAccuredInEngine!72&115@validationErrorAccuredInEngine!41&51@validationErrorAccuredInEngine!58&51@
 ver|0|
 w|0|
 wai|1|wait_Until_Sent_Csv_File!30&98@

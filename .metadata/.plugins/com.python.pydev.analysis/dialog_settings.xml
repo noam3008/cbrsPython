@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="SearchIndexPage">
-		<item value="6" key="HISTORY_SIZE"/>
+		<item value="8" key="HISTORY_SIZE"/>
+		<section name="HISTORY6">
+			<item value="false" key="isCaseSensitive"/>
+			<item value="2" key="scope"/>
+			<item value="false" key="isWholeWord"/>
+			<item value="" key="scopeData"/>
+			<item value="gui" key="textPattern"/>
+			<item value="*" key="filenamePattern"/>
+		</section>
+		<section name="HISTORY7">
+			<item value="false" key="isCaseSensitive"/>
+			<item value="2" key="scope"/>
+			<item value="false" key="isWholeWord"/>
+			<item value="" key="scopeData"/>
+			<item value="GUIFramework" key="textPattern"/>
+			<item value="*" key="filenamePattern"/>
+		</section>
 		<section name="HISTORY4">
 			<item value="false" key="isCaseSensitive"/>
 			<item value="2" key="scope"/>
