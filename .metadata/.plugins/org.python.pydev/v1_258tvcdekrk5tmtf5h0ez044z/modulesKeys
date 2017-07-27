@@ -790,6 +790,7 @@ lib2to3.tests.test_parser|C:\Python27\lib\lib2to3\tests\test_parser.py
 lib2to3.tests.test_pytree|C:\Python27\lib\lib2to3\tests\test_pytree.py
 lib2to3.tests.test_refactor|C:\Python27\lib\lib2to3\tests\test_refactor.py
 lib2to3.tests.test_util|C:\Python27\lib\lib2to3\tests\test_util.py
+libDiameter|C:\Python27\lib\site-packages\libDiameter.py
 linecache|C:\Python27\lib\linecache.py
 locale|C:\Python27\lib\locale.py
 logging.__init__|C:\Python27\lib\logging\__init__.py

@@ -51,7 +51,7 @@ def run_New_Test(dirPath, confFile, loggerHandler):
     
     if(inputAnswer!="quit"):
         try: ### initialize the test definition from the csv file 
-            csvFileParser = CsvFileParser(str(dirPath) + confFile.getElementsByTagName("testRepoPath")[0].firstChild.data + inputAnswer)
+            csvFileParser = CsvFileParser(str(dirPath) + confFile.getElementsByTagName("testRepoPath")[0].firstChild.data + inputAnswer,confFile)
             testDefinition = TestDefinition(csvFileParser.initializeTestDefinition(),csvFileParser.find_Number_Of_Cols())
         except IOError as e:  ### in case there is file not found error try to enter new csv file name
             loggerHandler.print_To_Terminal(e.message)
@@ -72,8 +72,10 @@ def run_New_Test(dirPath, confFile, loggerHandler):
             loggerHandler.start_Test(inputAnswer)
             loggerHandler.print_to_Logs_Files(consts.SELECTED_TEST_FROM_USER_MESSAGE + str(inputAnswer), True)
         cliHandler = CLIHandler(inputAnswer, confFile, dirPath, loggerHandler,testDefinition) ### initialize cli session handler
-        flaskServer.enodeBController = ENodeBController(cliHandler.engine) 
+        flaskServer.enodeBController = ENodeBController(cliHandler.engine)
         ctx = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2) # use TLS to avoid POODLE
+        ctx.verify_mode = ssl.CERT_REQUIRED
+        ctx.load_verify_locations(str(dirPath) + cliHandler.get_Element_From_Config_File("caCerts"))
         ctx.load_cert_chain(str(dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))## get the certificates for https from config file
         cliHandler.server = flaskServer.runFlaskServer(cliHandler.get_Element_From_Config_File("hostIp"),cliHandler.get_Element_From_Config_File("port"),ctx) ### run flask server using the host name and port  from conf file
         if (cliHandler.engine.check_Validation_Error()):
@@ -103,7 +105,6 @@ def initialize_Reports():
     
     debugLogger = DebugLogger()
     loggerHandler.register(debugLogger)
-
 
 current_path = os.path.dirname(os.path.realpath(__file__))
 dirPath = Path(__file__).parents[2]

@@ -1,0 +1,34 @@
+{
+    "name":"NMS Test: Registration",  
+    "questions":
+	[
+		{
+			"question" : "OK?",
+			"answers" : ["y", "n"], 
+			"expectedAnswer" : "y"
+		}
+	],
+	"registrationRequest":
+	[
+		{
+			"userId": "iot13",
+			"fccId": "def789",
+			"cbsdSerialNumber":"B7AF06CD05A4",
+			"cbsdCategory":"B",
+			"callSign":"bbb",
+			"airInterface": { "radioTechnology": "E_UTRA", "supportedSpec": "FFS" },
+			"installationParam": { "latitude": 31.987389, "longitude": 34.912422, "height": 74.0, "heightType": "AMSL", "horizontalAccuracy": 1.0, "verticalAccuracy": 1.0, "indoorDeployment": false, "antennaAzimuth": 0, "antennaDowntilt": 0, "antennaDowntilt": 0, "antennaGain": 0, "antennaBeamwidth": 0, "antennaModel": "wwwbn" },
+			"groupingParam": [{"groupType": "INTERFERENCE_COORDINATION","groupId": "group3"}]
+		}
+	],
+	"response":
+	{	
+		"registrationResponse":
+		[
+			{
+				"cbsdId": "idan2cbsdSerialNumberB7AF06CD05A4",
+				"response": {"responseCode": 0, "responseMessage": "all ok"}
+			}
+		]
+	}	
+}

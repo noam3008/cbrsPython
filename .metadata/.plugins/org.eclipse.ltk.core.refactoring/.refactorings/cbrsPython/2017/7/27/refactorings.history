@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;cbrsPython/model/CBRSConf/sn1.xml&apos; to &apos;B7AF06CD05A4.xml&apos;" description="Rename resource &apos;sn1.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="model/CBRSConf/sn1.xml" name="B7AF06CD05A4.xml" stamp="1499242793049" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;cbrsPython/model/CBRSConf/vel12345.xml&apos; to &apos;76B1E617472C.xml&apos;" description="Rename resource &apos;vel12345.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="model/CBRSConf/vel12345.xml" name="76B1E617472C.xml" stamp="1499242817179" updateReferences="true"/>
+</session>

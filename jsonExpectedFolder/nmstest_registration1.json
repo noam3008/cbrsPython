@@ -1,34 +1,31 @@
 {
-    "name":"NMS Test: Registration",  
+    "name":"WINNF.FT.C.SIQ.1_001.json, June 11, 2017, Pawan jangid",  
     "questions":
 	[
-		{
-			"question" : "OK?",
-			"answers" : ["y", "n"], 
-			"expectedAnswer" : "y"
-		}
+		
 	],
 	"registrationRequest":
-	[
-		{
-			"userId": "iot13",
-			"fccId": "abc456",
-			"cbsdSerialNumber":"sn1",
-			"cbsdCategory":"A",
-			"callSign":"aaa",
-			"airInterface": { "radioTechnology": "E_UTRA", "supportedSpec": "FFS" },
-			"installationParam": { "latitude": 31.987356, "longitude": 34.912422, "height": 79.0, "heightType": "AMSL", "horizontalAccuracy": 1.0, "verticalAccuracy": 1.0, "indoorDeployment": false, "antennaAzimuth": 0, "antennaDowntilt": 0, "antennaDowntilt": 0, "antennaGain": 0, "antennaBeamwidth": 0, "antennaModel": "wwwan" },
-			"groupingParam": [{"groupType": "INTERFERENCE_COORDINATION","groupId": "example-group-3"}]
-		}
-	],
-	"response":
-	{	
-		"registrationResponse":
-		[
-			{
-				"cbsdId": "abc456cbsdSerialNumbersn1",
-				"response": {"responseCode": 0, "responseMessage": "all ok"}
-			}
-		]
+        	[
+            	{
+				  "userId": "${maximumLength:128}",
+				  "fccId": "${maximumLength:128}",
+				  "cbsdSerialNumber":"401629000040",
+				  "cbsdCategory":{"$or":["A","B"]},                         
+				  "measCapability": {"$or":["EUTRA_CARRIER_RSSI_ALWAYS","EUTRA_CARRIER_RSSI_NON_TX"]},
+				  "airInterface": { "radioTechnology": "${maximumLength:128}" },
+				  "installationParam": { "antennaGain": "${range:-127To128}","eirpCapability": "${range:-127To47}","height": "${range:0To100}","heightType": {"$or":["AGL","AMSL"]},"indoorDeployment": {"$or":["True","False"]},"latitude": "${range:-90.000000000To90.000000000}","longitude": "${range:-180.00000000To180.00000000}"}
+				  
+				}
+			],
+			"response":{
+			"registrationResponse" : 
+				[
+					{
+					  "cbsdId": "ruckus1cbsdSerialNumber401629000040",
+					  "response":{"responseCode":0,"responseMessage":null,"responseData":null},
+					  "measReportConfig":["RECEIVED_POWER_WITHOUT_GRANT","RECEIVED_POWER_WITH_GRANT"]
+			
+					}
+				]  
 	}	
 }

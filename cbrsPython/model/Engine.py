@@ -27,6 +27,11 @@ class MyEngine(object):
             return "ERROR - error accoured in the last request from the CBRS"
         nodeResponse = typeOfCalling+consts.RESPONSE_NODE_NAME.title()
         i = 0
+        try:
+            httpRequest[typeOfCalling+consts.REQUEST_NODE_NAME]
+        except:
+            self.validationErrorAccuredInEngine = True
+            return "ERROR - in the request no " + typeOfCalling+consts.REQUEST_NODE_NAME + " node exists"
         for httpReq in httpRequest[typeOfCalling+consts.REQUEST_NODE_NAME]:
             
             if(typeOfCalling=="registration"):
@@ -41,7 +46,7 @@ class MyEngine(object):
                         self.raise_In_Case_Of_An_Error(response)
                     elif (i>0):
                         tempResp = self.handle_Http_Req(httpReq["cbsdSerialNumber"],httpReq,typeOfCalling)
-                        self.raise_In_Case_Of_An_Error(response)
+                        self.raise_In_Case_Of_An_Error(tempResp)
                         response[nodeResponse].append(tempResp[nodeResponse][0])
                 except Exception as E:
                     self.validationErrorAccuredInEngine = True

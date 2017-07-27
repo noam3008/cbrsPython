@@ -34,6 +34,7 @@ class CBRSRequestHandler(object):
         self.enviormentConfFile = EnviormentConfFile
         self.dirPath = dirPath
         self.cbrsConfFile = None
+        self.measReportCounter = 0
         self.set_Current_Json_Steps(testDefinition, EnviormentConfFile, dirPath)
         
     
@@ -46,23 +47,20 @@ class CBRSRequestHandler(object):
                 except:
                     raise IOError("ERROR - missing cbrs conf file of the CBSD : " + self.cbsdSerialNumber)
                 self.assertion = Assertion(self.enviormentConfFile,dirPath,self.loggerHandler,self.cbrsConfFile)
-                
-    '''def verify_Equal_Req_Except_Of_Operation_State(self,typeOfCalling,httpRequest):
-        if(typeOfCalling==consts.HEART_BEAT_SUFFIX_HTTP):
-            ignoreKeys = []
-            ignoreKeys.append("operationState")
-            x = jsonComparer.are_same(httpRequest,self.oldHttpReq,False,ignoreKeys)
-            if(True in x):
-                return True
-            return False
-        return True '''
             
     def handle_Http_Req(self,httpRequest,typeOfCalling):
-        if(self.repeatsType == typeOfCalling and self.repeatesAllowed == True and self.oldHttpReq == httpRequest):#self.verify_Equal_Req_Except_Of_Operation_State(typeOfCalling,httpRequest)):
+        req = httpRequest
+        if(typeOfCalling==consts.HEART_BEAT_SUFFIX_HTTP):
+            if(self.assertion.is_Json_Request_Contains_Key( req, "measReportConfig")):
+                del req["measReportConfig"]
+        if(self.repeatsType == typeOfCalling and self.repeatesAllowed == True and self.oldHttpReq == req):#self.verify_Equal_Req_Except_Of_Operation_State(typeOfCalling,httpRequest)):
             ### in case its an heartbeat calling need to check if it is cross the limit 
             ###counter get from the config file or heartbeat call 
             ###passed the timeout that get from the last grant response         
             if(typeOfCalling == consts.HEART_BEAT_SUFFIX_HTTP):
+                if(self.measReportCounter>5):
+                    self.validationErrorAccuredInEngine = True
+                    return "ERROR - no meas report received in the last 5 heart beats request"       
                 if(int(self.numberOfHearbeatRequests)<int(self.heartBeatLimitCounter)):
                     self.numberOfHearbeatRequests+=1
                     if(not self.is_Valid_Heart_Beat_Time()):
@@ -71,6 +69,11 @@ class CBRSRequestHandler(object):
                 else:
                     self.validationErrorAccuredInEngine = True
                     return consts.HEART_BEAT_REACHED_TO_LIMIT_MESSAGE
+                if self.assertion.is_Json_Request_Contains_Key(httpRequest, "measReportConfig"):
+                    self.measReportCounter = 1
+                else :
+                    self.measReportCounter +=1
+            print self.measReportCounter
             self.numberOfStep-=1### if its repeat type json number of step should be the same as it was before
 
         elif(self.Is_Repeats_Available(self.get_Expected_Json_File_Name(),typeOfCalling)==True):
@@ -81,7 +84,8 @@ class CBRSRequestHandler(object):
                     return consts.GRANT_BEFORE_HEARTBEAT_ERROR                  
                 self.Initialize_Repeats_Type_Allowed(consts.HEART_BEAT_SUFFIX_HTTP,httpRequest, typeOfCalling)
                 self.numberOfHearbeatRequests=1 
-                self.lastHeartBeatTime = DT.datetime.now()        
+                self.lastHeartBeatTime = DT.datetime.now()  
+                self.measReportCounter = 1      
         else:
             if(typeOfCalling==consts.GRANT_SUFFIX_HTTP):
                 self.grantBeforeHeartBeat = True
@@ -98,7 +102,9 @@ class CBRSRequestHandler(object):
             self.repeatesAllowed = False
             self.repeatsType = None              
         try:
-                self.compare_Json_Req(httpRequest,self.get_Expected_Json_File_Name(),typeOfCalling)  
+                keys =[]
+                keys.append("fccId")
+                self.compare_Json_Req(httpRequest,self.get_Expected_Json_File_Name(),typeOfCalling,keys)  
                     
         except Exception as e:
             self.validationErrorAccuredInEngine = True  
@@ -120,8 +126,8 @@ class CBRSRequestHandler(object):
             return False
         return bool(self.assertion.get_Attribute_Value_From_Json(expectedJsonName,"repeatsAllowed"))
 
-    def compare_Json_Req(self,httpRequest,expectedJsonFileName,typeOfCalling):
-        self.assertion.compare_Json_Req(httpRequest,expectedJsonFileName,typeOfCalling+consts.REQUEST_NODE_NAME)
+    def compare_Json_Req(self,httpRequest,expectedJsonFileName,typeOfCalling,keys):
+        self.assertion.compare_Json_Req(httpRequest,expectedJsonFileName,typeOfCalling+consts.REQUEST_NODE_NAME,keys)
     
     def parse_Json_To_Dic_By_File_Name(self,jsonFileName,nodeName,confFile):
         try:
@@ -152,6 +158,7 @@ class CBRSRequestHandler(object):
         '''
         currentTime = DT.datetime.now()
         timeBetween = (currentTime-self.lastHeartBeatTime).total_seconds()
+        print str(timeBetween)
         if(float(timeBetween)-3.0>float(self.validDurationTime)):
             return False
         self.lastHeartBeatTime = DT.datetime.now()            
@@ -164,6 +171,9 @@ class CBRSRequestHandler(object):
             result = self.get_Expire_Time()
             jsonComparer.ordered_dict_prepend(jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0], "grantExpireTime" , result)     
         elif(typeOfCalling == consts.HEART_BEAT_SUFFIX_HTTP):
+            if(self.measReportCounter>1):
+                if(jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0]["measReportConfig"]):
+                    del jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0]["measReportConfig"]
             result = self.get_Expire_Time()
             jsonComparer.ordered_dict_prepend(jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0], "transmitExpireTime" , result)
         if(len(self.jsonSteps) == self.numberOfStep+1):

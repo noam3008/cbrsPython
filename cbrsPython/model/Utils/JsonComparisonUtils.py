@@ -216,7 +216,7 @@ def validate_Json_Value_Special_Sign(expected,actual):
     if("or" in strExpected):
         for value in expected.iteritems() :
             for value in value[1]:
-                if str(value) == strAcutal:
+                if str(value) == strAcutal.replace("u'", "").replace("[", "").replace("]", "").replace("'",""):
                     return value
         raise Exception ("the actual value : " + strAcutal + " is not one of the valid options in the json file " )
                 

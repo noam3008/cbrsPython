@@ -11,7 +11,7 @@
 	"deregistrationRequest":
 	[
 		{
-			"cbsdId": "abc456cbsdSerialNumbersn1"
+			"cbsdId": "ruckus1cbsdSerialNumber401629000040"
 		}
 	],
 	"response":
@@ -19,8 +19,8 @@
 		"deregistrationResponse":
 		[
 			{
-				"cbsdId": "abc456cbsdSerialNumbersn1",
-				"response": {"responseCode": 0, "responseMessage": "all ok"}
+				"cbsdId": "ruckus1cbsdSerialNumber401629000040",
+				"response": {"responseCode": 0}
 			}
 		]
 	}	

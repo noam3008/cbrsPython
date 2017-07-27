@@ -5,6 +5,7 @@ Created on Apr 20, 2017
 '''
 from model.Utils import JsonComparisonUtils
 from model.Utils import Consts as consts
+import collections
 class Assertion(object):
     '''
     classdocs
@@ -20,7 +21,7 @@ class Assertion(object):
         self.loggerHandler = loggerHandler
         self.cbrsConfFile = cbrsConfFile
         
-    def compare_Json_Req(self,httpRequest,jsonExpected,suffix):
+    def compare_Json_Req(self,httpRequest,jsonExpected,suffix,keysFromJson):
         
         ''' 
         the method will get the request json file name from the client request and will get from the two repo
@@ -31,15 +32,10 @@ class Assertion(object):
             jsonExpectedObj = self.add_Json_Optional_Parameters(jsonExpectedObj,httpRequest,suffix)
         except Exception as e:
             raise IOError(e.message)  
-        if(consts.REGISTRATION_SUFFIX_HTTP in suffix):
+        if(consts.REGISTRATION_SUFFIX_HTTP + consts.REQUEST_NODE_NAME == suffix):
             # example for insert to request defaults params from specific config file
-            JsonComparisonUtils.ordered_dict_prepend(jsonExpectedObj[0],"fccId" , self.cbrsConfFile.getElementsByTagName("fccId")[0].firstChild.data)
-            JsonComparisonUtils.ordered_dict_prepend(jsonExpectedObj[0],"userId" , self.cbrsConfFile.getElementsByTagName("userId")[0].firstChild.data)
-        '''if(consts.HEART_BEAT_SUFFIX_HTTP in suffix):
-            ignoreKeys = []
-            ignoreKeys.append("operationState")
-            x = JsonComparisonUtils.are_same(jsonExpectedObj[0],httpRequest,False,ignoreKeys)'''
-        '''else:'''
+            for key in keysFromJson:
+                JsonComparisonUtils.ordered_dict_prepend(jsonExpectedObj[0],key , self.cbrsConfFile.getElementsByTagName(key)[0].firstChild.data)
         x = JsonComparisonUtils.are_same(jsonExpectedObj[0],httpRequest)
         if(False in x):
             self.loggerHandler.print_to_Logs_Files(x,True)
@@ -49,15 +45,25 @@ class Assertion(object):
             raise IOError(consts.ERROR_VALIDATION_MESSAGE + "in the json : " + jsonExpected)
         return x
         
+    def is_Json_Request_Contains_Key(self,jsonRequest,keyToVerify,node=None):
+        try:
+            if node !=None:
+                jsonRequest = jsonRequest[node]
+            for post in jsonRequest:
+                if post ==keyToVerify:
+                    return True
+        except Exception as E:
+            return E.message
+        return False
 
-    def is_Json_Contains_Key(self, jsonExpected,keyToVerify):
+    def is_Json_File_Contains_Key(self, jsonExpected,keyToVerify):
         return JsonComparisonUtils.Is_Json_contains_key(jsonExpected, keyToVerify, self.confFile, self.dirPath)
     
     def get_Attribute_Value_From_Json(self,jsonExpected,keyToVerify):
         '''
         the method get key check if it exists in the expected json and return the value as a string      
         '''
-        if(self.is_Json_Contains_Key(jsonExpected, keyToVerify)):
+        if(self.is_Json_File_Contains_Key(jsonExpected, keyToVerify)):
             return JsonComparisonUtils.get_Node_Of_Json_Parsed(jsonExpected,keyToVerify,self.confFile,self.dirPath)
         return False
     
@@ -82,10 +88,42 @@ class Assertion(object):
             raise IOError(suffix + " do not have optional params json")   
         ### check if the key is optional means its not in the expected json but it is in the requests and its allowed in the protocol      
         for key, value in optional.iteritems() :
+            d = collections.OrderedDict()           
             if key not in expected[0]:
                 if key in httpRequest:
-                    JsonComparisonUtils.ordered_dict_prepend(expected[0], key, value)                    
+                    if(not self.isThereMoreThenOneValueInside(value)):
+                        JsonComparisonUtils.ordered_dict_prepend(expected[0], key, value)   
+                    else:## key not exists at all
+                        for key2, value2 in optional[key].iteritems() :                     
+                            if key2 in httpRequest[key]:   
+                                d[key2] = value2
+                        JsonComparisonUtils.ordered_dict_prepend(expected[0], key, d)     
+            else:
+                if len(value)>1:
+                    for key2, value2 in optional[key].iteritems():
+                        if key2 not in expected[0][key]:                      
+                            if key2 in httpRequest[key]:   
+                                JsonComparisonUtils.ordered_dict_prepend(expected[0][key], key2, value2)                           
         return expected
+    
+    def isThereMoreThenOneValueInside(self,value):
+        numberOfValues = 0
+        if("$or" in str(value)):
+            strValue = str(value)
+            indexOfStartOfOrSentence = strValue.index("$or")-2
+            newStr = strValue[:indexOfStartOfOrSentence]
+            indexOfEndBreckets = newStr.index("}")
+            if(newStr[indexOfEndBreckets+1]!=None):
+                return True                 
+        if(len(str(value).split("$"))>2):
+            return True
+        else:
+            if len(str(value).split(","))>2:
+                return True
+            
+        return False
+            
+            
         
         
         

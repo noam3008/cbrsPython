@@ -1,25 +1,20 @@
 {
-    "name":"Registration_1_2_3_4",  
+    "name":"WINNF.FT.C.SIQ.1_001",  
 			"registrationOptionalParams":
         	[
             	{
-				  "airInterface": { "radioTechnology": "lte", "supportedSpec": "lte-rel10" },
-				  "cbsdCategory": {"$or":["Addd","Bddd"]},
-				  "measCapability":  {"$or":["EUTRA_CARRIER_RSSI_NON_TX","EUTRA_CARRIER_RSSI_ALWAYS"]},
-				  "radioTechnology": "E_UTRA",
-				  "supportedSpec": "FFS",
-				  "latitude": "${range:-90.00000To90.00000}",
-				  "longitude": "${range:-180.000000To180.000000}",
-				  "heightType": {"$or":["AGL","AMSL"]},
+				  "callSign":"${maximumLength:128}",
 				  "horizontalAccuracy":"${range:0To50}",
 				  "verticalAccuracy":"${range:0To3}",
-				  "indoorDeployment":{"$or":["True","False"]},
 				  "antennaAzimuth":"${range:0To360}",
 				  "antennaDowntilt":"${range:-90To90}",
-				  "antennaGain":"${range:-127To128}",
 				  "eirpCapability":"${range:-127To47}",
 				  "antennaBeamwidth":"${range:0To360}",
-				  "antennaModel":"${maximumLength:128}"
+				  "antennaModel":"${maximumLength:128}",
+				  "groupingParam": [ { "groupId": "${maximumLength:128}", "groupType": "INTERFERENCE_COORDINATION" }],
+				  "CpiSignatureData":{"protectedHeader": "${maximumLength:128}","encodedCpiSignedData": "${maximumLength:128}","digitalSignature": "${maximumLength:128}"},
+				  "cbsdInfo":{"firmwareVersion": "${maximumLength:64}","hardwareVersion": "${maximumLength:64}","model": "${maximumLength:64}","softwareVersion": "${maximumLength:64}","vendor": "${maximumLength:64}"}
+
 				}
 			]	
 }
