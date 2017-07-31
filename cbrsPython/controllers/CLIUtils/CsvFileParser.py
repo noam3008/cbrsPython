@@ -39,7 +39,7 @@ class CsvFileParser(object):
                                 raise Exception 
             return steps
         except Exception :
-            raise IOError("the file " + self.csvFileName + "or the jsons file inside the csv rows not found")
+            raise IOError("the file " + self.csvFileName + " or the jsons file inside the csv rows not found")
         
     def find_Number_Of_Cols(self):
         try:

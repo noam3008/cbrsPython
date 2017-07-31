@@ -8,6 +8,7 @@ import model.Utils.Consts as consts
 import datetime as DT
 from model.Utils.Assert import Assertion
 from xml.dom import minidom
+from random import *
 
 class CBRSRequestHandler(object):
     '''
@@ -35,6 +36,8 @@ class CBRSRequestHandler(object):
         self.dirPath = dirPath
         self.cbrsConfFile = None
         self.measReportCounter = 0
+        self.cbsdId = None
+        self.grantId = 0
         self.set_Current_Json_Steps(testDefinition, EnviormentConfFile, dirPath)
         
     
@@ -115,7 +118,7 @@ class CBRSRequestHandler(object):
         self.oldHttpReq = httpRequest
         ## relinquish is too fast and sent request before entering the loop of new test  
         if(self.validationErrorAccuredInEngine == False):     
-            return self.process_response(typeOfCalling)
+            return self.process_response(typeOfCalling,httpRequest)
         
         
     def Is_Repeats_Available(self,expectedJsonName,typeOfCalling):
@@ -165,27 +168,36 @@ class CBRSRequestHandler(object):
         return True
     
     
-    def process_response(self,typeOfCalling):  
+    def process_response(self,typeOfCalling,httpRequest):  
         jsonAfterParse = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.RESPONSE_NODE_NAME,self.enviormentConfFile)
+        specificRespJson = jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0]
         if(typeOfCalling == consts.GRANT_SUFFIX_HTTP):
+            if(self.grantId == 0) :
+                self.grantId = randint(1, 1000000000)  
+            del specificRespJson["grantId"]
+            jsonComparer.ordered_dict_prepend(specificRespJson, "grantId" , self.grantId)            
             result = self.get_Expire_Time()
-            jsonComparer.ordered_dict_prepend(jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0], "grantExpireTime" , result)     
+            del specificRespJson["grantExpireTime"]
+            jsonComparer.ordered_dict_prepend(specificRespJson, "grantExpireTime" , result)     
         elif(typeOfCalling == consts.HEART_BEAT_SUFFIX_HTTP):
             if(self.measReportCounter>1):
-                if(jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0]["measReportConfig"]):
-                    del jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0]["measReportConfig"]
+                if(specificRespJson["measReportConfig"]):
+                    del specificRespJson["measReportConfig"]
             result = self.get_Expire_Time()
-            jsonComparer.ordered_dict_prepend(jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0], "transmitExpireTime" , result)
+            jsonComparer.ordered_dict_prepend(specificRespJson, "transmitExpireTime" , result)
+        elif(typeOfCalling == consts.REGISTRATION_SUFFIX_HTTP):
+            self.cbsdId = httpRequest["fccId"]+ "Mock-SAS" + self.cbsdSerialNumber
+            del specificRespJson["cbsdId"]
+            jsonComparer.ordered_dict_prepend(specificRespJson, "cbsdId" , self.cbsdId)     
         if(len(self.jsonSteps) == self.numberOfStep+1):
             self.questAnswerPartOfJson = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.QUESTION_NODE_NAME,self.enviormentConfFile)
-            self.isLastStepInCSV = True
-    
+            self.isLastStepInCSV = True  
         self.numberOfStep+=1
         return jsonAfterParse
     
     def get_Expire_Time(self):
         secondsToAdd = int(self.cbrsConfFile.getElementsByTagName("secondsToAddForExpireTime")[0].firstChild.data)
-        currentDateTime = DT.datetime.now()
+        currentDateTime = DT.datetime.utcnow()
         
         if(int(secondsToAdd) <60):
             currentDateTime = currentDateTime + DT.timedelta(seconds = 30)

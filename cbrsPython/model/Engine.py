@@ -64,7 +64,7 @@ class MyEngine(object):
                         response = self.handle_Http_Req(httpReq["cbsdId"][cbsdSerialNumberIndex+len("cbsdSerialNumber"):],httpReq, typeOfCalling)
                         self.raise_In_Case_Of_An_Error(response)
                     elif (i>0):
-                        tempResp = self.handle_Http_Req(httpReq["cbsdId"][cbsdSerialNumberIndex+len("cbsdSerialNumber")+1:],httpReq,typeOfCalling)
+                        tempResp = self.handle_Http_Req(httpReq["cbsdId"][cbsdSerialNumberIndex+len("cbsdSerialNumber"):],httpReq,typeOfCalling)
                         self.raise_In_Case_Of_An_Error(response)
                         response[nodeResponse].append(tempResp[nodeResponse][0])               
                 except Exception as E:

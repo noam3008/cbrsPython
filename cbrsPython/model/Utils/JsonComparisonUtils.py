@@ -104,7 +104,7 @@ def _bottom_up_sort(unsorted_json):
     else:
         return unsorted_json
 
-def _are_same(expected, actual, ignore_value_of_keys, ignore_missing_keys=False):
+def _are_same(expected, actual, ignore_value_of_keys, ignore_json_length=False):
     # Check for None
     if expected is None:
         return expected == actual, Stack()
@@ -147,7 +147,7 @@ def _are_same(expected, actual, ignore_value_of_keys, ignore_missing_keys=False)
         return expected == actual, Stack()
 
     # Ensure collections have the same length (if applicable)
-    if ignore_missing_keys:
+    if ignore_json_length:
         # Ensure collections has minimum length (if applicable) 
         # This is a short-circuit condition because (b contains a)
         if len(expected) > len(actual):
@@ -185,7 +185,7 @@ def are_same(original_a, original_b, ignore_list_order_recursively=False, ignore
     else:
         a = original_a
         b = original_b   
-    return _are_same(a, b, ignore_value_of_keys)
+    return _are_same(a, b, ignore_value_of_keys,len(ignore_value_of_keys)>0)
 
 
 def contains(expected_original, actual_original, ignore_list_order_recursively=False, ignore_value_of_keys=[]):
@@ -212,18 +212,27 @@ def validate_Json_Value_Special_Sign(expected,actual):
         heighestVal =  strExpected[indexOfSeperationSign+2:len(strExpected)-1]
         if float(lowestVal) <= float(strAcutal) and (float(heighestVal) >= float(strAcutal)):
             return True
-        raise Exception ("the actual value : " + strAcutal + " not in the range expected : " + lowestVal + " To : " + heighestVal  )
+        raise Exception ("ERROR - the actual value : " + strAcutal + " not in the range expected : " + lowestVal + " To : " + heighestVal  )
     if("or" in strExpected):
         for value in expected.iteritems() :
+            strActualOnlyLetters =strAcutal.replace("[", "").replace("u'", "").replace("'","").replace("]","")
             for value in value[1]:
-                if str(value) == strAcutal.replace("u'", "").replace("[", "").replace("]", "").replace("'",""):
+                strExpectedOnlyLetters = str(value).replace("[", "").replace("u'", "").replace("'","").replace("]","")
+                if len((strExpectedOnlyLetters).split(","))>1 :
+                    valuesOfExpected = strExpectedOnlyLetters.split(",")
+                    valuesOfActual = strActualOnlyLetters.split(",")
+                    for cell in valuesOfActual:
+                        if cell not in valuesOfExpected:
+                            return False 
+                    return value         
+                if strExpectedOnlyLetters == strAcutal:
                     return value
-        raise Exception ("the actual value : " + strAcutal + " is not one of the valid options in the json file " )
+        raise Exception ("ERROR - the actual value : " + strAcutal + " is not one of the valid options in the json file " )
                 
     if("maximumLength" in strExpected):
         indexOfPunctuation = strExpected.find(":")
         lenExpected = strExpected[indexOfPunctuation+1:len(strExpected)-1]
-        if(int(len(strAcutal))<=int(lenExpected)):
+        if(len(strAcutal)<=int(lenExpected)):
             return strAcutal
         raise Exception ("the actual value : " + strAcutal + " is more then the limit length  : " +  lenExpected )
             

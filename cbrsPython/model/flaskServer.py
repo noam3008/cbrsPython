@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 
 enodeBController = ENodeBController(None)
-@app.route("/cbsd/<typeOfCalling>/",methods=['POST'])
+@app.route("/cbsd/<typeOfCalling>",methods=['POST'])
 def sent_Flask_Req_To_Server(typeOfCalling):
     '''
     the method get any post request sent from the CBSD that the url includes '/cbsd/<typeOfCalling>/' 
@@ -45,8 +45,10 @@ def shutdown():
 def redirectShutDownDueToFinishOfTest():
         return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=consts.TEST_HAD_BEEN_FINISHED_FLASK))
 import ssl
-def runFlaskServer(host,port,ctx):
-    app.run(host,port,threaded=True,ssl_context=ctx)
+from werkzeug.serving import WSGIRequestHandler
+WSGIRequestHandler.protocol_version = "HTTP/1.1"
+def runFlaskServer(host,port):#,ctx):
+    app.run(host,port,threaded=True,request_handler=WSGIRequestHandler)#,ssl_context=ctx)
         
 
     

@@ -52,7 +52,7 @@
 				}
 			},
 					"measReport": {
-                    "rcvdPowerMeasReports": [
+                    "eutraCarrierRssiRpt": [
                     {
                         "measBandwidth": 10000000, 
                         "measRcvdPower": "${range:-100To-25}", 
@@ -138,6 +138,7 @@
 		[ 
 			{ 
 				"cbsdId":"ruckus1cbsdSerialNumber401629000040",
+				"grantExpireTime":"sss",
 				"grantId":"8385094448610395450",
 				"heartbeatInterval":60,
 				"response":{ "responseCode":0 },

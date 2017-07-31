@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;cbrsPython/model/CBRSConf/B7AF06CD05A4.xml&apos; to &apos;401629000041.xml&apos;" description="Rename resource &apos;B7AF06CD05A4.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="model/CBRSConf/B7AF06CD05A4.xml" name="401629000041.xml" stamp="1501143287477" updateReferences="true"/>
+</session>
