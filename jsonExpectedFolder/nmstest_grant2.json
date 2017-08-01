@@ -11,7 +11,7 @@
 	"grantRequest":
 	[ 
 		{ 
-			"cbsdId": "ruckus1cbsdSerialNumber401629000040",
+			"cbsdId": "ruckus1cbsdSerialNumber401629000041",
 			"operationParam": 
 			{ 
 				"maxEirp": "${range:0To30.0000000000000000}", 

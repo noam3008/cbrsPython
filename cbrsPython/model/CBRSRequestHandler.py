@@ -42,14 +42,18 @@ class CBRSRequestHandler(object):
         
     
     def set_Current_Json_Steps(self,testDefinition,confFile,dirPath):
+        cbsdFoundInJsons = False
         for jsonCol in testDefinition.jsonNamesOfSteps:
             if jsonComparer.get_Node_Of_Json_Parsed(jsonCol[0],"registrationRequest",confFile,dirPath)[0]["cbsdSerialNumber"]== self.cbsdSerialNumber:
+                cbsdFoundInJsons = True
                 self.jsonSteps = jsonCol
                 try:
                     self.cbrsConfFile = minidom.parse(str(self.dirPath) +"\\cbrsPython\\model\\CBRSConf\\"+ self.cbsdSerialNumber+".xml")
                 except:
                     raise IOError("ERROR - missing cbrs conf file of the CBSD : " + self.cbsdSerialNumber)
                 self.assertion = Assertion(self.enviormentConfFile,dirPath,self.loggerHandler,self.cbrsConfFile)
+        if(not cbsdFoundInJsons):
+            raise IOError("ERROR - missing registration json in one of the csv columns with the cbsd serial number " + self.cbsdSerialNumber)
             
     def handle_Http_Req(self,httpRequest,typeOfCalling):
         req = httpRequest
@@ -171,29 +175,41 @@ class CBRSRequestHandler(object):
     def process_response(self,typeOfCalling,httpRequest):  
         jsonAfterParse = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.RESPONSE_NODE_NAME,self.enviormentConfFile)
         specificRespJson = jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0]
-        if(typeOfCalling == consts.GRANT_SUFFIX_HTTP):
+        if(typeOfCalling == consts.SPECTRUM_INQUIERY_SUFFIX_HTTP):
+            self.change_Value_Of_Param_In_Dict(specificRespJson,"cbsdId",self.cbsdId)
+        elif (typeOfCalling == consts.RELINQUISHMENT_SUFFIX_HTTP):
+            self.change_Value_Of_Param_In_Dict(specificRespJson, "cbsdId", self.cbsdId) 
+            self.change_Value_Of_Param_In_Dict(specificRespJson, "grantId", self.grantId)  
+        elif(typeOfCalling == consts.GRANT_SUFFIX_HTTP):
             if(self.grantId == 0) :
                 self.grantId = randint(1, 1000000000)  
-            del specificRespJson["grantId"]
-            jsonComparer.ordered_dict_prepend(specificRespJson, "grantId" , self.grantId)            
+            self.change_Value_Of_Param_In_Dict(specificRespJson, "cbsdId", self.grantId) 
+            self.change_Value_Of_Param_In_Dict(specificRespJson, "grantId", self.grantId)             
             result = self.get_Expire_Time()
-            del specificRespJson["grantExpireTime"]
-            jsonComparer.ordered_dict_prepend(specificRespJson, "grantExpireTime" , result)     
+            self.change_Value_Of_Param_In_Dict(specificRespJson, "grantExpireTime", result)  
         elif(typeOfCalling == consts.HEART_BEAT_SUFFIX_HTTP):
             if(self.measReportCounter>1):
-                if(specificRespJson["measReportConfig"]):
+                if("measReportConfig" in specificRespJson):
                     del specificRespJson["measReportConfig"]
             result = self.get_Expire_Time()
-            jsonComparer.ordered_dict_prepend(specificRespJson, "transmitExpireTime" , result)
+            self.change_Value_Of_Param_In_Dict(specificRespJson, "transmitExpireTime", result)
+            self.change_Value_Of_Param_In_Dict(specificRespJson, "cbsdId", self.cbsdId) 
+            self.change_Value_Of_Param_In_Dict(specificRespJson, "grantId", self.grantId)  
         elif(typeOfCalling == consts.REGISTRATION_SUFFIX_HTTP):
-            self.cbsdId = httpRequest["fccId"]+ "Mock-SAS" + self.cbsdSerialNumber
-            del specificRespJson["cbsdId"]
-            jsonComparer.ordered_dict_prepend(specificRespJson, "cbsdId" , self.cbsdId)     
+            if(self.cbsdId==None):
+                self.cbsdId = httpRequest["fccId"]+ "Mock-SAS" + self.cbsdSerialNumber
+            self.change_Value_Of_Param_In_Dict(specificRespJson, "cbsdId", self.cbsdId)   
+            
         if(len(self.jsonSteps) == self.numberOfStep+1):
             self.questAnswerPartOfJson = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.QUESTION_NODE_NAME,self.enviormentConfFile)
             self.isLastStepInCSV = True  
         self.numberOfStep+=1
         return jsonAfterParse
+    
+    def change_Value_Of_Param_In_Dict(self,dictName,attrToChange,value):
+        if(attrToChange in dictName):
+                del dictName[attrToChange]
+        jsonComparer.ordered_dict_prepend(dictName, attrToChange, value) 
     
     def get_Expire_Time(self):
         secondsToAdd = int(self.cbrsConfFile.getElementsByTagName("secondsToAddForExpireTime")[0].firstChild.data)
