@@ -6,6 +6,7 @@ Created on Apr 20, 2017
 from model.Utils import JsonComparisonUtils
 from model.Utils import Consts as consts
 import collections
+import xml.etree.ElementTree as ET
 from click.decorators import option
 class Assertion(object):
     '''
@@ -23,7 +24,7 @@ class Assertion(object):
         self.loggerHandler = loggerHandler
         self.cbrsConfFile = cbrsConfFile
         
-    def compare_Json_Req(self,httpRequest,jsonExpected,suffix,keysFromJson):
+    def compare_Json_Req(self,httpRequest,jsonExpected,suffix,keysFromJson=None):
         
         ''' 
         the method will get the request json file name from the client request and will get from the two repo
@@ -34,10 +35,9 @@ class Assertion(object):
             jsonExpectedObj = self.add_Json_Optional_Parameters(jsonExpectedObj,httpRequest,suffix)
         except Exception as e:
             raise IOError(e.message)  
-        if(consts.REGISTRATION_SUFFIX_HTTP + consts.REQUEST_NODE_NAME == suffix):
-            # example for insert to request defaults params from specific config file
-            for key in keysFromJson:
-                JsonComparisonUtils.ordered_dict_prepend(jsonExpectedObj[0],key , self.cbrsConfFile.getElementsByTagName(key)[0].firstChild.data)
+        self.add_Actual_Params_To_Json_If_Not_Exists(jsonExpectedObj[0],httpRequest)
+        #if(consts.REGISTRATION_SUFFIX_HTTP + consts.REQUEST_NODE_NAME == suffix):
+            #self.add_reg_params_to_json(jsonExpectedObj)
         x = JsonComparisonUtils.are_same(jsonExpectedObj[0],httpRequest,False,self.dontCheckNode)
         if(False in x):
             self.loggerHandler.print_to_Logs_Files(x,True)
@@ -57,6 +57,22 @@ class Assertion(object):
         except Exception as E:
             return E.message
         return False
+    
+    def add_Actual_Params_To_Json_If_Not_Exists(self,expectedObj,httpRequest):
+        for key in httpRequest:
+            if (key not in expectedObj):
+                JsonComparisonUtils.ordered_dict_prepend(expectedObj, key, None)
+
+    def add_reg_params_to_json(self,jsonExpected):
+        
+        for child in self.cbrsConfFile.childNodes[0].childNodes:
+            #print child.tag, child.attrib
+            if(child.firstChild!=None):
+                if child.tagName == consts.REGISTRATION_SUFFIX_HTTP + "Params":
+                    for child2 in child.childNodes:
+                        if(child2.firstChild!=None):
+                            JsonComparisonUtils.ordered_dict_prepend(jsonExpected[0],child2.tagName , child2.firstChild.data)
+        
 
     def is_Json_File_Contains_Key(self, jsonExpected,keyToVerify):
         return JsonComparisonUtils.Is_Json_contains_key(jsonExpected, keyToVerify, self.confFile, self.dirPath)

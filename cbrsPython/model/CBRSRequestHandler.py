@@ -109,9 +109,7 @@ class CBRSRequestHandler(object):
             self.repeatesAllowed = False
             self.repeatsType = None              
         try:
-                keys =[]
-                keys.append("fccId")
-                self.compare_Json_Req(httpRequest,self.get_Expected_Json_File_Name(),typeOfCalling,keys)  
+                self.compare_Json_Req(httpRequest,self.get_Expected_Json_File_Name(),typeOfCalling)  
                     
         except Exception as e:
             self.validationErrorAccuredInEngine = True  
@@ -133,7 +131,7 @@ class CBRSRequestHandler(object):
             return False
         return bool(self.assertion.get_Attribute_Value_From_Json(expectedJsonName,"repeatsAllowed"))
 
-    def compare_Json_Req(self,httpRequest,expectedJsonFileName,typeOfCalling,keys):
+    def compare_Json_Req(self,httpRequest,expectedJsonFileName,typeOfCalling,keys=None):
         self.assertion.compare_Json_Req(httpRequest,expectedJsonFileName,typeOfCalling+consts.REQUEST_NODE_NAME,keys)
     
     def parse_Json_To_Dic_By_File_Name(self,jsonFileName,nodeName,confFile):
