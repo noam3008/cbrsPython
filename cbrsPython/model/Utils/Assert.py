@@ -35,9 +35,9 @@ class Assertion(object):
             jsonExpectedObj = self.add_Json_Optional_Parameters(jsonExpectedObj,httpRequest,suffix)
         except Exception as e:
             raise IOError(e.message)  
+        if(consts.REGISTRATION_SUFFIX_HTTP + consts.REQUEST_NODE_NAME == suffix):
+            self.add_reg_params_to_json(jsonExpectedObj)
         self.add_Actual_Params_To_Json_If_Not_Exists(jsonExpectedObj[0],httpRequest)
-        #if(consts.REGISTRATION_SUFFIX_HTTP + consts.REQUEST_NODE_NAME == suffix):
-            #self.add_reg_params_to_json(jsonExpectedObj)
         x = JsonComparisonUtils.are_same(jsonExpectedObj[0],httpRequest,False,self.dontCheckNode)
         if(False in x):
             self.loggerHandler.print_to_Logs_Files(x,True)
@@ -61,7 +61,8 @@ class Assertion(object):
     def add_Actual_Params_To_Json_If_Not_Exists(self,expectedObj,httpRequest):
         for key in httpRequest:
             if (key not in expectedObj):
-                JsonComparisonUtils.ordered_dict_prepend(expectedObj, key, None)
+                if(key not in self.dontCheckNode):
+                    JsonComparisonUtils.ordered_dict_prepend(expectedObj, key, None)
 
     def add_reg_params_to_json(self,jsonExpected):
         
