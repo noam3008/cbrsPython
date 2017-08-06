@@ -82,6 +82,7 @@ def run_New_Test(dirPath, confFile, loggerHandler):
             cliHandler.stop_Thread_Due_To_Exception()
     if(inputAnswer=="quit"):
         loggerHandler.print_To_Terminal(consts.QUIT_PROGRAM_MESSAGE)
+        
 
 def create_Log_Folder():
     '''

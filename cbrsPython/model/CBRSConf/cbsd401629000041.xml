@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cbrsParams>
+	<grantExpireTime>2017-07-28T23:20:08Z</grantExpireTime>
+	<secondsToAddForExpireTime>3777</secondsToAddForExpireTime>
+	<registrationParams>
+		<userId>${maximumLength:128}</userId>
+		<fccId>${maximumLength:128}</fccId>
+		<cbsdSerialNumber>401629000041</cbsdSerialNumber>
+		<cbsdCategory>"$or":["A","B"]</cbsdCategory>		
+		<measCapability>"$or":[["RECEIVED_POWER_WITHOUT_GRANT","RECEIVED_POWER_WITH_GRANT"],["RECEIVED_POWER_WITHOUT_GRANT","RECEIVED_POWER_WITH_GRANT"]]</measCapability>
+		<airInterface>
+			<radioTechnology>${maximumLength:128}</radioTechnology>
+		</airInterface>
+		<installationParam>
+			<antennaGain>"${range:-127To128}"</antennaGain>
+		</installationParam>		 
+	</registrationParams>
+</cbrsParams>

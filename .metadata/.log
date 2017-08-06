@@ -8522,3 +8522,726 @@ org.eclipse.core.internal.resources.ResourceException: Marker id 61967 not found
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
 !SUBENTRY 1 org.eclipse.core.resources 4 376 2017-08-02 08:59:19.571
 !MESSAGE Marker id 61967 not found.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2017-08-02 10:02:34.290
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.eclipse.org/eclipse/updates/4.6/categoriesNeon.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:116)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.fail(CachingRepositoryManager.java:314)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:217)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:437)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.GeneratedMethodAccessor118.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:116)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:370)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:177)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:437)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:151)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:129)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:73)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2017-08-02 10:02:34.291
+!MESSAGE No repository found at http://download.eclipse.org/eclipse/updates/4.6/categoriesNeon.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1002 2017-08-02 10:02:34.299
+!MESSAGE Unable to read repository at http://download.eclipse.org/eclipse/updates/4.6.
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.eclipse.org/eclipse/updates/4.6/categoriesNeon.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:116)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.fail(CachingRepositoryManager.java:314)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:217)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:437)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at sun.reflect.GeneratedMethodAccessor118.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.oomph.util.ReflectUtil.invokeMethod(ReflectUtil.java:116)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:370)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager.loadRepository(CachingRepositoryManager.java:177)
+	at org.eclipse.oomph.p2.internal.core.CachingRepositoryManager$Metadata.loadRepository(CachingRepositoryManager.java:437)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:151)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:129)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:73)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2017-08-02 10:02:34.299
+!MESSAGE No repository found at http://download.eclipse.org/eclipse/updates/4.6/categoriesNeon.
+
+!ENTRY org.python.pydev.shared_core 4 4 2017-08-02 11:11:29.486
+!MESSAGE Did not expect more than one breakpoint in the current line. Returning first.
+!STACK 0
+java.lang.RuntimeException: Did not expect more than one breakpoint in the current line. Returning first.
+	at org.python.pydev.core.log.Log.log(Log.java:54)
+	at org.python.pydev.debug.ui.actions.AbstractBreakpointRulerAction.getBreakpointFromLastLineOfActivityInCurrentEditor(AbstractBreakpointRulerAction.java:90)
+	at org.python.pydev.debug.ui.actions.PythonBreakpointPropertiesRulerAction.update(PythonBreakpointPropertiesRulerAction.java:84)
+	at org.eclipse.ui.texteditor.AbstractRulerActionDelegate.update(AbstractRulerActionDelegate.java:127)
+	at org.eclipse.ui.texteditor.AbstractRulerActionDelegate.mouseDown(AbstractRulerActionDelegate.java:146)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:193)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4228)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3816)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.python.pydev.shared_core 2 2 2017-08-03 10:26:29.316
+!MESSAGE Warning: computed 13584 completions (trimming to 10000).
+Request: CompletionRequest[ editorFile:C:\Users\iagmon\cbrsPython\cbrsPython\model\CBRSRequestHandler.py activationToken:jsonComparer.get_Node_Of_Json_Parsed qualifier:re isInCalltip:false alreadyHasParams:false]
+!STACK 0
+java.lang.RuntimeException: Warning: computed 13584 completions (trimming to 10000).
+Request: CompletionRequest[ editorFile:C:\Users\iagmon\cbrsPython\cbrsPython\model\CBRSRequestHandler.py activationToken:jsonComparer.get_Node_Of_Json_Parsed qualifier:re isInCalltip:false alreadyHasParams:false]
+	at org.python.pydev.core.log.Log.logWarn(Log.java:70)
+	at org.python.pydev.editor.codecompletion.PyCodeCompletion.getCodeCompletionProposals(PyCodeCompletion.java:195)
+	at org.python.pydev.editor.codecompletion.PythonCompletionProcessor.getPythonProposals(PythonCompletionProcessor.java:229)
+	at org.python.pydev.editor.codecompletion.PythonCompletionProcessor.computeCompletionProposals(PythonCompletionProcessor.java:163)
+	at org.python.pydev.editor.simpleassist.SimpleAssistProcessor.computeCompletionProposals(SimpleAssistProcessor.java:279)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$3.run(ContentAssistant.java:1931)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.computeCompletionProposals(ContentAssistant.java:1928)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeProposals(CompletionProposalPopup.java:565)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.access$16(CompletionProposalPopup.java:560)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup$2.run(CompletionProposalPopup.java:494)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.showProposals(CompletionProposalPopup.java:487)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$AutoAssistListener$1.run(ContentAssistant.java:371)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:182)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4203)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3819)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+!SESSION 2017-08-03 13:04:38.643 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_144
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-08-03 13:04:58.632
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.perforce.team.core 2 0 2017-08-03 13:05:49.052
+!MESSAGE unable to get manifest version attribute: Not running from jar file: bundleresource://474.fwk981012032:1/com/perforce/p4java/Metadata.class
+
+!ENTRY com.perforce.team.core 2 0 2017-08-03 13:05:49.123
+!MESSAGE unable to get manifest date attribute: Not running from jar file: bundleresource://474.fwk981012032:1/com/perforce/p4java/Metadata.class
+
+!ENTRY com.perforce.team.core 1 0 2017-08-03 13:05:49.131
+!MESSAGE P4Java server factory loaded; version: Internal 2010.1 Perforce Development; date: unknown
+
+!ENTRY com.perforce.team.core 1 0 2017-08-03 13:05:49.138
+!MESSAGE Using default charset: windows-1252; JVM charset: windows-1252
+
+!ENTRY com.perforce.team.core 1 0 2017-08-03 13:05:49.156
+!MESSAGE Checking this Java for symbolic link support...
+
+!ENTRY com.perforce.team.core 1 0 2017-08-03 13:05:49.291
+!MESSAGE It seems this Java supports symbolic links.
+
+!ENTRY com.perforce.team.core 1 0 2017-08-03 13:05:49.298
+!MESSAGE Symbolic link support at the OS level will be determined at runtime...
+
+!ENTRY com.perforce.team.core 1 0 2017-08-03 13:05:49.305
+!MESSAGE initializing system file command helper class: java.io.File
+
+!ENTRY com.perforce.team.core 1 0 2017-08-03 13:05:49.312
+!MESSAGE Using default RPC system file command helper: com.perforce.p4java.impl.mapbased.rpc.sys.helper.RpcSystemFileCommandsHelper
+
+!ENTRY com.perforce.team.core 1 0 2017-08-03 13:05:49.321
+!MESSAGE setting RPC system file helper to class com.perforce.team.core.p4java.P4JavaSysFileCommandsHelper
+
+!ENTRY org.python.pydev.shared_core 4 4 2017-08-03 13:06:10.404
+!MESSAGE The python client still hasn't connected back to the eclipse java vm (will retry...)
+!STACK 0
+java.lang.RuntimeException: The python client still hasn't connected back to the eclipse java vm (will retry...)
+	at org.python.pydev.core.log.Log.log(Log.java:54)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.startIt(AbstractShell.java:334)
+	at org.python.pydev.editor.codecompletion.shell.ShellsContainer.getServerShell(ShellsContainer.java:232)
+	at org.python.pydev.editor.codecompletion.shell.ShellsContainer.getServerShell(ShellsContainer.java:165)
+	at org.python.pydev.editor.codecompletion.shell.AbstractShell.getServerShell(AbstractShell.java:222)
+	at org.python.pydev.editor.PyEdit$2.run(PyEdit.java:560)
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-08-03 13:06:14.346
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\iagmon'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.python.pydev.shared_core 1 1 2017-08-03 13:12:08.356
+!MESSAGE No existing console history at: C:\Users\iagmon\cbrsPython\.metadata\.plugins\org.python.pydev.shared_interactive_console\history.py
+!STACK 0
+java.io.FileNotFoundException: C:\Users\iagmon\cbrsPython\.metadata\.plugins\org.python.pydev.shared_interactive_console\history.py (The system cannot find the file specified)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(Unknown Source)
+	at java.io.FileInputStream.<init>(Unknown Source)
+	at java.io.FileReader.<init>(Unknown Source)
+	at org.python.pydev.shared_interactive_console.console.ScriptConsoleGlobalHistory.load(ScriptConsoleGlobalHistory.java:96)
+	at org.python.pydev.shared_interactive_console.console.ScriptConsoleGlobalHistory.<init>(ScriptConsoleGlobalHistory.java:45)
+	at org.python.pydev.shared_interactive_console.console.ScriptConsoleGlobalHistory.<clinit>(ScriptConsoleGlobalHistory.java:37)
+	at org.python.pydev.shared_interactive_console.console.ScriptConsoleHistory.<init>(ScriptConsoleHistory.java:56)
+	at org.python.pydev.shared_interactive_console.console.ui.ScriptConsole.<init>(ScriptConsole.java:204)
+	at org.python.pydev.debug.newconsole.PydevConsole.<init>(PydevConsole.java:84)
+	at org.python.pydev.debug.newconsole.PydevDebugConsole.<init>(PydevDebugConsole.java:29)
+	at org.python.pydev.debug.newconsole.PydevConsoleFactory.createDebugConsole(PydevConsoleFactory.java:284)
+	at org.python.pydev.debug.newconsole.PydevConsoleFactory.createDebugConsole(PydevConsoleFactory.java:259)
+	at org.python.pydev.debug.console.PromptOverlay.<init>(PromptOverlay.java:77)
+	at org.python.pydev.debug.console.PromptOverlayConsolePageParticipant.init(PromptOverlayConsolePageParticipant.java:48)
+	at org.eclipse.ui.internal.console.ConsoleView$3.run(ConsoleView.java:326)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.console.ConsoleView.doCreatePage(ConsoleView.java:323)
+	at org.eclipse.ui.part.PageBookView.createPage(PageBookView.java:400)
+	at org.eclipse.ui.part.PageBookView.partActivated(PageBookView.java:743)
+	at org.eclipse.ui.internal.console.ConsoleView$4.run(ConsoleView.java:395)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:182)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4203)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3819)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.eclipse.ui 4 0 2017-08-03 13:49:57.580
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.IllegalArgumentException: Argument not valid
+	at org.eclipse.swt.SWT.error(SWT.java:4514)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.custom.StyledText.setCaretOffset(StyledText.java:8690)
+	at org.eclipse.ui.internal.console.IOConsoleViewer.handleVerifyEvent(IOConsoleViewer.java:111)
+	at org.eclipse.jface.text.TextViewer$TextVerifyListener.verifyText(TextViewer.java:431)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:274)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:802)
+	at org.eclipse.swt.custom.StyledText.modifyContent(StyledText.java:7342)
+	at org.eclipse.swt.custom.StyledText.sendKeyEvent(StyledText.java:8225)
+	at org.eclipse.swt.custom.StyledText.doContent(StyledText.java:2530)
+	at org.eclipse.swt.custom.StyledText.handleKey(StyledText.java:6018)
+	at org.eclipse.swt.custom.StyledText.handleKeyDown(StyledText.java:6049)
+	at org.eclipse.swt.custom.StyledText$7.handleEvent(StyledText.java:5733)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1130)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1126)
+	at org.eclipse.swt.widgets.Widget.wmChar(Widget.java:1547)
+	at org.eclipse.swt.widgets.Control.WM_CHAR(Control.java:4910)
+	at org.eclipse.swt.widgets.Canvas.WM_CHAR(Canvas.java:364)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4791)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5102)
+	at org.eclipse.swt.internal.win32.OS.CallWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.CallWindowProc(OS.java:2446)
+	at org.eclipse.swt.internal.BidiUtil.windowProc(BidiUtil.java:701)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3814)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.python.pydev.shared_core 4 4 2017-08-03 15:48:22.904
+!MESSAGE Did not expect more than one breakpoint in the current line. Returning first.
+!STACK 0
+java.lang.RuntimeException: Did not expect more than one breakpoint in the current line. Returning first.
+	at org.python.pydev.core.log.Log.log(Log.java:54)
+	at org.python.pydev.debug.ui.actions.AbstractBreakpointRulerAction.getBreakpointFromLastLineOfActivityInCurrentEditor(AbstractBreakpointRulerAction.java:90)
+	at org.python.pydev.debug.ui.actions.PythonBreakpointPropertiesRulerAction.update(PythonBreakpointPropertiesRulerAction.java:84)
+	at org.eclipse.ui.texteditor.AbstractRulerActionDelegate.update(AbstractRulerActionDelegate.java:127)
+	at org.eclipse.ui.texteditor.AbstractRulerActionDelegate.mouseDown(AbstractRulerActionDelegate.java:146)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:193)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4228)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3816)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.python.pydev.shared_core 4 4 2017-08-03 15:57:23.725
+!MESSAGE Marker id 62601 not found.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Marker id 62601 not found.
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:58)
+	at org.eclipse.core.internal.resources.Marker.getAttribute(Marker.java:103)
+	at org.python.pydev.debug.model.PyBreakpoint.getType(PyBreakpoint.java:157)
+	at org.python.pydev.debug.model.AbstractDebugTarget.breakpointRemoved(AbstractDebugTarget.java:364)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointNotifier.run(BreakpointManager.java:1045)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointNotifier.notify(BreakpointManager.java:1069)
+	at org.eclipse.debug.internal.core.BreakpointManager.fireUpdate(BreakpointManager.java:977)
+	at org.eclipse.debug.internal.core.BreakpointManager.removeBreakpoints(BreakpointManager.java:511)
+	at org.eclipse.debug.internal.core.BreakpointManager$BreakpointManagerVisitor.update(BreakpointManager.java:766)
+	at org.eclipse.debug.internal.core.BreakpointManager.resourceChanged(BreakpointManager.java:699)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastBuildEvent(Workspace.java:360)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:147)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2017-08-03 15:57:23.726
+!MESSAGE Marker id 62601 not found.
+
+!ENTRY org.python.pydev.shared_core 4 4 2017-08-03 15:57:43.956
+!MESSAGE Did not expect more than one breakpoint in the current line. Returning first.
+!STACK 0
+java.lang.RuntimeException: Did not expect more than one breakpoint in the current line. Returning first.
+	at org.python.pydev.core.log.Log.log(Log.java:54)
+	at org.python.pydev.debug.ui.actions.AbstractBreakpointRulerAction.getBreakpointFromLastLineOfActivityInCurrentEditor(AbstractBreakpointRulerAction.java:90)
+	at org.python.pydev.debug.ui.actions.PythonBreakpointPropertiesRulerAction.update(PythonBreakpointPropertiesRulerAction.java:84)
+	at org.eclipse.ui.texteditor.AbstractRulerActionDelegate.update(AbstractRulerActionDelegate.java:127)
+	at org.eclipse.ui.texteditor.AbstractRulerActionDelegate.mouseDown(AbstractRulerActionDelegate.java:146)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:193)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4228)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3816)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.python.pydev.shared_core 4 4 2017-08-03 15:59:06.417
+!MESSAGE Did not expect to find item below node: Assign[targets=[Name[id=strActualOnlyLetters, ctx=Store, reserved=false]], value=null, type=null] (module: model.Utils.JsonComparisonUtils file: C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\JsonComparisonUtils.py row: 247).
+!STACK 0
+java.lang.RuntimeException: Did not expect to find item below node: Assign[targets=[Name[id=strActualOnlyLetters, ctx=Store, reserved=false]], value=null, type=null] (module: model.Utils.JsonComparisonUtils file: C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\JsonComparisonUtils.py row: 247).
+	at org.python.pydev.core.log.Log.log(Log.java:54)
+	at org.python.pydev.parser.fastparser.FastDefinitionsParser.endScopesInStack(FastDefinitionsParser.java:604)
+	at org.python.pydev.parser.fastparser.FastDefinitionsParser.handleNewLine(FastDefinitionsParser.java:394)
+	at org.python.pydev.parser.fastparser.FastDefinitionsParser.extractBody(FastDefinitionsParser.java:259)
+	at org.python.pydev.parser.fastparser.FastDefinitionsParser.parse(FastDefinitionsParser.java:691)
+	at org.python.pydev.parser.fastparser.FastDefinitionsParser.parse(FastDefinitionsParser.java:685)
+	at org.python.pydev.parser.fastparser.FastDefinitionsParser.parse(FastDefinitionsParser.java:676)
+	at com.python.pydev.analysis.builder.AnalysisBuilderVisitor$1.call(AnalysisBuilderVisitor.java:115)
+	at com.python.pydev.analysis.builder.AnalysisBuilderVisitor$1.call(AnalysisBuilderVisitor.java:1)
+	at com.python.pydev.analysis.builder.AnalysisBuilderRunnable.<init>(AnalysisBuilderRunnable.java:163)
+	at com.python.pydev.analysis.builder.AnalysisBuilderRunnableFactory.createRunnable(AnalysisBuilderRunnableFactory.java:222)
+	at com.python.pydev.analysis.builder.AnalysisBuilderVisitor.doVisitChangedResource(AnalysisBuilderVisitor.java:180)
+	at com.python.pydev.analysis.builder.AnalysisBuilderVisitor.visitChangedResource(AnalysisBuilderVisitor.java:129)
+	at com.python.pydev.analysis.builder.AnalysisBuilderVisitor.visitChangedResource(AnalysisBuilderVisitor.java:45)
+	at org.python.pydev.builder.PydevGrouperVisitor.visitWith(PydevGrouperVisitor.java:115)
+	at org.python.pydev.builder.PydevGrouperVisitor.visitChangedResource(PydevGrouperVisitor.java:166)
+	at org.python.pydev.builder.PydevGrouperVisitor.finishDelayedVisits(PydevGrouperVisitor.java:190)
+	at org.python.pydev.builder.PyDevBuilder.build(PyDevBuilder.java:133)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:735)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:301)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:304)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:360)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:383)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev.shared_core 4 4 2017-08-03 15:59:06.428
+!MESSAGE Did not expect to find item below node: Assign[targets=[Name[id=strActualOnlyLetters, ctx=Store, reserved=false]], value=null, type=null] (module: model.Utils.JsonComparisonUtils file: C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\JsonComparisonUtils.py row: 248).
+!STACK 0
+java.lang.RuntimeException: Did not expect to find item below node: Assign[targets=[Name[id=strActualOnlyLetters, ctx=Store, reserved=false]], value=null, type=null] (module: model.Utils.JsonComparisonUtils file: C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\JsonComparisonUtils.py row: 248).
+	at org.python.pydev.core.log.Log.log(Log.java:54)
+	at org.python.pydev.parser.fastparser.FastDefinitionsParser.endScopesInStack(FastDefinitionsParser.java:604)
+	at org.python.pydev.parser.fastparser.FastDefinitionsParser.handleNewLine(FastDefinitionsParser.java:394)
+	at org.python.pydev.parser.fastparser.FastDefinitionsParser.extractBody(FastDefinitionsParser.java:259)
+	at org.python.pydev.parser.fastparser.FastDefinitionsParser.parse(FastDefinitionsParser.java:691)
+	at org.python.pydev.parser.fastparser.FastDefinitionsParser.parse(FastDefinitionsParser.java:685)
+	at org.python.pydev.parser.fastparser.FastDefinitionsParser.parse(FastDefinitionsParser.java:676)
+	at com.python.pydev.analysis.builder.AnalysisBuilderVisitor$1.call(AnalysisBuilderVisitor.java:115)
+	at com.python.pydev.analysis.builder.AnalysisBuilderVisitor$1.call(AnalysisBuilderVisitor.java:1)
+	at com.python.pydev.analysis.builder.AnalysisBuilderRunnable.<init>(AnalysisBuilderRunnable.java:163)
+	at com.python.pydev.analysis.builder.AnalysisBuilderRunnableFactory.createRunnable(AnalysisBuilderRunnableFactory.java:222)
+	at com.python.pydev.analysis.builder.AnalysisBuilderVisitor.doVisitChangedResource(AnalysisBuilderVisitor.java:180)
+	at com.python.pydev.analysis.builder.AnalysisBuilderVisitor.visitChangedResource(AnalysisBuilderVisitor.java:129)
+	at com.python.pydev.analysis.builder.AnalysisBuilderVisitor.visitChangedResource(AnalysisBuilderVisitor.java:45)
+	at org.python.pydev.builder.PydevGrouperVisitor.visitWith(PydevGrouperVisitor.java:115)
+	at org.python.pydev.builder.PydevGrouperVisitor.visitChangedResource(PydevGrouperVisitor.java:166)
+	at org.python.pydev.builder.PydevGrouperVisitor.finishDelayedVisits(PydevGrouperVisitor.java:190)
+	at org.python.pydev.builder.PyDevBuilder.build(PyDevBuilder.java:133)
+	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:735)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:206)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:246)
+	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:301)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:304)
+	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:360)
+	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:383)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev.shared_core 2 2 2017-08-03 16:09:31.723
+!MESSAGE Warning: computed 14382 completions (trimming to 10000).
+Request: CompletionRequest[ editorFile:C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\JsonComparisonUtils.py activationToken:cell qualifier:st isInCalltip:false alreadyHasParams:false]
+!STACK 0
+java.lang.RuntimeException: Warning: computed 14382 completions (trimming to 10000).
+Request: CompletionRequest[ editorFile:C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\JsonComparisonUtils.py activationToken:cell qualifier:st isInCalltip:false alreadyHasParams:false]
+	at org.python.pydev.core.log.Log.logWarn(Log.java:70)
+	at org.python.pydev.editor.codecompletion.PyCodeCompletion.getCodeCompletionProposals(PyCodeCompletion.java:195)
+	at org.python.pydev.editor.codecompletion.PythonCompletionProcessor.getPythonProposals(PythonCompletionProcessor.java:229)
+	at org.python.pydev.editor.codecompletion.PythonCompletionProcessor.computeCompletionProposals(PythonCompletionProcessor.java:163)
+	at org.python.pydev.editor.simpleassist.SimpleAssistProcessor.computeCompletionProposals(SimpleAssistProcessor.java:279)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$3.run(ContentAssistant.java:1931)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.jface.text.contentassist.ContentAssistant.computeCompletionProposals(ContentAssistant.java:1928)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.computeProposals(CompletionProposalPopup.java:565)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.access$16(CompletionProposalPopup.java:560)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup$2.run(CompletionProposalPopup.java:494)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.jface.text.contentassist.CompletionProposalPopup.showProposals(CompletionProposalPopup.java:487)
+	at org.eclipse.jface.text.contentassist.ContentAssistant$AutoAssistListener$1.run(ContentAssistant.java:371)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:35)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:182)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:4203)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3819)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.eclipse.ui 4 0 2017-08-03 16:12:00.454
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.IllegalArgumentException: Argument not valid
+	at org.eclipse.swt.SWT.error(SWT.java:4514)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.custom.StyledText.setCaretOffset(StyledText.java:8690)
+	at org.eclipse.ui.internal.console.IOConsoleViewer.handleVerifyEvent(IOConsoleViewer.java:111)
+	at org.eclipse.jface.text.TextViewer$TextVerifyListener.verifyText(TextViewer.java:431)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:274)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:802)
+	at org.eclipse.swt.custom.StyledText.modifyContent(StyledText.java:7342)
+	at org.eclipse.swt.custom.StyledText.sendKeyEvent(StyledText.java:8225)
+	at org.eclipse.swt.custom.StyledText.doContent(StyledText.java:2530)
+	at org.eclipse.swt.custom.StyledText.handleKey(StyledText.java:6018)
+	at org.eclipse.swt.custom.StyledText.handleKeyDown(StyledText.java:6049)
+	at org.eclipse.swt.custom.StyledText$7.handleEvent(StyledText.java:5733)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4410)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1130)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1126)
+	at org.eclipse.swt.widgets.Widget.wmChar(Widget.java:1547)
+	at org.eclipse.swt.widgets.Control.WM_CHAR(Control.java:4910)
+	at org.eclipse.swt.widgets.Canvas.WM_CHAR(Canvas.java:364)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4791)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5102)
+	at org.eclipse.swt.internal.win32.OS.CallWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.CallWindowProc(OS.java:2446)
+	at org.eclipse.swt.internal.BidiUtil.windowProc(BidiUtil.java:701)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3814)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:687)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:604)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:138)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+
+!ENTRY org.python.pydev.debug 4 4 2017-08-03 16:12:02.721
+!MESSAGE unexpected error
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:964)
+	at org.eclipse.ui.internal.console.ConsoleDocument.get(ConsoleDocument.java:29)
+	at org.python.pydev.debug.ui.PythonConsoleLineTracker$1.getContents(PythonConsoleLineTracker.java:92)
+	at org.python.pydev.debug.ui.PythonConsoleLineTracker.lineAppended(PythonConsoleLineTracker.java:112)
+	at org.eclipse.debug.internal.ui.views.console.ConsoleLineNotifier.lineAppended(ConsoleLineNotifier.java:130)
+	at org.eclipse.debug.internal.ui.views.console.ConsoleLineNotifier.matchFound(ConsoleLineNotifier.java:122)
+	at org.eclipse.ui.internal.console.ConsolePatternMatcher$MatchJob.run(ConsolePatternMatcher.java:137)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.python.pydev.debug 4 4 2017-08-06 11:44:33.080
+!MESSAGE Error reading ThreadSuspended
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unexpected XML error reading:<xml><thread id="pid_10116_id_57475952" stop_reason="109" message=""><frame id="57637328" name="__bootstrap" file="c%3A%5Cpython27%5Clib%5Cthreading.py" line="774"></frame></thread></xml>
+	at org.python.pydev.debug.model.XMLUtils.XMLToStack(XMLUtils.java:296)
+	at org.python.pydev.debug.model.AbstractDebugTarget.processThreadSuspended(AbstractDebugTarget.java:560)
+	at org.python.pydev.debug.model.AbstractDebugTarget.processCommand(AbstractDebugTarget.java:420)
+	at org.python.pydev.debug.model.remote.DebuggerReader.processCommand(DebuggerReader.java:113)
+	at org.python.pydev.debug.model.remote.DebuggerReader.run(DebuggerReader.java:141)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.xml.sax.SAXException: Thread not found (pid_10116_id_57475952)
+	at org.python.pydev.debug.model.XMLUtils$XMLToStackInfo.startThread(XMLUtils.java:182)
+	at org.python.pydev.debug.model.XMLUtils$XMLToStackInfo.startElement(XMLUtils.java:241)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(Unknown Source)
+	at javax.xml.parsers.SAXParser.parse(Unknown Source)
+	at org.python.pydev.debug.model.XMLUtils.XMLToStack(XMLUtils.java:281)
+	... 5 more
+!SUBENTRY 1 org.python.pydev.debug 4 4 2017-08-06 11:44:33.095
+!MESSAGE Unexpected XML error reading:<xml><thread id="pid_10116_id_57475952" stop_reason="109" message=""><frame id="57637328" name="__bootstrap" file="c%3A%5Cpython27%5Clib%5Cthreading.py" line="774"></frame></thread></xml>
+!STACK 0
+org.xml.sax.SAXException: Thread not found (pid_10116_id_57475952)
+	at org.python.pydev.debug.model.XMLUtils$XMLToStackInfo.startThread(XMLUtils.java:182)
+	at org.python.pydev.debug.model.XMLUtils$XMLToStackInfo.startElement(XMLUtils.java:241)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(Unknown Source)
+	at javax.xml.parsers.SAXParser.parse(Unknown Source)
+	at org.python.pydev.debug.model.XMLUtils.XMLToStack(XMLUtils.java:281)
+	at org.python.pydev.debug.model.AbstractDebugTarget.processThreadSuspended(AbstractDebugTarget.java:560)
+	at org.python.pydev.debug.model.AbstractDebugTarget.processCommand(AbstractDebugTarget.java:420)
+	at org.python.pydev.debug.model.remote.DebuggerReader.processCommand(DebuggerReader.java:113)
+	at org.python.pydev.debug.model.remote.DebuggerReader.run(DebuggerReader.java:141)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.python.pydev.debug 4 4 2017-08-06 11:56:36.553
+!MESSAGE Error reading ThreadSuspended
+!STACK 1
+org.eclipse.core.runtime.CoreException: Unexpected XML error reading:<xml><thread id="pid_8644_id_60458352" stop_reason="109" message=""><frame id="60569712" name="__bootstrap" file="c%3A%5Cpython27%5Clib%5Cthreading.py" line="774"></frame></thread></xml>
+	at org.python.pydev.debug.model.XMLUtils.XMLToStack(XMLUtils.java:296)
+	at org.python.pydev.debug.model.AbstractDebugTarget.processThreadSuspended(AbstractDebugTarget.java:560)
+	at org.python.pydev.debug.model.AbstractDebugTarget.processCommand(AbstractDebugTarget.java:420)
+	at org.python.pydev.debug.model.remote.DebuggerReader.processCommand(DebuggerReader.java:113)
+	at org.python.pydev.debug.model.remote.DebuggerReader.run(DebuggerReader.java:141)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.xml.sax.SAXException: Thread not found (pid_8644_id_60458352)
+	at org.python.pydev.debug.model.XMLUtils$XMLToStackInfo.startThread(XMLUtils.java:182)
+	at org.python.pydev.debug.model.XMLUtils$XMLToStackInfo.startElement(XMLUtils.java:241)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(Unknown Source)
+	at javax.xml.parsers.SAXParser.parse(Unknown Source)
+	at org.python.pydev.debug.model.XMLUtils.XMLToStack(XMLUtils.java:281)
+	... 5 more
+!SUBENTRY 1 org.python.pydev.debug 4 4 2017-08-06 11:56:36.553
+!MESSAGE Unexpected XML error reading:<xml><thread id="pid_8644_id_60458352" stop_reason="109" message=""><frame id="60569712" name="__bootstrap" file="c%3A%5Cpython27%5Clib%5Cthreading.py" line="774"></frame></thread></xml>
+!STACK 0
+org.xml.sax.SAXException: Thread not found (pid_8644_id_60458352)
+	at org.python.pydev.debug.model.XMLUtils$XMLToStackInfo.startThread(XMLUtils.java:182)
+	at org.python.pydev.debug.model.XMLUtils$XMLToStackInfo.startElement(XMLUtils.java:241)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(Unknown Source)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(Unknown Source)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(Unknown Source)
+	at javax.xml.parsers.SAXParser.parse(Unknown Source)
+	at org.python.pydev.debug.model.XMLUtils.XMLToStack(XMLUtils.java:281)
+	at org.python.pydev.debug.model.AbstractDebugTarget.processThreadSuspended(AbstractDebugTarget.java:560)
+	at org.python.pydev.debug.model.AbstractDebugTarget.processCommand(AbstractDebugTarget.java:420)
+	at org.python.pydev.debug.model.remote.DebuggerReader.processCommand(DebuggerReader.java:113)
+	at org.python.pydev.debug.model.remote.DebuggerReader.run(DebuggerReader.java:141)
+	at java.lang.Thread.run(Unknown Source)

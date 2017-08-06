@@ -9,6 +9,7 @@ import datetime as DT
 from model.Utils.Assert import Assertion
 from xml.dom import minidom
 from random import *
+import os
 
 class CBRSRequestHandler(object):
     '''
@@ -44,13 +45,17 @@ class CBRSRequestHandler(object):
     def set_Current_Json_Steps(self,testDefinition,confFile,dirPath):
         cbsdFoundInJsons = False
         for jsonCol in testDefinition.jsonNamesOfSteps:
-            if jsonComparer.get_Node_Of_Json_Parsed(jsonCol[0],"registrationRequest",confFile,dirPath)[0]["cbsdSerialNumber"]== self.cbsdSerialNumber:
+            xmlFileLinked = jsonComparer.get_Node_Of_Json_Parsed(jsonCol[0],"xmlFilelLinked",confFile,dirPath)
+            xmlPath = str(self.dirPath) +"\\cbrsPython\\model\\CBRSConf\\"+ xmlFileLinked+".xml"
+            try:
+                os.path.exists(xmlPath)
+            except Exception:
+                raise IOError("ERROR - missing cbrs conf file of the CBSD : " + self.cbsdSerialNumber)
+            self.cbrsConfFile = minidom.parse(xmlPath)
+            if self.cbrsConfFile.getElementsByTagName("cbsdSerialNumber")[0].firstChild.data  == self.cbsdSerialNumber :
+            #if jsonComparer.get_Node_Of_Json_Parsed(jsonCol[0],"xmlFilelLinked",confFile,dirPath).replace("cbsd","")== self.cbsdSerialNumber:
                 cbsdFoundInJsons = True
                 self.jsonSteps = jsonCol
-                try:
-                    self.cbrsConfFile = minidom.parse(str(self.dirPath) +"\\cbrsPython\\model\\CBRSConf\\"+ self.cbsdSerialNumber+".xml")
-                except:
-                    raise IOError("ERROR - missing cbrs conf file of the CBSD : " + self.cbsdSerialNumber)
                 self.assertion = Assertion(self.enviormentConfFile,dirPath,self.loggerHandler,self.cbrsConfFile)
         if(not cbsdFoundInJsons):
             raise IOError("ERROR - missing registration json in one of the csv columns with the cbsd serial number " + self.cbsdSerialNumber)
@@ -168,8 +173,7 @@ class CBRSRequestHandler(object):
             return False
         self.lastHeartBeatTime = DT.datetime.now()            
         return True
-    
-    
+  
     def process_response(self,typeOfCalling,httpRequest):  
         jsonAfterParse = self.parse_Json_To_Dic_By_File_Name(self.get_Expected_Json_File_Name(),consts.RESPONSE_NODE_NAME,self.enviormentConfFile)
         specificRespJson = jsonAfterParse[typeOfCalling+consts.RESPONSE_NODE_NAME.title()][0]
@@ -180,8 +184,9 @@ class CBRSRequestHandler(object):
             self.change_Value_Of_Param_In_Dict(specificRespJson, "grantId", self.grantId)  
         elif(typeOfCalling == consts.GRANT_SUFFIX_HTTP):
             if(self.grantId == 0) :
-                self.grantId = randint(1, 1000000000)  
-            self.change_Value_Of_Param_In_Dict(specificRespJson, "cbsdId", self.grantId) 
+                self.grantId = randint(1, 1000000000)
+                self.assertion.grantId = self.grantId  
+            self.change_Value_Of_Param_In_Dict(specificRespJson, "cbsdId", self.cbsdId) 
             self.change_Value_Of_Param_In_Dict(specificRespJson, "grantId", self.grantId)             
             result = self.get_Expire_Time()
             self.change_Value_Of_Param_In_Dict(specificRespJson, "grantExpireTime", result)  
@@ -196,6 +201,7 @@ class CBRSRequestHandler(object):
         elif(typeOfCalling == consts.REGISTRATION_SUFFIX_HTTP):
             if(self.cbsdId==None):
                 self.cbsdId = httpRequest["fccId"]+ "Mock-SAS" + self.cbsdSerialNumber
+                self.assertion.cbsdId = self.cbsdId
             self.change_Value_Of_Param_In_Dict(specificRespJson, "cbsdId", self.cbsdId)   
             
         if(len(self.jsonSteps) == self.numberOfStep+1):

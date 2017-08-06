@@ -15,6 +15,7 @@ from model import flaskServer
 from ENodeBController import ENodeBController
 import ssl
 from controllers.CLIUtils.enums import TestStatus
+from flask import Flask,request,jsonify,g,redirect,url_for,abort
 import os
 
 class CLIHandler(Thread):
@@ -113,13 +114,12 @@ class CLIHandler(Thread):
             ctx.verify_mode = ssl.CERT_REQUIRED
             ctx.load_verify_locations(str(self.dirPath) + cliHandler.get_Element_From_Config_File("caCerts"))
             ctx.load_cert_chain(str(self.dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(self.dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))
-            flaskServer.runFlaskServer(self.get_Element_From_Config_File("hostIp"),self.get_Element_From_Config_File("port"),ctx)     
+            self.server = flaskServer.runFlaskServer(self.get_Element_From_Config_File("hostIp"),self.get_Element_From_Config_File("port"),ctx)     
         if(cliHandler.engine.validationErrorAccuredInEngine):
             cliHandler.stop_Thread_Due_To_Exception()
         if(inputAnsweres=="quit"):
             self.loggerHandler.print_To_Terminal(consts.GOODBYE_MESSAGE)
-            del self.server
-            return None
+        
         
     def get_Element_From_Config_File(self,elementName):
         return self.confFile.getElementsByTagName(elementName)[0].firstChild.data

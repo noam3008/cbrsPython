@@ -5,6 +5,8 @@ from collections import OrderedDict
 import json
 from controllers.CLIUtils.enums import StepStatus
 from __builtin__ import True
+
+
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 
