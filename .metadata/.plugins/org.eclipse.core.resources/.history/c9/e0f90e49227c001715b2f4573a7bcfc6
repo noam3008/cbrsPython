@@ -49,8 +49,8 @@ def redirectShutDownDueToFinishOfTest():
 import ssl
 from werkzeug.serving import WSGIRequestHandler
 WSGIRequestHandler.protocol_version = "HTTP/1.1"
-def runFlaskServer(host,port):#,ctx):
-    app.run(host,port,threaded=True,request_handler=WSGIRequestHandler)#,ssl_context=ctx)
+def runFlaskServer(host,port,ctx):
+    app.run(host,port,threaded=True,request_handler=WSGIRequestHandler,ssl_context=ctx)
         
 
     
