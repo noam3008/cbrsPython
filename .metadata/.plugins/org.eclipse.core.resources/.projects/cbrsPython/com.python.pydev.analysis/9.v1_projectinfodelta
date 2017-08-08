@@ -1,1 +1,10 @@
-DELSTRmodel.flaskServer
+INSTUPcontrollers.CLIUtils.CsvFileParser
+C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\CsvFileParser.py
+INFOS:&&1|1|2|0&&2|3|2|1&&3|4|2|5&&3|6|2|5&&2|7|2|1
+controllers.CLIUtils.CsvFileParser=2
+CsvFileParser.__init__=5
+csvFileName=4
+confFile=6
+CsvFileParser=1
+__init__=3
+initializeTestDefinition=7
