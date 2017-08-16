@@ -114,7 +114,7 @@ class CLIHandler(Thread):
             ctx.verify_mode = ssl.CERT_REQUIRED
             ctx.load_verify_locations(str(self.dirPath) + cliHandler.get_Element_From_Config_File("caCerts"))
             ctx.load_cert_chain(str(self.dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(self.dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))
-            self.server = flaskServer.runFlaskServer(self.get_Element_From_Config_File("hostIp"),self.get_Element_From_Config_File("port"),ctx)     
+            flaskServer.runFlaskServer(self.get_Element_From_Config_File("hostIp"),self.get_Element_From_Config_File("port"),ctx)     
         if(cliHandler.engine.validationErrorAccuredInEngine):
             cliHandler.stop_Thread_Due_To_Exception()
         if(inputAnsweres=="quit"):

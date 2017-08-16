@@ -58,7 +58,7 @@ class MyEngine(object):
                     cbsdSerialNumberIndex = str(httpReq["cbsdId"]).index("Mock-SAS")
                 except : 
                     self.validationErrorAccuredInEngine = True
-                    return consts.JSON_REQUEST_NOT_INCLUDE_KEY + " cbsdId " 
+                    return consts.JSON_REQUEST_NOT_INCLUDE_KEY + " cbsdId , or that the cbsdid in the http request is not include mock-sas" 
                 try:
                     if(i==0):
                         response = self.handle_Http_Req(httpReq["cbsdId"][cbsdSerialNumberIndex+len("Mock-SAS"):],httpReq, typeOfCalling)

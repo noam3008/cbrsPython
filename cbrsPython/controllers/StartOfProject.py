@@ -14,6 +14,7 @@ from Loggers.CmdLogger import CmdLogger
 from Loggers.DebugLogger import DebugLogger
 from Loggers.XmlLogger import XmlLogger
 import ssl
+import x509
 
 def add_Log_Of_Test_To_Specific_Folder(loggerHandler):
     '''
@@ -84,6 +85,7 @@ def run_New_Test(dirPath, confFile, loggerHandler):
         
 
 def create_Log_Folder():
+    
     '''
     the method create logs folder with three folder inside if the folder not created already
     '''

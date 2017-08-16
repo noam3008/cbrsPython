@@ -25,7 +25,6 @@ class CsvFileParser(object):
     def initializeTestDefinition(self):
         steps = []
         try:
-            print str(self.csvFileName)
             with open(self.csvFileName+".csv") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader: 
