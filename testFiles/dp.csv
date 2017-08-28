@@ -1,4 +1,4 @@
-jsonFileName
-nmstest_registration2.json
-nmstest_grant2.json
-nmstest_deregistration2.json
+jsonFileName,jsonFileName2
+nmstest_registration2.json,nmstest_registration1.json
+nmstest_grant2.json,nmstest_grant1.json
+nmstest_initHeartbeat2.json,nmstest_initHeartbeat1.json

@@ -144,7 +144,8 @@ def _are_same(expected, actual, ignore_value_of_keys, ignore_json_length=False):
                              expected,
                              actual))           
             return inRange,Stack()
-        return expected == actual, Stack()
+        
+        return str(expected).replace('"', "") == str(actual).replace('"', ""), Stack()
 
     # Ensure collections have the same length (if applicable)
     if ignore_json_length:
@@ -218,7 +219,7 @@ def validate_Json_Value_Special_Sign(expected,actual):
             for value in expected.iteritems() :
                 strActualOnlyLetters =strAcutal.replace("[", "").replace("u'", "").replace("'","").replace("]","")
                 for value in value[1]:
-                    strExpectedOnlyLetters = str(value).replace("[", "").replace("u'", "").replace("'","").replace("]","")
+                    strExpectedOnlyLetters = str(value).lower().replace("[", "").replace("u'", "").replace("'","").replace("]","")
                     if len((strExpectedOnlyLetters).split(","))>1 :
                         valuesOfExpected = strExpectedOnlyLetters.split(",")
                         valuesOfActual = strActualOnlyLetters.split(",")
@@ -226,7 +227,7 @@ def validate_Json_Value_Special_Sign(expected,actual):
                             if cell not in valuesOfExpected:
                                 return False 
                         return value         
-                    if strExpectedOnlyLetters == strAcutal:
+                    if strExpectedOnlyLetters.upper() == strAcutal.upper():
                         return value
         except :
             indexOfPuncuation = strExpected.find(":")

@@ -5,13 +5,14 @@ from collections import OrderedDict
 import json
 from controllers.CLIUtils.enums import StepStatus
 from __builtin__ import True
+import flask
 
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 
 enodeBController = ENodeBController(None)
-@app.route("/v2.0/<typeOfCalling>/",methods=['POST'])
+@app.route("/v2.0/<typeOfCalling>",methods=['POST'])
 def sent_Flask_Req_To_Server(typeOfCalling):
     '''
     the method get any post request sent from the CBSD that the url includes '/cbsd/<typeOfCalling>/' 
@@ -20,14 +21,22 @@ def sent_Flask_Req_To_Server(typeOfCalling):
     '''
     logger = enodeBController.engine.loggerHandler
     json_dict = json.loads(request.data,object_pairs_hook=OrderedDict)
-    logger.start_Step(json_dict,typeOfCalling)
     while (not enodeBController.engine.check_Last_Step_In_All_CBRS()):
+        logger.start_Step(json_dict,typeOfCalling)
         response = enodeBController.linker_Between_Flask_To_Engine(json_dict,typeOfCalling)
         if("ERROR" in str(response)): ### if engine get an error while validate the request the flask will sent a shutdown call for the flask server
             return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=str(response)))
         logger.finish_Step(response,typeOfCalling,StepStatus.PASSED)           
         return jsonify(response)
-    return redirectShutDownDueToFinishOfTest()
+    if(typeOfCalling!=consts.REGISTRATION_SUFFIX_HTTP):
+        return jsonify( {
+                                                    "response": {
+                                                        "data": json_dict[typeOfCalling+"Request"][0]["cbsdId"]
+                                                    }
+                        }),103
+    else:
+        return jsonify(),103
+        
         
 @app.route('/shutdown', methods=['GET', 'POST'])
 def shutdown():
@@ -47,13 +56,11 @@ def shutdown():
 def redirectShutDownDueToFinishOfTest():
         return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=consts.TEST_HAD_BEEN_FINISHED_FLASK))
 import ssl
+from multiprocessing import Process
 from werkzeug.serving import WSGIRequestHandler
 WSGIRequestHandler.protocol_version = "HTTP/1.1"
-def runFlaskServer(host,port,ctx):
-    app.run(host,port,threaded=True,request_handler=WSGIRequestHandler,ssl_context=ctx)
-        
-
-    
+def runFlaskServer(host,port):#,ctx):
+    app.run(host,port,threaded=True,request_handler=WSGIRequestHandler)#,ssl_context=ctx)
 
 
 

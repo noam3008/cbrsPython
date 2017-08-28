@@ -10,26 +10,8 @@
 	],
 	"grantRequest":
 	[ 
-		{ 
-			"operationParam": 
-			{ 
-				"maxEirp": "${range:0To30.0000000000000000}", 
-				"operationFrequencyRange": 
-				{ 
-                    "highFrequency": "${range:3550000000To3700000000}", 
-                    "lowFrequency": "${range:3550000000To3700000000}"
-				}
-			},
-					"measReport": {
-                    "$listrcvdPowerMeasReports": [
-                    {
-                        "measBandwidth": 10000000, 
-                        "measCarrierRssi": "${range:-100.000000To30.000000}", 
-                        "measFrequency": 3550000000
-                    }
-                ]
-            }			
-		} 
+		{
+		}	
 	], 
 	"response":
 	{ 

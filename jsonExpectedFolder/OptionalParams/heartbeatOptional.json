@@ -3,7 +3,9 @@
 			"heartbeatOptionalParams":
         	[
             	{
-				}
+				"operationState": {"$or":["GRANTED","AUTHORIZED"]},
+				"grantRenew": {"$or":["true","false"]}
+		} 
 			]	
 }
 

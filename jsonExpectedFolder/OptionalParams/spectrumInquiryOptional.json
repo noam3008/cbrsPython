@@ -3,7 +3,11 @@
 			"spectrumInquiryOptionalParams":
         	[
             	{
+				"inquiredSpectrum": 
+							[{ 
+							"highFrequency": "${range:3550000000To3700000000}",
+							"lowFrequency": "${range:3550000000To3700000000}" 
+							}]
 				}
 			]	
 }
-
