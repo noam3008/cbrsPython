@@ -27,10 +27,6 @@
 				  "userId":"${maximumLength:128}",
 				  "fccId":"${maximumLength:128}",
 				  "cbsdCategory":{"$or":["A","B"]},
-				  "airInterface":
-						{
-							"radioTechnology":"${maximumLength:128}"
-						},
 				  "installationParam":
 					{
 						  "latitude":"${range:-90.000000To90.000000}"

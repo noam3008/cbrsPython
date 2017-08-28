@@ -9,6 +9,7 @@ import collections
 import xml.etree.ElementTree as ET
 from click.decorators import option
 from collections import OrderedDict
+from xml.dom import minidom
 class Assertion(object):
     '''
     classdocs
@@ -110,6 +111,20 @@ class Assertion(object):
                                         result = JsonComparisonUtils._are_same(childInChild.firstChild.data, httpRequest[child2.tagName][childInChild.tagName],False)
                                         if False in result:
                                             raise Exception("ERROR - there is an validation error between http request and the configuration file attribute ")
+        airInterfaceXml = minidom.parse(str(self.dirPath) +"\\cbrsPython\\model\\CBRSConf\\airInterfaceOptions.xml")
+        for child in airInterfaceXml.childNodes[0].childNodes:
+            if(child.firstChild!=None):
+                if child.tagName == consts.REGISTRATION_SUFFIX_HTTP + "Params":
+                    for child2 in child.childNodes:
+                        if(child2.firstChild!=None):
+                            for child3 in child2.childNodes:
+                                if len(child3.childNodes)==1: 
+                                    self.dontCheckNode.append(child2.tagName)  
+                                    result = JsonComparisonUtils._are_same(child3.firstChild.data, httpRequest[child2.tagName][child3.tagName],False)
+                                    if False in result:
+                                        raise Exception("ERROR - air interface object validation error")                       
+                        
+            
                                            
                                     
 #                         self.dontCheckNode.append(key)  
