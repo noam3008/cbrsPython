@@ -76,7 +76,7 @@ def run_New_Test(dirPath, confFile, loggerHandler):
         ctx.verify_mode = ssl.CERT_REQUIRED
         ctx.load_verify_locations(str(dirPath) + cliHandler.get_Element_From_Config_File("caCerts"))
         ctx.load_cert_chain(str(dirPath) + cliHandler.get_Element_From_Config_File("pemFilePath"), str(dirPath) + cliHandler.get_Element_From_Config_File("keyFilePath"))## get the certificates for https from config file
-        cliHandler.server = flaskServer.runFlaskServer(cliHandler.get_Element_From_Config_File("hostIp"),cliHandler.get_Element_From_Config_File("port"),ctx) ### run flask server using the host name and port  from conf file
+        cliHandler.server = flaskServer.runFlaskServer(cliHandler.get_Element_From_Config_File("hostIp"),cliHandler.get_Element_From_Config_File("port"))#,ctx) ### run flask server using the host name and port  from conf file
         if (cliHandler.engine.check_Validation_Error()):
             cliHandler.stop_Thread_Due_To_Exception()
     if(inputAnswer=="quit"):
