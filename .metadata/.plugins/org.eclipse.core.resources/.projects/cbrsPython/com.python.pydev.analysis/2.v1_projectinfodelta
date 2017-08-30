@@ -1,1 +1,13 @@
-DELSTRcontrollers.StartOfProject
+INSTUPcontrollers.StartOfProject
+C:\Users\iagmon\cbrsPython\cbrsPython\controllers\StartOfProject.py
+INFOS:&&2|1|2|0&&2|3|2|0&&2|4|2|0&&2|5|2|0&&2|6|2|0&&3|7|2|0&&3|8|2|0&&3|9|2|0&&3|10|2|0
+current_path=7
+controllers.StartOfProject=2
+add_Log_Of_Test_To_Specific_Folder=1
+create_Log_Folder=5
+initialize_Reports=6
+get_input=3
+dirPath=8
+confFile=9
+run_New_Test=4
+loggerHandler=10
