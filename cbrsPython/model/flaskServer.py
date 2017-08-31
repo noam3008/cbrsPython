@@ -10,9 +10,14 @@ import flask
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
+import logging
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
+
+
 
 enodeBController = ENodeBController(None)
-@app.route("/v2.0/<typeOfCalling>",methods=['POST'])
+@app.route("/v2.0/<typeOfCalling>/",methods=['POST'])
 def sent_Flask_Req_To_Server(typeOfCalling):
     '''
     the method get any post request sent from the CBSD that the url includes '/cbsd/<typeOfCalling>/' 
@@ -22,20 +27,26 @@ def sent_Flask_Req_To_Server(typeOfCalling):
     logger = enodeBController.engine.loggerHandler
     json_dict = json.loads(request.data,object_pairs_hook=OrderedDict)
     while (not enodeBController.engine.check_Last_Step_In_All_CBRS()):
-        logger.start_Step(json_dict,typeOfCalling)
+        logger.start_Step(json_dict,typeOfCalling,request.remote_addr)
         response = enodeBController.linker_Between_Flask_To_Engine(json_dict,typeOfCalling)
         if("ERROR" in str(response)): ### if engine get an error while validate the request the flask will sent a shutdown call for the flask server
             return redirect(url_for(consts.SHUTDOWN_FUNCTION_NAME, validationMessage=str(response)))
         logger.finish_Step(response,typeOfCalling,StepStatus.PASSED)           
         return jsonify(response)
     if(typeOfCalling!=consts.REGISTRATION_SUFFIX_HTTP):
-        return jsonify( {
-                                                    "response": {
-                                                        "data": json_dict[typeOfCalling+"Request"][0]["cbsdId"]
-                                                    }
-                        }),103
+        return jsonify( {str(typeOfCalling)+"Response": [{
+                                                        "response":{"responseCode":103,
+                                                        "responseData": [
+                                                            "cbsdId"
+                                                            ]
+                                                                    }
+                                                          }]
+                         })
     else:
-        return jsonify(),103
+        return jsonify( {str(typeOfCalling)+"Response": [{
+                                                        "response":{"responseCode":103}
+                                                    }]
+                        })
         
         
 @app.route('/shutdown', methods=['GET', 'POST'])
