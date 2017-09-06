@@ -227,6 +227,7 @@ def validate_Json_Value_Special_Sign(expected,actual):
                             if cell not in valuesOfExpected:
                                 return False 
                         return value         
+                    # if strExpectedOnlyLetters.upper() == strActualOnlyLetters.upper():
                     if strExpectedOnlyLetters.upper() == strAcutal.upper():
                         return value
         except :

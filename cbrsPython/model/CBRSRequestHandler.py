@@ -37,7 +37,6 @@ class CBRSRequestHandler(object):
         self.enviormentConfFile = EnviormentConfFile
         self.dirPath = dirPath
         self.cbrsConfFile = None
-        self.measReportCounter = 0
         self.cbsdId = None
         self.grantId = 0
         self.expectedRelBeforeDeragistration = False
@@ -114,8 +113,7 @@ class CBRSRequestHandler(object):
                     return consts.GRANT_BEFORE_HEARTBEAT_ERROR                  
                 self.Initialize_Repeats_Type_Allowed(consts.HEART_BEAT_SUFFIX_HTTP,httpRequest, typeOfCalling)
                 self.numberOfHearbeatRequests=1 
-                self.lastHeartBeatTime = DT.datetime.now()  
-                self.measReportCounter = 1      
+                self.lastHeartBeatTime = DT.datetime.now()       
         else:
             if(typeOfCalling==consts.GRANT_SUFFIX_HTTP):
                 self.grantBeforeHeartBeat = True

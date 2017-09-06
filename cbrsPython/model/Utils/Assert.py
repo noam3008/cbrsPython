@@ -130,7 +130,7 @@ class Assertion(object):
                     if child.tagName == "groupingParam":
                         for child2 in child.childNodes:
                             if len(child2.childNodes)==1:   
-                                result = JsonComparisonUtils._are_same(child2.firstChild.data, httpRequest[child.tagName][child2.tagName],False)
+                                result = JsonComparisonUtils._are_same(child2.firstChild.data, httpRequest[child.tagName][0][child2.tagName],False)
                                 if False in result:
                                     raise Exception("ERROR - grouping param object validation error") 
             self.dontCheckNode.append("groupingParam")

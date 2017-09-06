@@ -17,7 +17,7 @@ log.setLevel(logging.ERROR)
 
 
 enodeBController = ENodeBController(None)
-@app.route("/v2.0/<typeOfCalling>",methods=['POST'])
+@app.route("/v2.0/<typeOfCalling>/",methods=['POST'])
 def sent_Flask_Req_To_Server(typeOfCalling):
     '''
     the method get any post request sent from the CBSD that the url includes '/cbsd/<typeOfCalling>/' 
@@ -84,8 +84,8 @@ import ssl
 from multiprocessing import Process
 from werkzeug.serving import WSGIRequestHandler
 WSGIRequestHandler.protocol_version = "HTTP/1.1"
-def runFlaskServer(host,port,ctx):
-    app.run(host,port,threaded=True,request_handler=WSGIRequestHandler,ssl_context=ctx)
+def runFlaskServer(host,port):#,ctx):
+    app.run(host,port,threaded=True,request_handler=WSGIRequestHandler)#,ssl_context=ctx)
 
 
 
