@@ -1,11 +1,1 @@
-INSTUPLoggers.LogObserver
-C:\Users\iagmon\cbrsPython\cbrsPython\Loggers\LogObserver.py
-INFOS:&&1|1|2|0&&2|3|2|1&&2|4|2|1&&2|5|2|1&&2|6|2|1&&2|7|2|1&&2|8|2|1
-startTest=3
-Observer=1
-finishTest=6
-print_To_Terminal=8
-print_to_Logs_Files=7
-startStep=4
-Loggers.LogObserver=2
-finishStep=5
+DELSTRLoggers.LoggerObserver
