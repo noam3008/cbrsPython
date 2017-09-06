@@ -5,11 +5,6 @@
             	{
 				  "measCapability":{"$or":[["RECEIVED_POWER_WITHOUT_GRANT","RECEIVED_POWER_WITH_GRANT"],["RECEIVED_POWER_WITHOUT_GRANT","RECEIVED_POWER_WITH_GRANT"]]},
 				  "callSign":"${maximumLength:128}",
-				  "groupingParam": 
-						{ 	
-							"groupId":"${maximumLength:128}"
-							, "groupType": "INTERFERENCE_COORDINATION" 
-						},
 				  "CpiSignatureData":
 						{	
 							"protectedHeader": "${maximumLength:128}"

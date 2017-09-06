@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cbrsParams>
+	<groupingParam>
+			<groupType>"${maximumLength:128}"</groupType>
+			<groupId>"INTERFERENCE_COORDINATION"</groupId>
+		</groupingParam>	 
+</cbrsParams>

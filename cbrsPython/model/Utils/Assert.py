@@ -123,7 +123,18 @@ class Assertion(object):
                                     result = JsonComparisonUtils._are_same(child3.firstChild.data, httpRequest[child2.tagName][child3.tagName],False)
                                     if False in result:
                                         raise Exception("ERROR - air interface object validation error")                       
-                        
+        groupingParamXml = minidom.parse(str(self.dirPath) +"\\cbrsPython\\model\\CBRSConf\\groupingParam.xml") 
+        if "groupingParam" in httpRequest:
+            for child in groupingParamXml.childNodes[0].childNodes:
+                if(child.firstChild!=None):
+                    if child.tagName == "groupingParam":
+                        for child2 in child.childNodes:
+                            if len(child2.childNodes)==1:   
+                                result = JsonComparisonUtils._are_same(child2.firstChild.data, httpRequest[child.tagName][child2.tagName],False)
+                                if False in result:
+                                    raise Exception("ERROR - grouping param object validation error") 
+            self.dontCheckNode.append("groupingParam")
+        
             
                                            
                                     

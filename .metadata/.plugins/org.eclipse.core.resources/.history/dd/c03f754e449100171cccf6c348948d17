@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cbrsParams>
+	<groupingParam>
+			<groupType>"$or":["E_UTRA","AUTHORIZED"]</groupType>
+		</groupingParam>	 
+</cbrsParams>
