@@ -207,10 +207,10 @@ class Assertion(object):
     
     def isThereMoreThenOneValueInside(self,value):
         numberOfValues = 0
-#         if("$or" in str(value)):
-#             return True
-#         else:
-#             return False 
+        if("$or" in str(value)):
+            return True
+        else:
+            return False 
         
         if("$or" in str(value)):
             strValue = str(value)

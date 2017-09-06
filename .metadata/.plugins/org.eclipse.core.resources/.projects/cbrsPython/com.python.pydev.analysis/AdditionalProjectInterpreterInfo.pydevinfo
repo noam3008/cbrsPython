@@ -14,16 +14,16 @@ model.Engine|1503216197896626000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Eng
 Loggers.__init__|1496306918846801000|C:\Users\iagmon\cbrsPython\cbrsPython\Loggers\__init__.py
 Loggers.DebugLogger|1504170138003991000|C:\Users\iagmon\cbrsPython\cbrsPython\Loggers\DebugLogger.py
 controllers.CLIUtils.__init__|1493295896041672000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\__init__.py
-model.flaskServer|1504433413652628000|C:\Users\iagmon\cbrsPython\cbrsPython\model\flaskServer.py
+model.flaskServer|1504677563187256000|C:\Users\iagmon\cbrsPython\cbrsPython\model\flaskServer.py
 controllers.ENodeBController|1497169378039354000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\ENodeBController.py
 Loggers.LoggerObserver|1504170155546758000|C:\Users\iagmon\cbrsPython\cbrsPython\Loggers\LoggerObserver.py
 controllers.CLIUtils.CsvFileParser|1502370675490209000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\CsvFileParser.py
 model.Utils.__init__|1494162572678941000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\__init__.py
-controllers.CLIHandler|1504431527879768000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIHandler.py
+controllers.CLIHandler|1504677526507158000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIHandler.py
 model.__init__|1493106828900703000|C:\Users\iagmon\cbrsPython\cbrsPython\model\__init__.py
 controllers.CLIUtils.enums|1496570055323587000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\enums.py
-controllers.StartOfProject|1504432613543864000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\StartOfProject.py
 model.Utils.JsonComparisonUtils|1504513888356518000|C:\Users\iagmon\cbrsPython\cbrsPython\model\Utils\JsonComparisonUtils.py
+controllers.StartOfProject|1504677543151110000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\StartOfProject.py
 controllers.__init__|1493106828437676000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\__init__.py
 controllers.CLIUtils.Step|1495457871919444000|C:\Users\iagmon\cbrsPython\cbrsPython\controllers\CLIUtils\Step.py
 Loggers.CmdLogger|1504171274253332000|C:\Users\iagmon\cbrsPython\cbrsPython\Loggers\CmdLogger.py
@@ -122,7 +122,7 @@ cli|2|CLI_SESSION!19@CLIHandler!57@
 clo|1|CLOSE_USER_SESSION!19@
 cmd|1|CmdLogger!65@
 com|1|COMPARING_JSONS_MESSAGE!19@
-con|2|confFile!27@contains!10@
+con|2|contains!10@confFile!27@
 cre|1|create_Log_Folder!26@
 csv|1|CsvFileParser!73@
 cur|1|current_path!27@
@@ -137,7 +137,7 @@ ent|1|ENTER_YES_OR_NO_MESSAGE!19@
 err|1|ERROR_VALIDATION_MESSAGE!19@
 exp|1|EXPECT_ANSWER_NODE!19@
 fai|1|FAIL_MESSAGE!19@
-get|3|Get_Json_After_Parse_To_Dic!10@get_input!26@get_Node_Of_Json_Parsed!10@
+get|3|Get_Json_After_Parse_To_Dic!10@get_Node_Of_Json_Parsed!10@get_input!26@
 goo|1|GOODBYE_MESSAGE!19@
 gra|2|GRANT_SUFFIX_HTTP!19@GRANT_BEFORE_HEARTBEAT_ERROR!19@
 gui|1|GUIFramework!97@
@@ -220,7 +220,7 @@ jso|4|jsonSteps!41&51@jsonSteps!42&51@jsonNamesOfSteps!61&155@jsonOfStep!60&139@
 las|3|lastHeartBeatTime!41&51@lastHeartBeatTime!56&51@lastHeartBeatTime!62&51@
 lbt|1|lbText!43&99@
 lin|1|linker_Between_Flask_To_Engine!34&90@
-log|9|loggerHandler!39&115@log_Name!63&83@log_Name!64&83@loggerHandler!41&51@loggerHandler!44&43@loggerHandler!37&59@log_Name!45&163@log_Name!53&163@loggerHandler!65&131@
+log|9|log_Name!63&83@log_Name!64&83@loggerHandler!39&115@loggerHandler!41&51@loggerHandler!44&43@loggerHandler!37&59@log_Name!45&163@log_Name!53&163@loggerHandler!65&131@
 mea|2|measReportCounter!41&51@measReportCounter!56&51@
 num|3|numberOfHearbeatRequests!41&51@numberOfHearbeatRequests!56&51@numberOfStep!41&51@
 obs|1|observers!54&107@
